@@ -8,12 +8,12 @@ Our newest publication, The Daily Moon, wants to leave black-and-white behind an
 
 ## What are the requirements?
 
-<img src="assets/funky-headline.png" width="50%">
-
 The new headline block must include three parts:
 - a kicker
 - a main headline
 - a subdeck
+
+<img src="assets/funky-headline.png" width="40%">
 
 Editors need to be able to customise the background colour of the kicker, as well as the text colour of the main headline.
 
