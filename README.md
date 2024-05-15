@@ -15,7 +15,7 @@
 ## What is the task?
 
 Your task is to make a funky headline block
-![screenshot](assets/funky-headline.png)
+![screenshot](assets/funky-headline.png | width=250)
 
 For full details on the task, please [click this link](./TASK.md)
 
