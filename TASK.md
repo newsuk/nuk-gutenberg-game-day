@@ -1,14 +1,14 @@
-# The Task
+# The Task
 
 Our newest publication, The Daily Moon, wants to leave black-and-white behind and embrace a more colourful, maximalist design on its article pages. Their top priority is making headlines more eye-catching…
 
 **Your task today is to build a custom Gutenberg block that allows editors to create these funky headlines!**
 
-![screenshot](assets/daily-moon.png)
+<img src="assets/daily-moon.png" width="50%">
 
 ## What are the requirements?
 
-![screenshot](assets/funky-headline.png)
+<img src="assets/funky-headline.png" width="50%">
 
 The new headline block must include three parts:
 - a kicker
