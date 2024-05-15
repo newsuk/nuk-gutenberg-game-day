@@ -1,6 +1,8 @@
 # Gutenberg Game Day
 
-## Agenda for the day
+Welcome to our first ever Gutenberg Game Day!
+
+## What is the agenda for the day?
 
 | When? | What?                                           |
 |-------|:------------------------------------------------|
