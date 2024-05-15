@@ -1,6 +1,6 @@
-# Gutenberg Game Day
+# Gutenberg Game Day
 
-## Agenda for the day
+## Agenda for the day
 
 | When? | What?                                           |
 |-------|-------------------------------------------------|
