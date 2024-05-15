@@ -3,7 +3,7 @@
 ## Agenda for the day
 
 | When? | What?                                           |
-|-------|-------------------------------------------------|
+|-------|:------------------------------------------------|
 | 10:05 | Jonny Harris: What is Gutenberg?                |
 | 10:15 | Onur Yasar & Mohan RP: Modern Wordpress Tooling |
 | 10:30 | The Task (Part 1)                               |
@@ -14,10 +14,9 @@
 
 ## What is the task?
 
-Your task is to make a funky headline block
-![screenshot](assets/funky-headline.png | width=250)
+Your task is to make a funky headline block! Full details of the task can be found [here](./TASK.md).
 
-For full details on the task, please [click this link](./TASK.md)
+<img src="assets/funky-headline.png " width="420" >
 
 ## Where should I put my solution?
 
