@@ -4,31 +4,33 @@
   "name": "create-block/funky-block",
   "version": "0.1.0",
   "title": "Funky Block",
-  "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "category": "common",
+  "icon": "buddicons-activity",
+  "description": "Funky block for our editors.",
   "example": {},
   "attributes": {
     "kickerText": {
-      "type": "string"
+      "type": "string",
+      "source": "html",
+      "selector": "h3"
     },
     "headlineText": {
-      "type": "string"
+      "type": "string",
+      "source": "html",
+      "selector": "h1"
     },
     "descriptionText": {
-      "type": "string"
+      "type": "string",
+      "source": "html",
+      "selector": "p"
     },
     "kickerColour": {
       "type": "string",
-      "default": "#ff51d0"
+      "default": "#4513ba"
     },
     "headlineColour": {
       "type": "string",
-      "default": "#f4d13b"
-    },
-    "descriptionColour": {
-      "type": "string",
-      "default": "#00bfff"
+      "default": "#ff51d0"
     }
   },
   "supports": {

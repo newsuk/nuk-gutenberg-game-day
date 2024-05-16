@@ -12,5 +12,10 @@
   color: #fff;
   padding: 2px;
 }
+.wp-block-create-block-funky-block .kickerText {
+  width: 100px;
+  font-size: 20px;
+  padding: 10px;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

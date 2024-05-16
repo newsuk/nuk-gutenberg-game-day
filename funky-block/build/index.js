@@ -21,23 +21,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
 
 
+
+const maxLengthKicker = 20;
+const maxLengthHeadline = 80;
+const maxLengthDesc = 150;
 function Edit({
   attributes,
   setAttributes
 }) {
+  const lengthChecker = function (charLimit, attributeName, textValue) {
+    if (textValue.length > charLimit) {
+      (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.dispatch)("core/notices").createErrorNotice(`This string has more than ${charLimit} characters`);
+    }
+    setAttributes({
+      [attributeName]: textValue.substring(0, charLimit)
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h3",
     value: attributes.kickerText,
-    onChange: text => setAttributes({
-      kickerText: text
-    }),
+    onChange: text => lengthChecker(maxLengthKicker, 'kickerText', text),
     placeholder: "Kicker Text",
     style: {
       backgroundColor: attributes.kickerColour,
@@ -46,19 +58,15 @@ function Edit({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h1",
     value: attributes.headlineText,
-    onChange: text => setAttributes({
-      headlineText: text
-    }),
+    onChange: text => lengthChecker(maxLengthHeadline, 'headlineText', text),
     placeholder: "Headline Text",
     style: {
       color: attributes.headlineColour
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "h2",
+    tagName: "p",
     value: attributes.descriptionText,
-    onChange: text => setAttributes({
-      descriptionText: text
-    }),
+    onChange: text => lengthChecker(maxLengthDesc, 'descriptionText', text),
     placeholder: "Description Text"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
     __experimentalIsRenderedInSidebar: true,
@@ -94,42 +102,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/save.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
-/**
- * Registers a new block provided a unique name and an object defining its behavior.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * All files containing `style` keyword are bundled together. The code used
- * gets applied both to the front of your site and to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
-
-/**
- * Internal dependencies
- */
 
 
 
 
-/**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
+
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
-  /**
-   * @see ./edit.js
-   */
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  /**
-   * @see ./save.js
-   */
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
@@ -157,6 +136,7 @@ function save({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    className: "kickerText",
     tagName: "h3",
     value: attributes.kickerText,
     style: {
@@ -170,7 +150,7 @@ function save({
       color: attributes.headlineColour
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "h2",
+    tagName: "p",
     value: attributes.descriptionText
   }));
 }
@@ -241,6 +221,16 @@ module.exports = window["wp"]["components"];
 
 /***/ }),
 
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["data"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -257,7 +247,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/funky-block","version":"0.1.0","title":"Funky Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"attributes":{"kickerText":{"type":"string"},"headlineText":{"type":"string"},"descriptionText":{"type":"string"},"kickerColour":{"type":"string","default":"#ff51d0"},"headlineColour":{"type":"string","default":"#f4d13b"},"descriptionColour":{"type":"string","default":"#00bfff"}},"supports":{"html":false},"textdomain":"funky-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/funky-block","version":"0.1.0","title":"Funky Block","category":"common","icon":"buddicons-activity","description":"Funky block for our editors.","example":{},"attributes":{"kickerText":{"type":"string","source":"html","selector":"h3"},"headlineText":{"type":"string","source":"html","selector":"h1"},"descriptionText":{"type":"string","source":"html","selector":"p"},"kickerColour":{"type":"string","default":"#4513ba"},"headlineColour":{"type":"string","default":"#ff51d0"}},"supports":{"html":false},"textdomain":"funky-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
