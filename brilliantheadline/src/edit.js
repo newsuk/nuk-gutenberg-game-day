@@ -20,7 +20,9 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { TextControl, TextareaControl } from '@wordpress/components';
+import { TextControl, TextareaControl, PanelBody } from '@wordpress/components';
+import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,13 +33,14 @@ import { TextControl, TextareaControl } from '@wordpress/components';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const {kicker, headline, subdeck} = attributes;
+	const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
 	return (
 		<div { ...useBlockProps() }>
 			<TextControl
 				label="Kicker"
 				value={ kicker }
 				onChange={ ( value ) => setAttributes( { kicker: value } ) }
+				maxLength="20"
 			/>
 			<TextControl
 				label="Headline"
@@ -49,7 +52,25 @@ export default function Edit({ attributes, setAttributes }) {
 				help="Add your subdeck here"
 				value={ subdeck }
 				onChange={ ( value ) => setAttributes( { subdeck: value } ) }
+			/>
+			<InspectorControls>
+				<PanelColorSettings
+					__experimentalIsRenderedInSidebar
+					title={ __( 'Color' ) }
+					colorSettings={ [
+						{
+							value: kickerBackgroundColour,
+							onChange: ( value ) => setAttributes( { kickerBackgroundColour: value } ),
+							label: __( 'Kicker background colour' ),
+						},
+						{
+							value: headlineTextColour,
+							onChange: ( value ) => setAttributes( { headlineTextColour: value } ),
+							label: __( 'Headline text colour' ),
+						}
+					] }
 				/>
+			</InspectorControls>
 		</div>
 	);
 }

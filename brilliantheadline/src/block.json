@@ -25,7 +25,14 @@
 		},
 		"subdeck": {
 			"type": "string"
-		}
+		},
 		
+		"kickerBackgroundColour": {
+			"type": "string"
+		},
+		
+		"headlineTextColour": {
+			"type": "string"
+		}
 	}
 }

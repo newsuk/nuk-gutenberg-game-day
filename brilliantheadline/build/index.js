@@ -46,6 +46,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -61,7 +62,9 @@ function Edit({
   const {
     kicker,
     headline,
-    subdeck
+    subdeck,
+    kickerBackgroundColour,
+    headlineTextColour
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
@@ -70,7 +73,8 @@ function Edit({
     value: kicker,
     onChange: value => setAttributes({
       kicker: value
-    })
+    }),
+    maxLength: "20"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Headline",
     value: headline,
@@ -84,7 +88,23 @@ function Edit({
     onChange: value => setAttributes({
       subdeck: value
     })
-  }));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    __experimentalIsRenderedInSidebar: true,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color'),
+    colorSettings: [{
+      value: kickerBackgroundColour,
+      onChange: value => setAttributes({
+        kickerBackgroundColour: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Kicker background colour')
+    }, {
+      value: headlineTextColour,
+      onChange: value => setAttributes({
+        headlineTextColour: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Headline text colour')
+    }]
+  })));
 }
 
 /***/ }),
@@ -263,7 +283,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"brilliantheadline/brilliantheadline","version":"0.1.0","title":"Brilliant Headline","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"brilliantheadline","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string"},"headline":{"type":"string"},"subdeck":{"type":"string"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"brilliantheadline/brilliantheadline","version":"0.1.0","title":"Brilliant Headline","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"brilliantheadline","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string"},"headline":{"type":"string"},"subdeck":{"type":"string"},"kickerBackgroundColour":{"type":"string"},"headlineTextColour":{"type":"string"}}}');
 
 /***/ })
 
