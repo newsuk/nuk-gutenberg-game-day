@@ -22,6 +22,10 @@
       "source": "rich-text",
       "selector": "h1"
     },
+    "headline_text_color": {
+      "type": "string",
+      "selector": "h1[data-text-color]"
+    },
     "kicker_content": {
       "type": "rich-text",
       "source": "rich-text",
@@ -29,11 +33,12 @@
     },
     "kicker_bg_color": {
       "type": "string",
-      "selector": ".kicker"
+      "selector": ".kicker[data-bg-color]"
     },
-    "headline_text_color": {
-      "type": "string",
-      "selector": "h1"
+    "subdeck_content": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".subdeck"
     }
   }
 }

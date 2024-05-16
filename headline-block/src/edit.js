@@ -12,15 +12,10 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {
-	AlignmentControl,
-	BlockControls,
 	RichText,
-	useBlockProps,
-	store as blockEditorStore,
-	HeadingLevelDropdown,
-	useBlockEditingMode,
 	InspectorControls,
-	ColorPalette
+	ColorPalette,
+	PanelColorSettings
 } from "@wordpress/block-editor";
 
 /**
@@ -39,45 +34,62 @@ import "./editor.scss";
  *
  * @return {Element} Element to render.
  */
+
+import { useState } from "react";
+
 export default function Edit({ attributes, setAttributes, onReplace }) {
-	const { headline_content, kicker_content, kicker_bg_color, headline_text_color } = attributes;
+	const {
+		headline_content,
+		kicker_content,
+		kicker_bg_color,
+		headline_text_color,
+		subdeck_content
+	} = attributes;
+
+	const [textColor, setTextColor] = useState({
+		color: headline_text_color
+	});
+	const [backgroundColor, setBackgroundColor] = useState({
+		color: kicker_bg_color
+	});
 
 	const onHeadlineChange = (headline_content) => {
 		setAttributes({
 			headline_content
 		});
 	};
+
 	const onKickerChange = (kicker_content) => {
 		setAttributes({
 			kicker_content
 		});
 	};
 
-	const onChangeBGColor = (color) => {
-		setAttributes({kicker_bg_color: color});
+	const onSubdeckChange = (subdeck_content) => {
+		setAttributes({
+			subdeck_content
+		});
 	};
-	const onChangeTextColor = (color) => {
-		setAttributes({headline_text_color: color});
-	}
+
 	return (
 		<>
-			<InspectorControls key="setting">
-				<div>
-					<fieldset>
-						<legend className="blocks-base-control__label">
-							{__("Background color", "block-development-examples")}
-						</legend>
-						<ColorPalette // Element Tag for Gutenberg standard colour selector
-							onChange={onChangeBGColor} // onChange event callback
-						/>
-					</fieldset>
-					<fieldset>
-						<legend className="blocks-base-control__label">
-							{__("Text color", "block-development-examples")}
-						</legend>
-						<ColorPalette onChange={onChangeTextColor} />
-					</fieldset>
-				</div>
+			<InspectorControls>
+				<PanelColorSettings
+					__experimentalIsRenderedInSidebar
+					title={__("Color")}
+					colorSettings={[
+						{
+							value: textColor.color,
+							onChange: setTextColor,
+							label: __("Headline Text")
+						},
+						{
+							value: backgroundColor.color,
+							onChange: setBackgroundColor,
+							label: __("Kicker Background")
+						}
+					]}
+				/>
 			</InspectorControls>
 
 			<RichText
@@ -86,9 +98,12 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				onChange={onKickerChange}
 				className="kicker"
 				value={kicker_content}
-				placeholder="Kicker"
+				placeholder="kicker"
+				onReplace={onReplace}
+				onRemove={() => onReplace([])}
+				data-bg-color={backgroundColor.color}
 				style={{
-					backgroundColor: kicker_bg_color,
+					backgroundColor: backgroundColor.color,
 					textTransform: "uppercase"
 				}}
 			/>
@@ -100,8 +115,20 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				placeholder="Headline"
 				onReplace={onReplace}
 				onRemove={() => onReplace([])}
+				data-text-color={textColor.color}
 				style={{
-					color: headline_text_color}}
+					color: textColor.color
+				}}
+			/>
+			<RichText
+				tagName="p"
+				identifier="subdeck_content"
+				onChange={onSubdeckChange}
+				className="subdeck"
+				value={subdeck_content}
+				placeholder="subdeck"
+				onReplace={onReplace}
+				onRemove={() => onReplace([])}
 			/>
 		</>
 	);

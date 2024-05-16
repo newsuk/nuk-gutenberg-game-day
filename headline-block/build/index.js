@@ -51,6 +51,8 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
+
+
 function Edit({
   attributes,
   setAttributes,
@@ -60,8 +62,15 @@ function Edit({
     headline_content,
     kicker_content,
     kicker_bg_color,
-    headline_text_color
+    headline_text_color,
+    subdeck_content
   } = attributes;
+  const [textColor, setTextColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    color: headline_text_color
+  });
+  const [backgroundColor, setBackgroundColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    color: kicker_bg_color
+  });
   const onHeadlineChange = headline_content => {
     setAttributes({
       headline_content
@@ -72,36 +81,35 @@ function Edit({
       kicker_content
     });
   };
-  const onChangeBGColor = color => {
+  const onSubdeckChange = subdeck_content => {
     setAttributes({
-      kicker_bg_color: color
+      subdeck_content
     });
   };
-  const onChangeTextColor = color => {
-    setAttributes({
-      headline_text_color: color
-    });
-  };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
-    key: "setting"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
-    className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Background color", "block-development-examples")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette // Element Tag for Gutenberg standard colour selector
-  , {
-    onChange: onChangeBGColor // onChange event callback
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
-    className: "blocks-base-control__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text color", "block-development-examples")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
-    onChange: onChangeTextColor
-  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    __experimentalIsRenderedInSidebar: true,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color"),
+    colorSettings: [{
+      value: textColor.color,
+      onChange: setTextColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Headline Text")
+    }, {
+      value: backgroundColor.color,
+      onChange: setBackgroundColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Kicker Background")
+    }]
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     identifier: "kicker_content",
     onChange: onKickerChange,
     className: "kicker",
     value: kicker_content,
-    placeholder: "Kicker",
+    placeholder: "kicker",
+    onReplace: onReplace,
+    onRemove: () => onReplace([]),
+    "data-bg-color": backgroundColor.color,
     style: {
-      backgroundColor: kicker_bg_color,
+      backgroundColor: backgroundColor.color,
       textTransform: "uppercase"
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -112,9 +120,19 @@ function Edit({
     placeholder: "Headline",
     onReplace: onReplace,
     onRemove: () => onReplace([]),
+    "data-text-color": textColor.color,
     style: {
-      color: headline_text_color
+      color: textColor.color
     }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    identifier: "subdeck_content",
+    onChange: onSubdeckChange,
+    className: "subdeck",
+    value: subdeck_content,
+    placeholder: "subdeck",
+    onReplace: onReplace,
+    onRemove: () => onReplace([])
   }));
 }
 
@@ -295,7 +313,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headline-block","version":"0.1.0","title":"Headline Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"headline-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline_content":{"type":"rich-text","source":"rich-text","selector":"h1"},"kicker_content":{"type":"rich-text","source":"rich-text","selector":".kicker"},"kicker_bg_color":{"type":"string","selector":".kicker"},"headline_text_color":{"type":"string","selector":"h1"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headline-block","version":"0.1.0","title":"Headline Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"headline-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline_content":{"type":"rich-text","source":"rich-text","selector":"h1"},"headline_text_color":{"type":"string","selector":"h1[data-text-color]"},"kicker_content":{"type":"rich-text","source":"rich-text","selector":".kicker"},"kicker_bg_color":{"type":"string","selector":".kicker[data-bg-color]"},"subdeck_content":{"type":"rich-text","source":"rich-text","selector":".subdeck"}}}');
 
 /***/ })
 
