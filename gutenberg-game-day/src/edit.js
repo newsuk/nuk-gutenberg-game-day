@@ -1,36 +1,9 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
 import { __ } from '@wordpress/i18n';
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
 import { useState } from 'react';
 import { useBlockProps, RichText, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import { Notice, ToggleControl } from '@wordpress/components';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
 import './editor.scss';
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
 export default function Edit( { attributes, setAttributes } ) {
 	const { kicker, headline, subdeck, headlineColour, kickerBackgroundColour, is90sMode } = attributes;
 	const [showKickerWarning, setShowKickerWarning] = useState(false);
@@ -106,7 +79,9 @@ export default function Edit( { attributes, setAttributes } ) {
 					className={'gutenberg-game-day-nineties-toggle'}
 				/>
 			</InspectorControls>
+
 			<div className={'wp-block-create-block-gutenberg-game-day'}>
+
 				{showKickerWarning && (
 					<Notice status="warning" isDismissible={false}>
 						{__('The kicker cannot exceed 20 characters.', 'gutenberg-game-day')}
@@ -121,6 +96,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					placeholder={__('Add a kicker', 'gutenberg-game-day')}
 					style={{backgroundColor: kickerBackgroundColour}}
 				/>
+
 				{showHeadlineWarning && (
 					<Notice status="warning" isDismissible={false}>
 						{__('The headline cannot exceed 80 characters.', 'gutenberg-game-day')}
@@ -135,6 +111,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					placeholder={__('Add a headline', 'gutenberg-game-day')}
 					style={{color: headlineColour}}
 				/>
+
 				<div className={'gutenberg-game-day-faces-group'}>
 					<img
 						src={"https://www.staging-thesun.co.uk/wp-content/uploads/2024/05/Joel.png"}
@@ -149,6 +126,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						className={'gutenberg-game-day-faces dvd-screensaver'}
 					/>
 				</div>
+
 				{showSubdeckWarning && (
 					<Notice status="warning" isDismissible={false}>
 						{__('The subdeck cannot exceed 150 characters.', 'gutenberg-game-day')}
@@ -162,6 +140,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					onChange={(newSubdeck) => setSubdeck(newSubdeck)}
 					placeholder={__('Add a subdeck', 'gutenberg-game-day')}
 				/>
+
 			</div>
 		</div>
 	);
