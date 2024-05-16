@@ -37,6 +37,10 @@
 		},
 		"kickerBackgroundColour": {
 			"type": "string"
+		},
+		"is90sMode": {
+			"type": "boolean",
+			"default": false
 		}
 	}
 }

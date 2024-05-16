@@ -7,7 +7,6 @@
 
 .wp-block-create-block-gutenberg-game-day {
 	padding: 2rem 0;
-	border: none !important;
 }
 
 .wp-block-create-block-gutenberg-game-day .gutenberg-game-day-richtext {
@@ -34,3 +33,67 @@
 .wp-block-create-block-gutenberg-game-day #gutenberg-game-day-subdeck {
 	color: #777777;
 }
+
+.gutenberg-game-day-nineties-toggle {
+	padding-left: 1.5rem;
+	padding-top: 1rem;
+}
+
+.gutenberg-game-day-faces {
+	display: none;
+}
+
+
+
+
+//====================== CSS FOR 90s MODE ======================
+
+
+
+@keyframes bounce {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes rock {
+	0%, 100% {
+		transform: rotate(0);
+	}
+	50% {
+		transform: rotate(10deg);
+	}
+}
+
+@keyframes dvd-screensaver {
+	0% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(100vw, 100vh);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+.nineties-mode .wp-block-create-block-gutenberg-game-day #gutenberg-game-day-headline {
+	animation: bounce 1s infinite;
+}
+
+.nineties-mode .gutenberg-game-day-faces-group {
+	z-index: 10;
+	width: 100%;
+
+}
+
+.nineties-mode .gutenberg-game-day-faces {
+	position: relative;
+	animation: rock 1s infinite;
+	right: 0;
+	display: inline;
+}
+
