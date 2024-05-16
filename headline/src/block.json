@@ -35,6 +35,18 @@
 		"kicker" : {
 			"type": "string",
 			"source": "text"
+		},
+		"headlineColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"kickerColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"subdeckColor": {
+			"type": "string",
+			"default": "#000000"
 		}
 	}
 }
