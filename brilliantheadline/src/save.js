@@ -16,7 +16,8 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function save({attributes}) {
-		const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
+	const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
+
 	return (
 		<div { ...useBlockProps.save() }>
 			<div className="headline-gif">

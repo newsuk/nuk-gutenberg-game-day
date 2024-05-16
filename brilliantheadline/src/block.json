@@ -18,21 +18,24 @@
 	"viewScript": "file:./view.js",
 	"attributes": {
 		"kicker": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"headline": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
 		"subdeck": {
-			"type": "string"
+			"type": "string",
+			"default": ""
 		},
-		
 		"kickerBackgroundColour": {
-			"type": "string"
+			"type": "string",
+			"default": "#d4d819"
 		},
-		
 		"headlineTextColour": {
-			"type": "string"
+			"type": "string",
+			"default": "#ee3e3e"
 		}
 	}
 }

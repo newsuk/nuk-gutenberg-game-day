@@ -321,7 +321,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"brilliantheadline/brilliantheadline","version":"0.1.0","title":"Brilliant Headline","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"brilliantheadline","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string"},"headline":{"type":"string"},"subdeck":{"type":"string"},"kickerBackgroundColour":{"type":"string"},"headlineTextColour":{"type":"string"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"brilliantheadline/brilliantheadline","version":"0.1.0","title":"Brilliant Headline","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"brilliantheadline","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string","default":""},"headline":{"type":"string","default":""},"subdeck":{"type":"string","default":""},"kickerBackgroundColour":{"type":"string","default":"#d4d819"},"headlineTextColour":{"type":"string","default":"#ee3e3e"}}}');
 
 /***/ })
 
