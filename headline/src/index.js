@@ -37,6 +37,12 @@ registerBlockType( metadata.name, {
 	 */
 	save,
 
+	supports: {
+		color: {
+			heading: true,
+		}
+	},
+
 	attributes: {
 		headlineText: {
 			type: 'string',

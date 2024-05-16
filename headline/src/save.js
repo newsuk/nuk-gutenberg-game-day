@@ -28,9 +28,9 @@ export default function save(props) {
 			<div>
 				{kickerText}
 			</div>
-			<div>
+			<h2>
 				{headlineText}
-			</div>
+			</h2>
 			<div>
 				{subdeckText}
 			</div>

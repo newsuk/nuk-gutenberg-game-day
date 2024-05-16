@@ -69,7 +69,7 @@ export default function Edit(props) {
 					</p>
 				</Notice>
 				: null}
-			<div className="">
+			<div>
 				<RichText
 					aria-label={__('Kicker text')}
 					placeholder={__('Add Kicker…')}
@@ -92,7 +92,7 @@ export default function Edit(props) {
 					</p>
 				</Notice>
 				: null}
-			<div>
+			<h2>
 				<RichText
 					aria-label={__('Headline text')}
 					placeholder={__('Add headline…')}
@@ -108,7 +108,7 @@ export default function Edit(props) {
 					}
 					}
 				></RichText>
-			</div>
+			</h2>
 			{!subdeckValid ?
 				<Notice status="error">
 					<p>
