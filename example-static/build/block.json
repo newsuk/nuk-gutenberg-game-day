@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/example-static",
+  "version": "0.1.0",
+  "title": "Daily Moon",
+  "category": "text",
+  "icon": "smiley",
+  "description": "Gutenberg Workshop Vlad",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "example-static",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "kicker": {
+      "type": "string",
+      "source": "html",
+      "selector": ".kicker"
+    },
+    "headline": {
+      "type": "string",
+      "source": "html",
+      "selector": ".headline"
+    },
+    "subdeck": {
+      "type": "string",
+      "source": "html",
+      "selector": ".subdeck"
+    },
+    "kickerColor": {
+      "type": "string",
+      "source": "html",
+      "selector": ".kickerColor"
+    },
+    "headlineColor": {
+      "type": "string",
+      "source": "html",
+      "selector": ".headlineColor"
+    }
+  }
+}
