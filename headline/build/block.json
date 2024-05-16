@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "freddy/headline",
+  "version": "0.1.0",
+  "title": "Fancy Headline",
+  "category": "text",
+  "icon": "text-page",
+  "description": "A block to display a fancy, customizable headline",
+  "example": {},
+  "supports": {
+    "html": false,
+    "typography": {
+      "lineHeight": true,
+      "fontSize": true,
+      "textAlign": true
+    }
+  },
+  "textdomain": "headline",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "source": "text",
+      "selector": "h1"
+    },
+    "subdeck": {
+      "type": "string",
+      "source": "text",
+      "selector": "h1"
+    },
+    "kicker": {
+      "type": "string",
+      "source": "text"
+    }
+  }
+}
