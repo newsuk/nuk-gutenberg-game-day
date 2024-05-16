@@ -1,38 +1,56 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
 import { __ } from '@wordpress/i18n';
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 import './editor.scss';
+import { TextControl, ColorPicker } from '@wordpress/components'
+import { useState } from '@wordpress/element';
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes, isSelected }) {
+	const blockProps = useBlockProps();
+
+	console.log('>>> bp', blockProps);
+
+	const MAX_KICKER_LENGTH = 20;
+	const MAX_HEADLINE_LENGTH = 80;
+	const MAX_SUBDECK_LENGTH = 150;
+
+	const [kicker, setKicker] = useState('');
+	const [headline, setHeadline] = useState('');
+	const [subdeck, setSubdeck] = useState('');
+
+	const isInvalid = kicker.length > MAX_KICKER_LENGTH || headline > MAX_HEADLINE_LENGTH || subdeck > MAX_SUBDECK_LENGTH;
+
+	const onChangeKicker = (kicker) => {
+		setKicker(kicker);
+		setAttributes({
+			...attributes,
+			kicker,
+		});
+	}
+
+	const onChangeHeadline = (headline) => {
+		setHeadline(headline);
+		setAttributes({
+			...attributes,
+			headline,
+		});
+	}
+
+	const onChangeSubdeck = (subdeck) => {
+		setSubdeck(subdeck);
+		setAttributes({
+			...attributes,
+			subdeck,
+		});
+	}
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Gameday – hello from the editor!', 'gameday' ) }
-		</p>
+		<div {...useBlockProps()}>
+			<RichText { ...blockProps } className={isInvalid ? 'invalid input' : 'input'} tagName="h3" onChange={onChangeKicker} value={ kicker } />
+			<span><em>{Math.max(MAX_KICKER_LENGTH - kicker.length, 0)}</em></span>
+			<RichText { ...blockProps } className={isInvalid ? 'invalid input' : 'input'} tagName="h1" onChange={onChangeHeadline} value={ headline } />
+			<span><em>{Math.max(MAX_HEADLINE_LENGTH - headline.length, 0)}</em></span>
+			<RichText { ...blockProps } className={isInvalid ? 'invalid input' : 'input'} tagName="p" onChange={onChangeSubdeck} value={ subdeck } />
+			<span><em>{Math.max(MAX_SUBDECK_LENGTH - subdeck.length, 0)}</em></span>
+		</div>
 	);
 }

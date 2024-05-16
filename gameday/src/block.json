@@ -15,5 +15,31 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"kickerHex": {
+			"type": "string"
+		},
+		"headlineHex": {
+			"type": "string"
+		},
+		"subdeckHex": {
+			"type": "string"
+		},
+		"kicker": {
+			"type": "string",
+			"source": "html",
+			"selector": "h3"
+		},
+		"headline": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		},
+		"subdeck": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		}
+	}
 }
