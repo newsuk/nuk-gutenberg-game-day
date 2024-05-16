@@ -134,6 +134,7 @@ function Edit({
     onReplace: onReplace,
     onRemove: () => onReplace([]),
     "data-text-color": headline_text_color,
+    className: "headline",
     style: {
       color: headline_text_color
     }
