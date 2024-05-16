@@ -11,6 +11,13 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"text": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"__experimentalRole": "content"
+		}
+	},
 	"textdomain": "headline",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

@@ -36,4 +36,12 @@ registerBlockType( metadata.name, {
 	 * @see ./save.js
 	 */
 	save,
+
+	attributes: {
+		text: {
+			type: 'string',
+			source: 'rich-text',
+			__experimentalRole: 'content'
+		}
+	}
 } );

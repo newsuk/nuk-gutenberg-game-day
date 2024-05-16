@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import {__} from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import {useBlockProps, RichText} from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +29,50 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit(props) {
+	const {
+		attributes,
+		setAttributes,
+		className,
+		isSelected,
+		onReplace,
+		mergeBlocks,
+		clientId,
+	} = props;
+	const {
+		tagName,
+		textAlign,
+		linkTarget,
+		placeholder,
+		rel,
+		style,
+		text,
+		url,
+		width,
+		metadata,
+	} = attributes;
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Headline – hello from the editor!', 'headline' ) }
-		</p>
+		<div {...useBlockProps()}>
+			<div className="">
+				kicker
+			</div>
+			<div>
+				<RichText
+					aria-label={__('Button text')}
+					placeholder={placeholder || __('Add text…')}
+					value={text}
+					onChange={(value) => {
+						setAttributes({
+							text: value,
+						});
+					}
+					}
+				></RichText>
+			</div>
+			<div>
+				subdeck
+			</div>
+		</div>
 	);
 }
