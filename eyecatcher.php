@@ -14,3 +14,4 @@ function load_eye_catcher() {
 }
 
 add_action( "init", "load_eye_catcher" );
+
