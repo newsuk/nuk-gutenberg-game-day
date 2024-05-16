@@ -20,6 +20,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import { TextControl } from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -29,10 +30,28 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Team Rocket 12 – hello from the editor!', 'team-rocket-12' ) }
-		</p>
+		<div { ...useBlockProps() }>
+			<TextControl
+				label="Kicker"
+				help="Add your kicker here"
+				value={ kicker }
+				maxLength="20"
+			/>
+			<TextControl
+				label="Headline"
+				help="Add your headline here"
+				value={ headline }
+				maxLength="80"
+			/>
+			<TextControl
+				label="Subdeck"
+				help="Add your subdeck here"
+				value={ subdeck }
+				maxLength="150"
+			/>
+		</div>
 	);
 }

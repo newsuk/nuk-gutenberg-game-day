@@ -27,6 +27,9 @@ import metadata from './block.json';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType( metadata.name, {
+	title: 'Team Rocket 12 Block',
+	icon: 'smiley',
+	category: 'common',
 	/**
 	 * @see ./edit.js
 	 */

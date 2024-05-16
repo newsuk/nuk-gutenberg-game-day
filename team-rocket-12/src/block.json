@@ -6,14 +6,38 @@
 	"title": "Team Rocket 12",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "Create a funky title with team-rocket-12",
 	"example": {},
 	"supports": {
-		"html": false
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"html": false,
+		"typography": {
+			"fontSize": true
+		}
 	},
 	"textdomain": "team-rocket-12",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"kicker": {
+			"type": "string"
+		},
+		"headline": {
+			"type": "string"
+		},
+		"subdeck": {
+			"type": "string"
+		},
+		"kickerBackgroundColour": {
+			"type": "string"
+		},
+		"headlineTextColour": {
+			"type": "string"
+		}
+	}
 }
