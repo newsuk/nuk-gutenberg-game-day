@@ -16,12 +16,12 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-	const { kicker, headline, subdeck } = attributes;
+	const { kicker, headline, subdeck, headlineColour, kickerBackgroundColour } = attributes;
 
 	return (
 		<div { ...useBlockProps.save() }>
-			<RichText.Content tagName="h4" value={kicker} />
-			<RichText.Content tagName="h2" value={headline} />
+			<RichText.Content tagName="h4" value={kicker} style={{backgroundColor: kickerBackgroundColour}} />
+			<RichText.Content tagName="h2" value={headline} style={{color: headlineColour}} />
 			<RichText.Content tagName="h3" value={subdeck} />
 		</div>
 	);

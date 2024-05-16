@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { useBlockProps, RichText, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -30,22 +30,51 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	console.log(setAttributes)
-	const { kicker, headline, subdeck } = attributes;
+	const { kicker, headline, subdeck, headlineColour, kickerBackgroundColour } = attributes;
 
 	return (
 		<div { ...useBlockProps() }>
+			<InspectorControls>
+				<PanelColorSettings
+					title={__('Headline Colour', 'gutenberg-game-day')}
+					colorSettings={
+					[
+						{
+							value: headlineColour,
+							onChange: (newColour) => setAttributes({ headlineColour: newColour }),
+							label: __('Headline Colour', 'gutenberg-game-day')
+
+						}
+					]
+					}
+				/>
+				<PanelColorSettings
+					title={__('Kicker Background Colour', 'gutenberg-game-day')}
+					colorSettings={
+						[
+							{
+								value: kickerBackgroundColour,
+								onChange: (newColour) => setAttributes({ kickerBackgroundColour: newColour }),
+								label: __('Kicker Background Colour', 'gutenberg-game-day')
+
+							}
+						]
+					}
+				/>
+			</InspectorControls>
 			<RichText
 				tagName="h4"
 				value={ kicker }
 				onChange={ ( newKicker ) => setAttributes( { kicker: newKicker } ) }
 				placeholder={ __( 'Add a kicker', 'gutenberg-game-day' ) }
+				style={{backgroundColor: kickerBackgroundColour}}
 			/>
 			<RichText
 				tagName="h2"
 				value={ headline }
 				onChange={ ( newHeadline ) => setAttributes( { headline: newHeadline } ) }
 				placeholder={ __( 'Add a headline', 'gutenberg-game-day' ) }
+				style={{color: headlineColour}}
 			/>
 			<RichText
 				tagName="h3"

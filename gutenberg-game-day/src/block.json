@@ -31,6 +31,12 @@
 			"type": "string",
 			"source": "html",
 			"selector": "h3"
+		},
+		"headlineColour": {
+			"type": "string"
+		},
+		"kickerBackgroundColour": {
+			"type": "string"
 		}
 	}
 }
