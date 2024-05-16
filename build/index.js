@@ -299,7 +299,7 @@ module.exports = window["wp"]["i18n"];
   \********************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"blocks-course/eyecatcher","title":"Eye Catcher","category":"text","icon":"text-page","description":"A box of text and magic!","keywords":["text","paragraph","box"],"supports":{"html":false},"textdomain":"eyecatcher","editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css","attributes":{"kicker":{"type":"string","source":"html","selector":"h2"},"kickerBackgroundColor":{"type":"string"},"kickerTextColor":{"type":"string"},"headline":{"type":"string","source":"html","selector":"h1"},"headlineBackgroundColor":{"type":"string"},"headlineTextColor":{"type":"string"},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"blocks-course/eyecatcher","title":"Eye Catcher","category":"text","icon":"text-page","description":"A box of text and magic!","keywords":["text","paragraph","box"],"supports":{"html":false},"textdomain":"eyecatcher","editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css","attributes":{"kicker":{"type":"string","source":"html","selector":"h2"},"kickerBackgroundColor":{"type":"string","default":"#5502DD"},"kickerTextColor":{"type":"string","default":"#FFFFFF"},"headline":{"type":"string","source":"html","selector":"h1"},"headlineBackgroundColor":{"type":"string"},"headlineTextColor":{"type":"string","default":"#FF008C"},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
 
 /***/ })
 

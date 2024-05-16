@@ -20,10 +20,12 @@
 			"selector": "h2"
 		},
 		"kickerBackgroundColor": {
-			"type": "string"
+			"type": "string",
+			"default": "#5502DD"
 		},
 		"kickerTextColor": {
-			"type": "string"
+			"type": "string",
+			"default": "#FFFFFF"
 		},
 		"headline": {
 			"type": "string",
@@ -34,7 +36,8 @@
 			"type": "string"
 		},
 		"headlineTextColor": {
-			"type": "string"
+			"type": "string",
+			"default": "#FF008C"
 		},
 		"subdeck": {
 			"type": "string",
