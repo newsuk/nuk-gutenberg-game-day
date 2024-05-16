@@ -22,7 +22,7 @@
   margin: 0 0 10px;
 }
 .eyecatcher-container .kicker {
-  display: inline-block;
+  display: inline-block !important;
   font-size: 14px;
   padding: 5px;
   text-transform: uppercase;
@@ -33,6 +33,19 @@
 .eyecatcher-container .subdeck {
   color: #595959;
   font-size: 20px;
+}
+
+#page * {
+  display: none;
+}
+#page #primary {
+  display: block;
+}
+#page #primary * {
+  display: block;
+}
+#page #primary #comments, #page #primary .entry-footer, #page #primary .entry-header {
+  display: none;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

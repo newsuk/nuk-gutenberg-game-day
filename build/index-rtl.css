@@ -6,6 +6,10 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.eyecatcher-container {
+  margin: 0 auto;
+  width: 800px;
+}
 .eyecatcher-container .kicker,
 .eyecatcher-container .headline,
 .eyecatcher-container .subdeck {

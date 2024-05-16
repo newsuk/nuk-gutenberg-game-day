@@ -25,7 +25,11 @@ export default function Edit( {attributes, setAttributes } ) {
 	} = attributes;
 
 	useEffect(() => {
-		if (kicker && kicker.length > 20 || headline && headline.length > 80 || subdeck && subdeck.length > 150) {
+		if (
+			kicker && kicker.length > 20 ||
+			headline && headline.length > 80 ||
+			subdeck && subdeck.length > 150
+		) {
 			lockPostSaving( 'update-locker' );
 			createNotice('info', __( 'Updating is now blocked.', 'eyecatcher' ), {
 				status: 'error',
@@ -38,7 +42,14 @@ export default function Edit( {attributes, setAttributes } ) {
 			seIsBlocked(false);
 		}
 
-	}, [kicker, headline, subdeck, lockPostSaving, unlockPostSaving, createNotice]);
+	}, [
+		kicker,
+		headline,
+		subdeck,
+		lockPostSaving,
+		unlockPostSaving,
+		createNotice
+	]);
 
 	useEffect(() => {
 		if (!isBlocked) {
@@ -50,7 +61,11 @@ export default function Edit( {attributes, setAttributes } ) {
 				type: 'snackbar',
 			}, 100);
 		}
-	}, [isBlocked, createNotice, unlockPostSaving]);
+	}, [
+		isBlocked,
+		createNotice,
+		unlockPostSaving
+	]);
 
 	const kickerColorUpdate = ( type, color ) => {
 		if ( type === 'bg' ) {
