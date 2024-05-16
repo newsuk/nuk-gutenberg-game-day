@@ -6,5 +6,31 @@
  */
 
 .wp-block-create-block-gutenberg-game-day {
-	padding: 2px;
+	padding: 2rem 0;
+	border: none !important;
+}
+
+.wp-block-create-block-gutenberg-game-day .gutenberg-game-day-richtext {
+	padding: 0 2rem;
+	font-family: system-ui;
+	margin-bottom: -1rem;
+}
+
+.wp-block-create-block-gutenberg-game-day #gutenberg-game-day-kicker {
+	display: inline;
+	text-transform: uppercase;
+	padding: 0.5rem 1rem;
+	margin-left: 2rem;
+	color: #fff;
+	font-size: 1em;
+	font-weight: 500;
+}
+
+.wp-block-create-block-gutenberg-game-day #gutenberg-game-day-headline {
+	font-weight: 800;
+	margin-top: 0.75rem;
+}
+
+.wp-block-create-block-gutenberg-game-day #gutenberg-game-day-subdeck {
+	color: #777777;
 }

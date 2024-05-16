@@ -11,7 +11,9 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+import { useState } from 'react';
 import { useBlockProps, RichText, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { Notice } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,23 +33,43 @@ import './editor.scss';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	const { kicker, headline, subdeck, headlineColour, kickerBackgroundColour } = attributes;
+	const [showKickerWarning, setShowKickerWarning] = useState(false);
+	const [showHeadlineWarning, setShowHeadlineWarning] = useState(false);
+	const [showSubdeckWarning, setShowSubdeckWarning] = useState(false);
+
+	function setKicker ( newKicker ) {
+		if (newKicker.length > 20) {
+			setShowKickerWarning(true);
+			return
+		}
+
+		setShowKickerWarning(false);
+		setAttributes( { kicker: newKicker } )
+	}
+
+	function setHeadline ( newHeadline ) {
+		if (newHeadline.length > 80) {
+			setShowHeadlineWarning(true);
+			return
+		}
+
+		setShowHeadlineWarning(false);
+		setAttributes( { headline: newHeadline } )
+	}
+
+	function setSubdeck ( newSubdeck ) {
+		if (newSubdeck.length > 150) {
+			setShowSubdeckWarning(true);
+			return
+		}
+
+		setShowSubdeckWarning(false);
+		setAttributes( { subdeck: newSubdeck } )
+	}
 
 	return (
 		<div { ...useBlockProps() }>
 			<InspectorControls>
-				<PanelColorSettings
-					title={__('Headline Colour', 'gutenberg-game-day')}
-					colorSettings={
-					[
-						{
-							value: headlineColour,
-							onChange: (newColour) => setAttributes({ headlineColour: newColour }),
-							label: __('Headline Colour', 'gutenberg-game-day')
-
-						}
-					]
-					}
-				/>
 				<PanelColorSettings
 					title={__('Kicker Background Colour', 'gutenberg-game-day')}
 					colorSettings={
@@ -61,25 +83,59 @@ export default function Edit( { attributes, setAttributes } ) {
 						]
 					}
 				/>
+				<PanelColorSettings
+					title={__('Headline Colour', 'gutenberg-game-day')}
+					colorSettings={
+					[
+						{
+							value: headlineColour,
+							onChange: (newColour) => setAttributes({ headlineColour: newColour }),
+							label: __('Headline Colour', 'gutenberg-game-day')
+
+						}
+					]
+					}
+				/>
 			</InspectorControls>
+			{ showKickerWarning && (
+				<Notice status="warning" isDismissible={false}>
+					{ __( 'The kicker cannot exceed 20 characters.', 'gutenberg-game-day' ) }
+				</Notice>
+			) }
 			<RichText
+				id={'gutenberg-game-day-kicker'}
+				className={'gutenberg-game-day-richtext'}
 				tagName="h4"
 				value={ kicker }
-				onChange={ ( newKicker ) => setAttributes( { kicker: newKicker } ) }
+				onChange={ ( newKicker ) => setKicker(newKicker) }
 				placeholder={ __( 'Add a kicker', 'gutenberg-game-day' ) }
 				style={{backgroundColor: kickerBackgroundColour}}
 			/>
+			{ showHeadlineWarning && (
+				<Notice status="warning" isDismissible={false}>
+					{ __( 'The headline cannot exceed 80 characters.', 'gutenberg-game-day' ) }
+				</Notice>
+			) }
 			<RichText
+				id={'gutenberg-game-day-headline'}
+				className={'gutenberg-game-day-richtext'}
 				tagName="h2"
 				value={ headline }
-				onChange={ ( newHeadline ) => setAttributes( { headline: newHeadline } ) }
+				onChange={ ( newHeadline ) => setHeadline(newHeadline) }
 				placeholder={ __( 'Add a headline', 'gutenberg-game-day' ) }
 				style={{color: headlineColour}}
 			/>
+			{ showSubdeckWarning && (
+				<Notice status="warning" isDismissible={false}>
+					{ __( 'The subdeck cannot exceed 150 characters.', 'gutenberg-game-day' ) }
+				</Notice>
+			) }
 			<RichText
+				id={'gutenberg-game-day-subdeck'}
+				className={'gutenberg-game-day-richtext'}
 				tagName="h3"
 				value={ subdeck }
-				onChange={ ( newSubdeck ) => setAttributes( { subdeck: newSubdeck } ) }
+				onChange={ ( newSubdeck ) => setSubdeck(newSubdeck) }
 				placeholder={ __( 'Add a subdeck', 'gutenberg-game-day' ) }
 			/>
 		</div>

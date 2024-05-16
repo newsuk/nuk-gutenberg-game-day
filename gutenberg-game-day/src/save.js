@@ -16,13 +16,30 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-	const { kicker, headline, subdeck, headlineColour, kickerBackgroundColour } = attributes;
+ const { kicker, headline, subdeck, headlineColour, kickerBackgroundColour } = attributes;
 
-	return (
-		<div { ...useBlockProps.save() }>
-			<RichText.Content tagName="h4" value={kicker} style={{backgroundColor: kickerBackgroundColour}} />
-			<RichText.Content tagName="h2" value={headline} style={{color: headlineColour}} />
-			<RichText.Content tagName="h3" value={subdeck} />
-		</div>
-	);
+ return (
+  <div { ...useBlockProps.save() }>
+     <RichText.Content
+      tagName="h4"
+      value={kicker}
+      style={{backgroundColor: kickerBackgroundColour}}
+	  id={'gutenberg-game-day-kicker'}
+	  className={'gutenberg-game-day-richtext'}
+     />
+     <RichText.Content
+      tagName="h2"
+      value={headline}
+      style={{color: headlineColour}}
+	  id={'gutenberg-game-day-headline'}
+	  className={'gutenberg-game-day-richtext'}
+     />
+     <RichText.Content
+      tagName="h3"
+      value={subdeck}
+	  id={'gutenberg-game-day-subdeck'}
+	  className={'gutenberg-game-day-richtext'}
+     />
+  </div>
+ );
 }
