@@ -44,24 +44,24 @@ function Edit({
     headline,
     subdeck
   } = attributes;
-  const isInvalid = kicker.length > MAX_KICKER_LENGTH || headline.length > MAX_HEADLINE_LENGTH || subdeck.length > MAX_SUBDECK_LENGTH;
+  const isInvalid = (kicker || '').length > MAX_KICKER_LENGTH || (headline || '').length > MAX_HEADLINE_LENGTH || (subdeck || '').length > MAX_SUBDECK_LENGTH;
   const onChangeKicker = kicker => {
-    if (kicker.length > MAX_KICKER_LENGTH) return;
+    if ((kicker || '').length > MAX_KICKER_LENGTH) return;
     const limitInput = kicker.substring(0, MAX_KICKER_LENGTH);
     setAttributes({
       kicker: kicker
     });
   };
   const onChangeHeadline = headline => {
-    if (headline.length > MAX_HEADLINE_LENGTH) return;
+    if ((headline || '').length > MAX_HEADLINE_LENGTH) return;
     const limitInput = headline.substring(0, MAX_HEADLINE_LENGTH);
     setAttributes({
       headline: headline
     });
   };
   const onChangeSubdeck = subdeck => {
-    // if (subdeck.length > MAX_SUBDECK_LENGTH) return;
-    // const limitInput = subdeck.substring(0, MAX_SUBDECK_LENGTH);
+    if ((subdeck || '').length > MAX_SUBDECK_LENGTH) return;
+    const limitInput = subdeck.substring(0, MAX_SUBDECK_LENGTH);
     setAttributes({
       subdeck: subdeck
     });
@@ -115,7 +115,7 @@ function Edit({
     onChange: onChangeKicker,
     value: kicker,
     allowedFormats: []
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_KICKER_LENGTH - kicker.length, 0)} / ${MAX_KICKER_LENGTH}`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_KICKER_LENGTH - (kicker || '').length, 0)} / ${MAX_KICKER_LENGTH}`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       'color': `${attributes.headlineHex}`
     }
@@ -126,7 +126,7 @@ function Edit({
     onChange: onChangeHeadline,
     value: headline,
     allowedFormats: ['core/bold']
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_HEADLINE_LENGTH - headline.length, 0)} / ${MAX_HEADLINE_LENGTH}`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_HEADLINE_LENGTH - (headline || '').length, 0)} / ${MAX_HEADLINE_LENGTH}`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       'color': `${attributes.subdeckHex}`
     }
@@ -137,7 +137,7 @@ function Edit({
     onChange: onChangeSubdeck,
     value: subdeck,
     allowedFormats: []
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_SUBDECK_LENGTH - subdeck.length, 0)} / ${MAX_SUBDECK_LENGTH}`)));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_SUBDECK_LENGTH - (subdeck || '').length, 0)} / ${MAX_SUBDECK_LENGTH}`)));
 }
 
 /***/ }),
@@ -220,14 +220,27 @@ function save({
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     ...blockProps,
+    className: "kicker",
+    style: {
+      backgroundColor: attributes.kickerHex,
+      color: attributes.kickerDark ? '#fff' : '#000'
+    },
     tagName: "h3",
     value: attributes.kicker
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     ...blockProps,
+    className: "headline",
+    style: {
+      color: attributes.headlineHex,
+      width: '80%'
+    },
     tagName: "h1",
     value: attributes.headline
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     ...blockProps,
+    style: {
+      color: attributes.subdeckHex
+    },
     tagName: "p",
     value: attributes.subdeck
   }));

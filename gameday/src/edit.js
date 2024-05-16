@@ -16,25 +16,25 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 	const { kicker, headline, subdeck } = attributes;
 
 	const isInvalid =
-		kicker.length > MAX_KICKER_LENGTH
-		|| headline.length > MAX_HEADLINE_LENGTH
-		|| subdeck.length > MAX_SUBDECK_LENGTH;
+		(kicker || '').length > MAX_KICKER_LENGTH
+		|| (headline || '').length > MAX_HEADLINE_LENGTH
+		|| (subdeck || '').length > MAX_SUBDECK_LENGTH;
 
 	const onChangeKicker = (kicker) => {
-		if (kicker.length > MAX_KICKER_LENGTH) return;
+		if ((kicker || '').length > MAX_KICKER_LENGTH) return;
 		const limitInput = kicker.substring(0, MAX_KICKER_LENGTH);
 		setAttributes({ kicker: kicker });
 	}
 
 	const onChangeHeadline = (headline) => {
-		if (headline.length > MAX_HEADLINE_LENGTH) return;
+		if ((headline || '').length > MAX_HEADLINE_LENGTH) return;
 		const limitInput = headline.substring(0, MAX_HEADLINE_LENGTH);
 		setAttributes({ headline: headline });
 	}
 
 	const onChangeSubdeck = (subdeck) => {
-		// if (subdeck.length > MAX_SUBDECK_LENGTH) return;
-		// const limitInput = subdeck.substring(0, MAX_SUBDECK_LENGTH);
+		if ((subdeck || '').length > MAX_SUBDECK_LENGTH) return;
+		const limitInput = subdeck.substring(0, MAX_SUBDECK_LENGTH);
 		setAttributes({ subdeck: subdeck });
 	}
 	
@@ -92,18 +92,18 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 				<RichText style={{ backgroundColor: `${attributes.kickerHex}` }} { ...blockProps } className={isInvalid ? 'invalid input' : 'input'} tagName="h3" onChange={onChangeKicker} value={ kicker } allowedFormats={[]} />
 			</div>
 			<span><em>
-				{`${Math.max(MAX_KICKER_LENGTH - kicker.length, 0)} / ${MAX_KICKER_LENGTH}`}
+				{`${Math.max(MAX_KICKER_LENGTH - (kicker || '').length, 0)} / ${MAX_KICKER_LENGTH}`}
 			</em></span>
 
 			<div style={{ 'color': `${attributes.headlineHex}` }}>
 				<RichText { ...blockProps } className={isInvalid ? 'invalid input' : 'input'} tagName="h1" onChange={onChangeHeadline} value={ headline } allowedFormats={[ 'core/bold' ]} />
 			</div>
-			<span><em>{`${Math.max(MAX_HEADLINE_LENGTH - headline.length, 0)} / ${MAX_HEADLINE_LENGTH}`}</em></span>
+			<span><em>{`${Math.max(MAX_HEADLINE_LENGTH - (headline || '').length, 0)} / ${MAX_HEADLINE_LENGTH}`}</em></span>
 
 			<div style={{ 'color': `${attributes.subdeckHex}` }}>
 				<RichText { ...blockProps } className={isInvalid ? 'invalid input' : 'input'} tagName="p" onChange={onChangeSubdeck} value={ subdeck } allowedFormats={[]} />
 			</div>
-			<span><em>{`${Math.max(MAX_SUBDECK_LENGTH - subdeck.length, 0)} / ${MAX_SUBDECK_LENGTH}`}</em></span>
+			<span><em>{`${Math.max(MAX_SUBDECK_LENGTH - (subdeck || '').length, 0)} / ${MAX_SUBDECK_LENGTH}`}</em></span>
 		</div>
 	);
 }

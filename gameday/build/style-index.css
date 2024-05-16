@@ -16,4 +16,17 @@ em {
   color: grey !important;
 }
 
+.kicker {
+  display: inline-flex;
+  margin: 0;
+  padding: 12px;
+  border-radius: 15px;
+  font-size: small;
+  font-weight: bold;
+}
+
+.headline {
+  width: 80%;
+}
+
 /*# sourceMappingURL=style-index.css.map*/
