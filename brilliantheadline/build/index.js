@@ -88,7 +88,7 @@ function Edit({
       headline: value
     }),
     maxLength: "80",
-    className: "headline-input",
+    className: "headline-input pacifico-regular",
     style: {
       color: headlineTextColour
     }
@@ -220,7 +220,11 @@ function save({
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "headline-gif"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "https://i.gifer.com/8AaA.gif"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "kicker",
     style: {
       backgroundColor: kickerBackgroundColour
@@ -228,7 +232,8 @@ function save({
   }, kicker), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     style: {
       color: headlineTextColour
-    }
+    },
+    className: "pacifico-regular"
   }, headline), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "subdeck"
   }, subdeck));

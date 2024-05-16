@@ -19,10 +19,13 @@ export default function save({attributes}) {
 		const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
 	return (
 		<div { ...useBlockProps.save() }>
+			<div className="headline-gif">
+				<img src="https://i.gifer.com/8AaA.gif"/>
+			</div>
 			<p className="kicker" style={{backgroundColor: kickerBackgroundColour}}>
 				{kicker}
 			</p>
-			<h1 style={{color: headlineTextColour}}>
+			<h1 style={{color: headlineTextColour}} className='pacifico-regular'>
 				{headline}
 			</h1>
 			<p className="subdeck">

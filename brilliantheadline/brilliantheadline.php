@@ -25,6 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function brilliantheadline_brilliantheadline_block_init() {
+	wp_enqueue_style( 'brilliant-headline-font', 'https://fonts.googleapis.com/css2?family=Pacifico&display=swap' );
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'brilliantheadline_brilliantheadline_block_init' );

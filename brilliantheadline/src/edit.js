@@ -52,7 +52,7 @@ export default function Edit({ attributes, setAttributes }) {
 				value={ headline }
 				onChange={ ( value ) => setAttributes( { headline: value } ) }
 				maxLength="80"
-				className='headline-input'
+				className='headline-input pacifico-regular'
 				style={{color: headlineTextColour}}
 			/>
 			<TextareaControl
