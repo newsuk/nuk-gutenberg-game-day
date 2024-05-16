@@ -47,9 +47,6 @@ import {
  */
 export default function Edit({ attributes, setAttributes }) {
 	const blockProps = useBlockProps({});
-	const {
-		PanelColorSettings,
-	} = wp.editor;
 	// define the onChange functions
 	const onChangeHeaderBackgroundColor = ( val ) => {
 		setAttributes( { kickerBackgroundColour: val } );
