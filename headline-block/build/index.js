@@ -52,7 +52,6 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 
-
 function Edit({
   attributes,
   setAttributes,
@@ -65,22 +64,26 @@ function Edit({
     headline_text_color,
     subdeck_content
   } = attributes;
-
-  // const [textColor, setTextColor] = useState("#FF008C");
-  // const [backgroundColor, setBackgroundColor] = useState(kicker_bg_color);
-
   const onHeadlineChange = headline_content => {
+    if (headline_content.text.length > 80) {
+      return;
+    }
+    ;
     setAttributes({
       headline_content
     });
   };
   const onKickerChange = kicker_content => {
+    if (kicker_content.text.length > 20) {
+      return;
+    }
+    ;
     setAttributes({
       kicker_content
     });
   };
   const onSubdeckChange = subdeck_content => {
-    if (subdeck_content.length > 50) {
+    if (subdeck_content.text.length > 150) {
       return;
     }
     setAttributes({
@@ -91,13 +94,11 @@ function Edit({
     setAttributes({
       headline_text_color: color
     });
-    // setTextColor(color);
   };
   const handleBackgroundColorChange = color => {
     setAttributes({
       kicker_bg_color: color
     });
-    // setBackgroundColor(color);
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
     __experimentalIsRenderedInSidebar: true,
@@ -122,12 +123,7 @@ function Edit({
     onRemove: () => onReplace([]),
     "data-bg-color": kicker_bg_color,
     style: {
-      backgroundColor: kicker_bg_color,
-      textTransform: "uppercase",
-      color: "white",
-      padding: "0.25rem",
-      width: "fit-content",
-      display: "inline-block"
+      backgroundColor: kicker_bg_color
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h1",

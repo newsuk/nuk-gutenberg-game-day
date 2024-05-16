@@ -14,7 +14,6 @@ import { __ } from "@wordpress/i18n";
 import {
 	RichText,
 	InspectorControls,
-	ColorPalette,
 	PanelColorSettings
 } from "@wordpress/block-editor";
 
@@ -35,7 +34,6 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 
-import { useState } from "react";
 
 export default function Edit({ attributes, setAttributes, onReplace }) {
 	const {
@@ -46,23 +44,26 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 		subdeck_content
 	} = attributes;
 
-	// const [textColor, setTextColor] = useState("#FF008C");
-	// const [backgroundColor, setBackgroundColor] = useState(kicker_bg_color);
-
 	const onHeadlineChange = (headline_content) => {
+		if(headline_content.text.length > 80){
+			return
+		};
 		setAttributes({
 			headline_content
 		});
 	};
 
 	const onKickerChange = (kicker_content) => {
+		if(kicker_content.text.length > 20){
+			return;
+		};
 		setAttributes({
 			kicker_content
 		});
 	};
 
 	const onSubdeckChange = (subdeck_content) => {
-		if (subdeck_content.length > 50) {
+		if (subdeck_content.text.length > 150) {
 			return;
 		}
 		setAttributes({
@@ -74,14 +75,12 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 		setAttributes({
 			headline_text_color: color
 		});
-		// setTextColor(color);
 	}
 
 	const handleBackgroundColorChange = (color) => {
 		setAttributes({
 			kicker_bg_color: color
 		});
-		// setBackgroundColor(color);
 	}
 
 	return (
@@ -116,12 +115,7 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				onRemove={() => onReplace([])}
 				data-bg-color={kicker_bg_color}
 				style={{
-					backgroundColor: kicker_bg_color,
-					textTransform: "uppercase",
-					color: "white",
-					padding: "0.25rem",
-					width: "fit-content",
-					display: "inline-block"
+					backgroundColor: kicker_bg_color
 				}}
 			/>
 			<RichText
