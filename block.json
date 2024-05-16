@@ -32,9 +32,6 @@
 			"source": "html",
 			"selector": "h1"
 		},
-		"headlineBackgroundColor": {
-			"type": "string"
-		},
 		"headlineTextColor": {
 			"type": "string",
 			"default": "#FF008C"

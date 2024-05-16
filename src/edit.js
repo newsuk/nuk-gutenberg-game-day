@@ -1,5 +1,11 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, InspectorControls, PanelColorSettings, ContrastChecker } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+	PanelColorSettings,
+	ContrastChecker
+} from '@wordpress/block-editor';
 import './editor.scss';
 
 export default function Edit( {attributes, setAttributes } ) {
@@ -8,7 +14,6 @@ export default function Edit( {attributes, setAttributes } ) {
 		kickerBackgroundColor,
 		kickerTextColor,
 		headline,
-		headlineBackgroundColor,
 		headlineTextColor,
 		subdeck
 	} = attributes;
@@ -23,16 +28,13 @@ export default function Edit( {attributes, setAttributes } ) {
 	};
 
 	const headlineColorUpdate = ( type, color ) => {
-		if ( type === 'bg' ) {
-			setAttributes( { headlineBackgroundColor: color } );
-		}
 		if ( type === 'text' ) {
 			setAttributes( { headlineTextColor: color } );
 		}
 	};
 
 	return (
-		<>
+		<div className='eyecatcher-container'>
 			<InspectorControls>
 				<PanelColorSettings
 					title={ __( 'Kicker Styling', 'eyecatcher' ) }
@@ -64,11 +66,6 @@ export default function Edit( {attributes, setAttributes } ) {
 					disableCustomColors={ false }
 					colorSettings={ [
 						{
-							value: headlineBackgroundColor,
-							onChange: (color) => headlineColorUpdate('bg', color),
-							label: __( 'Background Color', 'eyecatcher' ),
-						},
-						{
 							value: headlineTextColor,
 							onChange: (color) => headlineColorUpdate('text', color),
 							label: __( 'Text Color', 'eyecatcher' ),
@@ -77,36 +74,39 @@ export default function Edit( {attributes, setAttributes } ) {
 				>
 					<ContrastChecker
 						textColor={ headlineTextColor }
-						backgroundColor={ headlineBackgroundColor }
+						backgroundColor={ '#FFFFFF' }
 					/>
 				</PanelColorSettings>
 			</InspectorControls>
 			<RichText
 				{ ...useBlockProps }
+				className='kicker'
 				onChange={ ( value ) => setAttributes( { kicker: value } ) }
 				value={ kicker }
-				placeholder={ __( 'kicker', 'eyecatcher' ) }
+				placeholder={ __( 'Add Kicker', 'eyecatcher' ) }
 				tagName="h2"
 				allowedFormats={ [ 'core/bold' ] }
 				style={{color: kickerTextColor, backgroundColor: kickerBackgroundColor}}
 			/>
 			<RichText
 				{ ...useBlockProps }
+				className='headline'
 				onChange={ ( value ) => setAttributes( { headline: value } ) }
 				value={ headline }
 				placeholder={ __( 'Add Headline', 'eyecatcher' ) }
 				tagName="h1"
 				allowedFormats={ [ 'core/bold' ] }
-				style={{color: headlineTextColor, backgroundColor: headlineBackgroundColor}}
+				style={{color: headlineTextColor}}
 			/>
 			<RichText
 				{ ...useBlockProps }
+				className='subdeck'
 				onChange={ ( value ) => setAttributes( { subdeck: value } ) }
 				value={ subdeck }
 				placeholder={ __( 'Add Subdeck', 'eyecatcher' ) }
 				tagName="p"
 				allowedFormats={ [ 'core/bold' ] }
 			/>
-		</>
+		</div>
 	);
 }
