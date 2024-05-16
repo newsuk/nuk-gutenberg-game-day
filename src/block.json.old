@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "colourful-head/colourful-head",
+	"version": "0.1.0",
+	"title": "Colourful Headline",
+	"category": "design",
+	"icon": "smiley",
+	"description": "Headline block with colours",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "colourful-head",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"kickerText": {
+			"type": "string",
+			"source": "html",
+			"selector": "span",
+			"default": "Kicker"
+		},
+		"headlineText": {
+			"type": "string",
+			"source": "html",
+			"selector": "h3",
+			"default": "Headline"
+		},
+		"kickerColour": {
+			"type": "string"
+		},
+		"headlineColour": {
+			"type": "string"
+		}
+	}
+}

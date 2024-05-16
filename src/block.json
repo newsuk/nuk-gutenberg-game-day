@@ -1,0 +1,53 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "create-block/colourful-title",
+    "version": "0.1.0",
+    "title": "Colourful Title",
+    "category": "widgets",
+    "icon": "smiley",
+    "description": "Example block scaffolded with Create Block tool.",
+    "example": {
+        "attributes": {
+            "headline": "Colourful Headlines Increase Reader Engagement by 400%",
+            "headlineColour": "#ff008c",
+            "kickerBackgroundColour": "#5502dd",
+            "kicker": "REAL SCIENCE",
+            "subdeck": "Boffins at the University of Science discover the secrets of colourful headlines and how they hypnotise anyone who looks at them"
+        }
+    },
+    "attributes": {
+        "headline": {
+            "type": "string"
+        },
+        "headlineColour": {
+            "type": "string"
+        },
+        "kickerBackgroundColour": {
+            "type": "string"
+        },
+        "kicker": {
+            "type": "string"
+        },
+        "subdeck": {
+            "type": "string"
+        }
+    },
+    "supports": {
+        "color": {
+            "text": false,
+            "background": false
+        },
+        "html": false,
+        "multiple": false
+    },
+    "usesContext": [
+        "postId",
+        "postType"
+    ],
+    "textdomain": "colourful-title",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "viewScript": "file:./view.js"
+}

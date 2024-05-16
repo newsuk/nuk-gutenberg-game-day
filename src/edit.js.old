@@ -1,0 +1,110 @@
+/**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ */
+import {
+	InspectorControls,
+	useBlockProps,
+	RichText,
+	withColors,
+	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
+} from '@wordpress/block-editor';
+
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * Those files can contain any CSS code that gets applied to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+import './editor.scss';
+
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ *
+ * @return {Element} Element to render.
+ */
+function Edit({
+	attributes: {
+		customKickerColor,
+		kickerText,
+		headlineText
+	},
+	kickerColour,
+	setKickerColor,
+	setAttributes,
+	style,
+	clientId
+}) {
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+
+	const kickerColorDropdown = (
+		<ColorGradientSettingsDropdown
+			settings={ [ {
+				label: __( 'Kicker', 'devblog' ),
+				colorValue: kickerColour.color || customKickerColor,
+				onColorChange: ( value ) => {
+					setKickerColor( value );
+	
+					setAttributes( {
+						customKickerColor: value
+					} );
+				}
+			} ] }
+			panelId={ clientId }
+			hasColorsOrGradients={ false }
+			disableCustomColors={ false }
+			__experimentalIsRenderedInSidebar
+			{ ...colorGradientSettings }
+		/>
+	);
+
+	return (
+		<>
+		<InspectorControls group="color">
+			{ kickerColorDropdown }
+		</InspectorControls>
+		<div { ...useBlockProps() }>
+			<RichText
+				tagName="span"
+				value={ kickerText }
+				allowedFormats={ [] }
+				onChange={ ( kickerText ) => setAttributes( { kickerText } ) }
+				placeholder="kicker..."
+			/>
+		</div>
+		<div { ...useBlockProps() }>
+			<RichText
+				tagName="h3"
+				value={ headlineText }
+				allowedFormats={ [ 'core/bold', 'core/italic' ] }
+				onChange={ ( headlineText ) => setAttributes( { headlineText } ) }
+				placeholder="Enter heading here..."
+			/>
+		</div>
+		</>
+		// <p { ...useBlockProps() }>
+		// 	{ __(
+		// 		'Colourful Headline – hello from the editor!',
+		// 		'colourful-head'
+		// 	) }
+		// </p>
+	);
+}
+
+export default withColors({
+	kickerColour: 'kicker-colour',
+	headlineColour: 'headline-colour'
+})(Edit);
