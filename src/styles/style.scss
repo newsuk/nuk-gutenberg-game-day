@@ -1,0 +1,58 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-post-title {
+    display: none;
+}
+
+.eyecatcher-container {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+
+    .kicker,
+    .headline,
+    .subdeck {
+        line-height: normal;
+        margin: 0 0 10px;
+    }
+
+    .kicker {
+        display: inline-block !important;
+        font-size: 14px;
+        padding: 5px;
+        text-transform: uppercase;
+    }
+
+    .headline {
+        font-size: 36px;
+    }
+
+    .subdeck {
+        color: #595959;
+        font-size: 20px;
+    }
+}
+
+
+#page {
+    * {
+        display: none;
+    }
+
+    #primary {
+        display: block;
+
+        * {
+            display: block;
+        }
+
+        #comments,
+        .entry-footer,
+        .entry-header {
+            display: none;
+        }
+    }
+}
