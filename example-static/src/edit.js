@@ -21,8 +21,6 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
  */
 import "./editor.scss";
 
-import { useState } from "react";
-
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -32,35 +30,73 @@ import { useState } from "react";
  * @return {Element} Element to render.
  */
 export default function Edit({
-	attributes: { kicker, headline, subdeck },
+	attributes: { kicker, headline, subdeck, kickerColor, headlineColor },
 	setAttributes,
 }) {
+	const changeKickerColor = (color) => {
+		setAttributes({ kickerColor: color });
+	};
+
+	const changeHeaderColor = (color) => {
+		setAttributes({ headlineColor: color });
+	};
+
 	const onChangeKicker = (value) => {
-		setAttributes({ kicker: value });
+		if (value.length <= 20) {
+			setAttributes({ kicker: value });
+		}
 	};
 
 	const onChangeHeadline = (value) => {
-		setAttributes({ headline: value });
+		if (value.length <= 80) {
+			setAttributes({ headline: value });
+		}
 	};
 
 	const onChangeSubdeck = (value) => {
-		setAttributes({ subdeck: value });
+		if (value.length <= 150) {
+			setAttributes({ subdeck: value });
+		}
 	};
 
 	return (
 		<div {...useBlockProps()}>
-			<RichText
-				onChange={onChangeKicker}
-				value={kicker}
-				placeholder="Kicker"
-				className="kicker"
-			></RichText>
-			<RichText
-				onChange={onChangeHeadline}
-				value={headline}
-				placeholder="Headline"
-				className="headline"
-			></RichText>
+			<div>
+				<RichText
+					onChange={onChangeKicker}
+					value={kicker}
+					placeholder="Kicker"
+					className="kicker"
+					style={{ backgroundColor: kickerColor || "green" }}
+				></RichText>
+				<button onClick={() => changeKickerColor("green")}>
+					Change to Green Color
+				</button>
+				<button onClick={() => changeKickerColor("blue")}>
+					Change to Blue Color
+				</button>
+				<button onClick={() => changeKickerColor("tomato")}>
+					Change to Tomato Color
+				</button>
+			</div>
+			<div>
+				<RichText
+					onChange={onChangeHeadline}
+					value={headline}
+					placeholder="Headline"
+					className="headline"
+					style={{ color: headlineColor || "green" }}
+				></RichText>
+				<button onClick={() => changeHeaderColor("green")}>
+					Change to Green Color
+				</button>
+				<button onClick={() => changeHeaderColor("blue")}>
+					Change to Blue Color
+				</button>
+				<button onClick={() => changeHeaderColor("tomato")}>
+					Change to Tomato Color
+				</button>
+			</div>
 			<RichText
 				onChange={onChangeSubdeck}
 				value={subdeck}

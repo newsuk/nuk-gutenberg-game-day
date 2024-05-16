@@ -43,7 +43,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -56,38 +55,74 @@ function Edit({
   attributes: {
     kicker,
     headline,
-    subdeck
+    subdeck,
+    kickerColor,
+    headlineColor
   },
   setAttributes
 }) {
-  const onChangeKicker = value => {
+  const changeKickerColor = color => {
     setAttributes({
-      kicker: value
+      kickerColor: color
     });
+  };
+  const changeHeaderColor = color => {
+    setAttributes({
+      headlineColor: color
+    });
+  };
+  const onChangeKicker = value => {
+    if (value.length <= 20) {
+      setAttributes({
+        kicker: value
+      });
+    }
   };
   const onChangeHeadline = value => {
-    setAttributes({
-      headline: value
-    });
+    if (value.length <= 80) {
+      setAttributes({
+        headline: value
+      });
+    }
   };
   const onChangeSubdeck = value => {
-    setAttributes({
-      subdeck: value
-    });
+    if (value.length <= 150) {
+      setAttributes({
+        subdeck: value
+      });
+    }
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     onChange: onChangeKicker,
     value: kicker,
     placeholder: "Kicker",
-    className: "kicker"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "kicker",
+    style: {
+      backgroundColor: kickerColor || "green"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => changeKickerColor("green")
+  }, "Change to Green Color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => changeKickerColor("blue")
+  }, "Change to Blue Color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => changeKickerColor("tomato")
+  }, "Change to Tomato Color")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     onChange: onChangeHeadline,
     value: headline,
     placeholder: "Headline",
-    className: "headline"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "headline",
+    style: {
+      color: headlineColor || "green"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => changeHeaderColor("green")
+  }, "Change to Green Color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => changeHeaderColor("blue")
+  }, "Change to Blue Color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => changeHeaderColor("tomato")
+  }, "Change to Tomato Color")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     onChange: onChangeSubdeck,
     value: subdeck,
     placeholder: "Subdeck",
@@ -183,10 +218,27 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
-function save() {
+function save({
+  attributes: {
+    kicker,
+    headline,
+    subdeck,
+    kickerColor,
+    headlineColor
+  }
+}) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, 'Example Static – hello from the saved content!');
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
+    className: "save"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      backgroundColor: kickerColor || "green"
+    }
+  }, kicker), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      color: headlineColor || "green"
+    }
+  }, headline), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, subdeck));
 }
 
 /***/ }),
@@ -261,7 +313,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/example-static","version":"0.1.0","title":"Example Static","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool Vlad.","example":{},"supports":{"html":false},"textdomain":"example-static","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string","source":"html","selector":".kicker"},"headline":{"type":"string","source":"html","selector":".headline"},"subdeck":{"type":"string","source":"html","selector":".subdeck"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/example-static","version":"0.1.0","title":"Daily Moon","category":"text","icon":"smiley","description":"Gutenberg Workshop Vlad","example":{},"supports":{"html":false},"textdomain":"example-static","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string","source":"html","selector":".kicker"},"headline":{"type":"string","source":"html","selector":".headline"},"subdeck":{"type":"string","source":"html","selector":".subdeck"},"kickerColor":{"type":"string","source":"html","selector":".kickerColor"},"headlineColor":{"type":"string","source":"html","selector":".headlineColor"}}}');
 
 /***/ })
 

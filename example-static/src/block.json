@@ -3,10 +3,10 @@
 	"apiVersion": 3,
 	"name": "create-block/example-static",
 	"version": "0.1.0",
-	"title": "Example Static",
-	"category": "widgets",
+	"title": "Daily Moon",
+	"category": "text",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool Vlad.",
+	"description": "Gutenberg Workshop Vlad",
 	"example": {},
 	"supports": {
 		"html": false
@@ -31,6 +31,16 @@
 			"type": "string",
 			"source": "html",
 			"selector": ".subdeck"
+		},
+		"kickerColor": {
+			"type": "string",
+			"source": "html",
+			"selector": ".kickerColor"
+		},
+		"headlineColor": {
+			"type": "string",
+			"source": "html",
+			"selector": ".headlineColor"
 		}
 	}
 }
