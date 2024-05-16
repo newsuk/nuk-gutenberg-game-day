@@ -10,10 +10,10 @@ import './editor.scss';
 import LimitRichText from './components/limitRichText';
 import { useDispatch } from '@wordpress/data';
 
-export default function Edit( {attributes, setAttributes } ) {
+export default function Edit({ attributes, setAttributes }) {
 	const { createNotice } = useDispatch('core/notices');
 	const { lockPostSaving, unlockPostSaving } = useDispatch('core/editor');
-	const [ isBlocked, seIsBlocked ] = useState(false);
+	const [isBlocked, seIsBlocked] = useState(false);
 
 	const {
 		kicker,
@@ -30,18 +30,17 @@ export default function Edit( {attributes, setAttributes } ) {
 			headline && headline.length > 80 ||
 			subdeck && subdeck.length > 150
 		) {
-			lockPostSaving( 'update-locker' );
-			createNotice('info', __( 'Updating is now blocked.', 'eyecatcher' ), {
+			lockPostSaving('update-locker');
+			createNotice('info', __('Updating is now blocked.', 'eyecatcher'), {
 				status: 'error',
 				icon: '🔻',
-        		isDismissible: true,
+				isDismissible: true,
 				type: 'snackbar',
 			});
 			seIsBlocked(true);
 		} else {
 			seIsBlocked(false);
 		}
-
 	}, [
 		kicker,
 		headline,
@@ -53,8 +52,8 @@ export default function Edit( {attributes, setAttributes } ) {
 
 	useEffect(() => {
 		if (!isBlocked) {
-			unlockPostSaving( 'update-locker' );
-			createNotice('info', __( 'Updating is now enabled.', 'eyecatcher' ), {
+			unlockPostSaving('update-locker');
+			createNotice('info', __('Updating is now enabled.', 'eyecatcher'), {
 				status: 'success',
 				icon: '💚',
 				isDismissible: true,
@@ -67,18 +66,18 @@ export default function Edit( {attributes, setAttributes } ) {
 		unlockPostSaving
 	]);
 
-	const kickerColorUpdate = ( type, color ) => {
-		if ( type === 'bg' ) {
-			setAttributes( { kickerBackgroundColor: color } );
+	const kickerColorUpdate = (type, color) => {
+		if (type === 'bg') {
+			setAttributes({ kickerBackgroundColor: color });
 		}
-		if ( type === 'text' ) {
-			setAttributes( { kickerTextColor: color } );
+		if (type === 'text') {
+			setAttributes({ kickerTextColor: color });
 		}
 	};
 
-	const headlineColorUpdate = ( type, color ) => {
-		if ( type === 'text' ) {
-			setAttributes( { headlineTextColor: color } );
+	const headlineColorUpdate = (type, color) => {
+		if (type === 'text') {
+			setAttributes({ headlineTextColor: color });
 		}
 	};
 
@@ -86,77 +85,77 @@ export default function Edit( {attributes, setAttributes } ) {
 		<div className='eyecatcher-container'>
 			<InspectorControls>
 				<PanelColorSettings
-					title={ __( 'Kicker Styling', 'eyecatcher' ) }
+					title={__('Kicker Styling', 'eyecatcher')}
 					icon="admin-appearance"
 					initialOpen
-					disableCustomColors={ false }
-					colorSettings={ [
+					disableCustomColors={false}
+					colorSettings={[
 						{
 							value: kickerBackgroundColor,
 							onChange: (color) => kickerColorUpdate('bg', color),
-							label: __( 'Background Color', 'eyecatcher' ),
+							label: __('Background Color', 'eyecatcher'),
 						},
 						{
 							value: kickerTextColor,
-							onChange:  (color) => kickerColorUpdate('text', color),
-							label: __( 'Text Color', 'eyecatcher' ),
+							onChange: (color) => kickerColorUpdate('text', color),
+							label: __('Text Color', 'eyecatcher'),
 						},
-					] }
+					]}
 				>
 					<ContrastChecker
-						textColor={ kickerTextColor }
-						backgroundColor={ kickerBackgroundColor }
+						textColor={kickerTextColor}
+						backgroundColor={kickerBackgroundColor}
 					/>
 				</PanelColorSettings>
 				<PanelColorSettings
-					title={ __( 'Headline Styling', 'eyecatcher' ) }
+					title={__('Headline Styling', 'eyecatcher')}
 					icon="admin-appearance"
 					initialOpen
-					disableCustomColors={ false }
-					colorSettings={ [
+					disableCustomColors={false}
+					colorSettings={[
 						{
 							value: headlineTextColor,
 							onChange: (color) => headlineColorUpdate('text', color),
-							label: __( 'Text Color', 'eyecatcher' ),
+							label: __('Text Color', 'eyecatcher'),
 						},
-					] }
+					]}
 				>
 					<ContrastChecker
-						textColor={ headlineTextColor }
-						backgroundColor={ '#FFFFFF' }
+						textColor={headlineTextColor}
+						backgroundColor={'#FFFFFF'}
 					/>
 				</PanelColorSettings>
 			</InspectorControls>
 			<LimitRichText
-				{ ...useBlockProps }
+				{...useBlockProps}
 				className='kicker'
-				onChange={ ( value ) => setAttributes( { kicker: value } ) }
-				value={ kicker }
-				placeholder={ __( 'Add Kicker', 'eyecatcher' ) }
+				onChange={(value) => setAttributes({ kicker: value })}
+				value={kicker}
+				placeholder={__('Add Kicker', 'eyecatcher')}
 				tagName="h2"
-				allowedFormats={ [ 'core/bold' ] }
-				style={{color: kickerTextColor, backgroundColor: kickerBackgroundColor}}
+				allowedFormats={['core/bold']}
+				style={{ color: kickerTextColor, backgroundColor: kickerBackgroundColor }}
 				characterLimit={20}
 			/>
 			<LimitRichText
-				{ ...useBlockProps }
+				{...useBlockProps}
 				className='headline'
-				onChange={ ( value ) => setAttributes( { headline: value } ) }
-				value={ headline }
-				placeholder={ __( 'Add Headline', 'eyecatcher' ) }
+				onChange={(value) => setAttributes({ headline: value })}
+				value={headline}
+				placeholder={__('Add Headline', 'eyecatcher')}
 				tagName="h1"
-				allowedFormats={ [ 'core/bold' ] }
-				style={{color: headlineTextColor}}
+				allowedFormats={['core/bold']}
+				style={{ color: headlineTextColor }}
 				characterLimit={80}
 			/>
 			<LimitRichText
-				{ ...useBlockProps }
+				{...useBlockProps}
 				className='subdeck'
-				onChange={ ( value ) => setAttributes( { subdeck: value } ) }
-				value={ subdeck }
-				placeholder={ __( 'Add Subdeck', 'eyecatcher' ) }
+				onChange={(value) => setAttributes({ subdeck: value })}
+				value={subdeck}
+				placeholder={__('Add Subdeck', 'eyecatcher')}
 				tagName="p"
-				allowedFormats={ [ 'core/bold' ] }
+				allowedFormats={['core/bold']}
 				characterLimit={150}
 			/>
 		</div>

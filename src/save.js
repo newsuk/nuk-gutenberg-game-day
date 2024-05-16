@@ -1,6 +1,6 @@
 import { RichText, useBlockProps } from '@wordpress/block-editor';
 
-export default function save( { attributes } ) {
+export default function save({ attributes }) {
 	const {
 		kicker,
 		kickerBackgroundColor,
@@ -13,28 +13,28 @@ export default function save( { attributes } ) {
 		<div className='eyecatcher-container'>
 			{kicker &&
 				<RichText.Content
-					{ ...useBlockProps.save() }
+					{...useBlockProps.save()}
 					className='kicker'
 					tagName="h2"
-					value={ kicker }
-					style={{color: kickerTextColor, backgroundColor: kickerBackgroundColor}}
+					value={kicker}
+					style={{ color: kickerTextColor, backgroundColor: kickerBackgroundColor }}
 				/>
 			}
 			{headline &&
 				<RichText.Content
-					{ ...useBlockProps.save() }
+					{...useBlockProps.save()}
 					className='headline'
 					tagName="h1"
-					value={ headline }
-					style={{color: headlineTextColor}}
+					value={headline}
+					style={{ color: headlineTextColor }}
 				/>
 			}
 			{subdeck &&
 				<RichText.Content
-					{ ...useBlockProps.save() }
+					{...useBlockProps.save()}
 					className='subdeck'
 					tagName="p"
-					value={ subdeck }
+					value={subdeck}
 				/>
 			}
 		</div>

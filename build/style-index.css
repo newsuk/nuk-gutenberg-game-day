@@ -44,7 +44,9 @@
 #page #primary * {
   display: block;
 }
-#page #primary #comments, #page #primary .entry-footer, #page #primary .entry-header {
+#page #primary #comments,
+#page #primary .entry-footer,
+#page #primary .entry-header {
   display: none;
 }
 

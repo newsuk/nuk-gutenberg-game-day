@@ -27,7 +27,7 @@ const LimitRichText = ({ className, value, onChange, placeholder, tagName, allow
 			/>
 			{isExceedingLimit && (
 				<p className='error'>
-					{__( 'Limit exceeded ', 'eyecatcher' )}
+					{__('Limit exceeded ', 'eyecatcher')}
 					({value.length}/{characterLimit})
 				</p>
 			)}
