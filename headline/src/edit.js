@@ -5,9 +5,10 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {InspectorControls, RichText, useBlockProps, useSetting} from '@wordpress/block-editor';
-import {ColorPalette, PanelBody} from '@wordpress/components';
+import {ColorPalette, PanelBody, Notice} from '@wordpress/components';
 import {__} from '@wordpress/i18n';
-
+import {dispatch} from '@wordpress/data';
+import {useState} from '@wordpress/element';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -26,11 +27,17 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 
-const Kicker = ({attributes, setAttributes}) => {
+const Kicker = ({attributes, setAttributes, setError}) => {
 	const colors = useSetting('color.palette');
 	return (
 		<>
-			<RichText onChange={(kicker) => setAttributes({kicker})} value={attributes.kicker} tagName="h3"
+			<RichText onChange={(value) => {
+				// const trimmed = value.length > 10 ? value.substring(0, 10) : value
+				setError(checkLength(value, 20))
+				setAttributes({kicker: value})
+
+			}
+			} value={attributes.kicker} tagName="h3"
 					  placeholder={
 						  "Enter your kicker here..."
 					  }
@@ -73,8 +80,11 @@ const Kicker = ({attributes, setAttributes}) => {
 const Headline = ({attributes, setAttributes}) => {
 	const colors = useSetting('color.palette');
 	return (
-		<>
-			<RichText onChange={(headline) => setAttributes({headline})} tagName="h1" className="headline"
+		<><RichText onChange={(value) => {
+				const trimmed = value.length > 200 ? value.substring(0, 200) : value
+				setAttributes({headline: trimmed})
+			}}
+					  tagName="h1" className="headline"
 					  value={attributes.headline} placeholder={"Enter your headline here..."}
 					  style={{color: attributes.headlineColor}}
 			/>
@@ -99,15 +109,30 @@ const Headline = ({attributes, setAttributes}) => {
 	)
 }
 
+const checkLength = (value, limit) => {
+	if (value.length > limit) {
+		dispatch('core/editor').lockPostSaving()
+		return `Error: Max length is ${limit} characters. Length is ${value.length}.`
+	} else {
+		dispatch('core/editor').unlockPostSaving()
+		return null
+	}
+}
 
 export default function Edit(props) {
 	const {attributes, setAttributes} = props;
 
+	const [error, setError] = useState(false)
 	return (
 		<div {...useBlockProps()}>
-			<Kicker {...props}/>
+			{error && <Notice status="error" isDismissible={false}>{error}</Notice>}
+			<Kicker {...props} setError={setError}/>
 			<Headline {...props}/>
-			<RichText onChange={(subdeck) => setAttributes({subdeck})}
+			<RichText onChange={(value) => {
+				const trimmed = value.length > 400 ? value.substring(0, 400) : value
+				setAttributes({subdeck: trimmed})
+				}
+			}
 					  tagName="h3"
 					  value={
 						  attributes.subdeck}

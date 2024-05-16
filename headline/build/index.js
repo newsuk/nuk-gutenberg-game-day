@@ -20,7 +20,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -28,6 +32,8 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+
+
 
 
 
@@ -51,13 +57,18 @@ __webpack_require__.r(__webpack_exports__);
 
 const Kicker = ({
   attributes,
-  setAttributes
+  setAttributes,
+  setError
 }) => {
   const colors = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useSetting)('color.palette');
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    onChange: kicker => setAttributes({
-      kicker
-    }),
+    onChange: value => {
+      // const trimmed = value.length > 10 ? value.substring(0, 10) : value
+      setError(checkLength(value, 20));
+      setAttributes({
+        kicker: value
+      });
+    },
     value: attributes.kicker,
     tagName: "h3",
     placeholder: "Enter your kicker here...",
@@ -92,9 +103,12 @@ const Headline = ({
 }) => {
   const colors = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useSetting)('color.palette');
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    onChange: headline => setAttributes({
-      headline
-    }),
+    onChange: value => {
+      const trimmed = value.length > 200 ? value.substring(0, 200) : value;
+      setAttributes({
+        headline: trimmed
+      });
+    },
     tagName: "h1",
     className: "headline",
     value: attributes.headline,
@@ -114,21 +128,38 @@ const Headline = ({
     }
   }))));
 };
+const checkLength = (value, limit) => {
+  if (value.length > limit) {
+    (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.dispatch)('core/editor').lockPostSaving();
+    return `Error: Max length is ${limit} characters. Length is ${value.length}.`;
+  } else {
+    (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.dispatch)('core/editor').unlockPostSaving();
+    return null;
+  }
+};
 function Edit(props) {
   const {
     attributes,
     setAttributes
   } = props;
+  const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(false);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Kicker, {
-    ...props
+  }, error && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Notice, {
+    status: "error",
+    isDismissible: false
+  }, error), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Kicker, {
+    ...props,
+    setError: setError
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Headline, {
     ...props
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    onChange: subdeck => setAttributes({
-      subdeck
-    }),
+    onChange: value => {
+      const trimmed = value.length > 400 ? value.substring(0, 400) : value;
+      setAttributes({
+        subdeck: trimmed
+      });
+    },
     tagName: "h3",
     value: attributes.subdeck,
     className: "subdeck",
@@ -234,11 +265,18 @@ function save({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     value: attributes.kicker,
     tagName: "h3",
-    className: "kicker"
+    className: "kicker",
+    style: {
+      backgroundColor: attributes.kickerBackgroundColor,
+      color: attributes.kickerColor
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h1",
     value: attributes.headline,
-    className: "headline"
+    className: "headline",
+    style: {
+      color: attributes.headlineColor
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h3",
     value: attributes.subdeck,
@@ -309,6 +347,26 @@ module.exports = window["wp"]["blocks"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["data"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["element"];
 
 /***/ }),
 
