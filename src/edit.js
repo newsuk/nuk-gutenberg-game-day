@@ -6,7 +6,7 @@ import {
 	ContrastChecker
 } from '@wordpress/block-editor';
 import { useEffect, useState } from '@wordpress/element';
-import './editor.scss';
+import './styles/editor.scss';
 import LimitRichText from './components/limitRichText';
 import { useDispatch } from '@wordpress/data';
 
