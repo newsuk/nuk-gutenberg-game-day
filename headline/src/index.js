@@ -39,6 +39,8 @@ registerBlockType( metadata.name, {
 
 	supports: {
 		color: {
+			text: false,
+			background: false,
 			heading: true,
 		}
 	},
