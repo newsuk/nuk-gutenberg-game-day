@@ -7,12 +7,28 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.example {
-  color: red;
+.eyecatcher-container {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
 }
-
-.wp-block-post-title {
-  display: none;
+.eyecatcher-container .kicker,
+.eyecatcher-container .headline,
+.eyecatcher-container .subdeck {
+  line-height: normal;
+  margin: 0 0 10px;
+}
+.eyecatcher-container .kicker {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px;
+  text-transform: uppercase;
+}
+.eyecatcher-container .headline {
+  font-size: 36px;
+}
+.eyecatcher-container .subdeck {
+  color: #595959;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

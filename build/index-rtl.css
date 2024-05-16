@@ -6,21 +6,8 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.eyecatcher-container {
-  width: 800px;
-  margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.eyecatcher-container .kicker {
-  display: inline;
-  font-size: 14px;
-  padding: 5px;
-  text-transform: uppercase;
-}
-.eyecatcher-container .headline {
-  font-size: 36px;
-}
+.eyecatcher-container .kicker,
+.eyecatcher-container .headline,
 .eyecatcher-container .subdeck {
-  color: #595959;
-  font-size: 20px;
+  margin: 0 0 10px;
 }

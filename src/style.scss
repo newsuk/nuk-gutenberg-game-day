@@ -4,11 +4,30 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
- .example {
-	color: red
- }
+ .eyecatcher-container {
+	font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
 
- // hide the post title.
- .wp-block-post-title {
-    display: none;
-}
+    .kicker,
+	.headline,
+	.subdeck {
+        line-height: normal;
+		margin: 0 0 10px;
+	}
+
+	.kicker {
+		display: inline-block;
+		font-size: 14px;
+		padding: 5px;
+		text-transform: uppercase;
+	}
+
+	.headline {
+		font-size: 36px;
+	}
+
+	.subdeck {
+		color: #595959;
+		font-size: 20px;
+	}
+ }

@@ -4,23 +4,9 @@
  * Replace them with your own styles or remove the file completely.
  */
  .eyecatcher-container {
-	width: 800px;
-	margin: 0 auto;
-	font-family: Arial, Helvetica, sans-serif;
-
-	.kicker {
-		display: inline;
-		font-size: 14px;
-		padding: 5px;
-		text-transform: uppercase;
-	}
-
-	.headline {
-		font-size: 36px;
-	}
-
+	.kicker,
+	.headline,
 	.subdeck {
-		color: #595959;
-		font-size: 20px;
+		margin: 0 0 10px;
 	}
  }
