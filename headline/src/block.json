@@ -27,12 +27,12 @@
 			"source": "text",
 			"selector": ".headline"
 		},
-		"subdeck" : {
+		"subdeck": {
 			"type": "string",
 			"source": "text",
 			"selector": ".subdeck"
 		},
-		"kicker" : {
+		"kicker": {
 			"type": "string",
 			"source": "text",
 			"selector": ".kicker"

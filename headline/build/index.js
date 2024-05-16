@@ -63,7 +63,6 @@ const Kicker = ({
   const colors = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useSetting)('color.palette');
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     onChange: value => {
-      // const trimmed = value.length > 10 ? value.substring(0, 10) : value
       setError(checkLength(value, 20));
       setAttributes({
         kicker: value
@@ -71,7 +70,7 @@ const Kicker = ({
     },
     value: attributes.kicker,
     tagName: "h3",
-    placeholder: "Enter your kicker here...",
+    placeholder: 'Enter your kicker here...',
     className: "kicker",
     style: {
       backgroundColor: attributes.kickerBackgroundColor,
@@ -80,7 +79,7 @@ const Kicker = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Kicker background and text color', 'inspector-control-groups')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Kicker background color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
-    label: "Kicker background color",
+    label: 'Kicker background color',
     colors: colors,
     value: attributes.kickerBackgroundColor,
     onChange: kickerBackgroundColor => {
@@ -89,7 +88,7 @@ const Kicker = ({
       });
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Kicker text color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
-    label: "Kicker text color",
+    label: 'Kicker text color',
     colors: colors,
     value: attributes.kickerColor,
     onChange: kickerColor => {
@@ -114,7 +113,7 @@ const Headline = ({
     tagName: "h1",
     className: "headline",
     value: attributes.headline,
-    placeholder: "Enter your headline here...",
+    placeholder: 'Enter your headline here...',
     style: {
       color: attributes.headlineColor
     }
@@ -134,10 +133,9 @@ const checkLength = (value, limit) => {
   if (value.length > limit) {
     (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.dispatch)('core/editor').lockPostSaving();
     return `Error: Max length is ${limit} characters. Length is ${value.length}.`;
-  } else {
-    (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.dispatch)('core/editor').unlockPostSaving();
-    return null;
   }
+  (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.dispatch)('core/editor').unlockPostSaving();
+  return null;
 };
 function Edit(props) {
   const {
@@ -165,7 +163,7 @@ function Edit(props) {
     tagName: "h3",
     value: attributes.subdeck,
     className: "subdeck",
-    placeholder: "Enter your subdeck here..."
+    placeholder: 'Enter your subdeck here...'
   }));
 }
 
@@ -241,24 +239,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-
-
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {Element} Element to render.
- */
 function save({
   attributes
 }) {
