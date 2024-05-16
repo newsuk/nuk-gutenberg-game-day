@@ -43,6 +43,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -61,6 +62,7 @@ function Edit({
   },
   setAttributes
 }) {
+  const [count, setCount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   const changeKickerColor = color => {
     setAttributes({
       kickerColor: color
@@ -72,6 +74,7 @@ function Edit({
     });
   };
   const onChangeKicker = value => {
+    setCount(value.length);
     if (value.length <= 20) {
       setAttributes({
         kicker: value
@@ -127,7 +130,11 @@ function Edit({
     value: subdeck,
     placeholder: "Subdeck",
     className: "subdeck"
-  }));
+  }), count > 20 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      backgroundColor: "red"
+    }
+  }, "Kicker length is more than 20 chars"));
 }
 
 /***/ }),

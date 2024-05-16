@@ -21,6 +21,8 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
  */
 import "./editor.scss";
 
+import React, { useState } from "react";
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -33,6 +35,7 @@ export default function Edit({
 	attributes: { kicker, headline, subdeck, kickerColor, headlineColor },
 	setAttributes,
 }) {
+	const [count, setCount] = useState(0);
 	const changeKickerColor = (color) => {
 		setAttributes({ kickerColor: color });
 	};
@@ -42,6 +45,8 @@ export default function Edit({
 	};
 
 	const onChangeKicker = (value) => {
+		setCount(value.length);
+
 		if (value.length <= 20) {
 			setAttributes({ kicker: value });
 		}
@@ -103,6 +108,11 @@ export default function Edit({
 				placeholder="Subdeck"
 				className="subdeck"
 			></RichText>
+			{count > 20 && (
+				<p style={{ backgroundColor: "red" }}>
+					Kicker length is more than 20 chars
+				</p>
+			)}
 		</div>
 	);
 }
