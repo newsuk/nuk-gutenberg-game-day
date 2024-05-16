@@ -84,7 +84,7 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 	}
 
 	return (
-		<div>
+		<div className="headline-block">
 			<InspectorControls>
 				<PanelColorSettings
 					__experimentalIsRenderedInSidebar
