@@ -7,6 +7,21 @@
 	.kicker,
 	.headline,
 	.subdeck {
-		margin: 0 0 10px;
+		margin: 0;
+	}
+
+	.field-container {
+		position: relative;
+		width: 100%;
+		margin-bottom: 10px;
+
+		p.error {
+			color: #cc0000;
+			margin: 0;
+			font-size: 12px;
+			width: 100%;
+			border-bottom: 1px solid #EEEEEE;
+			padding-bottom: 10px;
+		}
 	}
  }

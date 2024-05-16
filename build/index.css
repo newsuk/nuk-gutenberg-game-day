@@ -9,7 +9,20 @@
 .eyecatcher-container .kicker,
 .eyecatcher-container .headline,
 .eyecatcher-container .subdeck {
-  margin: 0 0 10px;
+  margin: 0;
+}
+.eyecatcher-container .field-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.eyecatcher-container .field-container p.error {
+  color: #cc0000;
+  margin: 0;
+  font-size: 12px;
+  width: 100%;
+  border-bottom: 1px solid #EEEEEE;
+  padding-bottom: 10px;
 }
 
 /*# sourceMappingURL=index.css.map*/

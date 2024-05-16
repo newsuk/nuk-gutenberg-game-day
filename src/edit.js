@@ -7,6 +7,7 @@ import {
 	ContrastChecker
 } from '@wordpress/block-editor';
 import './editor.scss';
+import LimitRichText from './components/limitRichText';
 
 export default function Edit( {attributes, setAttributes } ) {
 	const {
@@ -78,7 +79,7 @@ export default function Edit( {attributes, setAttributes } ) {
 					/>
 				</PanelColorSettings>
 			</InspectorControls>
-			<RichText
+			<LimitRichText
 				{ ...useBlockProps }
 				className='kicker'
 				onChange={ ( value ) => setAttributes( { kicker: value } ) }
@@ -87,8 +88,9 @@ export default function Edit( {attributes, setAttributes } ) {
 				tagName="h2"
 				allowedFormats={ [ 'core/bold' ] }
 				style={{color: kickerTextColor, backgroundColor: kickerBackgroundColor}}
+				characterLimit={20}
 			/>
-			<RichText
+			<LimitRichText
 				{ ...useBlockProps }
 				className='headline'
 				onChange={ ( value ) => setAttributes( { headline: value } ) }
@@ -97,8 +99,9 @@ export default function Edit( {attributes, setAttributes } ) {
 				tagName="h1"
 				allowedFormats={ [ 'core/bold' ] }
 				style={{color: headlineTextColor}}
+				characterLimit={80}
 			/>
-			<RichText
+			<LimitRichText
 				{ ...useBlockProps }
 				className='subdeck'
 				onChange={ ( value ) => setAttributes( { subdeck: value } ) }
@@ -106,6 +109,7 @@ export default function Edit( {attributes, setAttributes } ) {
 				placeholder={ __( 'Add Subdeck', 'eyecatcher' ) }
 				tagName="p"
 				allowedFormats={ [ 'core/bold' ] }
+				characterLimit={150}
 			/>
 		</div>
 	);

@@ -2,6 +2,65 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/components/limitRichText.js":
+/*!*****************************************!*\
+  !*** ./src/components/limitRichText.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+const LimitRichText = ({
+  className,
+  value,
+  onChange,
+  placeholder,
+  tagName,
+  allowedFormats,
+  style,
+  characterLimit
+}) => {
+  const [isExceedingLimit, setIsExceedingLimit] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+  const handleOnChange = updatedContent => {
+    onChange(updatedContent);
+    if (updatedContent.length <= characterLimit) {
+      setIsExceedingLimit(false);
+    } else {
+      setIsExceedingLimit(true);
+    }
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "field-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    className: className,
+    onChange: handleOnChange,
+    value: value,
+    placeholder: placeholder,
+    tagName: tagName,
+    allowedFormats: allowedFormats,
+    style: style
+  }), isExceedingLimit && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "error"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Limit exceeded ', 'eyecatcher'), "(", value.length, "/", characterLimit, ")"));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LimitRichText);
+
+/***/ }),
+
 /***/ "./src/edit.js":
 /*!*********************!*\
   !*** ./src/edit.js ***!
@@ -19,6 +78,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _components_limitRichText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/limitRichText */ "./src/components/limitRichText.js");
+
 
 
 
@@ -86,7 +147,7 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ContrastChecker, {
     textColor: headlineTextColor,
     backgroundColor: '#FFFFFF'
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     className: "kicker",
     onChange: value => setAttributes({
@@ -99,8 +160,9 @@ function Edit({
     style: {
       color: kickerTextColor,
       backgroundColor: kickerBackgroundColor
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    },
+    characterLimit: 20
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     className: "headline",
     onChange: value => setAttributes({
@@ -112,8 +174,9 @@ function Edit({
     allowedFormats: ['core/bold'],
     style: {
       color: headlineTextColor
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    },
+    characterLimit: 80
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     className: "subdeck",
     onChange: value => setAttributes({
@@ -122,7 +185,8 @@ function Edit({
     value: subdeck,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add Subdeck', 'eyecatcher'),
     tagName: "p",
-    allowedFormats: ['core/bold']
+    allowedFormats: ['core/bold'],
+    characterLimit: 150
   }));
 }
 
@@ -289,6 +353,16 @@ module.exports = window["wp"]["blockEditor"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["element"];
 
 /***/ }),
 
