@@ -78,7 +78,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					colorSettings={
 						[
 							{
-								value: kickerBackgroundColour,
+								value: kickerBackgroundColour ,
 								onChange: (newColour) => setAttributes({kickerBackgroundColour: newColour}),
 								label: __('Kicker Background Colour', 'gutenberg-game-day')
 

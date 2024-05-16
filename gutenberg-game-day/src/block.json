@@ -33,10 +33,13 @@
 			"selector": "h3"
 		},
 		"headlineColour": {
-			"type": "string"
+			"type": "string",
+			"default": "#FF008C"
 		},
 		"kickerBackgroundColour": {
-			"type": "string"
+			"type": "string",
+			"default": "#4803BA"
+
 		},
 		"is90sMode": {
 			"type": "boolean",
