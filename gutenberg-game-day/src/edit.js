@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,13 +29,30 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
+	console.log(setAttributes)
+	const { kicker, headline, subdeck } = attributes;
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Gutenberg Game Day – hello from the editor!',
-				'gutenberg-game-day'
-			) }
-		</p>
+		<div { ...useBlockProps() }>
+			<RichText
+				tagName="h4"
+				value={ kicker }
+				onChange={ ( newKicker ) => setAttributes( { kicker: newKicker } ) }
+				placeholder={ __( 'Add a kicker', 'gutenberg-game-day' ) }
+			/>
+			<RichText
+				tagName="h2"
+				value={ headline }
+				onChange={ ( newHeadline ) => setAttributes( { headline: newHeadline } ) }
+				placeholder={ __( 'Add a headline', 'gutenberg-game-day' ) }
+			/>
+			<RichText
+				tagName="h3"
+				value={ subdeck }
+				onChange={ ( newSubdeck ) => setAttributes( { subdeck: newSubdeck } ) }
+				placeholder={ __( 'Add a subdeck', 'gutenberg-game-day' ) }
+			/>
+		</div>
 	);
 }
