@@ -29,10 +29,72 @@ function Edit({
 }) {
   const {
     kicker,
+    kickerBackgroundColor,
+    kickerTextColor,
     headline,
+    headlineBackgroundColor,
+    headlineTextColor,
     subdeck
   } = attributes;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  const kickerColorUpdate = (type, color) => {
+    if (type === 'bg') {
+      setAttributes({
+        kickerBackgroundColor: color
+      });
+    }
+    if (type === 'text') {
+      setAttributes({
+        kickerTextColor: color
+      });
+    }
+  };
+  const headlineColorUpdate = (type, color) => {
+    if (type === 'bg') {
+      setAttributes({
+        headlineBackgroundColor: color
+      });
+    }
+    if (type === 'text') {
+      setAttributes({
+        headlineTextColor: color
+      });
+    }
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Kicker Styling', 'eyecatcher'),
+    icon: "admin-appearance",
+    initialOpen: true,
+    disableCustomColors: false,
+    colorSettings: [{
+      value: kickerBackgroundColor,
+      onChange: color => kickerColorUpdate('bg', color),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'eyecatcher')
+    }, {
+      value: kickerTextColor,
+      onChange: color => kickerColorUpdate('text', color),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'eyecatcher')
+    }]
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ContrastChecker, {
+    textColor: kickerTextColor,
+    backgroundColor: kickerBackgroundColor
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Headline Styling', 'eyecatcher'),
+    icon: "admin-appearance",
+    initialOpen: true,
+    disableCustomColors: false,
+    colorSettings: [{
+      value: headlineBackgroundColor,
+      onChange: color => headlineColorUpdate('bg', color),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'eyecatcher')
+    }, {
+      value: headlineTextColor,
+      onChange: color => headlineColorUpdate('text', color),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'eyecatcher')
+    }]
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ContrastChecker, {
+    textColor: headlineTextColor,
+    backgroundColor: headlineBackgroundColor
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     onChange: value => setAttributes({
       kicker: value
@@ -40,7 +102,11 @@ function Edit({
     value: kicker,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('kicker', 'eyecatcher'),
     tagName: "h2",
-    allowedFormats: ['core/bold']
+    allowedFormats: ['core/bold'],
+    style: {
+      color: kickerTextColor,
+      backgroundColor: kickerBackgroundColor
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     onChange: value => setAttributes({
@@ -49,7 +115,11 @@ function Edit({
     value: headline,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add Headline', 'eyecatcher'),
     tagName: "h1",
-    allowedFormats: ['core/bold']
+    allowedFormats: ['core/bold'],
+    style: {
+      color: headlineTextColor,
+      backgroundColor: headlineBackgroundColor
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     onChange: value => setAttributes({
@@ -229,7 +299,7 @@ module.exports = window["wp"]["i18n"];
   \********************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"blocks-course/eyecatcher","title":"Eye Catcher","category":"text","icon":"text-page","description":"A box of text and magic!","keywords":["text","paragraph","box"],"supports":{"html":false,"color":{"background":true}},"textdomain":"eyecatcher","editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css","attributes":{"kicker":{"type":"string","source":"html","selector":"h2"},"headline":{"type":"string","source":"html","selector":"h1","style":{"type":"object","default":{"color":{"background":"#b50000"}}}},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"blocks-course/eyecatcher","title":"Eye Catcher","category":"text","icon":"text-page","description":"A box of text and magic!","keywords":["text","paragraph","box"],"supports":{"html":false},"textdomain":"eyecatcher","editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css","attributes":{"kicker":{"type":"string","source":"html","selector":"h2"},"kickerBackgroundColor":{"type":"string"},"kickerTextColor":{"type":"string"},"headline":{"type":"string","source":"html","selector":"h1"},"headlineBackgroundColor":{"type":"string"},"headlineTextColor":{"type":"string"},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
 
 /***/ })
 

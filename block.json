@@ -7,10 +7,7 @@
 	"description": "A box of text and magic!",
 	"keywords": ["text", "paragraph", "box"],
 	"supports": {
-		"html": false,
-		"color": {
-			"background": true
-		}
+		"html": false
 	},
 	"textdomain": "eyecatcher",
 	"editorScript": "file:./build/index.js",
@@ -22,18 +19,22 @@
 			"source": "html",
 			"selector": "h2"
 		},
+		"kickerBackgroundColor": {
+			"type": "string"
+		},
+		"kickerTextColor": {
+			"type": "string"
+		},
 		"headline": {
 			"type": "string",
 			"source": "html",
-			"selector": "h1",
-			"style": {
-				"type": "object",
-				"default": {
-					"color": {
-						"background": "#b50000"
-					}
-				}
-			}
+			"selector": "h1"
+		},
+		"headlineBackgroundColor": {
+			"type": "string"
+		},
+		"headlineTextColor": {
+			"type": "string"
 		},
 		"subdeck": {
 			"type": "string",
