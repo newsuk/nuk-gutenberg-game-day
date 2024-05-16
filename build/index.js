@@ -77,8 +77,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _components_limitRichText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/limitRichText */ "./src/components/limitRichText.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _components_limitRichText__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/limitRichText */ "./src/components/limitRichText.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__);
+
+
 
 
 
@@ -89,6 +95,14 @@ function Edit({
   setAttributes
 }) {
   const {
+    createNotice
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)('core/notices');
+  const {
+    lockPostSaving,
+    unlockPostSaving
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)('core/editor');
+  const [isBlocked, seIsBlocked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(false);
+  const {
     kicker,
     kickerBackgroundColor,
     kickerTextColor,
@@ -96,6 +110,31 @@ function Edit({
     headlineTextColor,
     subdeck
   } = attributes;
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    if (kicker && kicker.length > 20 || headline && headline.length > 80 || subdeck && subdeck.length > 150) {
+      lockPostSaving('update-locker');
+      createNotice('info', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Updating is now blocked.', 'eyecatcher'), {
+        status: 'error',
+        icon: '🔻',
+        isDismissible: true,
+        type: 'snackbar'
+      });
+      seIsBlocked(true);
+    } else {
+      seIsBlocked(false);
+    }
+  }, [kicker, headline, subdeck, lockPostSaving, unlockPostSaving, createNotice]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    if (!isBlocked) {
+      unlockPostSaving('update-locker');
+      createNotice('info', (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Updating is now enabled.', 'eyecatcher'), {
+        status: 'success',
+        icon: '💚',
+        isDismissible: true,
+        type: 'snackbar'
+      }, 100);
+    }
+  }, [isBlocked, createNotice, unlockPostSaving]);
   const kickerColorUpdate = (type, color) => {
     if (type === 'bg') {
       setAttributes({
@@ -147,7 +186,7 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ContrastChecker, {
     textColor: headlineTextColor,
     backgroundColor: '#FFFFFF'
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_5__["default"], {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     className: "kicker",
     onChange: value => setAttributes({
@@ -162,7 +201,7 @@ function Edit({
       backgroundColor: kickerBackgroundColor
     },
     characterLimit: 20
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_5__["default"], {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     className: "headline",
     onChange: value => setAttributes({
@@ -176,7 +215,7 @@ function Edit({
       color: headlineTextColor
     },
     characterLimit: 80
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_limitRichText__WEBPACK_IMPORTED_MODULE_5__["default"], {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps,
     className: "subdeck",
     onChange: value => setAttributes({
@@ -353,6 +392,16 @@ module.exports = window["wp"]["blockEditor"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["data"];
 
 /***/ }),
 
