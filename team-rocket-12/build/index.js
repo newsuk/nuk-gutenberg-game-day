@@ -58,30 +58,39 @@ function Edit({
   attributes,
   setAttributes
 }) {
-  const {
-    kicker,
-    headline,
-    subdeck,
-    kickerBackgroundColour,
-    headlineTextColour
-  } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Kicker",
     help: "Add your kicker here",
-    value: kicker,
-    maxLength: "20"
+    value: attributes.kicker,
+    maxLength: "20",
+    onChange: text => setAttributes({
+      kicker: text
+    }),
+    style: {
+      backgroundColor: attributes.kickerBackgroundColour,
+      color: 'red'
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Headline",
     help: "Add your headline here",
-    value: headline,
-    maxLength: "80"
+    value: attributes.headline,
+    maxLength: "80",
+    onChange: text => setAttributes({
+      headline: text
+    }),
+    style: {
+      color: attributes.headlineTextColour
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Subdeck",
     help: "Add your subdeck here",
-    value: subdeck,
-    maxLength: "150"
+    value: attributes.subdeck,
+    maxLength: "150",
+    onChange: text => setAttributes({
+      subdeck: text
+    })
   }));
 }
 

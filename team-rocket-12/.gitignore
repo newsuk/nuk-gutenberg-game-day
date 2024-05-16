@@ -13,6 +13,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+b2a229208eb832f029835402b2a1b49b/
 
 # Optional npm cache directory
 .npm

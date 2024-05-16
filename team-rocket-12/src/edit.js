@@ -31,26 +31,30 @@ import { TextControl } from '@wordpress/components';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
 	return (
 		<div { ...useBlockProps() }>
 			<TextControl
 				label="Kicker"
 				help="Add your kicker here"
-				value={ kicker }
+				value={ attributes.kicker }
 				maxLength="20"
+				onChange={text => setAttributes({ kicker: text })}
+				style={{ backgroundColor: attributes.kickerBackgroundColour, color:'red' }}
 			/>
 			<TextControl
 				label="Headline"
 				help="Add your headline here"
-				value={ headline }
+				value={ attributes.headline }
 				maxLength="80"
+				onChange={text => setAttributes({ headline: text })}
+				style={{ color: attributes.headlineTextColour }}
 			/>
 			<TextControl
 				label="Subdeck"
 				help="Add your subdeck here"
-				value={ subdeck }
+				value={ attributes.subdeck }
 				maxLength="150"
+				onChange={text => setAttributes({ subdeck: text })}
 			/>
 		</div>
 	);
