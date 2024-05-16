@@ -10,7 +10,7 @@ export default function Edit( {attributes, setAttributes } ) {
 				{ ...useBlockProps }
 				onChange={ ( value ) => setAttributes( { kicker: value } ) }
 				value={ kicker }
-				placeholder={ __( 'Your Text', 'eyecatcher' ) }
+				placeholder={ __( 'kicker', 'eyecatcher' ) }
 				tagName="h2"
 				allowedFormats={ [ 'core/bold' ] }
 			/>
@@ -18,7 +18,7 @@ export default function Edit( {attributes, setAttributes } ) {
 				{ ...useBlockProps }
 				onChange={ ( value ) => setAttributes( { headline: value } ) }
 				value={ headline }
-				placeholder={ __( 'Your Headline', 'eyecatcher' ) }
+				placeholder={ __( 'Add Headline', 'eyecatcher' ) }
 				tagName="h1"
 				allowedFormats={ [ 'core/bold' ] }
 			/>
@@ -26,7 +26,7 @@ export default function Edit( {attributes, setAttributes } ) {
 				{ ...useBlockProps }
 				onChange={ ( value ) => setAttributes( { subdeck: value } ) }
 				value={ subdeck }
-				placeholder={ __( 'Your Subdeck', 'eyecatcher' ) }
+				placeholder={ __( 'Add Subdeck', 'eyecatcher' ) }
 				tagName="p"
 				allowedFormats={ [ 'core/bold' ] }
 			/>
