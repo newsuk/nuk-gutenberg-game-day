@@ -78,8 +78,9 @@ const Kicker = ({
       color: attributes.kickerColor
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Custom Block Controls', 'inspector-control-groups')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Kicker background and text color', 'inspector-control-groups')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Kicker background color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    label: "Kicker background color",
     colors: colors,
     value: attributes.kickerBackgroundColor,
     onChange: kickerBackgroundColor => {
@@ -87,7 +88,8 @@ const Kicker = ({
         kickerBackgroundColor
       });
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Kicker text color"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    label: "Kicker text color",
     colors: colors,
     value: attributes.kickerColor,
     onChange: kickerColor => {
@@ -117,7 +119,7 @@ const Headline = ({
       color: attributes.headlineColor
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Custom Block Controls', 'inspector-control-groups')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Headline color', 'inspector-control-groups')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
     colors: colors,
     value: attributes.headlineColor,

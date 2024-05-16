@@ -50,11 +50,13 @@ const Kicker = ({attributes, setAttributes, setError}) => {
 			<InspectorControls>
 				<PanelBody
 					title={__(
-						'Custom Block Controls',
+						'Kicker background and text color',
 						'inspector-control-groups'
 					)}
 				>
+					<span>Kicker background color</span>
 					<ColorPalette
+						label={"Kicker background color"}
 						colors={colors}
 						value={attributes.kickerBackgroundColor}
 						onChange={(kickerBackgroundColor) => {
@@ -62,7 +64,9 @@ const Kicker = ({attributes, setAttributes, setError}) => {
 						}}
 					/>
 
+					<span>Kicker text color</span>
 					<ColorPalette
+						label={"Kicker text color"}
 						colors={colors}
 						value={attributes.kickerColor}
 						onChange={(kickerColor) => {
@@ -91,7 +95,7 @@ const Headline = ({attributes, setAttributes}) => {
 			<InspectorControls>
 				<PanelBody
 					title={__(
-						'Custom Block Controls',
+						'Headline color',
 						'inspector-control-groups'
 					)}
 				>
