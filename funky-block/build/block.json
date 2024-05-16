@@ -8,12 +8,22 @@
   "icon": "smiley",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
+  "attributes": {
+    "kickerText": {
+      "type": "string"
+    },
+    "headlineText": {
+      "type": "string"
+    },
+    "descriptionText": {
+      "type": "string"
+    }
+  },
   "supports": {
     "html": false
   },
   "textdomain": "funky-block",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "style": "file:./style-index.css"
 }

@@ -1,38 +1,15 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
 import { __ } from '@wordpress/i18n';
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
 import './editor.scss';
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit() {
+export default function Edit({attributes,setAttributes}) {
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Funky Block – hello from the editor!', 'funky-block' ) }
-		</p>
+		<div { ...useBlockProps() }>
+			<RichText tagName='h3' value={attributes.kickerText} onChange={text => setAttributes({kickerText:text})} placeholder='Kicker Text' />
+			<RichText tagName='h1' value={attributes.headlineText} onChange={text => setAttributes({headlineText:text})} placeholder='Headline Text' />
+			<RichText tagName='h2' value={attributes.descriptionText} onChange={text => setAttributes({descriptionText:text})} placeholder='Description Text' />
+		</div>
 	);
 }
