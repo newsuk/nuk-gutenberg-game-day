@@ -31,6 +31,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<div {...useBlockProps()}>
 				<RichText
 					tagName="h3"
+					className='kicker-text'
 					value={kickerText}
 					onChange={(text) => handleChange(KICKER_MAX_LEN, "kickerText", text)}
 					placeholder="Kicker Text"

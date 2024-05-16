@@ -52,6 +52,7 @@ function Edit({
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "h3",
+    className: "kicker-text",
     value: kickerText,
     onChange: text => handleChange(KICKER_MAX_LEN, "kickerText", text),
     placeholder: "Kicker Text",
