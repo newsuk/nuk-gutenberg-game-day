@@ -11,7 +11,9 @@
 	"attributes": { 
 		"kickerText":{"type":"string"},
 		"headlineText":{"type":"string"},
-		"descriptionText":{"type":"string"}
+		"descriptionText":{"type":"string"},
+		"kickerColour":{"type":"string","default":"#ff51d0"},
+		"headlineColour":{"type":"string","default":"#f4d13b"}
 	},
 	"supports": {
 		"html": false

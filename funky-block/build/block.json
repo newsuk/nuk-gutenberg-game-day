@@ -17,6 +17,18 @@
     },
     "descriptionText": {
       "type": "string"
+    },
+    "kickerColour": {
+      "type": "string",
+      "default": "#ff51d0"
+    },
+    "headlineColour": {
+      "type": "string",
+      "default": "#f4d13b"
+    },
+    "descriptionColour": {
+      "type": "string",
+      "default": "#00bfff"
     }
   },
   "supports": {
