@@ -15,10 +15,29 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+	// destructure the attributes
+	const {
+		kickerBackgroundColour,
+		headlineTextColour
+	} = attributes;
+
+	// define the styles object
+	const styles = {
+		"--header-bg-color": kickerBackgroundColour,
+		"--header-heading-color": headlineTextColour,
+	};
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Team Rocket 12 – hello from the saved content!' }
-		</p>
-	);
+		<>
+			<div {...useBlockProps.save( { style: styles } ) }>
+				<header>
+					// header content
+				</header>
+				<section>
+					// section content
+				</section>
+			</div>
+		</>
+);
 }

@@ -11,8 +11,6 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
-
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -20,7 +18,24 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { TextControl } from '@wordpress/components';
+import {
+	useBlockProps,
+	RichText,
+	AlignmentControl,
+	BlockControls,
+	InspectorControls,
+	PanelColorSettings,
+} from '@wordpress/block-editor';
+
+import {
+	TextControl,
+	ToggleControl,
+	PanelBody,
+	PanelRow,
+	SelectControl,
+	ColorPicker,
+} from '@wordpress/components';
+
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,31 +46,72 @@ import { TextControl } from '@wordpress/components';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
+	const blockProps = useBlockProps({});
+	const {
+		PanelColorSettings,
+	} = wp.editor;
+	// define the onChange functions
+	const onChangeHeaderBackgroundColor = ( val ) => {
+		setAttributes( { kickerBackgroundColour: val } );
+	};
+	const onChangeHeaderHeadingColor = ( val ) => {
+		setAttributes( { headlineTextColour: val } );
+	};
 	return (
-		<div { ...useBlockProps() }>
-			<TextControl
-				label="Kicker"
-				help="Add your kicker here"
-				value={ attributes.kicker }
-				maxLength="20"
-				onChange={text => setAttributes({ kicker: text })}
-				style={{ backgroundColor: attributes.kickerBackgroundColour, color:'red' }}
-			/>
-			<TextControl
-				label="Headline"
-				help="Add your headline here"
-				value={ attributes.headline }
-				maxLength="80"
-				onChange={text => setAttributes({ headline: text })}
-				style={{ color: attributes.headlineTextColour }}
-			/>
-			<TextControl
-				label="Subdeck"
-				help="Add your subdeck here"
-				value={ attributes.subdeck }
-				maxLength="150"
-				onChange={text => setAttributes({ subdeck: text })}
-			/>
-		</div>
+		<>
+			<InspectorControls>
+				<PanelColorSettings
+					title={ __( 'Header settings' ) }
+					colorSettings={ [
+						{
+							value: attributes.kickerBackgroundColour,
+							onChange: onChangeHeaderBackgroundColor,
+							label: __( 'Background color ' ),
+						},
+						{
+							value: attributes.headlineTextColour,
+							onChange: onChangeHeaderHeadingColor,
+							label: __( 'Heading color' ),
+						},
+					] }
+				/>
+			</InspectorControls>
+
+			<div { ...useBlockProps() }>
+				<RichText
+					{ ...blockProps }
+					tagName="div"
+					placeholder={ __( 'Add your kicker here...', 'basic-block' ) }
+					label="Kicker"
+					value={ attributes.kicker }
+					maxLength="20"
+					onChange={text => setAttributes({ kicker: text })}
+					style={{
+						"--header-bg-color": attributes.kickerBackgroundColour,
+					}}
+				/>
+				<RichText
+					{ ...blockProps }
+					tagName="div"
+					placeholder={ __( 'Add your headline here...', 'basic-block' ) }
+					label="Headline"
+					value={ attributes.headline }
+					maxLength="80"
+					onChange={text => setAttributes({ headline: text })}
+					style={{
+						"--header-heading-color": attributes.headlineTextColour,
+					}}
+				/>
+				<RichText
+					{ ...blockProps }
+					tagName="div"
+					placeholder={ __( 'Add your subdeck here...', 'basic-block' ) }
+					label="Subdeck"
+					value={ attributes.subdeck }
+					maxLength="150"
+					onChange={text => setAttributes({ subdeck: text })}
+				/>
+			</div>
+		</>
 	);
 }

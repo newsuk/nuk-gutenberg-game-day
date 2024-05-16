@@ -11,7 +11,8 @@
   "supports": {
     "color": {
       "background": true,
-      "text": true
+      "text": true,
+      "gradients": true
     },
     "html": false,
     "typography": {

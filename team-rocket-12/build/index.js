@@ -16,9 +16,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 
@@ -35,14 +35,13 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-
-
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+
 
 
 
@@ -58,40 +57,71 @@ function Edit({
   attributes,
   setAttributes
 }) {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({});
+  const {
+    PanelColorSettings
+  } = wp.editor;
+  // define the onChange functions
+  const onChangeHeaderBackgroundColor = val => {
+    setAttributes({
+      kickerBackgroundColour: val
+    });
+  };
+  const onChangeHeaderHeadingColor = val => {
+    setAttributes({
+      headlineTextColour: val
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelColorSettings, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Header settings'),
+    colorSettings: [{
+      value: attributes.kickerBackgroundColour,
+      onChange: onChangeHeaderBackgroundColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background color ')
+    }, {
+      value: attributes.headlineTextColour,
+      onChange: onChangeHeaderHeadingColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading color')
+    }]
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+    ...blockProps,
+    tagName: "div",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add your kicker here...', 'basic-block'),
     label: "Kicker",
-    help: "Add your kicker here",
     value: attributes.kicker,
     maxLength: "20",
     onChange: text => setAttributes({
       kicker: text
     }),
     style: {
-      backgroundColor: attributes.kickerBackgroundColour,
-      color: 'red'
+      "--header-bg-color": attributes.kickerBackgroundColour
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+    ...blockProps,
+    tagName: "div",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add your headline here...', 'basic-block'),
     label: "Headline",
-    help: "Add your headline here",
     value: attributes.headline,
     maxLength: "80",
     onChange: text => setAttributes({
       headline: text
     }),
     style: {
-      color: attributes.headlineTextColour
+      "--header-heading-color": attributes.headlineTextColour
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText, {
+    ...blockProps,
+    tagName: "div",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add your subdeck here...', 'basic-block'),
     label: "Subdeck",
-    help: "Add your subdeck here",
     value: attributes.subdeck,
     maxLength: "150",
     onChange: text => setAttributes({
       subdeck: text
     })
-  }));
+  })));
 }
 
 /***/ }),
@@ -185,10 +215,25 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
-function save() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, 'Team Rocket 12 – hello from the saved content!');
+function save({
+  attributes
+}) {
+  // destructure the attributes
+  const {
+    kickerBackgroundColour,
+    headlineTextColour
+  } = attributes;
+
+  // define the styles object
+  const styles = {
+    "--header-bg-color": kickerBackgroundColour,
+    "--header-heading-color": headlineTextColour
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      style: styles
+    })
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, "// header content"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", null, "// section content")));
 }
 
 /***/ }),
@@ -273,7 +318,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/team-rocket-12","version":"0.1.0","title":"Team Rocket 12","category":"widgets","icon":"smiley","description":"Create a funky title with team-rocket-12","example":{},"supports":{"color":{"background":true,"text":true},"html":false,"typography":{"fontSize":true}},"textdomain":"team-rocket-12","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string"},"headline":{"type":"string"},"subdeck":{"type":"string"},"kickerBackgroundColour":{"type":"string"},"headlineTextColour":{"type":"string"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/team-rocket-12","version":"0.1.0","title":"Team Rocket 12","category":"widgets","icon":"smiley","description":"Create a funky title with team-rocket-12","example":{},"supports":{"color":{"background":true,"text":true,"gradients":true},"html":false,"typography":{"fontSize":true}},"textdomain":"team-rocket-12","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string"},"headline":{"type":"string"},"subdeck":{"type":"string"},"kickerBackgroundColour":{"type":"string"},"headlineTextColour":{"type":"string"}}}');
 
 /***/ })
 
