@@ -69,25 +69,38 @@ function Edit({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-    label: "Kicker",
+    help: `${kicker.length}/20`,
     value: kicker,
     onChange: value => setAttributes({
       kicker: value
     }),
-    maxLength: "20"
+    maxLength: "20",
+    style: {
+      backgroundColor: kickerBackgroundColour
+    },
+    className: "kicker-input",
+    placeholder: "Add kicker here"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-    label: "Headline",
+    placeholder: "Brilliant headline here",
+    help: `${headline.length}/80`,
     value: headline,
     onChange: value => setAttributes({
       headline: value
-    })
+    }),
+    maxLength: "80",
+    className: "headline-input",
+    style: {
+      color: headlineTextColour
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
-    label: "Subdeck",
-    help: "Add your subdeck here",
+    placeholder: "Add your subdeck here",
+    help: `${subdeck.length}/150`,
     value: subdeck,
     onChange: value => setAttributes({
       subdeck: value
-    })
+    }),
+    className: "subdeck-input",
+    maxLength: "150"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
     __experimentalIsRenderedInSidebar: true,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color'),
@@ -195,10 +208,30 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
-function save() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+function save({
+  attributes
+}) {
+  const {
+    kicker,
+    headline,
+    subdeck,
+    kickerBackgroundColour,
+    headlineTextColour
+  } = attributes;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, 'Brilliant Headline – hello from the saved content!');
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "kicker",
+    style: {
+      backgroundColor: kickerBackgroundColour
+    }
+  }, kicker), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
+    style: {
+      color: headlineTextColour
+    }
+  }, headline), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "subdeck"
+  }, subdeck));
 }
 
 /***/ }),

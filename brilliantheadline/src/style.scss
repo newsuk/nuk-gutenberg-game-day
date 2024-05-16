@@ -6,7 +6,38 @@
  */
 
 .wp-block-brilliantheadline-brilliantheadline {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+
+	p, .kicker-input {
+		&.kicker, input{
+			color: white;
+			text-transform: uppercase;
+			font-size: 16px;
+			margin: 0;
+			padding: 5px 10px;
+			width: fit-content;
+			border: none;
+		}
+		&.subdeck{
+			opacity: 70%;
+			margin-top: 5px;
+		}
+	}
+
+	h1, .headline-input input {
+		font-size: 50px;
+		font-family: Helvetica, Arial, sans-serif;
+		font-weight: 700;
+		margin-top: 5px;
+		margin-bottom: 0px;
+	}
+	.headline-input input {
+		height: 50px;
+		border: none;
+		background: none;
+	}
+	.subdeck-input textarea {
+		border: dotted;
+		background: none;
+	}
 }

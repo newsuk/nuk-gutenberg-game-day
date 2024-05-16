@@ -34,24 +34,34 @@ import { InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
  */
 export default function Edit({ attributes, setAttributes }) {
 	const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
+
 	return (
 		<div { ...useBlockProps() }>
-			<TextControl
-				label="Kicker"
-				value={ kicker }
+			<TextControl 
+				help={`${kicker.length}/20`}
+				value={ kicker } 
 				onChange={ ( value ) => setAttributes( { kicker: value } ) }
 				maxLength="20"
+				style={{backgroundColor: kickerBackgroundColour}}
+				className='kicker-input'
+				placeholder='Add kicker here'
 			/>
 			<TextControl
-				label="Headline"
+				placeholder='Brilliant headline here'
+				help={`${headline.length}/80`}
 				value={ headline }
 				onChange={ ( value ) => setAttributes( { headline: value } ) }
+				maxLength="80"
+				className='headline-input'
+				style={{color: headlineTextColour}}
 			/>
 			<TextareaControl
-				label="Subdeck"
-				help="Add your subdeck here"
+				placeholder='Add your subdeck here'
+				help={`${subdeck.length}/150`}
 				value={ subdeck }
 				onChange={ ( value ) => setAttributes( { subdeck: value } ) }
+				className='subdeck-input'
+				maxLength="150"
 			/>
 			<InspectorControls>
 				<PanelColorSettings

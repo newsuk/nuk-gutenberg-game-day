@@ -15,10 +15,19 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({attributes}) {
+		const {kicker, headline, subdeck, kickerBackgroundColour, headlineTextColour} = attributes;
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Brilliant Headline – hello from the saved content!' }
-		</p>
+		<div { ...useBlockProps.save() }>
+			<p className="kicker" style={{backgroundColor: kickerBackgroundColour}}>
+				{kicker}
+			</p>
+			<h1 style={{color: headlineTextColour}}>
+				{headline}
+			</h1>
+			<p className="subdeck">
+				{subdeck}
+			</p>
+		</div>
 	);
 }
