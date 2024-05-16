@@ -12,6 +12,7 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import {
+	useBlockProps,
 	RichText,
 	InspectorControls,
 	PanelColorSettings
@@ -84,7 +85,7 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 	}
 
 	return (
-		<div className="headline-block">
+		<div { ...useBlockProps({ className: "headline-block" }) }>
 			<InspectorControls>
 				<PanelColorSettings
 					__experimentalIsRenderedInSidebar

@@ -25,7 +25,7 @@ export default function save({ attributes }) {
 	} = attributes;
 	
 	return (
-		<div {...useBlockProps.save()}>
+		<div {...useBlockProps.save({ className: "headline-block" })}>
 			<p
 				data-bg-color={kicker_bg_color}
 				className="kicker"

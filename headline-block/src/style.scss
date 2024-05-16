@@ -5,6 +5,7 @@
 	font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 .kicker {
+	font-family: 'Comic Sans MS', cursive, sans-serif !important;
 	//display: inline-block;
 	text-align: left;
 	color: white;
@@ -15,14 +16,19 @@
 }
 
 .headline {
-	font-family: 'Inter', sans-serif;
+	font-family: 'Comic Sans MS', cursive, sans-serif !important;
+
 	font-weight: bold;
 	margin-top: 0;
 	margin-bottom: 0;
 }
 
 .subdeck {
-	font-family: 'Inter', sans-serif;
+	font-family: 'Comic Sans MS', cursive, sans-serif !important;
 	margin-top: 6px;
 	color: #848484
+}
+
+.headline-block {
+	font-family: 'Comic Sans MS', cursive, sans-serif !important;
 }
