@@ -33,8 +33,12 @@ const Kicker = ({attributes, setAttributes}) => {
 			<RichText onChange={(kicker) => setAttributes({kicker})} value={attributes.kicker} tagName="h3"
 					  placeholder={
 						  "Enter your kicker here..."
-					  } className="kicker"
-						style={{color: attributes.kickerColor}}
+					  }
+					  className="kicker"
+					  style={{
+						  backgroundColor: attributes.kickerBackgroundColor,
+						  color: attributes.kickerColor,
+					  }}
 			/>
 			<InspectorControls>
 				<PanelBody
@@ -45,6 +49,14 @@ const Kicker = ({attributes, setAttributes}) => {
 				>
 					<ColorPalette
 						colors={colors}
+						value={attributes.kickerBackgroundColor}
+						onChange={(kickerBackgroundColor) => {
+							setAttributes({kickerBackgroundColor})
+						}}
+					/>
+
+					<ColorPalette
+						colors={colors}
 						value={attributes.kickerColor}
 						onChange={(kickerColor) => {
 							setAttributes({kickerColor})
@@ -53,6 +65,7 @@ const Kicker = ({attributes, setAttributes}) => {
 
 				</PanelBody>
 			</InspectorControls>
+
 		</>
 	)
 }
@@ -61,9 +74,10 @@ const Headline = ({attributes, setAttributes}) => {
 	const colors = useSetting('color.palette');
 	return (
 		<>
-		<RichText onChange={(headline) => setAttributes({headline})} tagName="h2" className="headline"
-				  value={attributes.headline} placeholder={"Enter your headline here..."} style={{color: attributes.headlineColor}}
-		/>
+			<RichText onChange={(headline) => setAttributes({headline})} tagName="h1" className="headline"
+					  value={attributes.headline} placeholder={"Enter your headline here..."}
+					  style={{color: attributes.headlineColor}}
+			/>
 			<InspectorControls>
 				<PanelBody
 					title={__(
@@ -99,7 +113,6 @@ export default function Edit(props) {
 						  attributes.subdeck}
 					  className="subdeck"
 					  placeholder={"Enter your subdeck here..."}
-					  style={{color: attributes.color}}
 			/>
 		</div>
 

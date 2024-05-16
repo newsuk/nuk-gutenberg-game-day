@@ -25,28 +25,29 @@
 		"headline": {
 			"type": "string",
 			"source": "text",
-			"selector": "h1"
+			"selector": ".headline"
 		},
 		"subdeck" : {
 			"type": "string",
 			"source": "text",
-			"selector": "h1"
+			"selector": ".subdeck"
 		},
 		"kicker" : {
 			"type": "string",
-			"source": "text"
+			"source": "text",
+			"selector": ".kicker"
 		},
 		"headlineColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": "#EA338A"
 		},
 		"kickerColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": "#FFFFFF"
 		},
-		"subdeckColor": {
+		"kickerBackgroundColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": "#4d0cd4"
 		}
 	}
 }

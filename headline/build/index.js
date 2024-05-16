@@ -63,11 +63,20 @@ const Kicker = ({
     placeholder: "Enter your kicker here...",
     className: "kicker",
     style: {
+      backgroundColor: attributes.kickerBackgroundColor,
       color: attributes.kickerColor
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Custom Block Controls', 'inspector-control-groups')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    colors: colors,
+    value: attributes.kickerBackgroundColor,
+    onChange: kickerBackgroundColor => {
+      setAttributes({
+        kickerBackgroundColor
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
     colors: colors,
     value: attributes.kickerColor,
     onChange: kickerColor => {
@@ -86,7 +95,7 @@ const Headline = ({
     onChange: headline => setAttributes({
       headline
     }),
-    tagName: "h2",
+    tagName: "h1",
     className: "headline",
     value: attributes.headline,
     placeholder: "Enter your headline here...",
@@ -123,10 +132,7 @@ function Edit(props) {
     tagName: "h3",
     value: attributes.subdeck,
     className: "subdeck",
-    placeholder: "Enter your subdeck here...",
-    style: {
-      color: attributes.color
-    }
+    placeholder: "Enter your subdeck here..."
   }));
 }
 
@@ -322,7 +328,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"freddy/headline","version":"0.1.0","title":"Fancy Headline","category":"text","icon":"text-page","description":"A block to display a fancy, customizable headline","example":{},"supports":{"html":false,"typography":{"lineHeight":true,"fontSize":true,"textAlign":true}},"textdomain":"headline","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline":{"type":"string","source":"text","selector":"h1"},"subdeck":{"type":"string","source":"text","selector":"h1"},"kicker":{"type":"string","source":"text"},"headlineColor":{"type":"string","default":"#000000"},"kickerColor":{"type":"string","default":"#000000"},"subdeckColor":{"type":"string","default":"#000000"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"freddy/headline","version":"0.1.0","title":"Fancy Headline","category":"text","icon":"text-page","description":"A block to display a fancy, customizable headline","example":{},"supports":{"html":false,"typography":{"lineHeight":true,"fontSize":true,"textAlign":true}},"textdomain":"headline","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline":{"type":"string","source":"text","selector":".headline"},"subdeck":{"type":"string","source":"text","selector":".subdeck"},"kicker":{"type":"string","source":"text","selector":".kicker"},"headlineColor":{"type":"string","default":"#EA338A"},"kickerColor":{"type":"string","default":"#FFFFFF"},"kickerBackgroundColor":{"type":"string","default":"#4d0cd4"}}}');
 
 /***/ })
 

@@ -13,8 +13,21 @@
 }
 
 .headline {
-  color: #fff;
   padding: 2px;
+}
+
+.kicker {
+  display: inline-block;
+  min-width: 10rem !important;
+  padding: 1rem;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.subdeck {
+  color: #797979;
 }
 
 /*# sourceMappingURL=style-index.css.map*/
