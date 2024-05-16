@@ -1,11 +1,23 @@
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from "@wordpress/block-editor";
 
-export default function save({attributes}) {
+export default function save({ attributes }) {
+
+	const { kickerText, kickerColour, headlineText, headlineColour, descriptionText } = attributes;
+
 	return (
-		<div { ...useBlockProps.save() }>
-			<RichText.Content className='kickerText' tagName='h3' value={attributes.kickerText} style={{ backgroundColor: attributes.kickerColour, color:'white' }} />
-			<RichText.Content tagName='h1' value={attributes.headlineText} style={{ color: attributes.headlineColour }} />
-			<RichText.Content tagName='p' value={attributes.descriptionText} />
+		<div {...useBlockProps.save()}>
+			<RichText.Content
+				className="kicker-text"
+				tagName="h3"
+				value={kickerText}
+				style={{ backgroundColor: kickerColour, color: "white" }}
+			/>
+			<RichText.Content
+				tagName="h1"
+				value={headlineText}
+				style={{ color: headlineColour }}
+			/>
+			<RichText.Content tagName="p" value={descriptionText} />
 		</div>
 	);
 }

@@ -14,71 +14,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 
 
 
 
 
-
-const maxLengthKicker = 20;
-const maxLengthHeadline = 80;
-const maxLengthDesc = 150;
+const KICKER_MAX_LEN = 20;
+const HEADLINE_MAX_LEN = 80;
+const DESC_MAX_LEN = 150;
 function Edit({
   attributes,
   setAttributes
 }) {
-  const lengthChecker = function (charLimit, attributeName, textValue) {
+  const {
+    kickerText,
+    kickerColour,
+    headlineText,
+    headlineColour,
+    descriptionText
+  } = attributes;
+  const handleChange = (charLimit, attributeName, textValue) => {
     if (textValue.length > charLimit) {
-      (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.dispatch)("core/notices").createErrorNotice(`This string has more than ${charLimit} characters`);
+      (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.dispatch)("core/notices").createErrorNotice(`This string has more than ${charLimit} characters`);
     }
     setAttributes({
       [attributeName]: textValue.substring(0, charLimit)
     });
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)()
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "h3",
-    value: attributes.kickerText,
-    onChange: text => lengthChecker(maxLengthKicker, 'kickerText', text),
+    value: kickerText,
+    onChange: text => handleChange(KICKER_MAX_LEN, "kickerText", text),
     placeholder: "Kicker Text",
     style: {
-      backgroundColor: attributes.kickerColour,
-      color: 'white'
+      backgroundColor: kickerColour,
+      color: "white"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "h1",
-    value: attributes.headlineText,
-    onChange: text => lengthChecker(maxLengthHeadline, 'headlineText', text),
+    value: headlineText,
+    onChange: text => handleChange(HEADLINE_MAX_LEN, "headlineText", text),
     placeholder: "Headline Text",
     style: {
-      color: attributes.headlineColour
+      color: headlineColour
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
-    value: attributes.descriptionText,
-    onChange: text => lengthChecker(maxLengthDesc, 'descriptionText', text),
+    value: descriptionText,
+    onChange: text => handleChange(DESC_MAX_LEN, "descriptionText", text),
     placeholder: "Description Text"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
     __experimentalIsRenderedInSidebar: true,
     title: "Background colour",
     colorSettings: [{
-      value: attributes.kickerColour,
+      value: kickerColour,
       label: "Kicker colour",
       onChange: value => setAttributes({
         kickerColour: value
       })
     }, {
-      value: attributes.headlineColour,
+      value: headlineColour,
       label: "Headline colour",
       onChange: value => setAttributes({
         headlineColour: value
@@ -133,25 +137,32 @@ __webpack_require__.r(__webpack_exports__);
 function save({
   attributes
 }) {
+  const {
+    kickerText,
+    kickerColour,
+    headlineText,
+    headlineColour,
+    descriptionText
+  } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    className: "kickerText",
+    className: "kicker-text",
     tagName: "h3",
-    value: attributes.kickerText,
+    value: kickerText,
     style: {
-      backgroundColor: attributes.kickerColour,
-      color: 'white'
+      backgroundColor: kickerColour,
+      color: "white"
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h1",
-    value: attributes.headlineText,
+    value: headlineText,
     style: {
-      color: attributes.headlineColour
+      color: headlineColour
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
-    value: attributes.descriptionText
+    value: descriptionText
   }));
 }
 
@@ -228,16 +239,6 @@ module.exports = window["wp"]["components"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["data"];
-
-/***/ }),
-
-/***/ "@wordpress/i18n":
-/*!******************************!*\
-  !*** external ["wp","i18n"] ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
