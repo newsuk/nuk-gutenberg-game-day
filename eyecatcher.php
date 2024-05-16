@@ -15,3 +15,10 @@ function load_eye_catcher() {
 
 add_action( "init", "load_eye_catcher" );
 
+function eyecatcher_register_template() {
+    $post_type_object = get_post_type_object( 'post' );
+    $post_type_object->template = array(
+        array( 'blocks-course/eyecatcher' ),
+    );
+}
+add_action( 'init', 'eyecatcher_register_template' );
