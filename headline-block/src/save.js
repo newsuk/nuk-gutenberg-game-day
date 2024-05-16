@@ -20,25 +20,34 @@ export default function save( props ) {
 	const blockProps = useBlockProps.save();
 
 	return (
-		<>
+		<div { ...blockProps }>
 			<RichText.Content
-				{ ...blockProps }
-				tagName="h2"
+				tagName="h5"
 				className="kicker"
+				style={ {
+					backgroundColor: attributes.kickerColour,
+					// textDecoration: 'uppercase',
+					// border: '1px solid',
+				} }
 				value={ attributes.kicker }
 			/>
 			<RichText.Content
 				{ ...blockProps }
 				tagName="h2"
 				className="headline"
+				style={ {
+					color: attributes.headlineColour,
+					// textDecoration: 'uppercase',
+					// border: '1px solid',
+				} }
 				value={ attributes.headline }
 			/>
 			<RichText.Content
 				{ ...blockProps }
-				tagName="h2"
+				tagName="h3"
 				className="subdeck"
 				value={ attributes.subdeck }
 			/>
-		</>
+		</div>
 	);
 }

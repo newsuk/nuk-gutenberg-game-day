@@ -9,7 +9,11 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		}
 	},
 	"textdomain": "headline-block",
 	"attributes": {
@@ -20,9 +24,7 @@
 		},
 		"kickerColour": {
 			"type": "string",
-			"source": "attribute",
-			"selector": ".kicker",
-			"attribute": "style"
+			"source": "attribute"
 		},
 		"headline": {
 			"type": "string",
@@ -31,20 +33,12 @@
 		},
 		"headlineColour": {
 			"type": "string",
-			"source": "attribute",
-			"selector": ".headline",
-			"attribute": "style"
+			"source": "attribute"
 		},
 		"subdeck": {
 			"type": "string",
 			"source": "html",
 			"selector": ".subdeck"
-		},
-		"subdeckColour": {
-			"type": "string",
-			"source": "attribute",
-			"selector": ".subdeck",
-			"attribute": "style"
 		}
 	},
 	"editorScript": "file:./index.js",

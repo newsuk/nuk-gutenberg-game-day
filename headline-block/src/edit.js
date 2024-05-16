@@ -42,71 +42,84 @@ export default function Edit( props ) {
 	const { kicker, headline, subdeck } = attributes;
 	const blockProps = useBlockProps();
 
-	const onChangeTextColor = ( textColor ) => {
-		return;
+	console.log( attributes );
+
+	const onChangeTextColor = ( textColor, propName ) => {
+		setAttributes( { [ propName ]: textColor } );
 	};
 
 	return (
-		<div { ...blockProps }>
-			{ /*<InspectorControls key="setting">*/ }
-			{ /*	<div>*/ }
-			{ /*		<fieldset>*/ }
-			{ /*			<legend className="blocks-base-control__label">*/ }
-			{ /*				{ __(*/ }
-			{ /*					'Kicker Text color',*/ }
-			{ /*					'block-development-examples'*/ }
-			{ /*				) }*/ }
-			{ /*			</legend>*/ }
-			{ /*			<ColorPalette onChange={ onChangeTextColor } />*/ }
-			{ /*		</fieldset>*/ }
-			{ /*	</div>*/ }
-			{ /*	<div>*/ }
-			{ /*		<fieldset>*/ }
-			{ /*			<legend className="blocks-base-control__label">*/ }
-			{ /*				{ __(*/ }
-			{ /*					'Headline Text color',*/ }
-			{ /*					'block-development-examples'*/ }
-			{ /*				) }*/ }
-			{ /*			</legend>*/ }
-			{ /*			<ColorPalette onChange={ onChangeTextColor } />*/ }
-			{ /*		</fieldset>*/ }
-			{ /*	</div>*/ }
-			{ /*	<div>*/ }
-			{ /*		<fieldset>*/ }
-			{ /*			<legend className="blocks-base-control__label">*/ }
-			{ /*				{ __(*/ }
-			{ /*					'Subdeck Text color',*/ }
-			{ /*					'block-development-examples'*/ }
-			{ /*				) }*/ }
-			{ /*			</legend>*/ }
-			{ /*			<ColorPalette onChange={ onChangeTextColor } />*/ }
-			{ /*		</fieldset>*/ }
-			{ /*	</div>*/ }
-			{ /*</InspectorControls>*/ }
+		<div>
+			<InspectorControls key="setting">
+				<div>
+					<fieldset>
+						<legend className="blocks-base-control__label">
+							{ __(
+								'Kicker Text color',
+								'block-development-examples'
+							) }
+						</legend>
+						<ColorPalette
+							value={ attributes.kickerColour }
+							onChange={ ( textColor ) =>
+								onChangeTextColor( textColor, 'kickerColour' )
+							}
+						/>
+					</fieldset>
+				</div>
+				<div>
+					<fieldset>
+						<legend className="blocks-base-control__label">
+							{ __(
+								'Headline Text color',
+								'block-development-examples'
+							) }
+						</legend>
+						<ColorPalette
+							value={ attributes.headlineColour }
+							onChange={ ( textColor ) =>
+								onChangeTextColor( textColor, 'headlineColour' )
+							}
+						/>
+					</fieldset>
+				</div>
+			</InspectorControls>
 
 			<RichText
+				{ ...blockProps }
 				tagName="h5"
 				className={ 'kicker' }
+				style={ {
+					backgroundColor: attributes.kickerColour,
+				} }
 				value={ attributes.kicker }
 				allowedFormats={ [] }
 				onChange={ ( kicker ) => setAttributes( { kicker } ) }
 				placeholder={ __( 'Kicker...' ) }
+				disableLineBreaks
 			/>
 			<RichText
+				{ ...blockProps }
 				tagName="h1"
 				className={ 'headline' }
+				style={ {
+					color: attributes.headlineColour,
+				} }
 				value={ attributes.headline }
 				allowedFormats={ [] }
 				onChange={ ( headline ) => setAttributes( { headline } ) }
 				placeholder={ __( 'Headline...' ) }
+				disableLineBreaks
 			/>
 			<RichText
+				{ ...blockProps }
 				tagName="h3"
 				className={ 'subdeck' }
 				value={ attributes.subdeck }
 				allowedFormats={ [] }
 				onChange={ ( subdeck ) => setAttributes( { subdeck } ) }
 				placeholder={ __( 'Subdeck...' ) }
+				disableLineBreaks
 			/>
 		</div>
 	);
