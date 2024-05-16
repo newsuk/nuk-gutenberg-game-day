@@ -47,6 +47,7 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 
 	const onHeadlineChange = (headline_content) => {
 		if(headline_content.text.length > 80){
+			window.alert("Headline content is too long, please keep it under 80 characters");
 			return
 		};
 		setAttributes({
@@ -56,6 +57,7 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 
 	const onKickerChange = (kicker_content) => {
 		if(kicker_content.text.length > 20){
+			window.alert("Kicker content is too long, please keep it under 20 characters");
 			return;
 		};
 		setAttributes({
@@ -65,6 +67,7 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 
 	const onSubdeckChange = (subdeck_content) => {
 		if (subdeck_content.text.length > 150) {
+			window.alert("Subdeck content is too long, please keep it under 150 characters");
 			return;
 		}
 		setAttributes({
