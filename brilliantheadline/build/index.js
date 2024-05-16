@@ -59,7 +59,9 @@ function Edit({
   setAttributes
 }) {
   const {
-    kicker
+    kicker,
+    headline,
+    subdeck
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
@@ -68,6 +70,19 @@ function Edit({
     value: kicker,
     onChange: value => setAttributes({
       kicker: value
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+    label: "Headline",
+    value: headline,
+    onChange: value => setAttributes({
+      headline: value
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
+    label: "Subdeck",
+    help: "Add your subdeck here",
+    value: subdeck,
+    onChange: value => setAttributes({
+      subdeck: value
     })
   }));
 }

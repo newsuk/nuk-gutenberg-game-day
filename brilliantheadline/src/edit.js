@@ -20,8 +20,7 @@ import { useBlockProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { TextControl } from '@wordpress/components';
-
+import { TextControl, TextareaControl } from '@wordpress/components';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,7 +31,7 @@ import { TextControl } from '@wordpress/components';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const {kicker} = attributes;
+	const {kicker, headline, subdeck} = attributes;
 	return (
 		<div { ...useBlockProps() }>
 			<TextControl
@@ -40,6 +39,17 @@ export default function Edit({ attributes, setAttributes }) {
 				value={ kicker }
 				onChange={ ( value ) => setAttributes( { kicker: value } ) }
 			/>
+			<TextControl
+				label="Headline"
+				value={ headline }
+				onChange={ ( value ) => setAttributes( { headline: value } ) }
+			/>
+			<TextareaControl
+				label="Subdeck"
+				help="Add your subdeck here"
+				value={ subdeck }
+				onChange={ ( value ) => setAttributes( { subdeck: value } ) }
+				/>
 		</div>
 	);
 }
