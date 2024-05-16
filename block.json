@@ -1,12 +1,33 @@
 {
 	"apiVersion": 2,
-	"name": "create-block/eyecatcher",
+	"name": "blocks-course/eyecatcher",
 	"title": "Eye Catcher",
-	"description": "This is my first block.",
 	"category": "text",
-	"icon": "admin-plugins",
+	"icon": "text-page",
+	"description": "A box of text and magic!",
+	"keywords": ["text", "paragraph", "box"],
+	"supports": {
+		"html": false
+	},
 	"textdomain": "eyecatcher",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"style": "file:./build/style-index.css",
+	"attributes": {
+		"kicker": {
+			"type": "string",
+			"source": "html",
+			"selector": "h2"
+		},
+		"headline": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		},
+		"subdeck": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		}
+	}
 }
