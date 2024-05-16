@@ -46,12 +46,8 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 		subdeck_content
 	} = attributes;
 
-	const [textColor, setTextColor] = useState({
-		color: headline_text_color
-	});
-	const [backgroundColor, setBackgroundColor] = useState({
-		color: kicker_bg_color
-	});
+	const [textColor, setTextColor] = useState("#FF008C");
+	const [backgroundColor, setBackgroundColor] = useState("#5502DD");
 
 	const onHeadlineChange = (headline_content) => {
 		setAttributes({
@@ -66,6 +62,9 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 	};
 
 	const onSubdeckChange = (subdeck_content) => {
+		if(subdeck_content.length > 50){
+			return 
+		}
 		setAttributes({
 			subdeck_content
 		});
@@ -79,14 +78,14 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 					title={__("Color")}
 					colorSettings={[
 						{
-							value: textColor.color,
-							onChange: setTextColor,
-							label: __("Headline Text")
-						},
-						{
-							value: backgroundColor.color,
+							value: backgroundColor,
 							onChange: setBackgroundColor,
 							label: __("Kicker Background")
+						},
+						{
+							value: textColor,
+							onChange: setTextColor,
+							label: __("Headline Text")
 						}
 					]}
 				/>
@@ -101,9 +100,9 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				placeholder="kicker"
 				onReplace={onReplace}
 				onRemove={() => onReplace([])}
-				data-bg-color={backgroundColor.color}
+				data-bg-color={backgroundColor}
 				style={{
-					backgroundColor: backgroundColor.color,
+					backgroundColor: backgroundColor,
 					textTransform: "uppercase"
 				}}
 			/>
@@ -115,9 +114,9 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				placeholder="Headline"
 				onReplace={onReplace}
 				onRemove={() => onReplace([])}
-				data-text-color={textColor.color}
+				data-text-color={textColor}
 				style={{
-					color: textColor.color
+					color: textColor
 				}}
 			/>
 			<RichText

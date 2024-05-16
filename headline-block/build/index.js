@@ -65,12 +65,8 @@ function Edit({
     headline_text_color,
     subdeck_content
   } = attributes;
-  const [textColor, setTextColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    color: headline_text_color
-  });
-  const [backgroundColor, setBackgroundColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    color: kicker_bg_color
-  });
+  const [textColor, setTextColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#FF008C");
+  const [backgroundColor, setBackgroundColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#5502DD");
   const onHeadlineChange = headline_content => {
     setAttributes({
       headline_content
@@ -82,6 +78,9 @@ function Edit({
     });
   };
   const onSubdeckChange = subdeck_content => {
+    if (subdeck_content.length > 50) {
+      return;
+    }
     setAttributes({
       subdeck_content
     });
@@ -90,13 +89,13 @@ function Edit({
     __experimentalIsRenderedInSidebar: true,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color"),
     colorSettings: [{
-      value: textColor.color,
-      onChange: setTextColor,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Headline Text")
-    }, {
-      value: backgroundColor.color,
+      value: backgroundColor,
       onChange: setBackgroundColor,
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Kicker Background")
+    }, {
+      value: textColor,
+      onChange: setTextColor,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Headline Text")
     }]
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
@@ -107,9 +106,9 @@ function Edit({
     placeholder: "kicker",
     onReplace: onReplace,
     onRemove: () => onReplace([]),
-    "data-bg-color": backgroundColor.color,
+    "data-bg-color": backgroundColor,
     style: {
-      backgroundColor: backgroundColor.color,
+      backgroundColor: backgroundColor,
       textTransform: "uppercase"
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -120,9 +119,9 @@ function Edit({
     placeholder: "Headline",
     onReplace: onReplace,
     onRemove: () => onReplace([]),
-    "data-text-color": textColor.color,
+    "data-text-color": textColor,
     style: {
-      color: textColor.color
+      color: textColor
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
