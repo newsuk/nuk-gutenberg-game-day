@@ -16,17 +16,17 @@
 		"kicker": {
 			"type": "string",
 			"source": "html",
-			"selector": "div"
+			"selector": "div.kicker"
 		},
 		"headline": {
 			"type": "string",
 			"source": "html",
-			"selector": "div"
+			"selector": "div.headline"
 		},
 		"subdeck": {
 			"type": "string",
 			"source": "html",
-			"selector": "div"
+			"selector": "div.subdeck"
 		}
 	},
 	"editorScript": "file:./index.js",

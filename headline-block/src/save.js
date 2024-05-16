@@ -21,9 +21,9 @@ export default function save( props ) {
 
 	return (
 		<div { ...blockProps }>
-			{ attributes.kicker }
-			{ attributes.headline }
-			{ attributes.subdeck }
+			<div className="kicker">{ attributes.kicker }</div>
+			<div className="headline">{ attributes.headline }</div>
+			<div className="subdeck">{ attributes.subdeck }</div>
 		</div>
 	);
 }
