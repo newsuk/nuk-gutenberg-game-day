@@ -48,62 +48,65 @@ export default function Edit( props ) {
 
 	return (
 		<div { ...blockProps }>
-			<InspectorControls key="setting">
-				<div>
-					<fieldset>
-						<legend className="blocks-base-control__label">
-							{ __(
-								'Kicker Text color',
-								'block-development-examples'
-							) }
-						</legend>
-						<ColorPalette onChange={ onChangeTextColor } />
-					</fieldset>
-				</div>
-				<div>
-					<fieldset>
-						<legend className="blocks-base-control__label">
-							{ __(
-								'Headline Text color',
-								'block-development-examples'
-							) }
-						</legend>
-						<ColorPalette onChange={ onChangeTextColor } />
-					</fieldset>
-				</div>
-				<div>
-					<fieldset>
-						<legend className="blocks-base-control__label">
-							{ __(
-								'Subdeck Text color',
-								'block-development-examples'
-							) }
-						</legend>
-						<ColorPalette onChange={ onChangeTextColor } />
-					</fieldset>
-				</div>
-			</InspectorControls>
+			{ /*<InspectorControls key="setting">*/ }
+			{ /*	<div>*/ }
+			{ /*		<fieldset>*/ }
+			{ /*			<legend className="blocks-base-control__label">*/ }
+			{ /*				{ __(*/ }
+			{ /*					'Kicker Text color',*/ }
+			{ /*					'block-development-examples'*/ }
+			{ /*				) }*/ }
+			{ /*			</legend>*/ }
+			{ /*			<ColorPalette onChange={ onChangeTextColor } />*/ }
+			{ /*		</fieldset>*/ }
+			{ /*	</div>*/ }
+			{ /*	<div>*/ }
+			{ /*		<fieldset>*/ }
+			{ /*			<legend className="blocks-base-control__label">*/ }
+			{ /*				{ __(*/ }
+			{ /*					'Headline Text color',*/ }
+			{ /*					'block-development-examples'*/ }
+			{ /*				) }*/ }
+			{ /*			</legend>*/ }
+			{ /*			<ColorPalette onChange={ onChangeTextColor } />*/ }
+			{ /*		</fieldset>*/ }
+			{ /*	</div>*/ }
+			{ /*	<div>*/ }
+			{ /*		<fieldset>*/ }
+			{ /*			<legend className="blocks-base-control__label">*/ }
+			{ /*				{ __(*/ }
+			{ /*					'Subdeck Text color',*/ }
+			{ /*					'block-development-examples'*/ }
+			{ /*				) }*/ }
+			{ /*			</legend>*/ }
+			{ /*			<ColorPalette onChange={ onChangeTextColor } />*/ }
+			{ /*		</fieldset>*/ }
+			{ /*	</div>*/ }
+			{ /*</InspectorControls>*/ }
 
-			<TextControl
-				label="Kicker"
-				value={ kicker }
-				onChange={ ( newContent ) =>
-					setAttributes( { kicker: newContent } )
-				}
+			<RichText
+				tagName="h5"
+				className={ 'kicker' }
+				value={ attributes.kicker }
+				allowedFormats={ [] }
+				onChange={ ( kicker ) => setAttributes( { kicker } ) }
+				placeholder={ __( 'Kicker...' ) }
 			/>
-			<TextControl
-				label="Headline"
-				value={ headline }
-				onChange={ ( newContent ) =>
-					setAttributes( { headline: newContent } )
-				}
+			<RichText
+				tagName="h1"
+				className={ 'headline' }
+				value={ attributes.headline }
+				allowedFormats={ [] }
+				onChange={ ( headline ) => setAttributes( { headline } ) }
+				placeholder={ __( 'Headline...' ) }
 			/>
-			<TextControl
-				label="Subdeck"
-				value={ subdeck }
-				onChange={ ( newContent ) =>
-					setAttributes( { subdeck: newContent } )
-				}
+			<RichText
+				tagName="h3"
+				className={ 'subdeck' }
+				value={ attributes.subdeck }
+				allowedFormats={ [] }
+				onChange={ ( subdeck ) => setAttributes( { subdeck } ) }
+				placeholder={ __( 'Subdeck...' ) }
 			/>
 		</div>
 	);

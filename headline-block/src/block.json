@@ -16,17 +16,35 @@
 		"kicker": {
 			"type": "string",
 			"source": "html",
-			"selector": "div.kicker"
+			"selector": ".kicker"
+		},
+		"kickerColour": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".kicker",
+			"attribute": "style"
 		},
 		"headline": {
 			"type": "string",
 			"source": "html",
-			"selector": "div.headline"
+			"selector": ".headline"
+		},
+		"headlineColour": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".headline",
+			"attribute": "style"
 		},
 		"subdeck": {
 			"type": "string",
 			"source": "html",
-			"selector": "div.subdeck"
+			"selector": ".subdeck"
+		},
+		"subdeckColour": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".subdeck",
+			"attribute": "style"
 		}
 	},
 	"editorScript": "file:./index.js",
