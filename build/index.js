@@ -38,7 +38,7 @@ function Edit({
       kicker: value
     }),
     value: kicker,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your Text', 'eyecatcher'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('kicker', 'eyecatcher'),
     tagName: "h2",
     allowedFormats: ['core/bold']
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -47,7 +47,7 @@ function Edit({
       headline: value
     }),
     value: headline,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your Headline', 'eyecatcher'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add Headline', 'eyecatcher'),
     tagName: "h1",
     allowedFormats: ['core/bold']
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -56,7 +56,7 @@ function Edit({
       subdeck: value
     }),
     value: subdeck,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your Subdeck', 'eyecatcher'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add Subdeck', 'eyecatcher'),
     tagName: "p",
     allowedFormats: ['core/bold']
   }));
@@ -229,7 +229,7 @@ module.exports = window["wp"]["i18n"];
   \********************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"blocks-course/eyecatcher","title":"Eye Catcher","category":"text","icon":"text-page","description":"A box of text and magic!","keywords":["text","paragraph","box"],"supports":{"html":false},"textdomain":"eyecatcher","editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css","attributes":{"kicker":{"type":"string","source":"html","selector":"h2"},"headline":{"type":"string","source":"html","selector":"h1"},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"blocks-course/eyecatcher","title":"Eye Catcher","category":"text","icon":"text-page","description":"A box of text and magic!","keywords":["text","paragraph","box"],"supports":{"html":false,"color":{"background":true}},"textdomain":"eyecatcher","editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css","attributes":{"kicker":{"type":"string","source":"html","selector":"h2"},"headline":{"type":"string","source":"html","selector":"h1","style":{"type":"object","default":{"color":{"background":"#b50000"}}}},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
 
 /***/ })
 
