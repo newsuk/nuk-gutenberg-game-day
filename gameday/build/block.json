@@ -31,6 +31,9 @@
       "source": "html",
       "selector": "h3"
     },
+    "kickerDark": {
+      "type": "boolean"
+    },
     "headline": {
       "type": "string",
       "source": "html",

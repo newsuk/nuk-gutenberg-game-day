@@ -35,56 +35,109 @@ function Edit({
   isSelected
 }) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  console.log('>>> bp', blockProps);
+  const [toggle, setToggle] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(false);
   const MAX_KICKER_LENGTH = 20;
   const MAX_HEADLINE_LENGTH = 80;
   const MAX_SUBDECK_LENGTH = 150;
-  const [kicker, setKicker] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)('');
-  const [headline, setHeadline] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)('');
-  const [subdeck, setSubdeck] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)('');
-  const isInvalid = kicker.length > MAX_KICKER_LENGTH || headline > MAX_HEADLINE_LENGTH || subdeck > MAX_SUBDECK_LENGTH;
+  const {
+    kicker,
+    headline,
+    subdeck
+  } = attributes;
+  const isInvalid = kicker.length > MAX_KICKER_LENGTH || headline.length > MAX_HEADLINE_LENGTH || subdeck.length > MAX_SUBDECK_LENGTH;
   const onChangeKicker = kicker => {
-    setKicker(kicker);
+    if (kicker.length > MAX_KICKER_LENGTH) return;
+    const limitInput = kicker.substring(0, MAX_KICKER_LENGTH);
     setAttributes({
-      ...attributes,
-      kicker
+      kicker: kicker
     });
   };
   const onChangeHeadline = headline => {
-    setHeadline(headline);
+    if (headline.length > MAX_HEADLINE_LENGTH) return;
+    const limitInput = headline.substring(0, MAX_HEADLINE_LENGTH);
     setAttributes({
-      ...attributes,
-      headline
+      headline: headline
     });
   };
   const onChangeSubdeck = subdeck => {
-    setSubdeck(subdeck);
+    // if (subdeck.length > MAX_SUBDECK_LENGTH) return;
+    // const limitInput = subdeck.substring(0, MAX_SUBDECK_LENGTH);
     setAttributes({
-      ...attributes,
-      subdeck
+      subdeck: subdeck
     });
   };
+  const onHexChange = (attribute, hexCode) => {
+    setAttributes({
+      [attribute]: hexCode
+    });
+  };
+  const onToggle = value => {
+    const newValue = !toggle;
+    setToggle(newValue);
+    setAttributes({
+      kickerDark: newValue
+    });
+  };
+  const onKickerHexChange = hexCode => onHexChange('kickerHex', hexCode);
+  const onHeadlineHexChange = hexCode => onHexChange('headlineHex', hexCode);
+  const onSubdeckHexChange = hexCode => onHexChange('subdeckHex', hexCode);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    key: "setting"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
+    className: "blocks-base-control__label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Kicker Background Colour', 'block-development-examples')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
+    onChange: onKickerHexChange
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FormToggle, {
+    checked: toggle,
+    onChange: onToggle
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
+    className: "blocks-base-control__label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Headline Colour', 'block-development-examples')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
+    onChange: onHeadlineHexChange
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("fieldset", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("legend", {
+    className: "blocks-base-control__label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Subdeck Colour', 'block-development-examples')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
+    onChange: onSubdeckHexChange
+  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      backgroundColor: `${attributes.kickerHex}`,
+      color: attributes.kickerDark ? '#fff' : '#000'
+    }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    style: {
+      backgroundColor: `${attributes.kickerHex}`
+    },
     ...blockProps,
     className: isInvalid ? 'invalid input' : 'input',
     tagName: "h3",
     onChange: onChangeKicker,
-    value: kicker
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, Math.max(MAX_KICKER_LENGTH - kicker.length, 0))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    value: kicker,
+    allowedFormats: []
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_KICKER_LENGTH - kicker.length, 0)} / ${MAX_KICKER_LENGTH}`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      'color': `${attributes.headlineHex}`
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ...blockProps,
     className: isInvalid ? 'invalid input' : 'input',
     tagName: "h1",
     onChange: onChangeHeadline,
-    value: headline
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, Math.max(MAX_HEADLINE_LENGTH - headline.length, 0))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    value: headline,
+    allowedFormats: ['core/bold']
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_HEADLINE_LENGTH - headline.length, 0)} / ${MAX_HEADLINE_LENGTH}`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      'color': `${attributes.subdeckHex}`
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ...blockProps,
     className: isInvalid ? 'invalid input' : 'input',
     tagName: "p",
     onChange: onChangeSubdeck,
-    value: subdeck
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, Math.max(MAX_SUBDECK_LENGTH - subdeck.length, 0))));
+    value: subdeck,
+    allowedFormats: []
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("em", null, `${Math.max(MAX_SUBDECK_LENGTH - subdeck.length, 0)} / ${MAX_SUBDECK_LENGTH}`)));
 }
 
 /***/ }),
@@ -272,7 +325,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gameday","version":"0.1.0","title":"Gameday","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gameday","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kickerHex":{"type":"string"},"headlineHex":{"type":"string"},"subdeckHex":{"type":"string"},"kicker":{"type":"string","source":"html","selector":"h3"},"headline":{"type":"string","source":"html","selector":"h1"},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gameday","version":"0.1.0","title":"Gameday","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gameday","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kickerHex":{"type":"string"},"headlineHex":{"type":"string"},"subdeckHex":{"type":"string"},"kicker":{"type":"string","source":"html","selector":"h3"},"kickerDark":{"type":"boolean"},"headline":{"type":"string","source":"html","selector":"h1"},"subdeck":{"type":"string","source":"html","selector":"p"}}}');
 
 /***/ })
 

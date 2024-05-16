@@ -5,6 +5,14 @@
  */
 
 .wp-block-create-block-gameday {
+	span {
+		color: black;
+	}
+
+	em {
+		color: black;
+	}
+
 	border: 1px dotted #f00;
 
 	.invalid {
