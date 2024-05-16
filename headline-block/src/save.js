@@ -16,13 +16,16 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-	const { headline_content, headline_bg_color, headline_text_color } = attributes;
+	const { headline_content, headline_bg_color, headline_text_color } =
+		attributes;
 	return (
 		<div {...useBlockProps.save()}>
 			<h1>
-				<RichText.Content value={headline_content}
-				data-bg-color={headline_bg_color}
-				data-text-color={headline_text_color} />
+				<RichText.Content
+					value={headline_content}
+					data-bg-color={headline_bg_color}
+					data-text-color={headline_text_color}
+				/>
 			</h1>
 		</div>
 	);

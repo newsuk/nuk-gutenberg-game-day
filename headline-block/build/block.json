@@ -22,13 +22,18 @@
       "source": "rich-text",
       "selector": "h1"
     },
-    "headline_bg_color": {
+    "kicker_content": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".kicker"
+    },
+    "kicker_bg_color": {
       "type": "string",
-      "selector": "h1[data-bg-color]"
+      "selector": ".kicker"
     },
     "headline_text_color": {
       "type": "string",
-      "selector": "h1[data-text-color]"
+      "selector": "h1"
     }
   }
 }

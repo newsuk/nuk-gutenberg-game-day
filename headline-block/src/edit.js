@@ -40,20 +40,25 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes, onReplace }) {
-	const { headline_content, headline_bg_color, headline_text_color } = attributes;
+	const { headline_content, kicker_content, kicker_bg_color, headline_text_color } = attributes;
 
 	const onHeadlineChange = (headline_content) => {
 		setAttributes({
 			headline_content
 		});
 	};
-	const onChangeBGColor = ( hexColor ) => {
-		setAttributes( { headline_bg_color: hexColor } );
+	const onKickerChange = (kicker_content) => {
+		setAttributes({
+			kicker_content
+		});
 	};
 
-	const onChangeTextColor = ( hexColor ) => {
-		setAttributes( { headline_text_color: hexColor } );
+	const onChangeBGColor = (color) => {
+		setAttributes({kicker_bg_color: color});
 	};
+	const onChangeTextColor = (color) => {
+		setAttributes({headline_text_color: color});
+	}
 	return (
 		<>
 			<InspectorControls key="setting">
@@ -74,6 +79,19 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 					</fieldset>
 				</div>
 			</InspectorControls>
+
+			<RichText
+				tagName="p"
+				identifier="kicker_content"
+				onChange={onKickerChange}
+				className="kicker"
+				value={kicker_content}
+				placeholder="Kicker"
+				style={{
+					backgroundColor: kicker_bg_color,
+					textTransform: "uppercase"
+				}}
+			/>
 			<RichText
 				tagName="h1"
 				identifier="headline_content"
@@ -82,9 +100,8 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				placeholder="Headline"
 				onReplace={onReplace}
 				onRemove={() => onReplace([])}
-				data-bg-color={headline_bg_color}
-				data-text-color={headline_text_color}
-				style={{ backgroundColor: headline_bg_color, color: headline_text_color }}
+				style={{
+					color: headline_text_color}}
 			/>
 		</>
 	);

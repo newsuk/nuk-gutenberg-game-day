@@ -58,7 +58,8 @@ function Edit({
 }) {
   const {
     headline_content,
-    headline_bg_color,
+    kicker_content,
+    kicker_bg_color,
     headline_text_color
   } = attributes;
   const onHeadlineChange = headline_content => {
@@ -66,14 +67,19 @@ function Edit({
       headline_content
     });
   };
-  const onChangeBGColor = hexColor => {
+  const onKickerChange = kicker_content => {
     setAttributes({
-      headline_bg_color: hexColor
+      kicker_content
     });
   };
-  const onChangeTextColor = hexColor => {
+  const onChangeBGColor = color => {
     setAttributes({
-      headline_text_color: hexColor
+      kicker_bg_color: color
+    });
+  };
+  const onChangeTextColor = color => {
+    setAttributes({
+      headline_text_color: color
     });
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
@@ -88,6 +94,17 @@ function Edit({
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text color", "block-development-examples")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
     onChange: onChangeTextColor
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    identifier: "kicker_content",
+    onChange: onKickerChange,
+    className: "kicker",
+    value: kicker_content,
+    placeholder: "Kicker",
+    style: {
+      backgroundColor: kicker_bg_color,
+      textTransform: "uppercase"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h1",
     identifier: "headline_content",
     onChange: onHeadlineChange,
@@ -95,10 +112,7 @@ function Edit({
     placeholder: "Headline",
     onReplace: onReplace,
     onRemove: () => onReplace([]),
-    "data-bg-color": headline_bg_color,
-    "data-text-color": headline_text_color,
     style: {
-      backgroundColor: headline_bg_color,
       color: headline_text_color
     }
   }));
@@ -281,7 +295,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headline-block","version":"0.1.0","title":"Headline Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"headline-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline_content":{"type":"rich-text","source":"rich-text","selector":"h1"},"headline_bg_color":{"type":"string","selector":"h1[data-bg-color]"},"headline_text_color":{"type":"string","selector":"h1[data-text-color]"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headline-block","version":"0.1.0","title":"Headline Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"headline-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline_content":{"type":"rich-text","source":"rich-text","selector":"h1"},"kicker_content":{"type":"rich-text","source":"rich-text","selector":".kicker"},"kicker_bg_color":{"type":"string","selector":".kicker"},"headline_text_color":{"type":"string","selector":"h1"}}}');
 
 /***/ })
 
