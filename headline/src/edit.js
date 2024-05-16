@@ -33,45 +33,53 @@ export default function Edit(props) {
 	const {
 		attributes,
 		setAttributes,
-		className,
-		isSelected,
-		onReplace,
-		mergeBlocks,
-		clientId,
 	} = props;
 	const {
-		tagName,
-		textAlign,
-		linkTarget,
-		placeholder,
-		rel,
-		style,
-		text,
-		url,
-		width,
-		metadata,
+		headlineText,
+		kickerText,
+		subdeckText
 	} = attributes;
 
 	return (
 		<div {...useBlockProps()}>
 			<div className="">
-				kicker
-			</div>
-			<div>
 				<RichText
-					aria-label={__('Button text')}
-					placeholder={placeholder || __('Add text…')}
-					value={text}
+					aria-label={__('Kicker text')}
+					placeholder={ __('Add Kicker…')}
+					value={kickerText}
 					onChange={(value) => {
 						setAttributes({
-							text: value,
+							kickerText: value,
 						});
 					}
 					}
 				></RichText>
 			</div>
 			<div>
-				subdeck
+				<RichText
+					aria-label={__('Headline text')}
+					placeholder={__('Add headline…')}
+					value={headlineText}
+					onChange={(value) => {
+						setAttributes({
+							headlineText: value,
+						});
+					}
+					}
+				></RichText>
+			</div>
+			<div>
+				<RichText
+					aria-label={__('Subdeck text')}
+					placeholder={__('Add subdeck…')}
+					value={subdeckText}
+					onChange={(value) => {
+						setAttributes({
+							subdeckText: value,
+						});
+					}
+					}
+				></RichText>
 			</div>
 		</div>
 	);

@@ -15,31 +15,24 @@ import {useBlockProps} from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save( attributes ) {
+export default function save(props) {
+	const {attributes} = props
 	const {
-		tagName,
-		type,
-		textAlign,
-		fontSize,
-		linkTarget,
-		rel,
-		style,
-		text,
-		title,
-		url,
-		width,
+		headlineText,
+		kickerText,
+		subdeckText
 	} = attributes;
 
 	return (
 		<div {...useBlockProps.save()}>
 			<div>
-				kicker updated
+				{kickerText}
 			</div>
 			<div>
-				{text}
+				{headlineText}
 			</div>
 			<div>
-				subdeck
+				{subdeckText}
 			</div>
 		</div>
 	);

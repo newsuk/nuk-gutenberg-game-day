@@ -38,10 +38,15 @@ registerBlockType( metadata.name, {
 	save,
 
 	attributes: {
-		text: {
+		headlineText: {
 			type: 'string',
-			source: 'rich-text',
-			__experimentalRole: 'content'
+		},
+		kickerText: {
+			type: 'string',
+		},
+		subdeckText: {
+			type: 'string',
 		}
+
 	}
 } );
