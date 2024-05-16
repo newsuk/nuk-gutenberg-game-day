@@ -65,8 +65,10 @@ function Edit({
     headline_text_color,
     subdeck_content
   } = attributes;
-  const [textColor, setTextColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#FF008C");
-  const [backgroundColor, setBackgroundColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#5502DD");
+
+  // const [textColor, setTextColor] = useState("#FF008C");
+  // const [backgroundColor, setBackgroundColor] = useState(kicker_bg_color);
+
   const onHeadlineChange = headline_content => {
     setAttributes({
       headline_content
@@ -85,16 +87,28 @@ function Edit({
       subdeck_content
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+  const handleTextColorChange = color => {
+    setAttributes({
+      headline_text_color: color
+    });
+    // setTextColor(color);
+  };
+  const handleBackgroundColorChange = color => {
+    setAttributes({
+      kicker_bg_color: color
+    });
+    // setBackgroundColor(color);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
     __experimentalIsRenderedInSidebar: true,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color"),
     colorSettings: [{
-      value: backgroundColor,
-      onChange: setBackgroundColor,
+      value: kicker_bg_color,
+      onChange: handleBackgroundColorChange,
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Kicker Background")
     }, {
-      value: textColor,
-      onChange: setTextColor,
+      value: headline_text_color,
+      onChange: handleTextColorChange,
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Headline Text")
     }]
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -103,25 +117,29 @@ function Edit({
     onChange: onKickerChange,
     className: "kicker",
     value: kicker_content,
-    placeholder: "kicker",
+    placeholder: "Enter kicker...",
     onReplace: onReplace,
     onRemove: () => onReplace([]),
-    "data-bg-color": backgroundColor,
+    "data-bg-color": kicker_bg_color,
     style: {
-      backgroundColor: backgroundColor,
-      textTransform: "uppercase"
+      backgroundColor: kicker_bg_color,
+      textTransform: "uppercase",
+      color: "white",
+      padding: "0.25rem",
+      width: "fit-content",
+      display: "inline-block"
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h1",
     identifier: "headline_content",
     onChange: onHeadlineChange,
     value: headline_content,
-    placeholder: "Headline",
+    placeholder: "Enter headline...",
     onReplace: onReplace,
     onRemove: () => onReplace([]),
-    "data-text-color": textColor,
+    "data-text-color": headline_text_color,
     style: {
-      color: textColor
+      color: headline_text_color
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
@@ -129,7 +147,7 @@ function Edit({
     onChange: onSubdeckChange,
     className: "subdeck",
     value: subdeck_content,
-    placeholder: "subdeck",
+    placeholder: "Enter subdeck...",
     onReplace: onReplace,
     onRemove: () => onReplace([])
   }));
@@ -228,15 +246,33 @@ function save({
 }) {
   const {
     headline_content,
-    headline_bg_color,
-    headline_text_color
+    kicker_content,
+    kicker_bg_color,
+    headline_text_color,
+    subdeck_content
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    value: headline_content,
-    "data-bg-color": headline_bg_color,
-    "data-text-color": headline_text_color
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    "data-bg-color": kicker_bg_color,
+    className: "kicker",
+    style: {
+      backgroundColor: kicker_bg_color
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    value: kicker_content
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
+    "data-text-color": headline_text_color,
+    className: "headline",
+    style: {
+      color: headline_text_color
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    value: headline_content
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "subdeck"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    value: subdeck_content
   })));
 }
 
@@ -312,7 +348,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headline-block","version":"0.1.0","title":"Headline Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"headline-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline_content":{"type":"rich-text","source":"rich-text","selector":"h1"},"headline_text_color":{"type":"string","selector":"h1[data-text-color]"},"kicker_content":{"type":"rich-text","source":"rich-text","selector":".kicker"},"kicker_bg_color":{"type":"string","selector":".kicker[data-bg-color]"},"subdeck_content":{"type":"rich-text","source":"rich-text","selector":".subdeck"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/headline-block","version":"0.1.0","title":"Headline Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"headline-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"headline_content":{"type":"rich-text","source":"rich-text","selector":"h1"},"headline_text_color":{"type":"string","selector":"h1[data-text-color]","default":"#FF008C"},"kicker_content":{"type":"rich-text","source":"rich-text","selector":".kicker"},"kicker_bg_color":{"type":"string","selector":".kicker[data-bg-color]","default":"#5502DD"},"subdeck_content":{"type":"rich-text","source":"rich-text","selector":".subdeck"}}}');
 
 /***/ })
 

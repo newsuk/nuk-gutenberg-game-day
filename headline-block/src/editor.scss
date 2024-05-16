@@ -1,9 +1,23 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+* {
+	font-family: 'Inter', sans-serif;
+}
+.fun-headline {
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+.kicker {
+	//display: inline-block;
+	text-align: left;
+	color: white;
+	font-weight: bold;
+	padding: 4px 8px;
+	width: fit-content;
+	text-transform: uppercase;
+}
 
-.wp-block-create-block-headline-block {
-	border: 1px dotted #f00;
+.headline {
+	margin-top: 0;
+}
+
+.subdeck {
+	margin-top: 0;
 }

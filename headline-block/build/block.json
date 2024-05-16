@@ -24,7 +24,8 @@
     },
     "headline_text_color": {
       "type": "string",
-      "selector": "h1[data-text-color]"
+      "selector": "h1[data-text-color]",
+      "default": "#FF008C"
     },
     "kicker_content": {
       "type": "rich-text",
@@ -33,7 +34,8 @@
     },
     "kicker_bg_color": {
       "type": "string",
-      "selector": ".kicker[data-bg-color]"
+      "selector": ".kicker[data-bg-color]",
+      "default": "#5502DD"
     },
     "subdeck_content": {
       "type": "rich-text",

@@ -46,8 +46,8 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 		subdeck_content
 	} = attributes;
 
-	const [textColor, setTextColor] = useState("#FF008C");
-	const [backgroundColor, setBackgroundColor] = useState("#5502DD");
+	// const [textColor, setTextColor] = useState("#FF008C");
+	// const [backgroundColor, setBackgroundColor] = useState(kicker_bg_color);
 
 	const onHeadlineChange = (headline_content) => {
 		setAttributes({
@@ -62,29 +62,43 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 	};
 
 	const onSubdeckChange = (subdeck_content) => {
-		if(subdeck_content.length > 50){
-			return 
+		if (subdeck_content.length > 50) {
+			return;
 		}
 		setAttributes({
 			subdeck_content
 		});
 	};
 
+	const handleTextColorChange = (color) => {
+		setAttributes({
+			headline_text_color: color
+		});
+		// setTextColor(color);
+	}
+
+	const handleBackgroundColorChange = (color) => {
+		setAttributes({
+			kicker_bg_color: color
+		});
+		// setBackgroundColor(color);
+	}
+
 	return (
-		<>
+		<div>
 			<InspectorControls>
 				<PanelColorSettings
 					__experimentalIsRenderedInSidebar
 					title={__("Color")}
 					colorSettings={[
 						{
-							value: backgroundColor,
-							onChange: setBackgroundColor,
+							value: kicker_bg_color,
+							onChange: handleBackgroundColorChange,
 							label: __("Kicker Background")
 						},
 						{
-							value: textColor,
-							onChange: setTextColor,
+							value: headline_text_color,
+							onChange: handleTextColorChange,
 							label: __("Headline Text")
 						}
 					]}
@@ -97,13 +111,17 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				onChange={onKickerChange}
 				className="kicker"
 				value={kicker_content}
-				placeholder="kicker"
+				placeholder="Enter kicker..."
 				onReplace={onReplace}
 				onRemove={() => onReplace([])}
-				data-bg-color={backgroundColor}
+				data-bg-color={kicker_bg_color}
 				style={{
-					backgroundColor: backgroundColor,
-					textTransform: "uppercase"
+					backgroundColor: kicker_bg_color,
+					textTransform: "uppercase",
+					color: "white",
+					padding: "0.25rem",
+					width: "fit-content",
+					display: "inline-block"
 				}}
 			/>
 			<RichText
@@ -111,12 +129,12 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				identifier="headline_content"
 				onChange={onHeadlineChange}
 				value={headline_content}
-				placeholder="Headline"
+				placeholder="Enter headline..."
 				onReplace={onReplace}
 				onRemove={() => onReplace([])}
-				data-text-color={textColor}
+				data-text-color={headline_text_color}
 				style={{
-					color: textColor
+					color: headline_text_color
 				}}
 			/>
 			<RichText
@@ -125,10 +143,10 @@ export default function Edit({ attributes, setAttributes, onReplace }) {
 				onChange={onSubdeckChange}
 				className="subdeck"
 				value={subdeck_content}
-				placeholder="subdeck"
+				placeholder="Enter subdeck..."
 				onReplace={onReplace}
 				onRemove={() => onReplace([])}
 			/>
-		</>
+		</div>
 	);
 }
