@@ -7,3 +7,8 @@
  .example {
 	color: red
  }
+
+ // hide the post title.
+ .wp-block-post-title {
+    display: none;
+}

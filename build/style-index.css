@@ -11,4 +11,8 @@
   color: red;
 }
 
+.wp-block-post-title {
+  display: none;
+}
+
 /*# sourceMappingURL=style-index.css.map*/

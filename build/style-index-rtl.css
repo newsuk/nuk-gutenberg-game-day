@@ -10,3 +10,7 @@
 .example {
   color: red;
 }
+
+.wp-block-post-title {
+  display: none;
+}
