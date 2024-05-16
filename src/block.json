@@ -18,16 +18,30 @@
     },
     "attributes": {
         "headline": {
-            "type": "string"
+            "type": "string",
+            "source": "html",
+            "selector": ".headline"
         },
         "headlineColour": {
-            "type": "string"
+            "type": "string",
+            "default": "#fb188b"
+        },
+        "customHeadlineColour": {
+            "type": "string",
+            "default": "#fb188b"
         },
         "kickerBackgroundColour": {
-            "type": "string"
+            "type": "string",
+            "default": "#5502dd"
+        },
+        "customKickerBackgroundColour": {
+            "type": "string",
+            "default": "#5502dd"
         },
         "kicker": {
-            "type": "string"
+            "type": "string",
+            "source": "html",
+            "selector": ".kicker"
         },
         "subdeck": {
             "type": "string"

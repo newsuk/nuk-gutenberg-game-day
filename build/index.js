@@ -61,38 +61,118 @@ __webpack_require__.r(__webpack_exports__);
 function Edit({
   attributes: {
     headline,
-    headlineColour,
+    customHeadlineColour,
     kicker,
-    kickerBackgroundColour,
+    customKickerBackgroundColour,
     subdeck
   },
   setAttributes,
+  headlineColour,
+  kickerBackgroundColour,
+  setKickerBackgroundColour,
+  setHeadlineColour,
   context: {
     postType,
     postId
-  }
+  },
+  style,
+  clientId
 }) {
+  const colorGradientSettings = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.__experimentalUseMultipleOriginColorsAndGradients)();
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+  const kickerColourDropdown = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.__experimentalColorGradientSettingsDropdown, {
+    settings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Kicker Background', 'devblog'),
+      colorValue: kickerBackgroundColour.color || customKickerBackgroundColour,
+      onColorChange: value => {
+        setKickerBackgroundColour(value);
+        setAttributes({
+          customKickerBackgroundColour: value
+        });
+      }
+    }],
+    panelId: clientId,
+    hasColorsOrGradients: false,
+    disableCustomColors: false,
+    __experimentalIsRenderedInSidebar: true,
+    ...colorGradientSettings
+  });
+  const headlineColourDropdown = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.__experimentalColorGradientSettingsDropdown, {
+    settings: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Headline', 'devblog'),
+      colorValue: headlineColour.color || customHeadlineColour,
+      onColorChange: value => {
+        setHeadlineColour(value);
+        setAttributes({
+          customHeadlineColour: value
+        });
+      }
+    }],
+    panelId: clientId,
+    hasColorsOrGradients: false,
+    disableCustomColors: false,
+    __experimentalIsRenderedInSidebar: true,
+    ...colorGradientSettings
+  });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Character Limit Here"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalInputControl, {
-    label: "Kicker",
-    value: kicker,
-    onChange: newKicker => setAttributes({
-      kicker: newKicker
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalInputControl, {
-    label: "Headline",
-    value: headline,
-    onChange: newHeadline => setAttributes({
-      headline: newHeadline
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalInputControl, {
-    label: "Subdeck",
-    value: subdeck,
-    onChange: newSubdeck => setAttributes({
-      subdeck: newSubdeck
-    })
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    group: "color"
+  }, kickerColourDropdown, headlineColourDropdown), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    ...blockProps,
+    tagName: "div" // The tag here is the element output and editable in the admin
+    ,
+    value: kicker // Any existing content, either from the database or an attribute default
+    ,
+    allowedFormats: ['core/bold', 'core/italic'] // Allow the content to be made bold or italic, but do not allow other formatting options
+    ,
+    onChange: kicker => setAttributes({
+      kicker
+    }) // Store updated content as a block attribute
+    ,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Kicker...') // Display this text before any content has been added by the user
+    ,
+    className: "kicker",
+    style: {
+      backgroundColor: customKickerBackgroundColour,
+      color: "#fff"
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    ...blockProps,
+    tagName: "h2" // The tag here is the element output and editable in the admin
+    ,
+    value: headline // Any existing content, either from the database or an attribute default
+    ,
+    allowedFormats: ['core/bold', 'core/italic'] // Allow the content to be made bold or italic, but do not allow other formatting options
+    ,
+    onChange: headline => setAttributes({
+      headline
+    }) // Store updated content as a block attribute
+    ,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading...') // Display this text before any content has been added by the user
+    ,
+    className: "headline",
+    style: {
+      color: customHeadlineColour
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    ...blockProps,
+    tagName: "p" // The tag here is the element output and editable in the admin
+    ,
+    value: subdeck // Any existing content, either from the database or an attribute default
+    ,
+    allowedFormats: ['core/bold', 'core/italic'] // Allow the content to be made bold or italic, but do not allow other formatting options
+    ,
+    onChange: subdeck => setAttributes({
+      subdeck
+    }) // Store updated content as a block attribute
+    ,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Subdeck...') // Display this text before any content has been added by the user
+    ,
+    className: "subdeck",
+    style: {
+      color: "#333"
+    }
   }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.withColors)({
@@ -156,29 +236,10 @@ __webpack_require__.r(__webpack_exports__);
 // } );
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
-  title: 'Colourful Headline TITLE',
+  title: 'Colourful Headline',
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
-// registerBlockType('colourful-head', {
-// 	title: 'Colourful Headline',
-// 	icon: 'editor-table',
-// 	category: 'design',
-// 	edit: DisplayComponent,
-// 	supports: {
-// 	  inserter: true,
-// 	  multiple: false,
-// 	  reusable: false,
-// 	  html: false,
-// 	},
-// 	save: () => (
-// 	  <section>
-// 		<div className="container">
-// 		  <InnerBlocks.Content />
-// 		</div>
-// 	  </section>
-// 	),
-//   });
 
 /***/ }),
 
@@ -217,17 +278,31 @@ __webpack_require__.r(__webpack_exports__);
 function save({
   attributes
 }) {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "span",
-    value: attributes.kicker
+    className: "kicker",
+    tagName: "div",
+    value: attributes.kicker,
+    style: {
+      backgroundColor: attributes.customKickerBackgroundColour,
+      color: "#fff"
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "h3",
-    value: attributes.headline
+    className: "headline",
+    tagName: "h2",
+    value: attributes.headline,
+    style: {
+      color: attributes.customHeadlineColour
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "h3",
-    value: attributes.subdeck
+    className: "subdeck",
+    tagName: "p",
+    value: attributes.subdeck,
+    style: {
+      color: "#333"
+    }
   }));
 }
 
@@ -323,7 +398,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/colourful-title","version":"0.1.0","title":"Colourful Title","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{"attributes":{"headline":"Colourful Headlines Increase Reader Engagement by 400%","headlineColour":"#ff008c","kickerBackgroundColour":"#5502dd","kicker":"REAL SCIENCE","subdeck":"Boffins at the University of Science discover the secrets of colourful headlines and how they hypnotise anyone who looks at them"}},"attributes":{"headline":{"type":"string"},"headlineColour":{"type":"string"},"kickerBackgroundColour":{"type":"string"},"kicker":{"type":"string"},"subdeck":{"type":"string"}},"supports":{"color":{"text":false,"background":false},"html":false,"multiple":false},"usesContext":["postId","postType"],"textdomain":"colourful-title","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/colourful-title","version":"0.1.0","title":"Colourful Title","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{"attributes":{"headline":"Colourful Headlines Increase Reader Engagement by 400%","headlineColour":"#ff008c","kickerBackgroundColour":"#5502dd","kicker":"REAL SCIENCE","subdeck":"Boffins at the University of Science discover the secrets of colourful headlines and how they hypnotise anyone who looks at them"}},"attributes":{"headline":{"type":"string","source":"html","selector":".headline"},"headlineColour":{"type":"string","default":"#fb188b"},"customHeadlineColour":{"type":"string","default":"#fb188b"},"kickerBackgroundColour":{"type":"string","default":"#5502dd"},"customKickerBackgroundColour":{"type":"string","default":"#5502dd"},"kicker":{"type":"string","source":"html","selector":".kicker"},"subdeck":{"type":"string"}},"supports":{"color":{"text":false,"background":false},"html":false,"multiple":false},"usesContext":["postId","postType"],"textdomain":"colourful-title","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

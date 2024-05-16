@@ -30,7 +30,6 @@ function colourful_head_colourful_head_block_init() {
 add_action( 'init', 'colourful_head_colourful_head_block_init' );
 
 function register_meta_for_colourful_title_block() {
-
 	register_meta( 'post', 'colourful_title_meta', array(
 		'auth_callback' 		=> 'is_user_logged_in',
 		'type'          		=> 'string',

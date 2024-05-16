@@ -16,7 +16,8 @@ import {
 	useBlockProps,
 	withColors,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
-	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+    RichText
 } from '@wordpress/block-editor';
 
 import { __experimentalInputControl as InputControl } from '@wordpress/components';
@@ -43,37 +44,99 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 function Edit( {
-	attributes: { headline, headlineColour, kicker, kickerBackgroundColour, subdeck },
+	attributes: { headline, customHeadlineColour, kicker, customKickerBackgroundColour, subdeck },
 	setAttributes,
+    headlineColour,
+    kickerBackgroundColour,
+    setKickerBackgroundColour,
+    setHeadlineColour,
 	context: { postType, postId },
+    style,
+    clientId
 } ) {
+    const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
 	const blockProps = useBlockProps();
 
+    const kickerColourDropdown = (
+        <ColorGradientSettingsDropdown
+            settings={ [ {
+                label: __( 'Kicker Background', 'devblog' ),
+                colorValue: kickerBackgroundColour.color || customKickerBackgroundColour,
+                onColorChange: ( value ) => {
+                    setKickerBackgroundColour( value );
+    
+                    setAttributes( {
+                        customKickerBackgroundColour: value
+                    } );
+                }
+            } ] }
+            panelId={ clientId }
+            hasColorsOrGradients={ false }
+            disableCustomColors={ false }
+            __experimentalIsRenderedInSidebar
+            { ...colorGradientSettings }
+        />
+    );
+
+    const headlineColourDropdown = (
+        <ColorGradientSettingsDropdown
+            settings={ [ {
+                label: __( 'Headline', 'devblog' ),
+                colorValue: headlineColour.color || customHeadlineColour,
+                onColorChange: ( value ) => {
+                    setHeadlineColour( value );
+    
+                    setAttributes( {
+                        customHeadlineColour: value
+                    } );
+                }
+            } ] }
+            panelId={ clientId }
+            hasColorsOrGradients={ false }
+            disableCustomColors={ false }
+            __experimentalIsRenderedInSidebar
+            { ...colorGradientSettings }
+        />
+    );
+    
+
 	return (
 		<div { ...blockProps }>
-			<span>Character Limit Here</span>
-			<InputControl
-				label="Kicker"
-				value={ kicker }
-				onChange={ ( newKicker ) => setAttributes( {
-					kicker: newKicker
-				} ) }
-			/>
-			<InputControl
-				label="Headline"
-				value={ headline }
-				onChange={ ( newHeadline ) => setAttributes( {
-					headline: newHeadline
-				} ) }
-			/>
-			<InputControl
-				label="Subdeck"
-				value={ subdeck }
-				onChange={ ( newSubdeck ) => setAttributes( {
-					subdeck: newSubdeck
-				} ) }
-			/>
+            <InspectorControls group="color">
+                { kickerColourDropdown }
+                { headlineColourDropdown }
+            </InspectorControls>
+            <RichText
+                { ...blockProps }
+                tagName="div" // The tag here is the element output and editable in the admin
+                value={ kicker } // Any existing content, either from the database or an attribute default
+                allowedFormats={ [ 'core/bold', 'core/italic' ] } // Allow the content to be made bold or italic, but do not allow other formatting options
+                onChange={ ( kicker ) => setAttributes( { kicker } ) } // Store updated content as a block attribute
+                placeholder={ __( 'Kicker...' ) } // Display this text before any content has been added by the user
+                className="kicker"
+                style={{ backgroundColor: customKickerBackgroundColour, color: "#fff" }}
+            />
+            <RichText
+                { ...blockProps }
+                tagName="h2" // The tag here is the element output and editable in the admin
+                value={ headline } // Any existing content, either from the database or an attribute default
+                allowedFormats={ [ 'core/bold', 'core/italic' ] } // Allow the content to be made bold or italic, but do not allow other formatting options
+                onChange={ ( headline ) => setAttributes( { headline } ) } // Store updated content as a block attribute
+                placeholder={ __( 'Heading...' ) } // Display this text before any content has been added by the user
+                className="headline"
+                style={{ color: customHeadlineColour }}
+            />
+            <RichText
+                { ...blockProps }
+                tagName="p" // The tag here is the element output and editable in the admin
+                value={ subdeck } // Any existing content, either from the database or an attribute default
+                allowedFormats={ [ 'core/bold', 'core/italic' ] } // Allow the content to be made bold or italic, but do not allow other formatting options
+                onChange={ ( subdeck ) => setAttributes( { subdeck } ) } // Store updated content as a block attribute
+                placeholder={ __( 'Subdeck...' ) } // Display this text before any content has been added by the user
+                className="subdeck"
+                style={{ color: "#333" }}
+            />
 		</div>
 	);
 }

@@ -40,26 +40,7 @@ import metadata from './block.json';
 // } );
 
 registerBlockType(metadata.name, {
-	title: 'Colourful Headline TITLE',
+	title: 'Colourful Headline',
 	edit: Edit,
 	save,
 })
-// registerBlockType('colourful-head', {
-// 	title: 'Colourful Headline',
-// 	icon: 'editor-table',
-// 	category: 'design',
-// 	edit: DisplayComponent,
-// 	supports: {
-// 	  inserter: true,
-// 	  multiple: false,
-// 	  reusable: false,
-// 	  html: false,
-// 	},
-// 	save: () => (
-// 	  <section>
-// 		<div className="container">
-// 		  <InnerBlocks.Content />
-// 		</div>
-// 	  </section>
-// 	),
-//   });
