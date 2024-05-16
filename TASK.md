@@ -1,4 +1,4 @@
-# The Task
+# The Task - Edwil & Prem
 
 Our newest publication, The Daily Moon, wants to leave black-and-white behind and embrace a more colourful, maximalist design on its article pages. Their top priority is making headlines more eye-catching…
 
