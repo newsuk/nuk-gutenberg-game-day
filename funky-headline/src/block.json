@@ -1,0 +1,43 @@
+{
+	"apiVersion": 2,
+	"name": "create-block/funky-headline",
+	"version": "0.1.0",
+	"title": "Funky Headline",
+	"category": "widgets",
+	"icon": "admin-customizer",
+	"description": "A custom block for funky headlines.",
+	"supports": {
+	  "html": false
+	},
+	"attributes": {
+	  "kicker": {
+		"type": "string",
+		"source": "text",
+		"selector": ".kicker",
+		"maxLength": 20
+	  },
+	  "headline": {
+		"type": "string",
+		"source": "text",
+		"selector": ".headline",
+		"maxLength": 80
+	  },
+	  "subdeck": {
+		"type": "string",
+		"source": "text",
+		"selector": ".subdeck",
+		"maxLength": 150
+	  },
+	  "kickerBackgroundColor": {
+		"type": "string",
+		"default": "#000000"
+	  },
+	  "headlineTextColor": {
+		"type": "string",
+		"default": "#ff00ff"
+	  }
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./editor-index.css"
+  }
