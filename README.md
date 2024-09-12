@@ -22,7 +22,7 @@ For the Game Day on September 18th 2024, the teams are:
 |:----:| --------- | ------------------------------------ | ------------------------- |
 | 1    | London    | Onur, Yavor, Emo                     | Beginner                  |
 | 2    | London    | Edwil, Peace, Teo                    | Beginner                  |
-| 3    | London    | Malick, Mujeeb, Cengiz, Damien, Andy | Beginner                  |
+| 3    | London    | Malick, Mujeeb, Cengiz, Damien, Andy | TBC                       |
 | 4    | London    | Gareth, Paul, Veli, Stef             | TBC                       |
 | 5    | London    | Jonny, Moomba, Chris                 | TBC                       |
 | 6    | London    | Mario, Mohan, Jordan, Callum         | Times Article POC         |
