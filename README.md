@@ -8,9 +8,9 @@ Today you'll be getting hands-on with building blocks for the WordPress editor -
 
 ## What will I be building?
 
-If you're a learner who's not worked with Gutenberg before, you'll be completing the [beginner task](#what-is-the-beginner-task).
+If you're a learner who's _not_ worked with Gutenberg before, you'll be completing the [beginner task](#what-is-the-beginner-task).
 
-If you have worked with Gutenberg 
+If you have worked with Gutenberg before, you will get to work on an idea of your choice! Please submit your proposals by EOD Monday (16th).
 
 ---
 
