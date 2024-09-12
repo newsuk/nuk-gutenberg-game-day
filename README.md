@@ -29,3 +29,45 @@ Your team’s Helper is there to guide and support you and answer any questions 
 - Be aware that the requirements of the task are intentionally vague, so you can make your solution as basic or advanced as you like - there are many different ways to complete the task!
 - You can use JavaScript or TypeScript for the task, whichever you feel most comfortable with
 - If at any point during the task you and your partner get stuck (e.g. you’re having trouble running `wp-env`, or are finding it hard to style your components) be sure to ask one of our “floating” Helpers who will come and help you
+
+---
+
+## How do I setup my development environment?
+
+**Check Node version >= 20.10.0**
+```
+node --version
+```
+
+**Check NPM is up-to-date**
+```
+npm i -g npm
+```
+
+**Check Docker is installed and running**
+```
+docker --version
+docker ps
+```
+
+**Create block using NPX**
+```
+npx @wordpress/create-block@latest --wp-env gutenberg-game-day
+cd gutenberg-game-day
+```
+
+**Start build script watcher**
+```
+npm start
+```
+
+**Start dev environment**
+```
+npm run env start
+```
+
+**Confirm development site is running (probably on port 8888)**
+```
+open http://localhost:8888/wp-admin/
+```
+You can login with username `admin` and password `password`
