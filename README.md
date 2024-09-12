@@ -29,7 +29,7 @@ For the Game Day on September 18th 2024, the teams are:
 | 7    | Bangalore | Prem, Arun, Ashna, Diksha            | TBC                       |
 | 8    | Remote    | Marko M, Ruslan, Mihai, Ajdin        | Beginner                  |
 | 9    | Remote    | Marko N, Ion, Kristian, Emil         | Beginner                  |
-| 10   | Remote    | Snow, Vlad, Marti                    | TBC                       |
+| 10   | Remote    | Shadi, Snow, Vlad, Marti             | Times Slices in WP        |
 
 ---
 
