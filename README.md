@@ -1,18 +1,53 @@
 # Gutenberg Game Day
 
-Welcome to our first ever Gutenberg Game Day!
+Welcome to Gutenberg Game Day!
 
-## What is the task?
+Today you'll be getting hands-on with building blocks for the WordPress editor - using JS/React and a little bit of [Sass](https://sass-lang.com/).
+
+---
+
+## What will I be building?
+
+If you're a learner who's not worked with Gutenberg before, you'll be completing the [beginner task](#what-is-the-beginner-task).
+
+If you have worked with Gutenberg 
+
+---
+
+## What are the teams?
+
+For the Game Day on September 18th 2024, the teams are:
+
+| Team | Location  | Members                              | Task                      |
+|:----:| --------- | ------------------------------------ | ------------------------- |
+| 1    | London    | Onur, Yavor, Emo                     | Beginner                  |
+| 2    | London    | Edwil, Peace, Teo                    | Beginner                  |
+| 3    | London    | Malick, Mujeeb, Cengiz, Damien, Andy | Beginner                  |
+| 4    | London    | Gareth, Paul, Veli, Stef             | TBC                       |
+| 5    | London    | Jonny, Moomba, Chris                 | TBC                       |
+| 6    | London    | Mario, Mohan, Jordan, Callum         | Times Article POC         |
+| 7    | Bangalore | Prem, Arun, Ashna, Diksha            | TBC                       |
+| 8    | Remote    | Marko M, Ruslan, Mihai, Ajdin        | Beginner                  |
+| 9    | Remote    | Marko N, Ion, Kristian, Emil         | Beginner                  |
+| 10   | Remote    | Snow, Vlad, Marti                    | TBC                       |
+
+---
+
+## What is the beginner task?
 
 Your task is to make a funky headline block! Full details of the task can be found [here](./TASK.md).
 
 <img src="assets/funky-headline.png " width="420" >
+
+---
 
 ## Where should I put my solution?
 
 Create a new branch for your team in the `nuk-gutenberg-game-day` repo. Include your team's number and the names of your teammates (e.g. `team-1-jack-umer`).
 
 Be sure to push your commits regularly during the day - not just at the end!
+
+---
 
 ## Who in my team should write the code?
 
@@ -21,6 +56,8 @@ Teams for the tech task will be made up of one or two **Builders** who are new t
 As a Builder, you are responsible for driving the team’s solution and writing the code.
 
 Your team’s Helper is there to guide and support you and answer any questions you have during the day.
+
+---
 
 ## Can you give me some hints?
 
