@@ -26,7 +26,7 @@ For the Game Day on September 18th 2024, the teams are:
 | 4    | London    | Gareth, Paul E, Veli, Stef           | TBC                       |
 | 5    | London    | Jonny, Paul K, Moomba, Chris         | TBC                       |
 | 6    | London    | Mario, Mohan, Jordan, Callum         | Times Article POC         |
-| 7    | Bangalore | Prem, Arun, Ashna, Diksha            | TBC                       |
+| 7    | Bangalore | Prem, Arun Jami, Ashna, Diksha            | TBC                       |
 | 8    | Remote    | Marko M, Ruslan, Mihai, Ajdin        | Beginner                  |
 | 9    | Remote    | Marko N, Ion, Kristian, Emil         | Beginner                  |
 | 10   | Remote    | Shadi, Snow, Vlad, Marti             | Times Slices in WP        |
