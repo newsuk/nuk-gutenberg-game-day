@@ -51,9 +51,9 @@ Be sure to push your commits regularly during the day - not just at the end!
 
 ## Who in my team should write the code?
 
-Teams for the tech task will be made up of one or two **Builders** who are new to Gutenberg, and one **Helper** who is a Gutenberg/WordPress expert.
+Teams for the tech task will be made up of one or more **Learners** who are new to Gutenberg, and one **Helper** who is a Gutenberg/WordPress expert.
 
-As a Builder, you are responsible for driving the team’s solution and writing the code.
+As a Learner, you are responsible for driving the team’s solution and writing the code.
 
 Your team’s Helper is there to guide and support you and answer any questions you have during the day.
 
