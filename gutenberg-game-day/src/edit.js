@@ -14,7 +14,6 @@ import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
 import {
 	DropZone,
-	DropZoneProvider,
 } from "@wordpress/components";
 
 /**
@@ -36,17 +35,15 @@ import "./editor.scss";
 export default function Edit() {
 	return (
 		<>
-			<DropZoneProvider>
-				<p {...useBlockProps()}>
-					{__(
-						"Gutenberg Game Day – hello from the editor!",
-						"gutenberg-game-day",
-					)}
-					<DropZone
-						onDrop={console.log}
-					/>
-				</p>
-			</DropZoneProvider>
+			<p {...useBlockProps()}>
+				{__(
+					"Gutenberg Game Day – hello from the editor!",
+					"gutenberg-game-day",
+				)}
+				<DropZone
+					onDrop={console.log}
+				/>
+			</p>
 		</>
 	);
 }
