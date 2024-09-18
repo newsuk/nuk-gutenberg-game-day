@@ -47,12 +47,13 @@ import {
 
 export default function Edit(props) {
 	console.log(props);
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes, clientId, context } = props;
 	const updateChoices = (index, text) => {
 		const choices = [...attributes.choices];
 		choices[index] = { text };
 		setAttributes({ choices });
 	};
+	const emptyOption = { label: "", value: null };
 	const choicesOptions = attributes.choices.map((choice, index) => {
 		return {
 			label: choice.text ? choice.text : index,
@@ -70,25 +71,18 @@ export default function Edit(props) {
 		<div {...useBlockProps()}>
 			<InspectorControls key="setting">
 				<PanelBody title="Settings">
-					<PanelRow>
-						<ToggleControl
-							checked={attributes.label}
-							label="Show Label"
-							onChange={() => setAttributes({ label: !attributes.label })}
-						/>
-					</PanelRow>
 					<PanelRow className="answer">
 						<SelectControl
 							__nextHasNoMarginBottom
 							onChange={updateAnswer}
-							options={choicesOptions}
+							options={[emptyOption, ...choicesOptions]}
 							label="Answer"
 						/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
 			<div>
-				<p>{attributes.label ? `QUESTION ${blockIndex + 1}` : ""}</p>
+				<p>{context["times-quiz/label"] ? `QUESTION ${blockIndex + 1}` : ""}</p>
 				<TextareaControl
 					value={attributes.question}
 					onChange={(value) => setAttributes({ question: value })}
@@ -125,6 +119,10 @@ export default function Edit(props) {
 					value={attributes.details}
 					onChange={(value) => setAttributes({ details: value })}
 					label="Answer details"
+					style={{
+						backgroundColor: "#F3F1E7",
+						borderColor: "#F3F1E7",
+					}}
 				/>
 			</div>
 		</div>

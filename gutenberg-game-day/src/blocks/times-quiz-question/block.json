@@ -12,10 +12,6 @@
 		"html": false
 	},
 	"attributes": {
-		"label": {
-			"type": "boolean",
-			"default": false
-		},
 		"question": {
 			"type": "string",
 			"default": ""
@@ -30,7 +26,7 @@
 		},
 		"answer": {
 			"type": "number",
-			"default": 0
+			"default": null
 		},
 		"details": {
 			"type": "string",
@@ -42,5 +38,6 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js",
-	"parent": ["create-block/times-quiz"]
+	"parent": ["create-block/times-quiz"],
+	"usesContext": ["times-quiz/label"]
 }

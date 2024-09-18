@@ -13,10 +13,13 @@ import { __ } from "@wordpress/i18n";
  */
 import {
 	useInnerBlocksProps,
+	InspectorControls,
 	useBlockProps,
 	store as blockEditorStore,
 } from "@wordpress/block-editor";
 import { useSelect } from "@wordpress/data";
+
+import { ToggleControl, PanelRow, PanelBody } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -51,6 +54,17 @@ export default function Edit(props) {
 
 	return (
 		<div {...blockProps}>
+			<InspectorControls key="setting">
+				<PanelBody title="Settings">
+					<PanelRow>
+						<ToggleControl
+							checked={attributes.label}
+							label="Show Labels"
+							onChange={() => setAttributes({ label: !attributes.label })}
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
 			<div {...innerBlocksProps}></div>
 			<div style={{ textAlign: "center" }}>
 				<p>You scored 0 out of {block.innerBlocks.length}</p>

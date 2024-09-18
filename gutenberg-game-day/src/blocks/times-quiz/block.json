@@ -12,10 +12,17 @@
 		"html": false
 	},
 	"attributes": {
+		"label": {
+			"type": "boolean",
+			"default": false
+		},
 		"score": {
 			"type": "number",
 			"default": 0
 		}
+	},
+	"providesContext": {
+		"times-quiz/label": "label"
 	},
 	"textdomain": "times-quiz",
 	"editorScript": "file:./index.js",
