@@ -23,6 +23,9 @@
     "chartData": {
       "type": "string"
     },
+    "chartDataArray": {
+      "type": "array"
+    },
     "chartType": {
       "type": "string"
     },

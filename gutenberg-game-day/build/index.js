@@ -1182,38 +1182,52 @@ function Edit({
   setAttributes
 }) {
   const [chartData, setChartData] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartData);
+  const [chartDataArray, setChartDataArray] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartDataArray || [{
+    label: "",
+    value: 0
+  }]);
   const [chartTitle, setChartTitle] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartTitle);
   const [chartType, setChartType] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartType);
   const [chartOptions, setChartOptions] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartOptions);
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    console.log(chartTitle, chartData, chartType, chartOptions);
+    console.log(chartTitle, chartData, chartDataArray, chartType, chartOptions);
     const options = {
       title: {
-        text: chartTitle
+        text: chartTitle,
+        fontFamily: "The Sun",
+        fontWeight: "Bold"
       },
+      axisX: {
+        labelFontFamily: "The Sun"
+      },
+      axisY: {
+        labelFontFamily: "The Sun",
+        includeZero: true
+      },
+      exportEnabled: true,
       data: [{
         type: chartType,
-        dataPoints: chartData.split("\n").map((item, index) => {
-          const [label, value] = item.split(",");
-          return {
-            label,
-            y: parseInt(value)
-          };
-        })
+        toolTipContent: chartType === "pie" ? "<b>{label}</b>: {y}%" : undefined,
+        indexLabel: chartType === "pie" ? "{label} - {y}%" : undefined,
+        dataPoints: chartDataArray.map(({
+          label,
+          value
+        }) => ({
+          label,
+          y: parseInt(value)
+        }))
       }],
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
+      animationEnabled: true
     };
     setAttributes({
       chartData,
+      chartDataArray,
       chartTitle,
       chartType,
       chartOptions: options
     });
     setChartOptions(options);
-  }, [chartData, chartTitle, chartType]);
+  }, [chartData, chartDataArray, chartTitle, chartType]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
     children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Gutenberg Chart", "gutenberg-pie-chart"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
@@ -1225,12 +1239,62 @@ function Edit({
       label: "Chart title",
       value: chartTitle,
       onChange: value => setChartTitle(value)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
-      label: "Comma-separated chart data",
-      help: "Enter one data item per line separated by a comma",
-      value: chartData,
-      onChange: value => setChartData(value)
-    }), chartType && chartData && chartOptions?.data && chartOptions.data[0]?.type && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(CanvasJSChart, {
+    }), chartDataArray && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("thead", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+          children: "Label"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+          children: "Value"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+        children: chartDataArray.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+              value: item.label,
+              onChange: value => {
+                const newChartDataArray = [...chartDataArray];
+                newChartDataArray[index].label = value;
+                setChartDataArray(newChartDataArray);
+              }
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+              value: item.value,
+              onChange: value => {
+                const newChartDataArray = [...chartDataArray];
+                newChartDataArray[index].value = value;
+                setChartDataArray(newChartDataArray);
+              }
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
+              onClick: () => {
+                const newChartDataArray = [...chartDataArray];
+                newChartDataArray.splice(index, 1);
+                setChartDataArray(newChartDataArray);
+              },
+              disabled: chartDataArray.length <= 1,
+              children: "\u274C"
+            })
+          })]
+        }))
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tfoot", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tr", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+            colSpan: 3,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
+              onClick: () => {
+                setChartDataArray([...chartDataArray, {
+                  label: "",
+                  value: 0
+                }]);
+              },
+              children: "+ Add Item"
+            })
+          })
+        })
+      })]
+    }), chartType && chartDataArray?.length && chartOptions?.data && chartOptions.data[0]?.type && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(CanvasJSChart, {
       options: chartOptions
       /* onRef = {ref => this.chart = ref} */
     })]
@@ -1447,7 +1511,7 @@ module.exports = window["wp"]["i18n"];
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartTitle":{"type":"string"},"chartData":{"type":"string"},"chartType":{"type":"string"},"chartOptions":{"type":"object"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartTitle":{"type":"string"},"chartData":{"type":"string"},"chartDataArray":{"type":"array"},"chartType":{"type":"string"},"chartOptions":{"type":"object"}}}');
 
 /***/ })
 
