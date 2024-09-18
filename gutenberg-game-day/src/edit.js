@@ -71,7 +71,7 @@ export default function Edit() {
 						// onChange={onChangeTextField}
 					/>
 					<div>
-						<Panel header="Draggable panel">
+						<Panel>
 							<PanelBody>
 								{loading && <p>Loading...</p>}
 								{posts &&
