@@ -36,4 +36,12 @@ registerBlockType( metadata.name, {
 	 * @see ./save.js
 	 */
 	save,
+	attributes:{
+		postId: {
+			type: 'integer'
+		},
+		postTitle: {
+			type: 'string'
+		}
+	}
 } );
