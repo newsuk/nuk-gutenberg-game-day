@@ -1,13 +1,13 @@
 {
     "name": "ts-weather-forecast",
     "version": "1.0.0",
-    "description": "A Gutenberg block to display real-time weather updates for a given city.",
+    "description": "A Gutenberg block to display real-time weather updates for a given city and date.",
     "main": "index.js",
     "scripts": {
       "build": "webpack --mode production",
       "start": "webpack --mode development --watch"
     },
-    "author": "Your Name",
+    "author": "NUK Bengaluru Team",
     "license": "GPL-2.0+",
     "devDependencies": {
       "@wordpress/babel-preset-default": "^4.0.0",
@@ -16,4 +16,3 @@
       "webpack-cli": "^4.0.0"
     }
   }
-  

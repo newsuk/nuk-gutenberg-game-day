@@ -13,49 +13,40 @@
     float: left;
     margin: inherit;
 }
-
 .weather-forecast-block h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
     text-align: center;
 }
-
 .weather-forecast-block .city-input {
     margin-bottom: 20px;
 }
-
 .weather-forecast-block .weather-info {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .weather-forecast-block .weather-info p {
     margin: 5px 0;
 }
-
 .weather-forecast-block .temperature {
     font-size: 2em;
     font-weight: bold;
 }
-
 .weather-forecast-block .condition {
     font-size: 1.2em;
     text-transform: capitalize;
 }
-
 .weather-forecast-block .loading {
     text-align: center;
     font-size: 1.2em;
     color: #888;
 }
-
 .weather-forecast-block .input-row {
     display: flex;
     align-items: center;
     gap: 10px; /* Adjust the gap as needed */
 }
-
 .weather-forecast-block .city-input,
 .weather-forecast-block .date-input {
     flex: 1;

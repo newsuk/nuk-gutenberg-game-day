@@ -50,7 +50,8 @@ add_action('rest_api_init', 'ts_weather_forecast_api');
  *
  * @param WP_REST_Request $request The REST API request object containing the parameters.
  * 
- * @return array|WP_Error The weather forecast data for the specified date, or a WP_Error object if the API request fails.
+ * @return array|WP_Error The weather forecast data for the specified date,
+ * or a WP_Error object if the API request fails.
  */
 function ts_weather_forecast_get_weather( $request ) {
     $city = sanitize_text_field( $request->get_param( 'city' ) );

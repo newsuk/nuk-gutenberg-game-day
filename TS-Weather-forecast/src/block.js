@@ -9,7 +9,7 @@ registerBlockType('ts-weather-forecast/block', {
     attributes: {
         city: {
             type: 'string',
-            default: 'London'
+            default: 'London' // Default London city name
         },
         date: {
             type: 'string',
