@@ -24,7 +24,7 @@ import { DropZone,
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
 
 /**
