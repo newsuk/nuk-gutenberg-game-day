@@ -57,11 +57,7 @@ export default function Edit({attributes, setAttributes}) {
 	return (
 		<>
 			<p {...useBlockProps()}>
-				{__(
-					"Gutenberg Game Day – hello from the editor!",
-					"gutenberg-game-day",
-				)}
-				{post ? (<div>{post.title.rendered}</div>) : null}
+				{post ? (<div>{post.title.rendered}</div>) : <div>Drop an article here</div>}
 				<DropZone
 					onDrop={handleDropEvent}
 				/>
