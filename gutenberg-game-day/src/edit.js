@@ -151,7 +151,7 @@ export default function Edit({ attributes, setAttributes }) {
 									style={{
 										color: section.subdeckFontColor,
 									}}
-									allowedFormats={['core/bold']}
+									allowedFormats={[]}
 								/>
 							</div>
 						)}

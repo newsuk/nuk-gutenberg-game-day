@@ -15,11 +15,18 @@
 		font-size: 20px;
 		font-weight: bold;
 		padding: 20px;
-		background-color: #CCCCCC;
+		color: #fff;
+		background-color: #007cba;
 
 		.label {
 			flex: 1;
+			display: flex;
+			align-items: center;
 		}
+	}
+
+	.toggle-section {
+		background-color: #fff;
 	}
 
 	.section-content {
