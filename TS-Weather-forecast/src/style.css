@@ -1,64 +1,64 @@
 /* src/style.css */
 .weather-forecast-block {
-    background: linear-gradient(to top, #0f0f0d, #fcb900);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-    max-width: 620px;
-    margin: 0 auto;
+	background: linear-gradient(to top, #0f0f0d, #fcb900);
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	font-family: 'Arial', sans-serif;
+	color: #fff;
+	max-width: 620px;
+	margin: 0 auto;
 }
 .weather-forecast-block .temperature img {
-    float: left;
-    margin: inherit;
+	float: left;
+	margin: inherit;
 }
 .weather-forecast-block h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 10px;
+	text-align: center;
 }
 .weather-forecast-block .city-input {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .weather-forecast-block .weather-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .weather-forecast-block .weather-info p {
-    margin: 5px 0;
+	margin: 5px 0;
 }
 .weather-forecast-block .temperature {
-    font-size: 2em;
-    font-weight: bold;
+	font-size: 2em;
+	font-weight: bold;
 }
 .weather-forecast-block .condition {
-    font-size: 1.2em;
-    text-transform: capitalize;
+	font-size: 1.2em;
+	text-transform: capitalize;
 }
 .weather-forecast-block .loading {
-    text-align: center;
-    font-size: 1.2em;
-    color: #888;
+	text-align: center;
+	font-size: 1.2em;
+	color: #888;
 }
 .weather-forecast-block .input-row {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Adjust the gap as needed */
+	display: flex;
+	align-items: center;
+	gap: 10px; /* Adjust the gap as needed */
 }
 .weather-forecast-block .city-input,
 .weather-forecast-block .date-input {
-    flex: 1;
+	flex: 1;
 }
 .components-base-control.city-input {
-    float: left;
-    width: 48%;
+	float: left;
+	width: 48%;
 }
 .components-base-control.date-input {
-    float: right;
-    width: 48%;
+	float: right;
+	width: 48%;
 }
 .weather-forecast-block h4 {
-    clear: both;
+	clear: both;
 }
