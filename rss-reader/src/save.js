@@ -5,6 +5,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from '@wordpress/block-editor';
+import { PieChart } from "./pie";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,10 +16,15 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+	const { feedCategories } = attributes;
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Gutenberg Game Day – hello from the saved content!' }
-		</p>
+		<div { ...useBlockProps.save() }>
+			<div
+				className="pie-chart-container"
+				data-feed-categories={ JSON.stringify( feedCategories ) }
+			></div>
+		</div>
 	);
 }

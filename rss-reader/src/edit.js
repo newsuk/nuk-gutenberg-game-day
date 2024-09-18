@@ -16,6 +16,7 @@ import { PanelBody, TextControl, ToggleControl, Button } from '@wordpress/compon
 import { useState} from '@wordpress/element';
 import { XMLParser } from 'fast-xml-parser';
 import { countCategories } from './rss-helper';
+import { PieChart } from "./pie";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -34,10 +35,12 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 
-
 export default function Edit(  { attributes, setAttributes } ) {
-	const { rssUrl } = attributes;
+	const blockProps = useBlockProps();
+	const { rssUrl, feedCategories } = attributes;
+
 	const [localRssUrl, setLocalRssUrl] = useState(rssUrl);
+	const [isFetchingRss, setFetchingRss] = useState(false);
 
 	const fetchRss = async localRssUrl => {
 		const parser = new XMLParser();
@@ -45,40 +48,44 @@ export default function Edit(  { attributes, setAttributes } ) {
 		let json = parser.parse(await xml.text());
 
 		// console.log(json.rss.channel);
-		console.log(countCategories(json.rss.channel));
+		const countedCategories = countCategories(json.rss.channel)
+		console.log(countedCategories);
+		return countedCategories;
 	};
 
 	return (
-		<>
+		<div {...blockProps}>
 			<InspectorControls>
-				<PanelBody title={ 'Settings' }>
+				<PanelBody title={'Settings'}>
 					<TextControl
-						label={ 'Data Source' }
-						value={ localRssUrl }
-						placeholder={ 'RSS URL...'}
+						label={'Data Source'}
+						value={localRssUrl}
+						placeholder={'RSS URL...'}
 						onChange={(value) => {
 							setLocalRssUrl(value);
 						}}
+						disabled={isFetchingRss}
 					/>
 					<Button
-					variant="primary"
-					onClick={ () => {
-						setAttributes({
-							rssUrl: localRssUrl
-						});
-						fetchRss(localRssUrl)
-					}}
-					>
-					Get Feed
-				</Button>
+						variant="primary"
+						onClick={async () => {
+							setFetchingRss(true);
+							const countedCategories = await fetchRss(localRssUrl);
+							setAttributes({
+								rssUrl: localRssUrl,
+								feedCategories: countedCategories
+							});
+							setFetchingRss(false);
+						}}
+						disabled={isFetchingRss}>
+						Get Feed
+					</Button>
 				</PanelBody>
 			</InspectorControls>
-			<p { ...useBlockProps() }>
-				{ __(
-					'Gutenberg Game Day – hello from the editor!',
-					'gutenberg-game-day'
-				) }
-			</p>
-		</>
+			<div>
+				<PieChart feedCategories={feedCategories}/>
+			</div>
+
+		</div>
 	);
 }

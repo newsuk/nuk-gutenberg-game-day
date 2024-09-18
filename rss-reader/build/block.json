@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Gutenberg Game Day",
   "category": "widgets",
-  "icon": "smiley",
+  "icon": "chart-pie",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
@@ -15,6 +15,10 @@
     "rssUrl": {
       "type": "string",
       "default": ""
+    },
+    "feedCategories": {
+      "type": "array",
+      "default": []
     }
   },
   "textdomain": "gutenberg-game-day",

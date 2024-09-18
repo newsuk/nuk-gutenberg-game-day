@@ -20,7 +20,9 @@
 		"@wordpress/scripts": "^29.0.0"
 	},
 	"dependencies": {
+		"chart.js": "^4.4.4",
 		"fast-xml-parser": "^4.5.0",
-		"lodash": "^4.17.21"
+		"lodash": "^4.17.21",
+		"react-chartjs-2": "^5.2.0"
 	}
 }

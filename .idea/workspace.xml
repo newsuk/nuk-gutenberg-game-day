@@ -4,22 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" name="Changes" comment="remove .idea folder">
+    <list default="true" id="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" name="Changes" comment="showing controls&#10;parsing xml&#10;getting cat counts">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/build/block.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/block.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/index-rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index-rtl.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/build/index.asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.asset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/build/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/style-index-rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/style-index-rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/style-index.css" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/style-index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/style-index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/style-index.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/editor.scss" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/editor.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/style.scss" afterDir="false" />
+    </list>
+    <list id="d3131912-c1e9-48ea-9a04-5832921cb41c" name="Changes by ALeung" comment="">
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/save.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/save.js" afterDir="false" />
+    </list>
+    <list id="bc6d0151-09f6-497f-b356-31370b57ba19" name="Changes by malick" comment="">
+      <change beforePath="$PROJECT_DIR$/rss-reader/gutenberg-game-day.php" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/gutenberg-game-day.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/edit.js" afterDir="false" />
     </list>
-    <list id="15c8c264-203e-4aae-80da-6e8bdb3bd09f" name="Changes by ALeung" comment="" />
-    <list id="093a0055-6f72-49e0-9a41-d4292b274ae0" name="Changes by malick" comment="" />
-    <list id="10f9561f-850f-4955-8ed1-6e3f985be571" name="Changes by mujeeb.nawaz" comment="">
+    <list id="3f775d05-1d66-4b34-b4eb-c3f606c04b28" name="Changes by mujeeb.nawaz" comment="">
       <change beforePath="$PROJECT_DIR$/rss-reader/src/block.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/block.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rss-reader/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/edit.js" afterDir="false" />
     </list>
-    <list id="b85eace5-5e7c-43c8-be9f-4fc674d07dbf" name="Changes by NewsUK" comment="" />
+    <list id="ef2912e7-8fce-48c8-9239-c0eb2383a446" name="Changes by NewsUK" comment="">
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/block.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/block.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/edit.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,9 +68,23 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/rss-reader/src/edit.js">
       <ranges>
-        <range start1="13" end1="14" start2="13" end2="18" changelist="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" />
-        <range start1="31" end1="32" start2="35" end2="50" changelist="10f9561f-850f-4955-8ed1-6e3f985be571" />
-        <range start1="33" end1="39" start2="51" end2="82" changelist="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" />
+        <range start1="18" end1="18" start2="18" end2="19" changelist="bc6d0151-09f6-497f-b356-31370b57ba19" />
+        <range start1="35" end1="36" start2="36" end2="36" changelist="d3131912-c1e9-48ea-9a04-5832921cb41c" />
+        <range start1="38" end1="39" start2="38" end2="41" changelist="ef2912e7-8fce-48c8-9239-c0eb2383a446" />
+        <range start1="40" end1="40" start2="42" end2="43" changelist="ef2912e7-8fce-48c8-9239-c0eb2383a446" />
+        <range start1="47" end1="48" start2="50" end2="53" changelist="ef2912e7-8fce-48c8-9239-c0eb2383a446" />
+        <range start1="51" end1="52" start2="56" end2="57" changelist="3f775d05-1d66-4b34-b4eb-c3f606c04b28" />
+        <range start1="53" end1="54" start2="58" end2="59" changelist="3f775d05-1d66-4b34-b4eb-c3f606c04b28" />
+        <range start1="55" end1="58" start2="60" end2="63" changelist="3f775d05-1d66-4b34-b4eb-c3f606c04b28" />
+        <range start1="61" end1="61" start2="66" end2="67" changelist="d3131912-c1e9-48ea-9a04-5832921cb41c" />
+        <range start1="63" end1="73" start2="69" end2="82" changelist="ef2912e7-8fce-48c8-9239-c0eb2383a446" />
+        <range start1="75" end1="82" start2="84" end2="89" changelist="bc6d0151-09f6-497f-b356-31370b57ba19" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/rss-reader/src/block.json">
+      <ranges>
+        <range start1="7" end1="8" start2="7" end2="8" changelist="3f775d05-1d66-4b34-b4eb-c3f606c04b28" />
+        <range start1="17" end1="17" start2="17" end2="21" changelist="ef2912e7-8fce-48c8-9239-c0eb2383a446" />
       </ranges>
     </file>
   </component>
@@ -112,7 +143,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1726649217621</updated>
-      <workItem from="1726649219028" duration="8367000" />
+      <workItem from="1726649219028" duration="14712000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -130,16 +161,36 @@
       <option name="project" value="LOCAL" />
       <updated>1726652608258</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="showing controls&#10;parsing xml&#10;getting cat counts">
+      <option name="closed" value="true" />
+      <created>1726659018208</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726659018208</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="remove .idea folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove .idea folder" />
+    <MESSAGE value="showing controls&#10;parsing xml&#10;getting cat counts" />
+    <option name="LAST_COMMIT_MESSAGE" value="showing controls&#10;parsing xml&#10;getting cat counts" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
