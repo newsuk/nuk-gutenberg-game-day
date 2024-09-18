@@ -95,9 +95,7 @@ function ggd_register_patterns() {
                              <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
                              <!-- /wp:create-block/gutenberg-game-day -->
 
-                             <!-- wp:create-block/gutenberg-game-day -->
-                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
-                             <!-- /wp:create-block/gutenberg-game-day --></div>
+                             </div>
                              <!-- /wp:column --></div>
                              <!-- /wp:columns -->
 

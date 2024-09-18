@@ -76,7 +76,6 @@ const Sidebar = () => {
 											marginBottom: "4px",
 										}}
 									>
-										<span key={post.id}>{post.title.rendered}</span>
 										<span
 											style={{
 												background: "#72d151",
@@ -89,6 +88,8 @@ const Sidebar = () => {
 										>
 											P
 										</span>
+										<span key={post.id}>{post.title.rendered}</span>
+
 									</div>
 								</div>
 							)}
@@ -108,7 +109,7 @@ registerPlugin("ggd-my-plugin-sidebar", {
 				icon="admin-post"
 				title="My plugin sidebar"
 			>
-				<Sidebar />
+			<Sidebar />
 			</PluginSidebar>
 		);
 	},
