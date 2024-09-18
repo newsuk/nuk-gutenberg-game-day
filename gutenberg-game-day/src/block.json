@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/gutenberg-game-day",
+	"name": "create-block/gutenberg-pie-chart",
 	"version": "0.1.0",
-	"title": "Gutenberg Game Day",
+	"title": "Gutenberg Pie Chart",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Example block scaffolded with Create Block tool.",
@@ -11,9 +11,14 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "gutenberg-game-day",
+	"textdomain": "gutenberg-pie-chart",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"chartData": {
+			"type": "string"
+		}
+	}
 }
