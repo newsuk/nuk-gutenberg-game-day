@@ -5,5 +5,51 @@
  */
 
 .wp-block-create-block-gutenberg-game-day {
-	background-color: #efefef;
+
+	.secion-container {
+		display: block;
+		margin-bottom: 30px;
+	}
+
+	.section-label {
+		display: flex;
+		font-size: 20px;
+		font-weight: bold;
+		padding: 20px;
+		background-color: #CCCCCC;
+
+		.label {
+			flex: 1;
+		}
+	}
+
+	.section-content {
+		box-sizing: border-box;
+		display: table;
+		background-color: #EFEFEF;
+		padding: 20px;
+		width: 100%;
+	}
+
+	.kicker {
+		display: table;
+		padding: 5px;
+		width: auto;
+	}
+
+	.headline {
+		width: 100%;
+		margin-top: 10px;
+		font-size: 40px;
+		font-weight: bold;
+	}
+
+	.subdeck {
+		margin-top: 10px;
+		width: 100%;
+	}
+
+	.remove-section {
+		margin-top: 10px;
+	}
 }

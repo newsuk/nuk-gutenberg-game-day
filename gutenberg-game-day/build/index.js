@@ -16,9 +16,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _section_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./section.json */ "./src/section.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+
+
 
 
 
@@ -28,113 +33,151 @@ function Edit({
   setAttributes
 }) {
   const {
-    kicker,
-    kickerBackgroundColor,
-    kickerFontColor,
-    headline,
-    headlineBackgroundColor,
-    headlineFontColor,
-    subdeck,
-    subdeckFontColor
+    sections
   } = attributes;
-
-  // console.log("kicker", kicker);
-
-  const onChangeAttribute = value => {
+  console.log(sections);
+  const addSection = () => {
+    const newSections = [...sections, _section_json__WEBPACK_IMPORTED_MODULE_4__];
     setAttributes({
-      kicker: value
+      sections: newSections
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Kicker Styling", "gutenberg-game-day"),
-        icon: "admin-appearance",
-        initialOpen: true,
-        disableCustomColors: false,
-        colorSettings: [{
-          value: kickerBackgroundColor,
-          onChange: color => setAttributes({
-            kickerBackgroundColor: color
-          }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "gutenberg-game-day")
-        }, {
-          value: kickerFontColor,
-          onChange: color => setAttributes({
-            kickerFontColor: color
-          }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
-        }],
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
-          textColor: kickerFontColor,
-          backgroundColor: kickerBackgroundColor
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("headline Styling", "gutenberg-game-day"),
-        icon: "admin-appearance",
-        initialOpen: true,
-        disableCustomColors: false,
-        colorSettings: [{
-          value: headlineBackgroundColor,
-          onChange: color => setAttributes({
-            headlineBackgroundColor: color
-          }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "gutenberg-game-day")
-        }, {
-          value: headlineFontColor,
-          onChange: color => setAttributes({
-            headlineFontColor: color
-          }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
-        }],
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
-          textColor: headlineFontColor,
-          backgroundColor: headlineBackgroundColor
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("subdeck Styling", "gutenberg-game-day"),
-        icon: "admin-appearance",
-        initialOpen: true,
-        disableCustomColors: false,
-        colorSettings: [{
-          value: subdeckFontColor,
-          onChange: color => setAttributes({
-            subdeckFontColor: color
-          }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
-        }],
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
-          textColor: subdeckFontColor
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  const onChangeAttribute = (index, key, value) => {
+    const newSections = sections.map((section, i) => {
+      if (i === index) {
+        return {
+          ...section,
+          [key]: value
+        };
+      }
+      return section;
+    });
+    setAttributes({
+      sections: newSections
+    });
+  };
+  const removeSection = index => {
+    const newSections = sections.filter((_, i) => i !== index);
+    setAttributes({
+      sections: newSections
+    });
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: sections.map((section, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: `Section #${index + 1} Settings`,
+        initialOpen: false,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Kicker Styling", "gutenberg-game-day"),
+          icon: "admin-appearance",
+          initialOpen: true,
+          disableCustomColors: false,
+          colorSettings: [{
+            value: section.kickerBackgroundColor,
+            onChange: value => onChangeAttribute(index, 'kickerBackgroundColor', value),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "gutenberg-game-day")
+          }, {
+            value: section.kickerFontColor,
+            onChange: value => onChangeAttribute(index, 'kickerFontColor', value),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
+          }],
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
+            textColor: section.kickerFontColor,
+            backgroundColor: section.kickerBackgroundColor
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("headline Styling", "gutenberg-game-day"),
+          icon: "admin-appearance",
+          initialOpen: true,
+          disableCustomColors: false,
+          colorSettings: [{
+            value: section.headlineBackgroundColor,
+            onChange: value => onChangeAttribute(index, 'headlineBackgroundColor', value),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "gutenberg-game-day")
+          }, {
+            value: section.headlineFontColor,
+            onChange: value => onChangeAttribute(index, 'headlineFontColor', value),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
+          }],
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
+            textColor: section.headlineFontColor,
+            backgroundColor: section.headlineBackgroundColor
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("subdeck Styling", "gutenberg-game-day"),
+          icon: "admin-appearance",
+          initialOpen: true,
+          disableCustomColors: false,
+          colorSettings: [{
+            value: section.subdeckFontColor,
+            onChange: value => onChangeAttribute(index, 'subdeckFontColor', value),
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
+          }],
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
+            textColor: section.subdeckFontColor
+          })
+        })]
+      }, `section-settings-${index}`))
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-        value: kicker,
-        placeholder: "Add kicker text...",
-        onChange: value => onChangeAttribute(value),
-        style: {
-          color: kickerFontColor,
-          backgroundColor: kickerBackgroundColor
-        },
-        allowedFormats: []
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-        value: headline,
-        placeholder: "Add Headline text...",
-        onChange: value => onChangeAttribute(value),
-        style: {
-          color: headlineFontColor,
-          backgroundColor: headlineBackgroundColor
-        },
-        allowedFormats: []
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-        value: subdeck,
-        placeholder: "Add Subline text...",
-        onChange: value => onChangeAttribute(value),
-        style: {
-          color: subdeckFontColor
-        },
-        allowedFormats: []
+      children: [sections.map((section, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "secion-container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "section-label",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+            className: "label",
+            value: section.label,
+            placeholder: "Add label text...",
+            onChange: value => onChangeAttribute(index, 'label', value),
+            allowedFormats: []
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+            className: "toggle-section",
+            isSecondary: true,
+            onClick: () => onChangeAttribute(index, 'toggle', !section.toggle),
+            children: section.toggle ? 'Close' : 'Open'
+          })]
+        }), section.toggle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "section-content",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+            className: "kicker",
+            value: section.kicker,
+            placeholder: "Add kicker text...",
+            onChange: value => onChangeAttribute(index, 'kicker', value),
+            style: {
+              color: section.kickerFontColor,
+              backgroundColor: section.kickerBackgroundColor
+            },
+            allowedFormats: []
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+            className: "headline",
+            value: section.headline,
+            placeholder: "Add Headline text...",
+            onChange: value => onChangeAttribute(index, 'headline', value),
+            style: {
+              color: section.headlineFontColor,
+              backgroundColor: section.headlineBackgroundColor
+            },
+            allowedFormats: []
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+            className: "subdeck",
+            value: section.subdeck,
+            placeholder: "Add Subline text...",
+            onChange: value => onChangeAttribute(index, 'subdeck', value),
+            style: {
+              color: section.subdeckFontColor
+            },
+            allowedFormats: ['core/bold']
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+          className: "remove-section",
+          isSecondary: true,
+          onClick: () => removeSection(index),
+          children: "Remove Section"
+        })]
+      }, `section-${index}`)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        onClick: addSection,
+        isPrimary: true,
+        children: "Add New Section"
       })]
     })]
   });
@@ -291,6 +334,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -307,7 +360,17 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"Gutenberg Game Day","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-game-day","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string","default":""},"kickerBackgroundColor":{"type":"string","default":"pink"},"kickerFontColor":{"type":"string","default":"orange"},"headline":{"type":"string","default":""},"headlineBackgroundColor":{"type":"string","default":"yellow"},"headlineFontColor":{"type":"string","default":"red"},"subdeck":{"type":"string","default":""},"subdeckFontColor":{"type":"string","default":"red"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"Gutenberg Game Day","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-game-day","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"sections":{"type":"array","default":[]}}}');
+
+/***/ }),
+
+/***/ "./src/section.json":
+/*!**************************!*\
+  !*** ./src/section.json ***!
+  \**************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"label":"","toggle":false,"kicker":"","kickerBackgroundColor":"#5502DD","kickerFontColor":"#EFEFEF","headline":"","headlineBackgroundColor":"","headlineFontColor":"#FF008C","subdeck":"","subdeckFontColor":"#999999","alignment":"left"}');
 
 /***/ })
 
