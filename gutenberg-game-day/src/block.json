@@ -15,5 +15,39 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"kicker": {
+			"type": "string",
+			"default": ""
+		},
+		"kickerBackgroundColor": {
+			"type": "string",
+			"default": "pink"
+		},
+		"kickerFontColor": {
+			"type": "string",
+			"default": "orange"
+		},
+		"headline": {
+			"type": "string",
+			"default": ""
+		},
+		"headlineBackgroundColor": {
+			"type": "string",
+			"default": "yellow"
+		},
+		"headlineFontColor": {
+			"type": "string",
+			"default": "red"
+		},
+		"subdeck": {
+			"type": "string",
+			"default": ""
+		},
+		"subdeckFontColor": {
+			"type": "string",
+			"default": "red"
+		}
+	}
 }

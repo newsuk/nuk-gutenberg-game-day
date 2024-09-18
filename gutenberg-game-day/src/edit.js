@@ -1,41 +1,59 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
 import { __ } from '@wordpress/i18n';
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+	PanelColorSettings,
+	ContrastChecker
+} from '@wordpress/block-editor';
 import './editor.scss';
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit() {
+export default function Edit({attributes, setAttributes}) {
+
+	const { kicker, kickerBackgroundColor, kickerFontColor } = attributes;
+
+	console.log('kicker', kicker);
+
+	const onChangeAttribute = (value) => {
+		setAttributes({kicker: value});
+	};
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Gutenberg Game Day – hello from the editor!',
-				'gutenberg-game-day'
-			) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelColorSettings
+					title={__('Kicker Styling', 'gutenberg-game-day')}
+					icon="admin-appearance"
+					initialOpen
+					disableCustomColors={false}
+					colorSettings={[
+						{
+							value: kickerBackgroundColor,
+							onChange: (color) => setAttributes({kickerBackgroundColor: color}),
+							label: __('Background Color', 'gutenberg-game-day'),
+						},
+						{
+							value: kickerFontColor,
+							onChange: (color) => setAttributes({kickerFontColor: color}),
+							label: __('Text Color', 'gutenberg-game-day'),
+						},
+					]}
+				>
+					<ContrastChecker
+						textColor={kickerFontColor}
+						backgroundColor={kickerBackgroundColor}
+					/>
+				</PanelColorSettings>
+			</InspectorControls>
+			<div { ...useBlockProps() }>
+				<RichText
+					value={kicker}
+					placeholder='Add kicker text...'
+					onChange={(value) => onChangeAttribute(value)}
+					style={{color: kickerFontColor, backgroundColor: kickerBackgroundColor}}
+					allowedFormats={[]}
+				/>
+			</div>
+		</>
 	);
 }
