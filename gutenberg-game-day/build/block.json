@@ -17,17 +17,24 @@
       "default": false
     },
     "question": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "choices": {
       "type": "array",
-      "default": []
+      "default": [
+        {
+          "text": ""
+        }
+      ]
     },
     "answer": {
-      "type": "number"
+      "type": "number",
+      "default": 0
     },
     "details": {
-      "type": "string"
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "times-quiz-question",

@@ -36,6 +36,8 @@ import {
 	PanelBody,
 	Button,
 	TextControl,
+	TextareaControl,
+	SelectControl
 } from "@wordpress/components";
 
 export default function Edit(props) {
@@ -46,6 +48,16 @@ export default function Edit(props) {
 		choices[index] = { text };
 		setAttributes({ choices });
 	};
+	const choicesOptions = attributes.choices.map((choice, index) => {
+		return {
+			label: choice.text ? choice.text : index,
+			value: index
+		}
+	})
+	const updateAnswer = (value) => {
+		setAttributes({answer: value})
+	}
+
 	return (
 		<div {...useBlockProps()}>
 			<InspectorControls key="setting">
@@ -57,25 +69,47 @@ export default function Edit(props) {
 							onChange={() => setAttributes({ label: !attributes.label })}
 						/>
 					</PanelRow>
+					<PanelRow
+						className="answer"
+					>
+						<SelectControl
+							__nextHasNoMarginBottom
+							onChange={updateAnswer}
+							options={choicesOptions}
+							label="Answer"
+							/>
+					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
 			<div>
 				<p>{attributes.label ? "QUESTION" : ""}</p>
-				<p>Example Question</p>
+				<TextareaControl
+					value={attributes.question}
+					onChange={(value) => setAttributes({question: value})}
+					label="Question"
+				/>
 				{attributes.choices.map((choice, index) => (
 					<TextControl
 						key={index}
 						value={choice.text}
 						onChange={(value) => updateChoices(index, value)}
+						label="Response choice"
 					/>
 				))}
 				<Button
 					onClick={() =>
 						setAttributes({ choices: [...attributes.choices, { text: "" }] })
 					}
+					label="Add choice"
+					variant="primary"
 				>
 					Add Choice
 				</Button>
+				<TextareaControl
+					value={attributes.details}
+					onChange={(value) => setAttributes({details: value})}
+					label="Answer details"
+				/>
 			</div>
 		</div>
 	);
