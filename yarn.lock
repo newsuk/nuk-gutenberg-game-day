@@ -2847,7 +2847,7 @@
     sprintf-js "^1.1.1"
     tannin "^1.2.0"
 
-"@wordpress/icons@^10.7.0":
+"@wordpress/icons@10.7.0", "@wordpress/icons@^10.7.0":
   version "10.7.0"
   resolved "https://registry.yarnpkg.com/@wordpress/icons/-/icons-10.7.0.tgz#f0f921fd968912262f1c24d4a2e76106f4db40a7"
   integrity sha512-4cvi9ZIaz6IYRcOjVuALtDLPtzgt1zK+E9LskL0PAi3TJhoh746q28wv6ycP+KtJEiI+bsTf2Qu5dmCePGR/jA==

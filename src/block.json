@@ -19,58 +19,15 @@
 		"chartRows": {
 			"type": "number"
 		},
+		"chartTitle": {
+			"type": "string"
+		},
+		"dataSetTitle": {
+			"type": "string"
+		},
 		"chartData": {
 			"type": "array",
-			"default": [
-				{
-					"label": "January",
-					"data": 10
-				},
-				{
-					"label": "February",
-					"data": 20
-				},
-				{
-					"label": "March",
-					"data": 50
-				},
-				{
-					"label": "April",
-					"data": 60
-				},
-				{
-					"label": "May",
-					"data": 80
-				},
-				{
-					"label": "June",
-					"data": 70
-				},
-				{
-					"label": "July",
-					"data": 60
-				},
-				{
-					"label": "August",
-					"data": 70
-				},
-				{
-					"label": "September",
-					"data": 50
-				},
-				{
-					"label": "October",
-					"data": 30
-				},
-				{
-					"label": "November",
-					"data": 40
-				},
-				{
-					"label": "December",
-					"data": 40
-				}
-			]
+			"default": []
 		},
 		"chartOptions": {
 			"type": "object",

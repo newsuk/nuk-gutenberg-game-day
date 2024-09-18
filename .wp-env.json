@@ -1,6 +1,6 @@
 {
 	"core": null,
-	"plugins": ["."],
+	"plugins": [ "." ],
 	"phpVersion": "8.2",
 	"port": 8887
 }

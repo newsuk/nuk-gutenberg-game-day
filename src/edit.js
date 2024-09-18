@@ -11,18 +11,14 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {
-	BlockIcon,
-	useBlockProps,
-} from '@wordpress/block-editor';
+import { BlockIcon, useBlockProps } from '@wordpress/block-editor';
 import {
 	Button,
 	Placeholder,
 	TextControl,
+	__experimentalInputControl as InputControl, // eslint-disable-line
 } from '@wordpress/components';
-import {
-	chartBar as icon,
-} from '@wordpress/icons';
+import { chartBar as icon } from '@wordpress/icons';
 
 import { useState } from '@wordpress/element';
 /**
@@ -41,7 +37,7 @@ import {
 	Title,
 	Tooltip,
 	Filler,
-	Legend
+	Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -64,18 +60,6 @@ ChartJS.register(
  *
  * @return {Element} Element to render.
  */
-export const data = {
-	labels: ['January'],
-	datasets: [
-		{
-			fill: true,
-			label: 'Dataset 2',
-			data: [22],
-			borderColor: 'rgb(53, 162, 235)',
-			backgroundColor: 'rgba(53, 162, 235, 0.5)',
-		},
-	],
-};
 
 const options = {
 	responsive: true,
@@ -91,67 +75,141 @@ const options = {
 };
 
 export default function Edit( props ) {
-	const {
-		attributes,
-		setAttributes,
-		className,
-		isSelected,
-		onReplace,
-		mergeBlocks,
-		clientId,
-		context,
-	} = props;
+	const { attributes, setAttributes, isSelected } = props;
 
-//	const [ initialRowCount, setInitialRowCount ] = useState( 2 );
+	const [ initialRowCount, setInitialRowCount ] = useState( 2 );
+	const [ chartTitle, setChartTitle ] = useState( '' );
+	const [ dataSetTitle, setDataSetTitle ] = useState( '' );
 
-	const { chartData } = attributes;
+	const blockProps = useBlockProps();
+	const { chartData, chartRows } = attributes;
+
+	const data = {
+		datasets: [
+			{
+				fill: true,
+				label: dataSetTitle,
+				borderColor: 'rgb(53, 162, 235)',
+				backgroundColor: 'rgba(53, 162, 235, 0.5)',
+			},
+		],
+	};
+
 	data.labels = chartData.map( ( { label } ) => label );
-	data.datasets[0].data = chartData.map( ( { data } ) => data );
+	data.datasets[ 0 ].data = chartData.map( ( { data: _data } ) => _data );
+	options.plugins.title.text = chartTitle;
 
-	const isEmpty = true;
+	const isEmpty = typeof chartRows === 'undefined';
 
+	// Initialize an empty array to store the row elements
+	const rows = [];
 
-	if(isSelected){
+	const onRowCountChange = ( number, field, value ) => {
+		if ( ! chartData[ number - 1 ] ) {
+			chartData[ number - 1 ] = {};
+		}
+		chartData[ number - 1 ][ field ] = value;
+		setAttributes( { chartData } );
+	};
+
+	if ( chartRows ) {
+		// Use a for loop to generate the rows
+		for ( let i = 1; i <= chartRows; i++ ) {
+			rows.push(
+				<tr key={ i }>
+					<td>
+						<InputControl
+							value={ chartData[ i - 1 ]?.label }
+							onChange={ ( value ) =>
+								onRowCountChange( i, 'label', value )
+							}
+						/>
+					</td>
+					<td>
+						<InputControl
+							value={ chartData[ i - 1 ]?.data }
+							onChange={ ( value ) =>
+								onRowCountChange( i, 'data', value )
+							}
+						/>
+					</td>
+				</tr>
+			);
+		}
+	}
+
+	if ( isSelected ) {
 		return (
 			<>
-		{ isEmpty ? (
-			<Placeholder
-				label={ __( 'Graph' ) }
-				icon={ <BlockIcon icon={ icon } showColors /> }
-			>
-				<form
-					className="blocks-graph__placeholder-form"
-
-				>
-					<TextControl
-						type="number"
-						label={ __( 'Row count' ) }
-						min="1"
-						className="blocks-table__placeholder-input"
-					/>
-					<Button
-						variant="primary"
-						type="submit"
+				{ isEmpty ? (
+					<Placeholder
+						label={ __( 'Graph' ) }
+						icon={ <BlockIcon icon={ icon } showColors /> }
 					>
-						{ __( 'Create Graph' ) }
-					</Button>
-				</form>
-			</Placeholder>
-		) : (
-			<p { ...useBlockProps() }>
-				<div>
-					<div></div>
-					<div></div>
-				</div>
-			</p>
-		) }
+						<form
+							className="blocks-graph__placeholder-form"
+							onSubmit={ ( event ) => {
+								event.preventDefault();
+								setAttributes( {
+									chartRows: initialRowCount,
+									dataSetTitle,
+									chartTitle,
+								} );
+							} }
+						>
+							<TextControl
+								type="text"
+								label={ __( 'Title' ) }
+								value={ chartTitle }
+								onChange={ ( value ) => {
+									setChartTitle( value );
+								} }
+								className="blocks-table__placeholder-input"
+							/>
+
+							<TextControl
+								type="text"
+								label={ __( 'Dataset Title' ) }
+								value={ dataSetTitle }
+								onChange={ ( value ) => {
+									setDataSetTitle( value );
+								} }
+								className="blocks-table__placeholder-input"
+							/>
+							<TextControl
+								type="number"
+								label={ __( 'Row count' ) }
+								min="1"
+								value={ initialRowCount }
+								onChange={ ( value ) => {
+									setInitialRowCount( value );
+								} }
+								className="blocks-table__placeholder-input"
+							/>
+
+							<Button variant="primary" type="submit">
+								{ __( 'Create Graph' ) }
+							</Button>
+						</form>
+					</Placeholder>
+				) : (
+					<p { ...blockProps }>
+						<table>
+							<tr>
+								<th>{ __( 'Label' ) }</th>
+								<th>{ __( 'Data' ) }</th>
+							</tr>
+							{ rows }
+						</table>
+					</p>
+				) }
 			</>
 		);
 	}
 
 	return (
-		<p { ...useBlockProps() }>
-			<Line data={ data } options={options}  />
+		<p { ...blockProps }>
+			<Line data={ data } options={ options } />
 		</p>
 	);
 }
