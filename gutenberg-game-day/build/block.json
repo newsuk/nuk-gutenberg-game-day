@@ -22,6 +22,9 @@
     },
     "chartData": {
       "type": "string"
+    },
+    "chartType": {
+      "type": "string"
     }
   }
 }

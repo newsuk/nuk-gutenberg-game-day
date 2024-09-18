@@ -1149,6 +1149,25 @@ __webpack_require__.r(__webpack_exports__);
 
 var CanvasJS = _canvasjs_react_charts__WEBPACK_IMPORTED_MODULE_5__["default"].CanvasJS;
 var CanvasJSChart = _canvasjs_react_charts__WEBPACK_IMPORTED_MODULE_5__["default"].CanvasJSChart;
+const chartTypeOptions = [{
+  label: "Select chart type",
+  value: ""
+}, {
+  label: "Line",
+  value: "line"
+}, {
+  label: "Pie",
+  value: "pie"
+}, {
+  label: "Column",
+  value: "column"
+}, {
+  label: "Area",
+  value: "area"
+}, {
+  label: "Bar",
+  value: "bar"
+}];
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -1164,31 +1183,38 @@ function Edit({
 }) {
   const [chartData, setChartData] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartData);
   const [chartTitle, setChartTitle] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartTitle);
+  const [chartType, setChartType] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartType);
   const [options, setOptions] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({});
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    console.log(chartTitle, chartData, chartType);
     const options = {
       title: {
         text: chartTitle
       },
       data: [{
-        type: "column",
+        type: chartType,
         dataPoints: chartData.split(",").map((item, index) => ({
           label: `Line ${index + 1}`,
           y: parseInt(item)
         }))
       }]
     };
-    console.log(chartTitle, chartData);
     setAttributes({
       chartData,
-      chartTitle
+      chartTitle,
+      chartType
     });
     setOptions(options);
-    // chart.render();
-  }, [chartData, chartTitle]);
+  }, [chartData, chartTitle, chartType]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Gutenberg Pie Chart – Enter comma-separated values", "gutenberg-pie-chart"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+    children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Gutenberg Pie Chart – Enter comma-separated values", "gutenberg-pie-chart"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+      __nextHasNoMarginBottom: true,
+      label: "Chart type",
+      value: chartType,
+      options: chartTypeOptions,
+      onChange: value => setChartType(value)
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
       __nextHasNoMarginBottom: true,
       label: "Chart title",
       value: chartTitle,
@@ -1198,7 +1224,7 @@ function Edit({
       label: "Comma-separated chart data",
       value: chartData,
       onChange: value => setChartData(value)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(CanvasJSChart, {
+    }), chartType && chartData && options.data && options.data[0]?.type && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(CanvasJSChart, {
       options: options
       /* onRef = {ref => this.chart = ref} */
     })]
@@ -1403,7 +1429,7 @@ module.exports = window["wp"]["i18n"];
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartTitle":{"type":"string"},"chartData":{"type":"string"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartTitle":{"type":"string"},"chartData":{"type":"string"},"chartType":{"type":"string"}}}');
 
 /***/ })
 

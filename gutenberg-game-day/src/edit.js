@@ -22,11 +22,38 @@ import { useBlockProps } from "@wordpress/block-editor";
 import "./editor.scss";
 
 import { useState, useEffect } from "react";
-import { TextControl } from "@wordpress/components";
+import { TextControl, SelectControl } from "@wordpress/components";
 import CanvasJSReact from "@canvasjs/react-charts";
 
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
+const chartTypeOptions = [
+	{
+		label: "Select chart type",
+		value: "",
+	},
+	{
+		label: "Line",
+		value: "line",
+	},
+	{
+		label: "Pie",
+		value: "pie",
+	},
+	{
+		label: "Column",
+		value: "column",
+	},
+	{
+		label: "Area",
+		value: "area",
+	},
+	{
+		label: "Bar",
+		value: "bar",
+	},
+];
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -39,16 +66,19 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export default function Edit({ attributes, setAttributes }) {
 	const [chartData, setChartData] = useState(attributes.chartData);
 	const [chartTitle, setChartTitle] = useState(attributes.chartTitle);
+	const [chartType, setChartType] = useState(attributes.chartType);
 	const [options, setOptions] = useState({});
 
 	useEffect(() => {
+		console.log(chartTitle, chartData, chartType);
+
 		const options = {
 			title: {
 				text: chartTitle,
 			},
 			data: [
 				{
-					type: "column",
+					type: chartType,
 					dataPoints: chartData.split(",").map((item, index) => ({
 						label: `Line ${index + 1}`,
 						y: parseInt(item),
@@ -56,14 +86,13 @@ export default function Edit({ attributes, setAttributes }) {
 				},
 			],
 		};
-		console.log(chartTitle, chartData);
 		setAttributes({
 			chartData,
 			chartTitle,
+			chartType,
 		});
 		setOptions(options);
-		// chart.render();
-	}, [chartData, chartTitle]);
+	}, [chartData, chartTitle, chartType]);
 
 	return (
 		<div {...useBlockProps()}>
@@ -71,6 +100,13 @@ export default function Edit({ attributes, setAttributes }) {
 				"Gutenberg Pie Chart – Enter comma-separated values",
 				"gutenberg-pie-chart",
 			)}
+			<SelectControl
+				__nextHasNoMarginBottom
+				label="Chart type"
+				value={chartType}
+				options={chartTypeOptions}
+				onChange={(value) => setChartType(value)}
+			/>
 			<TextControl
 				__nextHasNoMarginBottom
 				label="Chart title"
@@ -83,10 +119,12 @@ export default function Edit({ attributes, setAttributes }) {
 				value={chartData}
 				onChange={(value) => setChartData(value)}
 			/>
-			<CanvasJSChart
-				options={options}
-				/* onRef = {ref => this.chart = ref} */
-			/>
+			{chartType && chartData && options.data && options.data[0]?.type && (
+				<CanvasJSChart
+					options={options}
+					/* onRef = {ref => this.chart = ref} */
+				/>
+			)}
 		</div>
 	);
 }
