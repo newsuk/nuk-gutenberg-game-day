@@ -26,7 +26,7 @@ For the Game Day on September 18th 2024, the teams are:
 | 4    | London    | Gareth, Paul E, Veli, Stef           | Quiz Block                |
 | 5    | London    | Jonny, Paul K, Moomba, Chris         | TBC                       |
 | 6    | London    | Mario, Mohan, Jordan, Callum         | Times Article POC         |
-| 7    | Bangalore | Prem, Arun J, Ashna, Diksha, Arun S  | TS Weather Forecast POC   |
+| 7    | Bangalore | Prem, Ashna, Diksha, Arun S          | TS Weather Forecast POC   |
 | 8    | Remote    | Marko M, Ruslan, Mihai, Ajdin        | Beginner                  |
 | 9    | Remote    | Marko N, Ion, Kristian, Emil         | Countries Block           |
 | 10   | Remote    | Shadi, Snow, Vlad, Marti             | Times Slices in WP        |
