@@ -64,7 +64,7 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						</PanelColorSettings>
 						<PanelColorSettings
-							title={__("headline Styling", "gutenberg-game-day")}
+							title={__("Headline Styling", "gutenberg-game-day")}
 							icon="admin-appearance"
 							initialOpen
 							disableCustomColors={false}
@@ -87,7 +87,7 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						</PanelColorSettings>
 						<PanelColorSettings
-							title={__("subdeck Styling", "gutenberg-game-day")}
+							title={__("Subdeck Styling", "gutenberg-game-day")}
 							icon="admin-appearance"
 							initialOpen
 							disableCustomColors={false}

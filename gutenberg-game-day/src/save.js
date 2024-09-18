@@ -15,10 +15,34 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({attributes}) {
+	const {sections} = attributes;
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Gutenberg Game Day – hello from the saved content!' }
-		</p>
+		<div {...useBlockProps.save()}>
+			{sections.map((section, index) => (
+				<div key={`section-${index}`} className="secion-container">
+					<div className="section-label">
+						{section.label}
+					</div>
+					<div className="section-content" id="content" style={{display: section.toggle ? '' : 'none'}}>
+						{section.kicker &&
+							<div className="kicker" style={{color: section.kickerFontColor, backgroundColor: section.kickerBackgroundColor}}>
+								{section.kicker}
+							</div>
+						}
+						{section.headline &&
+							<div className="headline" style={{color: section.headlineFontColor, backgroundColor: section.headlineBackgroundColor}}>
+								{section.headline}
+							</div>
+						}
+						{section.subdeck &&
+							<div className="subdeck" style={{color: section.subdeckFontColor, backgroundColor: section.subdeckBackgroundColor}}>
+								{section.subdeck}
+							</div>
+						}
+					</div>
+				</div>
+			))}
+		</div>
 	);
 }
