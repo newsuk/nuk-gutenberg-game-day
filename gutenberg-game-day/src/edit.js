@@ -15,8 +15,6 @@ export default function Edit({ attributes, setAttributes }) {
 		sections
 	} = attributes;
 
-	console.log(sections);
-
 	const addSection = () => {
 		const newSections = [...sections, sectionJson];
 		setAttributes({ sections: newSections });
