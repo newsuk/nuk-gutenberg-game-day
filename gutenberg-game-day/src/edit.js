@@ -13,11 +13,10 @@ import { __ } from "@wordpress/i18n";
  */
 import { useState, useEffect } from "react";
 import apiFetch from "@wordpress/api-fetch";
-
 import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
 import {
 	Draggable,
-	Panel,
+	DropZone,
 	TextControl,
 	PanelBody,
 } from "@wordpress/components";
@@ -41,6 +40,7 @@ import "./editor.scss";
 export default function Edit() {
 	const [posts, setPosts] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [draggedPost, setDraggedPost] = useState(null);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
@@ -53,6 +53,15 @@ export default function Edit() {
 		posts === null && fetchPosts();
 	});
 
+	// onDraggableStart = (event) => {
+	// 	console.log("drag start", event);
+	// };
+
+	// onDraggableEnd = (event, item) => {
+	// 	console.log("drag end", event);
+	// 	console.log("drag end item", item);
+	// };
+
 	return (
 		<>
 			<p {...useBlockProps()}>
@@ -60,7 +69,14 @@ export default function Edit() {
 					"Gutenberg Game Day – hello from the editor!",
 					"gutenberg-game-day",
 				)}
+				<DropZone
+					onDrop={function noRefCheck(event, ref) {
+						console.log("dropped", event, ref);
+						console.log("draggedPost", draggedPost);
+					}}
+				/>
 			</p>
+
 			<InspectorControls>
 				<PanelBody title={__("Articles")}>
 					<TextControl
@@ -77,12 +93,18 @@ export default function Edit() {
 					) : (
 						posts &&
 						posts.map((post) => (
-							<Draggable key={post.id} elementId={post.id} transferData={{}}>
+							<Draggable
+								key={post.id}
+								elementId={post.id}
+								transferData={{ ...post }}
+							>
 								{({ onDraggableStart, onDraggableEnd }) => (
 									<div
 										className="example-drag-handle"
 										draggable
-										// onDragStart={onDraggableStart}
+										onDragStart={function onDraggableStartEvent(event, ref) {
+											console.log("dropped", event, ref);
+										}}
 										// onDragEnd={onDraggableEnd}
 									>
 										<p key={post.id}>{post.title.rendered}</p>
