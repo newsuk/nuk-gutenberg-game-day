@@ -20,15 +20,15 @@ For the Game Day on September 18th 2024, the teams are:
 
 | Team | Location  | Members                              | Task                      |
 |:----:| --------- | ------------------------------------ | ------------------------- |
-| 1    | London    | Onur, Ben, Yavor, Emo                | Beginner                  |
-| 2    | London    | Edwil, Peace, Teo                    | Beginner                  |
-| 3    | London    | Malick, Mujeeb, Cengiz, Damien, Andy | TBC                       |
-| 4    | London    | Gareth, Paul E, Veli, Stef           | TBC                       |
+| 1    | London    | Onur, Ben, Yavor, Emo                | TBC                       |
+| 2    | London    | Edwil, Peace, Teo                    | TBC                       |
+| 3    | London    | Malick, Mujeeb, Cengiz, Damien, Andy | RSS Data Block            |
+| 4    | London    | Gareth, Paul E, Veli, Stef           | Quiz Block                |
 | 5    | London    | Jonny, Paul K, Moomba, Chris         | TBC                       |
 | 6    | London    | Mario, Mohan, Jordan, Callum         | Times Article POC         |
-| 7    | Bangalore | Prem, Arun Jami, Ashna, Diksha            | TBC                       |
+| 7    | Bangalore | Prem, Ashna, Diksha, Arun S          | TS Weather Forecast POC   |
 | 8    | Remote    | Marko M, Ruslan, Mihai, Ajdin        | Beginner                  |
-| 9    | Remote    | Marko N, Ion, Kristian, Emil         | Beginner                  |
+| 9    | Remote    | Marko N, Ion, Kristian, Emil         | Countries Block           |
 | 10   | Remote    | Shadi, Snow, Vlad, Marti             | Times Slices in WP        |
 
 ---
@@ -51,9 +51,9 @@ Be sure to push your commits regularly during the day - not just at the end!
 
 ## Who in my team should write the code?
 
-Teams for the tech task will be made up of one or two **Builders** who are new to Gutenberg, and one **Helper** who is a Gutenberg/WordPress expert.
+Teams for the tech task will be made up of one or more **Learners** who are new to Gutenberg, and one **Helper** who is a Gutenberg/WordPress expert.
 
-As a Builder, you are responsible for driving the team’s solution and writing the code.
+As a Learner, you are responsible for driving the team’s solution and writing the code.
 
 Your team’s Helper is there to guide and support you and answer any questions you have during the day.
 
