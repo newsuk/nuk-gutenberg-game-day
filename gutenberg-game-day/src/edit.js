@@ -71,9 +71,15 @@ export default function Edit({ attributes, setAttributes }) {
 			<p {...useBlockProps()}>
 				{post ? (
 					<>
-						<div style={{ display: "row", display: "column", alignItems: "center" }}>
+						<div
+							style={{
+								display: "row",
+								display: "column",
+								alignItems: "center",
+							}}
+						>
 							{featuredMedia ? (
-								<div style={{ flex: "1 1 0" }}>
+								<div style={{ flex: "1 1 0", position: "parent" }}>
 									<img
 										style={{
 											objectFit: "contain",
@@ -84,7 +90,11 @@ export default function Edit({ attributes, setAttributes }) {
 									/>
 								</div>
 							) : null}
-							<div style={{ flex: "1 1 0", padding: "0 8px", fontSize: "12px" }}>{post.title.rendered}</div>
+							<div
+								style={{ flex: "1 1 0", padding: "0 8px", fontSize: "12px" }}
+							>
+								{post.title.rendered}
+							</div>
 						</div>
 					</>
 				) : (
