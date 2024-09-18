@@ -1163,11 +1163,12 @@ function Edit({
   setAttributes
 }) {
   const [chartData, setChartData] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartData);
+  const [chartTitle, setChartTitle] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartTitle);
   const [options, setOptions] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({});
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     const options = {
       title: {
-        text: "Basic Column Chart in React"
+        text: chartTitle
       },
       data: [{
         type: "column",
@@ -1177,16 +1178,22 @@ function Edit({
         }))
       }]
     };
-    console.log(chartData);
+    console.log(chartTitle, chartData);
     setAttributes({
-      chartData
+      chartData,
+      chartTitle
     });
     setOptions(options);
     // chart.render();
-  }, [chartData]);
+  }, [chartData, chartTitle]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
     children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Gutenberg Pie Chart – Enter comma-separated values", "gutenberg-pie-chart"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+      __nextHasNoMarginBottom: true,
+      label: "Chart title",
+      value: chartTitle,
+      onChange: value => setChartTitle(value)
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
       __nextHasNoMarginBottom: true,
       label: "Comma-separated chart data",
       value: chartData,
@@ -1396,7 +1403,7 @@ module.exports = window["wp"]["i18n"];
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartData":{"type":"string"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartTitle":{"type":"string"},"chartData":{"type":"string"}}}');
 
 /***/ })
 

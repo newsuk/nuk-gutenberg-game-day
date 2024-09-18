@@ -17,6 +17,9 @@
   "style": "file:./style-index.css",
   "viewScript": "file:./view.js",
   "attributes": {
+    "chartTitle": {
+      "type": "string"
+    },
     "chartData": {
       "type": "string"
     }

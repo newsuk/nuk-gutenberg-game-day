@@ -38,12 +38,13 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
  */
 export default function Edit({ attributes, setAttributes }) {
 	const [chartData, setChartData] = useState(attributes.chartData);
+	const [chartTitle, setChartTitle] = useState(attributes.chartTitle);
 	const [options, setOptions] = useState({});
 
 	useEffect(() => {
 		const options = {
 			title: {
-				text: "Basic Column Chart in React",
+				text: chartTitle,
 			},
 			data: [
 				{
@@ -55,13 +56,14 @@ export default function Edit({ attributes, setAttributes }) {
 				},
 			],
 		};
-		console.log(chartData);
+		console.log(chartTitle, chartData);
 		setAttributes({
 			chartData,
+			chartTitle,
 		});
 		setOptions(options);
 		// chart.render();
-	}, [chartData]);
+	}, [chartData, chartTitle]);
 
 	return (
 		<div {...useBlockProps()}>
@@ -69,6 +71,12 @@ export default function Edit({ attributes, setAttributes }) {
 				"Gutenberg Pie Chart – Enter comma-separated values",
 				"gutenberg-pie-chart",
 			)}
+			<TextControl
+				__nextHasNoMarginBottom
+				label="Chart title"
+				value={chartTitle}
+				onChange={(value) => setChartTitle(value)}
+			/>
 			<TextControl
 				__nextHasNoMarginBottom
 				label="Comma-separated chart data"
