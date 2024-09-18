@@ -82,14 +82,14 @@ const Sidebar = () => {
 												color: "white",
 												display: "inline",
 												fontSize: "12px",
-												padding: "2px 8px",
+												padding: "2px 6px",
 												borderRadius: "50%",
+												marginRight: "4px",
 											}}
 										>
 											P
 										</span>
 										<span key={post.id}>{post.title.rendered}</span>
-
 									</div>
 								</div>
 							)}
@@ -109,7 +109,7 @@ registerPlugin("ggd-my-plugin-sidebar", {
 				icon="admin-post"
 				title="My plugin sidebar"
 			>
-			<Sidebar />
+				<Sidebar />
 			</PluginSidebar>
 		);
 	},
