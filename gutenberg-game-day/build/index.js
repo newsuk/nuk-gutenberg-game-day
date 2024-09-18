@@ -110,6 +110,7 @@ function Edit({
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        className: "kicker",
         value: kicker,
         placeholder: "Add kicker text...",
         onChange: value => onChangeAttribute(value),
@@ -117,8 +118,9 @@ function Edit({
           color: kickerFontColor,
           backgroundColor: kickerBackgroundColor
         },
-        allowedFormats: []
+        allowedFormats: ["core/bold", "core/italic", "core/underline", "core/strikethrough", "core/link"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        className: "headline",
         value: headline,
         placeholder: "Add Headline text...",
         onChange: value => onChangeAttribute(value),
@@ -126,15 +128,16 @@ function Edit({
           color: headlineFontColor,
           backgroundColor: headlineBackgroundColor
         },
-        allowedFormats: []
+        allowedFormats: ["core/bold", "core/italic", "core/underline", "core/strikethrough", "core/link"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        className: "subdeck",
         value: subdeck,
         placeholder: "Add Subline text...",
         onChange: value => onChangeAttribute(value),
         style: {
           color: subdeckFontColor
         },
-        allowedFormats: []
+        allowedFormats: ["core/bold", "core/italic", "core/underline", "core/strikethrough", "core/link"]
       })]
     })]
   });
@@ -307,7 +310,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"Gutenberg Game Day","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-game-day","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string","default":""},"kickerBackgroundColor":{"type":"string","default":"pink"},"kickerFontColor":{"type":"string","default":"orange"},"headline":{"type":"string","default":""},"headlineBackgroundColor":{"type":"string","default":"yellow"},"headlineFontColor":{"type":"string","default":"red"},"subdeck":{"type":"string","default":""},"subdeckFontColor":{"type":"string","default":"red"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"Gutenberg Game Day","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-game-day","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"kicker":{"type":"string","default":""},"kickerBackgroundColor":{"type":"string","default":""},"kickerFontColor":{"type":"string","default":""},"headline":{"type":"string","default":""},"headlineBackgroundColor":{"type":"string","default":""},"headlineFontColor":{"type":"string","default":""},"subdeck":{"type":"string","default":""},"subdeckFontColor":{"type":"string","default":""}}}');
 
 /***/ })
 

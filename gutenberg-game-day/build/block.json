@@ -23,11 +23,11 @@
     },
     "kickerBackgroundColor": {
       "type": "string",
-      "default": "pink"
+      "default": ""
     },
     "kickerFontColor": {
       "type": "string",
-      "default": "orange"
+      "default": ""
     },
     "headline": {
       "type": "string",
@@ -35,11 +35,11 @@
     },
     "headlineBackgroundColor": {
       "type": "string",
-      "default": "yellow"
+      "default": ""
     },
     "headlineFontColor": {
       "type": "string",
-      "default": "red"
+      "default": ""
     },
     "subdeck": {
       "type": "string",
@@ -47,7 +47,7 @@
     },
     "subdeckFontColor": {
       "type": "string",
-      "default": "red"
+      "default": ""
     }
   }
 }
