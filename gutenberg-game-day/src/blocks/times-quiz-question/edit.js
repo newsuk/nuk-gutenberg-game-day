@@ -11,7 +11,12 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import {
+	useBlockProps,
+	InspectorControls,
+	store as blockEditorStore,
+} from "@wordpress/block-editor";
+import { useSelect } from "@wordpress/data";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -42,7 +47,7 @@ import {
 
 export default function Edit(props) {
 	console.log(props);
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, clientId } = props;
 	const updateChoices = (index, text) => {
 		const choices = [...attributes.choices];
 		choices[index] = { text };
@@ -57,6 +62,9 @@ export default function Edit(props) {
 	const updateAnswer = (value) => {
 		setAttributes({ answer: value });
 	};
+	const blockIndex = useSelect((select) =>
+		select(blockEditorStore).getBlockIndex(clientId),
+	);
 
 	return (
 		<div {...useBlockProps()}>
@@ -80,7 +88,7 @@ export default function Edit(props) {
 				</PanelBody>
 			</InspectorControls>
 			<div>
-				<p>{attributes.label ? "QUESTION" : ""}</p>
+				<p>{attributes.label ? `QUESTION ${blockIndex + 1}` : ""}</p>
 				<TextareaControl
 					value={attributes.question}
 					onChange={(value) => setAttributes({ question: value })}

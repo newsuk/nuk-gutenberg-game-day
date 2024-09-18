@@ -14,8 +14,9 @@ import { __ } from "@wordpress/i18n";
 import {
 	useInnerBlocksProps,
 	useBlockProps,
-	InspectorControls,
+	store as blockEditorStore,
 } from "@wordpress/block-editor";
+import { useSelect } from "@wordpress/data";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -34,27 +35,26 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 
-import {
-	ToggleControl,
-	PanelRow,
-	PanelBody,
-	Button,
-	TextControl,
-	TextareaControl,
-	SelectControl,
-} from "@wordpress/components";
-
 export default function Edit(props) {
 	console.log(props);
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, clientId } = props;
 	const blockProps = useBlockProps();
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		template: [["create-block/times-quiz-question", {}]],
 	});
 
+	const block = useSelect((select) =>
+		select(blockEditorStore).getBlock(clientId),
+	);
+
+	console.log(block);
+
 	return (
 		<div {...blockProps}>
 			<div {...innerBlocksProps}></div>
+			<div style={{ textAlign: "center" }}>
+				<p>You scored 0 out of {block.innerBlocks.length}</p>
+			</div>
 		</div>
 	);
 }
