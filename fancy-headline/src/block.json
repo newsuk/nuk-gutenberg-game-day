@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "team9/fancy-headline",
+	"name": "team9/fancy-headline-with-kicker-headline-subdeck",
 	"version": "0.1.0",
-	"title": "Fancy Headline",
+	"title": "Fancy Headline with Kicker and Subdeck",
 	"category": "text",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"icon": "text",
+	"description": "A block with a kicker, headline, and subdeck with customizable color settings.",
 	"example": {},
 	"supports": {
 		"html": false
@@ -14,20 +14,35 @@
 	"attributes": {
 		"text": {
 			"type": "string",
-			"default": "Hello friend"
+			"default": "Your Kicker"
 		},
 		"color": {
 			"type": "string",
-			"default": "#fff"
+			"default": "#000000"
 		},
 		"backgroundColor": {
 			"type": "string",
-			"default": "#5502dd"
-		}
+			"default": "#FFFFFF"
+		},
+		"headline": {
+			"type": "string",
+			"default": "Your Headline"
+		},
+		"headlineColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"subdeck": {
+			"type": "string",
+			"default": "Your Subdeck"
+		},
+		"subdeckColor": {
+			"type": "string",
+			"default": "#000000"
+		},
 	},
-	"textdomain": "fancy-headline",
+	"textdomain": "fancy-headline-with-kicker-headline-subdeck",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"style": "file:./style-index.css"
 }
