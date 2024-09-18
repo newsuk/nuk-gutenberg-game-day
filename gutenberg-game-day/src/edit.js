@@ -12,9 +12,7 @@ import { __ } from "@wordpress/i18n";
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from "@wordpress/block-editor";
-import {
-	DropZone,
-} from "@wordpress/components";
+import { DropZone } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -23,7 +21,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
 
 /**
@@ -34,28 +32,31 @@ import apiFetch from "@wordpress/api-fetch";
  *
  * @return {Element} Element to render.
  */
-export default function Edit({attributes, setAttributes}) {
-
+export default function Edit({ attributes, setAttributes }) {
 	const [post, setPost] = useState(null);
 	const [featuredMedia, setFeaturedMedia] = useState(null);
 
 	const handleDropEvent = (event) => {
 		const postData = JSON.parse(event.dataTransfer.getData("application/json"));
 		const atts = { postId: postData.id };
-		setAttributes(atts)
-	}
+		setAttributes(atts);
+	};
 
 	useEffect(() => {
 		const fetchPost = async () => {
-			if(attributes && attributes.postId) {
-				const post = await apiFetch({path: `/wp/v2/posts/${attributes.postId}?_embedded`});
-				if(post) {
+			if (attributes && attributes.postId) {
+				const post = await apiFetch({
+					path: `/wp/v2/posts/${attributes.postId}?_embedded`,
+				});
+				if (post) {
 					setPost(post);
 
-					if(post.featured_media) {
-						const featuredMedia = await apiFetch({path: `/wp/v2/media/${post.featured_media}`});
+					if (post.featured_media) {
+						const featuredMedia = await apiFetch({
+							path: `/wp/v2/media/${post.featured_media}`,
+						});
 						if (featuredMedia) {
-							setFeaturedMedia(featuredMedia)
+							setFeaturedMedia(featuredMedia);
 						}
 					}
 				}
@@ -68,10 +69,28 @@ export default function Edit({attributes, setAttributes}) {
 	return (
 		<>
 			<p {...useBlockProps()}>
-				{post ? (<>{featuredMedia ? (<img src={featuredMedia.source_url} />) : null}<div>{post.title.rendered}</div></>) : <div>Drop an article here</div>}
-				<DropZone
-					onDrop={handleDropEvent}
-				/>
+				{post ? (
+					<>
+						<div style={{ display: "row", display: "column", alignItems: "center" }}>
+							{featuredMedia ? (
+								<div style={{ flex: "1 1 0" }}>
+									<img
+										style={{
+											objectFit: "contain",
+											maxWidth: "100%",
+											maxHeight: "100%",
+										}}
+										src={featuredMedia.source_url}
+									/>
+								</div>
+							) : null}
+							<div style={{ flex: "1 1 0", padding: "0 8px", fontSize: "14x" }}>{post.title.rendered}</div>
+						</div>
+					</>
+				) : (
+					<div>Drop an article here</div>
+				)}
+				<DropZone onDrop={handleDropEvent} />
 			</p>
 		</>
 	);
