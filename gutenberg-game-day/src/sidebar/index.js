@@ -30,7 +30,7 @@ const Sidebar = () => {
 	const onDragStart = (event) => {
 		event.dataTransfer = new DataTransfer()
 		event.dataTransfer.setData("text/plain", 'test');
-		console.log( event.dataTransfer.getData("text") );
+		console.log(`t-dragData-${event.dataTransfer.getData("text")}`);
 	};
 
 	// onDraggableEnd = (event, item) => {
@@ -65,7 +65,7 @@ const Sidebar = () => {
 								<div
 									className="example-drag-handle"
 									draggable
-									onDragStart={console.log}
+									onDragStart={(event) => event.dataTransfer.setData("text/plain", post.id)}
 									onDragEnd={console.log}
 								>
 									<p key={post.id}>{post.title.rendered}</p>

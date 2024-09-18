@@ -41,7 +41,7 @@ export default function Edit() {
 					"gutenberg-game-day",
 				)}
 				<DropZone
-					onDrop={console.log}
+					onDrop={(event) => console.log(`t-drop --${JSON.stringify(event.dataTransfer.getData("text/plain"))}--`)}
 				/>
 			</p>
 		</>
