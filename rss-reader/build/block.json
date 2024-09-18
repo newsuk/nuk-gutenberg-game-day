@@ -11,6 +11,12 @@
   "supports": {
     "html": false
   },
+  "attributes": {
+    "rssUrl": {
+      "type": "string",
+      "default": ""
+    }
+  },
   "textdomain": "gutenberg-game-day",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

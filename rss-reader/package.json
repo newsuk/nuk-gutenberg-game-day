@@ -18,5 +18,9 @@
 	"devDependencies": {
 		"@wordpress/env": "^10.7.0",
 		"@wordpress/scripts": "^29.0.0"
+	},
+	"dependencies": {
+		"fast-xml-parser": "^4.5.0",
+		"lodash": "^4.17.21"
 	}
 }

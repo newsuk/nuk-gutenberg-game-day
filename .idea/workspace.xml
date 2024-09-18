@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" name="Changes" comment="remove .idea folder">
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/block.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/block.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/index.asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.asset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/build/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/build/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/edit.js" afterDir="false" />
+    </list>
+    <list id="15c8c264-203e-4aae-80da-6e8bdb3bd09f" name="Changes by ALeung" comment="" />
+    <list id="093a0055-6f72-49e0-9a41-d4292b274ae0" name="Changes by malick" comment="" />
+    <list id="10f9561f-850f-4955-8ed1-6e3f985be571" name="Changes by mujeeb.nawaz" comment="">
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/block.json" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/block.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rss-reader/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/rss-reader/src/edit.js" afterDir="false" />
+    </list>
+    <list id="b85eace5-5e7c-43c8-be9f-4fc674d07dbf" name="Changes by NewsUK" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;damienhampton&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:newsuk/nuk-gutenberg-game-day.git&quot;,
+    &quot;accountId&quot;: &quot;20a0297c-b8c2-44de-a311-19ea495aa6c1&quot;
+  }
+}</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/rss-reader/src/edit.js">
+      <ranges>
+        <range start1="13" end1="14" start2="13" end2="18" changelist="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" />
+        <range start1="31" end1="32" start2="35" end2="50" changelist="10f9561f-850f-4955-8ed1-6e3f985be571" />
+        <range start1="33" end1="39" start2="51" end2="82" changelist="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" />
+      </ranges>
+    </file>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php@7.4/7.4.33_4/bin/php" />
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2mEkeRK9j3phl9ezCi495BlFz65" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "git-widget-placeholder": "rss-reader",
+    "go.import.settings.migrated": "true",
+    "ignore_missing_gitignore": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/damien/work/newsuk/gutenberg-game-day/gutenberg-game-day/rss-reader",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CodeWithMe",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rss-reader" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rss-reader/assets" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1856f99-fa2e-47ba-ae63-1851f4c3b28b" name="Changes" comment="" />
+      <created>1726649217621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726649217621</updated>
+      <workItem from="1726649219028" duration="8367000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1726652523800</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726652523800</updated>
+    </task>
+    <task id="LOCAL-00002" summary="remove .idea folder">
+      <option name="closed" value="true" />
+      <created>1726652608258</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726652608258</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="remove .idea folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove .idea folder" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
