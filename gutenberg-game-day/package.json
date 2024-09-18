@@ -19,11 +19,20 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"env": "wp-env"
+		"env": "wp-env",
+		"test": "jest"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.4",
+		"@babel/preset-react": "^7.24.7",
+		"@babel/preset-typescript": "^7.24.7",
+		"@testing-library/jest-dom": "^6.5.0",
+		"@testing-library/react": "^16.0.1",
 		"@wordpress/env": "^10.7.0",
-		"@wordpress/scripts": "^29.0.0"
+		"@wordpress/scripts": "^26.12.0",
+		"babel-jest": "^29.7.0",
+		"identity-obj-proxy": "^3.0.0"
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "^7.7.0",
