@@ -37,6 +37,7 @@ import apiFetch from "@wordpress/api-fetch";
 export default function Edit({attributes, setAttributes}) {
 
 	const [post, setPost] = useState(null);
+	const [featuredMedia, setFeaturedMedia] = useState(null);
 
 	const handleDropEvent = (event) => {
 		const postData = JSON.parse(event.dataTransfer.getData("application/json"));
@@ -47,9 +48,17 @@ export default function Edit({attributes, setAttributes}) {
 	useEffect(() => {
 		const fetchPost = async () => {
 			if(attributes && attributes.postId) {
-				const post = await apiFetch({path: `/wp/v2/posts/${attributes.postId}`});
-				console.log(post);
-				setPost(post);
+				const post = await apiFetch({path: `/wp/v2/posts/${attributes.postId}?_embedded`});
+				if(post) {
+					setPost(post);
+
+					if(post.featured_media) {
+						const featuredMedia = await apiFetch({path: `/wp/v2/media/${post.featured_media}`});
+						if (featuredMedia) {
+							setFeaturedMedia(featuredMedia)
+						}
+					}
+				}
 			}
 		};
 
@@ -59,7 +68,7 @@ export default function Edit({attributes, setAttributes}) {
 	return (
 		<>
 			<p {...useBlockProps()}>
-				{post ? (<div>{post.title.rendered}</div>) : <div>Drop an article here</div>}
+				{post ? (<>{featuredMedia ? (<img src={featuredMedia.source_url} />) : null}<div>{post.title.rendered}</div></>) : <div>Drop an article here</div>}
 				<DropZone
 					onDrop={handleDropEvent}
 				/>
