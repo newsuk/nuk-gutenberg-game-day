@@ -20,6 +20,9 @@
 		"@wordpress/scripts": "29.0.0"
 	},
 	"dependencies": {
+		"@wordpress/components": "28.7.0",
+		"@wordpress/element": "6.7.0",
+		"chart.js": "4.4.4",
 		"react-chartjs-2": "^5.2.0"
 	}
 }
