@@ -99,7 +99,11 @@ function ggd_register_patterns() {
                              <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
                              <!-- /wp:create-block/gutenberg-game-day --></div>
                              <!-- /wp:column --></div>
-                             <!-- /wp:columns -->',
+                             <!-- /wp:columns -->
+
+                             <!-- wp:paragraph -->
+                             <p></p>
+                             <!-- /wp:paragraph -->',
         )
     );
 
@@ -140,7 +144,11 @@ function ggd_register_patterns() {
                                      <!-- /wp:column --></div>
                                      <!-- /wp:columns --></div>
                                      <!-- /wp:column --></div>
-                                     <!-- /wp:columns -->',
+                                     <!-- /wp:columns -->
+
+                                     <!-- wp:paragraph -->
+                                     <p></p>
+                                     <!-- /wp:paragraph -->',
 					)
 				);
 }
