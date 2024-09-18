@@ -37,7 +37,7 @@ import {
 	Button,
 	TextControl,
 	TextareaControl,
-	SelectControl
+	SelectControl,
 } from "@wordpress/components";
 
 export default function Edit(props) {
@@ -51,12 +51,12 @@ export default function Edit(props) {
 	const choicesOptions = attributes.choices.map((choice, index) => {
 		return {
 			label: choice.text ? choice.text : index,
-			value: index
-		}
-	})
+			value: index,
+		};
+	});
 	const updateAnswer = (value) => {
-		setAttributes({answer: value})
-	}
+		setAttributes({ answer: value });
+	};
 
 	return (
 		<div {...useBlockProps()}>
@@ -69,15 +69,13 @@ export default function Edit(props) {
 							onChange={() => setAttributes({ label: !attributes.label })}
 						/>
 					</PanelRow>
-					<PanelRow
-						className="answer"
-					>
+					<PanelRow className="answer">
 						<SelectControl
 							__nextHasNoMarginBottom
 							onChange={updateAnswer}
 							options={choicesOptions}
 							label="Answer"
-							/>
+						/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
@@ -85,7 +83,7 @@ export default function Edit(props) {
 				<p>{attributes.label ? "QUESTION" : ""}</p>
 				<TextareaControl
 					value={attributes.question}
-					onChange={(value) => setAttributes({question: value})}
+					onChange={(value) => setAttributes({ question: value })}
 					label="Question"
 				/>
 				{attributes.choices.map((choice, index) => (
@@ -94,6 +92,15 @@ export default function Edit(props) {
 						value={choice.text}
 						onChange={(value) => updateChoices(index, value)}
 						label="Response choice"
+						style={{
+							backgroundColor:
+								index == attributes.answer ? "#75B765" : "#F3F1E7",
+							borderColor: index == attributes.answer ? "#75B765" : "#F3F1E7",
+							textAlign: "center",
+							padding: "20px",
+							display: "block",
+							height: "auto",
+						}}
 					/>
 				))}
 				<Button
@@ -102,12 +109,13 @@ export default function Edit(props) {
 					}
 					label="Add choice"
 					variant="primary"
+					style={{ marginTop: "10px", marginBottom: "10px" }}
 				>
 					Add Choice
 				</Button>
 				<TextareaControl
 					value={attributes.details}
-					onChange={(value) => setAttributes({details: value})}
+					onChange={(value) => setAttributes({ details: value })}
 					label="Answer details"
 				/>
 			</div>
