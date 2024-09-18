@@ -4,39 +4,52 @@
  * Replace them with your own styles or remove the file completely.
  */
 
- .wp-block-create-block-gutenberg-game-day {
-	position: relative;
+.wp-block-create-block-gutenberg-game-day {
+
+	.secion-container {
+		display: block;
+		margin-bottom: 30px;
+	}
+
+	.section-label {
+		display: flex;
+		font-size: 20px;
+		font-weight: bold;
+		padding: 20px;
+		background-color: #CCCCCC;
+
+		.label {
+			flex: 1;
+		}
+	}
+
+	.section-content {
+		box-sizing: border-box;
+		display: table;
+		background-color: #EFEFEF;
+		padding: 20px;
+		width: 100%;
+	}
 
 	.kicker {
-		background-color: rgb(86, 16, 217);
-		color: #ffff;
-		padding: 5px;
 		display: table;
-		transition: background-color 0.3s ease;
-
-		// &:hover {
-		// 	background-color: #515253;
-		// }
+		padding: 5px;
+		width: auto;
 	}
 
 	.headline {
-		color: #f50277;
+		width: 100%;
+		margin-top: 10px;
 		font-size: 40px;
 		font-weight: bold;
-		margin: 20px 0;
-		transition: background-color 0.3s ease;
-
-		// &:hover {
-		// 	background-color: #677d7f;
-		// }
 	}
 
 	.subdeck {
-		color: #000;
-		transition: background-color 0.3s ease;
+		margin-top: 10px;
+		width: 100%;
+	}
 
-		// &:hover {
-		// 	background-color: #f1ddd7;
-		// }
+	.remove-section {
+		margin-top: 10px;
 	}
 }
