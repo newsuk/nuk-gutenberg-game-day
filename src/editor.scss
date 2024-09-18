@@ -7,3 +7,12 @@
 .wp-block-create-block-plotpoint {
 	border: 1px dotted #f00;
 }
+.blocks-graph__placeholder-form {
+	display: block !important;
+}
+.blocks-graph__placeholder-form .blocks-table__placeholder-input {
+	width: auto;
+}
+.blocks-graph__placeholder-form-submit{
+	margin-top: 20px;
+}

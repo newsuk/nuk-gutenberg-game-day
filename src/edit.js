@@ -158,6 +158,7 @@ export default function Edit( props ) {
 							} }
 						>
 							<TextControl
+								__next40pxDefaultSize
 								type="text"
 								label={ __( 'Title' ) }
 								value={ chartTitle }
@@ -168,6 +169,7 @@ export default function Edit( props ) {
 							/>
 
 							<TextControl
+								__next40pxDefaultSize
 								type="text"
 								label={ __( 'Dataset Title' ) }
 								value={ dataSetTitle }
@@ -177,6 +179,7 @@ export default function Edit( props ) {
 								className="blocks-table__placeholder-input"
 							/>
 							<TextControl
+								__next40pxDefaultSize
 								type="number"
 								label={ __( 'Row count' ) }
 								min="1"
@@ -186,10 +189,11 @@ export default function Edit( props ) {
 								} }
 								className="blocks-table__placeholder-input"
 							/>
-
-							<Button variant="primary" type="submit">
-								{ __( 'Create Graph' ) }
-							</Button>
+							<div className="blocks-graph__placeholder-form-submit">
+								<Button variant="primary" type="submit">
+									{ __( 'Create Graph' ) }
+								</Button>
+							</div>
 						</form>
 					</Placeholder>
 				) : (
