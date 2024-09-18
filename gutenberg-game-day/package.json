@@ -20,6 +20,7 @@
 		"@wordpress/scripts": "^29.0.0"
 	},
 	"dependencies": {
-		"@canvasjs/charts": "^3.10.8"
+		"@canvasjs/charts": "^3.10.8",
+		"@canvasjs/react-charts": "^1.0.2"
 	}
 }
