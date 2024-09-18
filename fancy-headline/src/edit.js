@@ -1,41 +1,79 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
+import {InspectorControls, PanelColorSettings, useBlockProps} from '@wordpress/block-editor';
+import { RichText } from "@wordpress/block-editor";
 import './editor.scss';
+import {__} from "@wordpress/i18n";
+import {useEffect} from "@wordpress/element";
+import {useDispatch} from "@wordpress/data";
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
+	const { text, color, backgroundColor } = attributes;
+
+	const KICKER_MAX_LENGTH = 20;
+
+	const style = {
+		color,
+		backgroundColor
+	}
+
+	const { createNotice } = useDispatch('core/notices');
+	const { lockPostSaving, unlockPostSaving } = useDispatch('core/editor');
+
+	useEffect(() => {
+		if(text.length < 3) {
+			lockPostSaving();
+			createNotice(
+				'error', // Can be one of: success, info, warning, error.
+				'Kicker length is not right', // Text string to display.
+				{
+					isDismissible: true, // Whether the user can dismiss the notice.
+				}
+			);
+		}
+
+		if(text.length > KICKER_MAX_LENGTH) {
+			createNotice(
+				'error', // Can be one of: success, info, warning, error.
+				'Kicker max length is exceeded', // Text string to display.
+				{
+					isDismissible: true, // Whether the user can dismiss the notice.
+				}
+			);
+
+			lockPostSaving();
+		} else {
+			unlockPostSaving();
+		}
+
+	}, [text]);
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Fancy Headline – hello from the editor!',
-				'fancy-headline'
-			) }
-		</p>
+		<>
+			<RichText
+				{...useBlockProps( { style })}
+				tagName="span"
+				value={text}
+				placeholder={ __( 'Kicker...' ) }
+				onChange={(value) => setAttributes({text: value})}
+			/>
+
+			<InspectorControls>
+				<PanelColorSettings
+					__experimentalIsRenderedInSidebar
+					title={ __( 'Color' ) }
+					colorSettings={ [
+						{
+							value: color,
+							onChange: (value) => setAttributes({color: value}),
+							label: __( 'Text Color' ),
+						},
+						{
+							value: backgroundColor,
+							onChange: (value) => setAttributes({backgroundColor: value}),
+							label: __( 'Background Color' ),
+						}
+					] }
+				/>
+			</InspectorControls>
+		</>
 	);
 }

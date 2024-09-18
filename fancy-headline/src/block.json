@@ -11,6 +11,20 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": "Hello friend"
+		},
+		"color": {
+			"type": "string",
+			"default": "#fff"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": "#5502dd"
+		}
+	},
 	"textdomain": "fancy-headline",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
