@@ -22,9 +22,11 @@
 		},
 		"choices": {
 			"type": "array",
-			"default": [{
-				"text": ""
-			}]
+			"default": [
+				{
+					"text": ""
+				}
+			]
 		},
 		"answer": {
 			"type": "number",
