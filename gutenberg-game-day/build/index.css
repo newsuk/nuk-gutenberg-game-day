@@ -7,7 +7,25 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp-block-create-block-gutenberg-game-day {
-  background-color: #efefef;
+  position: relative;
+}
+.wp-block-create-block-gutenberg-game-day .kicker {
+  background-color: rgb(86, 16, 217);
+  color: white;
+  padding: 5px;
+  display: table;
+  transition: background-color 0.3s ease;
+}
+.wp-block-create-block-gutenberg-game-day .headline {
+  color: #f50277;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 20px 0;
+  transition: background-color 0.3s ease;
+}
+.wp-block-create-block-gutenberg-game-day .subdeck {
+  color: #000;
+  transition: background-color 0.3s ease;
 }
 
 /*# sourceMappingURL=index.css.map*/

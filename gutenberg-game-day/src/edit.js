@@ -46,7 +46,7 @@ export default function Edit({ attributes, setAttributes }) {
 							onChange: (color) => setAttributes({ kickerFontColor: color }),
 							label: __("Text Color", "gutenberg-game-day"),
 						},
-					]}
+					]}	
 				>
 					<ContrastChecker
 						textColor={kickerFontColor}
@@ -95,6 +95,7 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<RichText
+					className="kicker"
 					value={kicker}
 					placeholder="Add kicker text..."
 					onChange={(value) => onChangeAttribute(value)}
@@ -102,9 +103,18 @@ export default function Edit({ attributes, setAttributes }) {
 						color: kickerFontColor,
 						backgroundColor: kickerBackgroundColor,
 					}}
-					allowedFormats={[]}
+					allowedFormats={
+						[
+							"core/bold",
+							"core/italic",
+							"core/underline",
+							"core/strikethrough",
+							"core/link",
+						]
+					}
 				/>
 				<RichText
+					className="headline"
 					value={headline}
 					placeholder="Add Headline text..."
 					onChange={(value) => onChangeAttribute(value)}
@@ -112,16 +122,33 @@ export default function Edit({ attributes, setAttributes }) {
 						color: headlineFontColor,
 						backgroundColor: headlineBackgroundColor,
 					}}
-					allowedFormats={[]}
+					allowedFormats={
+						[
+							"core/bold",
+							"core/italic",
+							"core/underline",
+							"core/strikethrough",
+							"core/link",
+						]
+					}
 				/>
 				<RichText
+					className="subdeck"
 					value={subdeck}
 					placeholder="Add Subline text..."
 					onChange={(value) => onChangeAttribute(value)}
 					style={{
 						color: subdeckFontColor,
 					}}
-					allowedFormats={[]}
+					allowedFormats={
+						[
+							"core/bold",
+							"core/italic",
+							"core/underline",
+							"core/strikethrough",
+							"core/link",
+						]
+					}
 				/>
 			</div>
 		</>
