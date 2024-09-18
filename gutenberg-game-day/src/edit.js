@@ -72,7 +72,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 	return (
 		<>
-			<p {...useBlockProps()}>
+			<div {...useBlockProps()}>
 				{post ? (
 					<>
 						<div
@@ -105,7 +105,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<div>Drop an article here</div>
 				)}
 				<DropZone onDrop={handleDropEvent} />
-			</p>
+			</div>
 
 
 			<InspectorControls>

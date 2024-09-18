@@ -1,37 +1,37 @@
 import { registerPlugin } from "@wordpress/plugins";
 import { PluginSidebar } from "@wordpress/editor";
 import { __ } from "@wordpress/i18n";
+import { addQueryArgs } from "@wordpress/url";
 
 import { useState, useEffect } from "react";
 import apiFetch from "@wordpress/api-fetch";
 import { Draggable, TextControl, PanelBody } from "@wordpress/components";
 
 const Sidebar = () => {
+	const [query, setQuery] = useState("");
 	const [posts, setPosts] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [draggedPost, setDraggedPost] = useState(null);
+
+	const fetchPosts = async (query) => {
+		setLoading(true);
+		const posts = await apiFetch({ path: addQueryArgs( "/wp/v2/posts", { search: query }) });
+		setPosts(posts);
+		setLoading(false);
+	};
 
 	useEffect(() => {
-		const fetchPosts = async () => {
-			const posts = await apiFetch({ path: "/wp/v2/posts" });
-			console.log(posts);
-			setPosts(posts);
-			setLoading(false);
-		};
+		! loading && fetchPosts(query);
+	}, [query]);
 
-		posts === null && fetchPosts();
-	});
+	useEffect(() => {
+		fetchPosts();
+	}, []);
 
 	const onDragStart = (event) => {
 		event.dataTransfer = new DataTransfer();
 		event.dataTransfer.setData("text/plain", "test");
 		console.log(`t-dragData-${event.dataTransfer.getData("text")}`);
 	};
-
-	// onDraggableEnd = (event, item) => {
-	// 	console.log("drag end", event);
-	// 	console.log("drag end item", item);
-	// };
 
 	return (
 		<>
@@ -41,7 +41,7 @@ const Sidebar = () => {
 					label="Search by article title"
 					// help="Additional help text"
 					// value={textField}
-					// onChange={onChangeTextField}
+					onChange={setQuery}
 				/>
 			</PanelBody>
 			<PanelBody>
@@ -56,7 +56,7 @@ const Sidebar = () => {
 							transferData={{ id: 1 }}
 							appendToOwnerDocument={true}
 						>
-							{({ onDraggableStart, onDraggableEnd }) => (
+							{() => (
 								<div
 									className="example-drag-handle"
 									draggable
