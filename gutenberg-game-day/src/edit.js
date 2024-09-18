@@ -23,6 +23,8 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
+import {useEffect, useState} from "react";
+import apiFetch from "@wordpress/api-fetch";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,7 +34,26 @@ import "./editor.scss";
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit({attributes, setAttributes}) {
+
+	const [post, setPost] = useState(null);
+
+	const handleDropEvent = (event) => {
+		console.log(`t-drop --${JSON.stringify(event.dataTransfer.getData("text/plain"))}--`);
+		const postData = event.dataTransfer.getData("text/plain");
+		setAttributes({ postId: postData})
+	}
+
+	useEffect(() => {
+		const fetchPost = async () => {
+			const post = await apiFetch({ path: `/wp/v2/posts/${attributes.postId}` });
+			console.log(post);
+			setPost(post);
+		};
+
+		post === null && fetchPost();
+	});
+
 	return (
 		<>
 			<p {...useBlockProps()}>
@@ -40,8 +61,9 @@ export default function Edit() {
 					"Gutenberg Game Day – hello from the editor!",
 					"gutenberg-game-day",
 				)}
+				{post ? (<div>{post.title.rendered}</div>) : null}
 				<DropZone
-					onDrop={(event) => console.log(`t-drop --${JSON.stringify(event.dataTransfer.getData("text/plain"))}--`)}
+					onDrop={handleDropEvent}
 				/>
 			</p>
 		</>
