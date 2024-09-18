@@ -30,18 +30,25 @@ function Edit({
   const {
     kicker,
     kickerBackgroundColor,
-    kickerFontColor
+    kickerFontColor,
+    headline,
+    headlineBackgroundColor,
+    headlineFontColor,
+    subdeck,
+    subdeckFontColor
   } = attributes;
-  console.log('kicker', kicker);
+
+  // console.log("kicker", kicker);
+
   const onChangeAttribute = value => {
     setAttributes({
       kicker: value
     });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Kicker Styling', 'gutenberg-game-day'),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Kicker Styling", "gutenberg-game-day"),
         icon: "admin-appearance",
         initialOpen: true,
         disableCustomColors: false,
@@ -50,22 +57,59 @@ function Edit({
           onChange: color => setAttributes({
             kickerBackgroundColor: color
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Background Color', 'gutenberg-game-day')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "gutenberg-game-day")
         }, {
           value: kickerFontColor,
           onChange: color => setAttributes({
             kickerFontColor: color
           }),
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Text Color', 'gutenberg-game-day')
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
         }],
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
           textColor: kickerFontColor,
           backgroundColor: kickerBackgroundColor
         })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("headline Styling", "gutenberg-game-day"),
+        icon: "admin-appearance",
+        initialOpen: true,
+        disableCustomColors: false,
+        colorSettings: [{
+          value: headlineBackgroundColor,
+          onChange: color => setAttributes({
+            headlineBackgroundColor: color
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Background Color", "gutenberg-game-day")
+        }, {
+          value: headlineFontColor,
+          onChange: color => setAttributes({
+            headlineFontColor: color
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
+        }],
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
+          textColor: headlineFontColor,
+          backgroundColor: headlineBackgroundColor
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("subdeck Styling", "gutenberg-game-day"),
+        icon: "admin-appearance",
+        initialOpen: true,
+        disableCustomColors: false,
+        colorSettings: [{
+          value: subdeckFontColor,
+          onChange: color => setAttributes({
+            subdeckFontColor: color
+          }),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Text Color", "gutenberg-game-day")
+        }],
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
+          textColor: subdeckFontColor
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
         value: kicker,
         placeholder: "Add kicker text...",
         onChange: value => onChangeAttribute(value),
@@ -74,7 +118,24 @@ function Edit({
           backgroundColor: kickerBackgroundColor
         },
         allowedFormats: []
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        value: headline,
+        placeholder: "Add Headline text...",
+        onChange: value => onChangeAttribute(value),
+        style: {
+          color: headlineFontColor,
+          backgroundColor: headlineBackgroundColor
+        },
+        allowedFormats: []
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        value: subdeck,
+        placeholder: "Add Subline text...",
+        onChange: value => onChangeAttribute(value),
+        style: {
+          color: subdeckFontColor
+        },
+        allowedFormats: []
+      })]
     })]
   });
 }
