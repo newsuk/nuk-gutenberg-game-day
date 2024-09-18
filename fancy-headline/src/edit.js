@@ -6,7 +6,7 @@ import { useEffect } from "@wordpress/element";
 import { useDispatch } from "@wordpress/data";
 
 export default function Edit({ attributes, setAttributes }) {
-	const { text, color, backgroundColor, headline, headlineColor, headlineBackgroundColor, subdeck, subdeckColor, subdeckBackgroundColor } = attributes;
+	const { text, color, backgroundColor, headline, headlineColor, subdeck, subdeckColor } = attributes;
 
 	const KICKER_MAX_LENGTH = 20;
 
@@ -18,64 +18,68 @@ export default function Edit({ attributes, setAttributes }) {
 	const headlineStyle = {
 		color: headlineColor,
 		fontSize: '400%',
-		marginTop: '10px',
 	};
 
 
 	const subdeckStyle = {
 		color: subdeckColor,
-		fontSize: '150%',
-		marginTop: '10px',
 	};
 
-	const { createNotice } = useDispatch('core/notices');
+	const { createErrorNotice, removeAllNotices } = useDispatch('core/notices');
 	const { lockPostSaving, unlockPostSaving } = useDispatch('core/editor');
 
 	useEffect(() => {
-		if (text.length < 3) {
+		if(text.length < 4) {
 			lockPostSaving();
-			createNotice(
-				'error',
-				'Kicker length is not right',
-				{ isDismissible: true }
+			removeAllNotices();
+			createErrorNotice(
+				'Kicker length not long enough, it should be more than 3 characters.',
+				{
+					isDismissible: true,
+				}
 			);
-		}
-
-		if (text.length > KICKER_MAX_LENGTH) {
-			createNotice(
-				'error',
-				'Kicker max length is exceeded',
-				{ isDismissible: true }
+		} else if(text.length > KICKER_MAX_LENGTH) {
+			removeAllNotices();
+			createErrorNotice(
+				'Kicker max length is exceeded 20 characters.',
+				{
+					isDismissible: true,
+				}
 			);
 			lockPostSaving();
 		} else {
+			removeAllNotices();
 			unlockPostSaving();
 		}
+
 	}, [text]);
 
 	return (
-		<>
+		<div {...useBlockProps()}>
 			<RichText
-				{...useBlockProps({ style: kickerStyle })}
-				tagName="p"
+				style={ kickerStyle }
+				tagName="span"
 				value={text}
 				placeholder={__('Kicker...')}
+				className="wp-block-team9-fancy-headline__kicker"
 				onChange={(value) => setAttributes({ text: value })}
 			/>
 
 			<RichText
-				{...useBlockProps({ style: headlineStyle })}
-				tagName="p"
+				style={ headlineStyle }
+				tagName="h1"
 				value={headline}
 				placeholder={__('Headline...')}
+				className="wp-block-team9-fancy-headline__headline"
 				onChange={(value) => setAttributes({ headline: value })}
 			/>
-			
+
 			<RichText
-				{...useBlockProps({ style: subdeckStyle })}
-				tagName="h2"
+				style={ subdeckStyle }
+				tagName="p"
 				value={subdeck}
 				placeholder={__('Subdeck...')}
+				className="wp-block-team9-fancy-headline__subdeck"
 				onChange={(value) => setAttributes({ subdeck: value })}
 			/>
 
@@ -93,30 +97,12 @@ export default function Edit({ attributes, setAttributes }) {
 							value: backgroundColor,
 							onChange: (value) => setAttributes({ backgroundColor: value }),
 							label: __('Background Color'),
-						}
-					]}
-				/>
-			</InspectorControls>
-
-			<InspectorControls>
-				<PanelColorSettings
-					__experimentalIsRenderedInSidebar
-					title={__('Headline Color Settings')}
-					colorSettings={[
+						},
 						{
 							value: headlineColor,
 							onChange: (value) => setAttributes({ headlineColor: value }),
 							label: __('Headline Text Color'),
 						},
-					]}
-				/>
-			</InspectorControls>
-
-			<InspectorControls>
-				<PanelColorSettings
-					__experimentalIsRenderedInSidebar
-					title={__('Subdeck Color Settings')}
-					colorSettings={[
 						{
 							value: subdeckColor,
 							onChange: (value) => setAttributes({ subdeckColor: value }),
@@ -125,6 +111,6 @@ export default function Edit({ attributes, setAttributes }) {
 					]}
 				/>
 			</InspectorControls>
-		</>
+		</div>
 	);
 }

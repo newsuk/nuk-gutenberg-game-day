@@ -12,37 +12,37 @@ export default function save({ attributes }) {
 	const headlineStyle = {
 		color: headlineColor,
 		fontSize: '400%',
-		marginTop: '10px',
 	};
 
 	const subdeckStyle = {
 		color: subdeckColor,
-		fontSize: '150%',
-		marginTop: '10px',
 	};
 
 	return (
-		<>
+		<div {...useBlockProps.save()}>
 			{/* Kicker */}
 			<RichText.Content
-				{...useBlockProps.save({ style: kickerStyle })}
+				style= { kickerStyle }
+				className={"wp-block-team9-fancy-headline__kicker"}
 				value={text}
-				tagName="p"
+				tagName="span"
 			/>
 
 			{/* Headline */}
 			<RichText.Content
-				{...useBlockProps.save({ style: headlineStyle })}
+				style= { headlineStyle }
+				className={"wp-block-team9-fancy-headline__headline"}
 				value={headline}
-				tagName="p"
+				tagName="h1"
 			/>
 
 			{/* Subdeck */}
 			<RichText.Content
-				{...useBlockProps.save({ style: subdeckStyle })}
+				style= { subdeckStyle }
+				className={"wp-block-team9-fancy-headline__subdeck"}
 				value={subdeck}
-				tagName="h2"
+				tagName="p"
 			/>
-		</>
+		</div>
 	);
 }

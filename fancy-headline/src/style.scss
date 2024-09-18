@@ -1,10 +1,11 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
 .wp-block-team9-fancy-headline {
-	padding: 2px;
+	&__kicker {
+		padding-block: 4px;
+		padding-inline: 8px;
+	}
+
+	&__headline,
+	&__subdeck {
+		margin-block: 6px;
+	}
 }

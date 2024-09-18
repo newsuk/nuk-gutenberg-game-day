@@ -9,7 +9,13 @@
 	"description": "A block with a kicker, headline, and subdeck with customizable color settings.",
 	"example": {},
 	"supports": {
-		"html": false
+		"align": true,
+		"alignWide": true,
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"attributes": {
 		"text": {
