@@ -9,19 +9,22 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  */
 
+define( 'TS_WEATHER_FORECAST_BLOCK_VERSION', '1.0.0' );
+
 // Register the block
 function ts_weather_forecast_register_block() {
     wp_register_script(
         'ts-weather-forecast-block',
         plugins_url( 'dist/block.js', __FILE__ ),
-        array( 'wp-blocks', 'wp-element', 'wp-editor' )
+        array( 'wp-blocks', 'wp-element', 'wp-editor' ),
+        TS_WEATHER_FORECAST_BLOCK_VERSION
     );
 
     wp_register_style(
         'ts-weather-forecast-block-style',
         plugins_url( 'src/style.css', __FILE__ ),
         array(),
-        filemtime( plugin_dir_path( __FILE__ ) . 'src/style.css' )
+        TS_WEATHER_FORECAST_BLOCK_VERSION
     );
 
     register_block_type('ts-weather-forecast/block', array(
