@@ -7,6 +7,7 @@ import {
 	ContrastChecker,
 } from "@wordpress/block-editor";
 import "./editor.scss";
+import { SelectControl } from "@wordpress/components";
 
 export default function Edit({ attributes, setAttributes }) {
 	const {
@@ -21,14 +22,43 @@ export default function Edit({ attributes, setAttributes }) {
 	} = attributes;
 
 	// console.log("kicker", kicker);
+	const FontSizeSelector = ({ fontSize, setFontSize }) => {
+		const fontSizes = [
+			{ label: "Small", value: "12px" },
+			{ label: "Normal", value: "16px" },
+			{ label: "Large", value: "24px" },
+			{ label: "Extra Large", value: "32px" },
+		];
 
-	const onChangeAttribute = (value, value2, value3) => {
-		setAttributes({ kicker: value, headline: value2, subdeck: value3 });
+		return (
+			<SelectControl
+				label={__("Font Size", "gutenberg-game-day")}
+				value={fontSize}
+				options={fontSizes}
+				onChange={(size) => {
+					setFontSize(size);
+				}}
+			/>
+		);
+	};
+
+	const onChangeAttribute = (kickerValue, headlineValue, subdeckValue) => {
+		setAttributes({
+			kicker: kickerValue,
+			headline: headlineValue,
+			subdeck: subdeckValue,
+		});
 	};
 
 	return (
 		<>
 			<InspectorControls>
+				<FontSizeSelector
+					setFontSize={(size) => {
+						setAttributes({ fontSize: size });
+						console.log("Selected font size:", size);
+					}}
+				/>
 				<PanelColorSettings
 					title={__("Kicker Styling", "gutenberg-game-day")}
 					icon="admin-appearance"
@@ -97,7 +127,9 @@ export default function Edit({ attributes, setAttributes }) {
 				<RichText
 					value={kicker}
 					placeholder="Add kicker text..."
-					onChange={(value) => onChangeAttribute(value)}
+					onChange={(kickerValue) =>
+						onChangeAttribute(kickerValue, headline, subdeck)
+					}
 					style={{
 						color: kickerFontColor,
 						backgroundColor: kickerBackgroundColor,
@@ -107,17 +139,21 @@ export default function Edit({ attributes, setAttributes }) {
 				<RichText
 					value={headline}
 					placeholder="Add Headline text..."
-					onChange={(value) => onChangeAttribute(value2)}
+					onChange={(headlineValue) =>
+						onChangeAttribute(kicker, headlineValue, subdeck)
+					}
 					style={{
 						color: headlineFontColor,
 						backgroundColor: headlineBackgroundColor,
 					}}
-					allowedFormats={["core/bold"]}
+					allowedFormats={[]}
 				/>
 				<RichText
 					value={subdeck}
 					placeholder="Add Subline text..."
-					onChange={(value) => onChangeAttribute(value3)}
+					onChange={(subdeckValue) =>
+						onChangeAttribute(kicker, headline, subdeckValue)
+					}
 					style={{
 						color: subdeckFontColor,
 					}}
