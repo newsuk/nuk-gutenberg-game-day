@@ -40,9 +40,11 @@ function Edit({
 
   // console.log("kicker", kicker);
 
-  const onChangeAttribute = value => {
+  const onChangeAttribute = (value, value2, value3) => {
     setAttributes({
-      kicker: value
+      kicker: value,
+      headline: value2,
+      subdeck: value3
     });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
@@ -121,16 +123,16 @@ function Edit({
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
         value: headline,
         placeholder: "Add Headline text...",
-        onChange: value => onChangeAttribute(value),
+        onChange: value => onChangeAttribute(value2),
         style: {
           color: headlineFontColor,
           backgroundColor: headlineBackgroundColor
         },
-        allowedFormats: []
+        allowedFormats: ["core/bold"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
         value: subdeck,
         placeholder: "Add Subline text...",
-        onChange: value => onChangeAttribute(value),
+        onChange: value => onChangeAttribute(value3),
         style: {
           color: subdeckFontColor
         },

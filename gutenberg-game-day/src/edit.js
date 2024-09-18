@@ -22,8 +22,8 @@ export default function Edit({ attributes, setAttributes }) {
 
 	// console.log("kicker", kicker);
 
-	const onChangeAttribute = (value) => {
-		setAttributes({ kicker: value });
+	const onChangeAttribute = (value, value2, value3) => {
+		setAttributes({ kicker: value, headline: value2, subdeck: value3 });
 	};
 
 	return (
@@ -107,17 +107,17 @@ export default function Edit({ attributes, setAttributes }) {
 				<RichText
 					value={headline}
 					placeholder="Add Headline text..."
-					onChange={(value) => onChangeAttribute(value)}
+					onChange={(value) => onChangeAttribute(value2)}
 					style={{
 						color: headlineFontColor,
 						backgroundColor: headlineBackgroundColor,
 					}}
-					allowedFormats={[]}
+					allowedFormats={["core/bold"]}
 				/>
 				<RichText
 					value={subdeck}
 					placeholder="Add Subline text..."
-					onChange={(value) => onChangeAttribute(value)}
+					onChange={(value) => onChangeAttribute(value3)}
 					style={{
 						color: subdeckFontColor,
 					}}
