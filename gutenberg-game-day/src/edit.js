@@ -23,6 +23,7 @@ import "./editor.scss";
 
 import { useState, useEffect } from "react";
 import { TextControl } from "@wordpress/components";
+import CanvasJS from '@canvasjs/charts';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -35,11 +36,39 @@ import { TextControl } from "@wordpress/components";
 export default function Edit({ attributes, setAttributes }) {
 	const [chartData, setChartData] = useState(attributes.chartData);
 
+	let chart = new CanvasJS.Chart("chartContainer", {
+		exportEnabled: true,
+		animationEnabled: true,
+		title:{
+			text: "State Operating Funds"
+		},
+		legend:{
+			cursor: "pointer",
+			itemclick: explodePie
+		},
+		data: [{
+			type: "pie",
+			showInLegend: true,
+			toolTipContent: "{name}: <strong>{y}%</strong>",
+			indexLabel: "{name} - {y}%",
+			dataPoints: [
+				{ y: 26, name: "School Aid", exploded: true },
+				{ y: 20, name: "Medical Aid" },
+				{ y: 5, name: "Debt/Capital" },
+				{ y: 3, name: "Elected Officials" },
+				{ y: 7, name: "University" },
+				{ y: 17, name: "Executive" },
+				{ y: 22, name: "Other Local Assistance"}
+			]
+		}]
+	});
+
 	useEffect(() => {
 		console.log(chartData);
 		setAttributes({
 			chartData,
 		});
+		chart.render();
 	}, [chartData]);
 
 	return (
@@ -54,6 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
 				value={chartData}
 				onChange={(value) => setChartData(value)}
 			/>
+			<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 		</div>
 	);
 }
