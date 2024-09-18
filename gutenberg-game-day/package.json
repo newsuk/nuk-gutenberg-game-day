@@ -7,9 +7,11 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build:blocks": "wp-scripts build --output-path=build/block",
+		"start:blocks:hot": "wp-scripts start --hot --output-path=build/block",
 		"start:blocks": "wp-scripts start --hot --output-path=build/block",
 		"build:sidebar": "wp-scripts build src/sidebar --output-path=build/sidebar",
 		"start:sidebar": "wp-scripts start src/sidebar --output-path=build/sidebar",
+		"start:sidebar:hot": "wp-scripts start src/sidebar --hot --output-path=build/sidebar",
 		"build": "npm-run-all build:blocks build:sidebar",
 		"start": "npm-run-all --parallel start:blocks start:sidebar",
 		"format": "wp-scripts format",
