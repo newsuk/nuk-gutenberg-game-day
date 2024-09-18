@@ -20,7 +20,7 @@ For the Game Day on September 18th 2024, the teams are:
 
 | Team | Location  | Members                              | Task                      |
 |:----:| --------- | ------------------------------------ | ------------------------- |
-| 1    | London    | Onur, Ben, Yavor, Emo                | TBC                       |
+| 1    | London    | Onur, Ben, Yavor, Emo                | Data Visulalization       |
 | 2    | London    | Edwil, Peace, Teo                    | TBC                       |
 | 3    | London    | Malick, Mujeeb, Cengiz, Damien, Andy | RSS Data Block            |
 | 4    | London    | Gareth, Paul E, Veli, Stef           | Quiz Block                |
