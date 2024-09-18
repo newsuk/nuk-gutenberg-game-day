@@ -65,7 +65,7 @@ const Sidebar = () => {
 								<div
 									className="example-drag-handle"
 									draggable
-									onDragStart={(event) => event.dataTransfer.setData("text/plain", post.id)}
+									onDragStart={(event) => event.dataTransfer.setData("application/json", JSON.stringify(post))}
 									onDragEnd={console.log}
 								>
 									<p key={post.id}>{post.title.rendered}</p>

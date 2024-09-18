@@ -39,16 +39,18 @@ export default function Edit({attributes, setAttributes}) {
 	const [post, setPost] = useState(null);
 
 	const handleDropEvent = (event) => {
-		console.log(`t-drop --${JSON.stringify(event.dataTransfer.getData("text/plain"))}--`);
-		const postData = event.dataTransfer.getData("text/plain");
-		setAttributes({ postId: postData})
+		const postData = JSON.parse(event.dataTransfer.getData("application/json"));
+		const atts = { postId: postData.id };
+		setAttributes(atts)
 	}
 
 	useEffect(() => {
 		const fetchPost = async () => {
-			const post = await apiFetch({ path: `/wp/v2/posts/${attributes.postId}` });
-			console.log(post);
-			setPost(post);
+			if(attributes && attributes.postId) {
+				const post = await apiFetch({path: `/wp/v2/posts/${attributes.postId}`});
+				console.log(post);
+				setPost(post);
+			}
 		};
 
 		post === null && fetchPost();
