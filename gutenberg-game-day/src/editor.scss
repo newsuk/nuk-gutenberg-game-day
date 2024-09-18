@@ -4,6 +4,39 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-gutenberg-game-day {
-	background-color: #efefef;
+ .wp-block-create-block-gutenberg-game-day {
+	position: relative;
+
+	.kicker {
+		background-color: rgb(86, 16, 217);
+		color: #ffff;
+		padding: 5px;
+		display: table;
+		transition: background-color 0.3s ease;
+
+		// &:hover {
+		// 	background-color: #515253;
+		// }
+	}
+
+	.headline {
+		color: #f50277;
+		font-size: 40px;
+		font-weight: bold;
+		margin: 20px 0;
+		transition: background-color 0.3s ease;
+
+		// &:hover {
+		// 	background-color: #677d7f;
+		// }
+	}
+
+	.subdeck {
+		color: #000;
+		transition: background-color 0.3s ease;
+
+		// &:hover {
+		// 	background-color: #f1ddd7;
+		// }
+	}
 }
