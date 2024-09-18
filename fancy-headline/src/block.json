@@ -39,7 +39,7 @@
 		"subdeckColor": {
 			"type": "string",
 			"default": "#000000"
-		},
+		}
 	},
 	"textdomain": "fancy-headline-with-kicker-headline-subdeck",
 	"editorScript": "file:./index.js",
