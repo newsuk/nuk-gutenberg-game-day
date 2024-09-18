@@ -25,6 +25,18 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function create_block_gutenberg_game_day_block_init() {
-	register_block_type( __DIR__ . '/build' );
+	register_block_type( __DIR__ . '/build/block' );
 }
 add_action( 'init', 'create_block_gutenberg_game_day_block_init' );
+
+function sidebar_plugin_register() {
+	$assets = require_once( __DIR__ . '/build/sidebar/sidebar.asset.php' );
+
+	wp_enqueue_script(
+		'ggd-sidebar-index',
+		plugins_url( 'build/sidebar/sidebar.js', __FILE__ ),
+		$assets['dependencies'],
+		$assets['version']
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'sidebar_plugin_register' );

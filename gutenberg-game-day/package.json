@@ -6,13 +6,17 @@
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
-		"build": "wp-scripts build",
+		"build:blocks": "wp-scripts build --output-path=build/block",
+		"start:blocks": "wp-scripts start --hot --output-path=build/block",
+		"build:sidebar": "wp-scripts build src/sidebar --output-path=build/sidebar",
+		"start:sidebar": "wp-scripts start src/sidebar --output-path=build/sidebar",
+		"build": "npm-run-all build:blocks build:sidebar",
+		"start": "npm-run-all --parallel start:blocks start:sidebar",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start",
 		"env": "wp-env"
 	},
 	"devDependencies": {
@@ -20,6 +24,9 @@
 		"@wordpress/scripts": "^29.0.0"
 	},
 	"dependencies": {
-		"@wordpress/api-fetch": "^7.7.0"
+		"@wordpress/api-fetch": "^7.7.0",
+		"@wordpress/editor": "^14.7.0",
+		"@wordpress/plugins": "^7.7.0",
+		"npm-run-all": "^4.1.5"
 	}
 }
