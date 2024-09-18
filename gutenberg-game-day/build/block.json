@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/gutenberg-game-day",
+  "name": "create-block/times-quiz-question",
   "version": "0.1.0",
-  "title": "Gutenberg Game Day",
+  "title": "Quiz Question",
   "category": "widgets",
   "icon": "smiley",
   "description": "Example block scaffolded with Create Block tool.",
@@ -11,7 +11,26 @@
   "supports": {
     "html": false
   },
-  "textdomain": "gutenberg-game-day",
+  "attributes": {
+    "label": {
+      "type": "boolean",
+      "default": false
+    },
+    "question": {
+      "type": "string"
+    },
+    "choices": {
+      "type": "array",
+      "default": []
+    },
+    "answer": {
+      "type": "number"
+    },
+    "details": {
+      "type": "string"
+    }
+  },
+  "textdomain": "times-quiz-question",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
