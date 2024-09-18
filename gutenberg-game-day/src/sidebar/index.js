@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import apiFetch from "@wordpress/api-fetch";
 import { Draggable, TextControl, PanelBody } from "@wordpress/components";
 
+import Image from "./image";
+
 const Sidebar = () => {
 	const [query, setQuery] = useState("");
 	const [posts, setPosts] = useState(null);
@@ -70,12 +72,14 @@ const Sidebar = () => {
 								>
 									<div
 										style={{
-											height: "60px",
 											border: "1px solid gray",
 											padding: "2px",
 											marginBottom: "4px",
 										}}
 									>
+										{post.featured_media > 0 && (
+											<Image id={post.featured_media} width={'100%'} />
+										)}
 										<span
 											style={{
 												background: "#72d151",
@@ -84,7 +88,7 @@ const Sidebar = () => {
 												fontSize: "12px",
 												padding: "2px 6px",
 												borderRadius: "50%",
-												marginRight: "4px",
+												marginRight: "8px",
 											}}
 										>
 											P
