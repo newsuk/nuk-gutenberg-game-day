@@ -3,10 +3,10 @@
 	"apiVersion": 3,
 	"name": "create-block/gutenberg-game-day",
 	"version": "0.1.0",
-	"title": "Gutenberg Game Day",
+	"title": "RSS Section Data Visualiser",
 	"category": "widgets",
 	"icon": "chart-pie",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "Widget for displaying pie charts of Sun Section popularity.",
 	"example": {},
 	"supports": {
 		"html": false

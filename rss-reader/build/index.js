@@ -24,9 +24,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var fast_xml_parser__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(fast_xml_parser__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _rss_helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./rss-helper */ "./src/rss-helper.js");
 /* harmony import */ var _pie__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pie */ "./src/pie.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__);
 /**
  * Retrieves the translation of text.
  *
@@ -40,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+
 
 
 
@@ -77,20 +80,22 @@ function Edit({
   const [isFetchingRss, setFetchingRss] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(false);
   const fetchRss = async localRssUrl => {
     const parser = new fast_xml_parser__WEBPACK_IMPORTED_MODULE_4__.XMLParser();
-    const xml = await fetch('http://localhost:8888/wp-content/plugins/rss-reader/assets/rss.xml');
-    let json = parser.parse(await xml.text());
+    const xml = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_7___default()({
+      path: `/index.php?rest_route=/gutenberg-game-day/v1/fetch-rss&url=${encodeURI(localRssUrl)}`
+    });
+    // const xml = await fetch('http://localhost:8888/wp-content/plugins/rss-reader/assets/rss.xml');
+    let json = parser.parse(xml);
 
     // console.log(json.rss.channel);
     const countedCategories = (0,_rss_helper__WEBPACK_IMPORTED_MODULE_5__.countCategories)(json.rss.channel);
-    console.log(countedCategories);
     return countedCategories;
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     ...blockProps,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: 'Settings',
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
           label: 'Data Source',
           value: localRssUrl,
           placeholder: 'RSS URL...',
@@ -98,7 +103,7 @@ function Edit({
             setLocalRssUrl(value);
           },
           disabled: isFetchingRss
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
           variant: "primary",
           onClick: async () => {
             setFetchingRss(true);
@@ -113,8 +118,8 @@ function Edit({
           children: "Get Feed"
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pie__WEBPACK_IMPORTED_MODULE_6__.PieChart, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_pie__WEBPACK_IMPORTED_MODULE_6__.PieChart, {
         feedCategories: feedCategories
       })
     })]
@@ -2577,6 +2582,17 @@ module.exports = window["ReactJSXRuntime"];
 
 "use strict";
 module.exports = window["lodash"];
+
+/***/ }),
+
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["apiFetch"];
 
 /***/ }),
 
@@ -17895,7 +17911,7 @@ const Scatter = /* #__PURE__ */ createTypedChart("scatter", chart_js__WEBPACK_IM
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"Gutenberg Game Day","category":"widgets","icon":"chart-pie","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"rssUrl":{"type":"string","default":""},"feedCategories":{"type":"array","default":[]}},"textdomain":"gutenberg-game-day","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"RSS Section Data Visualiser","category":"widgets","icon":"chart-pie","description":"Widget for displaying pie charts of Sun Section popularity.","example":{},"supports":{"html":false},"attributes":{"rssUrl":{"type":"string","default":""},"feedCategories":{"type":"array","default":[]}},"textdomain":"gutenberg-game-day","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

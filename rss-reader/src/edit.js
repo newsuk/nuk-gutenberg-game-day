@@ -17,6 +17,7 @@ import { useState} from '@wordpress/element';
 import { XMLParser } from 'fast-xml-parser';
 import { countCategories } from './rss-helper';
 import { PieChart } from "./pie";
+import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -44,12 +45,12 @@ export default function Edit(  { attributes, setAttributes } ) {
 
 	const fetchRss = async localRssUrl => {
 		const parser = new XMLParser();
-		const xml = await fetch('http://localhost:8888/wp-content/plugins/rss-reader/assets/rss.xml');
-		let json = parser.parse(await xml.text());
+		const xml = await apiFetch( { path: `/index.php?rest_route=/gutenberg-game-day/v1/fetch-rss&url=${encodeURI(localRssUrl)}` } );
+		 // const xml = await fetch('http://localhost:8888/wp-content/plugins/rss-reader/assets/rss.xml');
+		let json = parser.parse(xml);
 
 		// console.log(json.rss.channel);
 		const countedCategories = countCategories(json.rss.channel)
-		console.log(countedCategories);
 		return countedCategories;
 	};
 
