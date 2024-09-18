@@ -11,8 +11,11 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
+import { useState, useEffect } from "react";
+import apiFetch from "@wordpress/api-fetch";
+
 import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
-import { PanelBody } from "@wordpress/components";
+import { Draggable, TextControl, PanelBody } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,6 +34,17 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 export default function Edit() {
+	const [posts, setPosts] = useState(null);
+
+	useEffect(() => {
+		const fetchPosts = async () => {
+			const posts = await apiFetch({ path: "/wp/v2/posts" });
+			setPosts(posts);
+		};
+
+		fetchPosts();
+	});
+
 	return (
 		<>
 			<p {...useBlockProps()}>
@@ -41,8 +55,17 @@ export default function Edit() {
 			</p>
 			<InspectorControls>
 				<PanelBody title={__("Articles")}>
-					<p>add search field</p>
-					<p>add search results</p>
+					<TextControl
+						__nextHasNoMarginBottom
+						label="Search by article title"
+						// help="Additional help text"
+						// value={textField}
+						// onChange={onChangeTextField}
+					/>
+					<div>
+						{posts &&
+							posts.map((post) => <p key={post.id}>{post.title.rendered}</p>)}
+					</div>
 				</PanelBody>
 			</InspectorControls>
 		</>
