@@ -43,5 +43,9 @@ registerBlockType( metadata.name, {
 		postTitle: {
 			type: 'string'
 		}
+		,showImage: {
+			type: 'boolean',
+			default: true
+		}
 	}
 } );

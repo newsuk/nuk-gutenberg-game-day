@@ -11,8 +11,11 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
-import { DropZone } from "@wordpress/components";
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
+import { DropZone,
+	TextControl,
+	PanelBody,
+	CheckboxControl } from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -40,30 +43,31 @@ export default function Edit({ attributes, setAttributes }) {
 		const postData = JSON.parse(event.dataTransfer.getData("application/json"));
 		const atts = { postId: postData.id };
 		setAttributes(atts);
+		fetchPost(atts.postId)
 	};
 
-	useEffect(() => {
-		const fetchPost = async () => {
-			if (attributes && attributes.postId) {
-				const post = await apiFetch({
-					path: `/wp/v2/posts/${attributes.postId}?_embedded`,
-				});
-				if (post) {
-					setPost(post);
+	const fetchPost = async (postId) => {
+		if (postId) {
+			const post = await apiFetch({
+				path: `/wp/v2/posts/${postId}?_embedded`,
+			});
+			if (post) {
+				setPost(post);
 
-					if (post.featured_media) {
-						const featuredMedia = await apiFetch({
-							path: `/wp/v2/media/${post.featured_media}`,
-						});
-						if (featuredMedia) {
-							setFeaturedMedia(featuredMedia);
-						}
+				if (post.featured_media) {
+					const featuredMedia = await apiFetch({
+						path: `/wp/v2/media/${post.featured_media}`,
+					});
+					if (featuredMedia) {
+						setFeaturedMedia(featuredMedia);
 					}
 				}
 			}
-		};
+		}
+	};
 
-		post === null && fetchPost();
+	useEffect(() => {
+		post === null && fetchPost(attributes.postId);
 	});
 
 	return (
@@ -78,7 +82,7 @@ export default function Edit({ attributes, setAttributes }) {
 								alignItems: "center",
 							}}
 						>
-							{featuredMedia ? (
+							{featuredMedia && attributes.showImage ? (
 								<div style={{ flex: "1 1 0", position: "parent" }}>
 									<img
 										style={{
@@ -102,6 +106,18 @@ export default function Edit({ attributes, setAttributes }) {
 				)}
 				<DropZone onDrop={handleDropEvent} />
 			</p>
+
+
+			<InspectorControls>
+				<PanelBody title={__("Articles")}>
+					<CheckboxControl
+						label="Show Image"
+						checked={attributes.showImage}
+						onChange={(showImage) => setAttributes({ showImage })}
+					/>
+				</PanelBody>
+
+			</InspectorControls>
 		</>
 	);
 }
