@@ -37,6 +37,71 @@ function sidebar_plugin_register() {
 		plugins_url( 'build/sidebar/sidebar.js', __FILE__ ),
 		$assets['dependencies'],
 		$assets['version']
-	);
+    );
 }
 add_action( 'enqueue_block_editor_assets', 'sidebar_plugin_register' );
+
+function ggd_register_patterns() {
+	register_block_pattern(
+        'slices/lead-story-module-2-10',
+        array(
+            'title'      => __( 'Lead Story Module 2-10', 'slices' ),
+            'blockTypes' => array( 'core/paragraph', 'core/heading' ),
+            'content'    => '<!-- wp:columns -->
+                             <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
+                             <div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day -->
+
+                             <!-- wp:columns -->
+                             <div class="wp-block-columns"><!-- wp:column -->
+                             <div class="wp-block-column"><!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day -->
+
+                             <!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day --></div>
+                             <!-- /wp:column -->
+
+                             <!-- wp:column -->
+                             <div class="wp-block-column"><!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day --></div>
+                             <!-- /wp:column -->
+
+                             <!-- wp:column -->
+                             <div class="wp-block-column"><!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day --></div>
+                             <!-- /wp:column --></div>
+                             <!-- /wp:columns --></div>
+                             <!-- /wp:column -->
+
+                             <!-- wp:column {"width":"33.33%"} -->
+                             <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day -->
+
+                             <!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day -->
+
+                             <!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day -->
+
+                             <!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day -->
+
+                             <!-- wp:create-block/gutenberg-game-day -->
+                             <p class="wp-block-create-block-gutenberg-game-day">Gutenberg Game Day – hello from the saved content!</p>
+                             <!-- /wp:create-block/gutenberg-game-day --></div>
+                             <!-- /wp:column --></div>
+                             <!-- /wp:columns -->',
+        )
+    );
+}
+add_action( 'init', 'ggd_register_patterns' );
+
