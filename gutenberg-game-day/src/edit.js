@@ -15,7 +15,12 @@ import { useState, useEffect } from "react";
 import apiFetch from "@wordpress/api-fetch";
 
 import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
-import { Draggable, TextControl, PanelBody } from "@wordpress/components";
+import {
+	Draggable,
+	Panel,
+	TextControl,
+	PanelBody,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -35,14 +40,17 @@ import "./editor.scss";
  */
 export default function Edit() {
 	const [posts, setPosts] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchPosts = async () => {
 			const posts = await apiFetch({ path: "/wp/v2/posts" });
+			console.log(posts);
 			setPosts(posts);
+			setLoading(false);
 		};
 
-		fetchPosts();
+		posts === null && fetchPosts();
 	});
 
 	return (
@@ -63,8 +71,30 @@ export default function Edit() {
 						// onChange={onChangeTextField}
 					/>
 					<div>
-						{posts &&
-							posts.map((post) => <p key={post.id}>{post.title.rendered}</p>)}
+						<Panel header="Draggable panel">
+							<PanelBody>
+								{loading && <p>Loading...</p>}
+								{posts &&
+									posts.map((post) => (
+										<Draggable
+											key={post.id}
+											elementId={post.id}
+											transferData={{}}
+										>
+											{({ onDraggableStart, onDraggableEnd }) => (
+												<div
+													className="example-drag-handle"
+													draggable
+													onDragStart={onDraggableStart}
+													onDragEnd={onDraggableEnd}
+												>
+													<p key={post.id}>{post.title.rendered}</p>
+												</div>
+											)}
+										</Draggable>
+									))}
+							</PanelBody>
+						</Panel>
 					</div>
 				</PanelBody>
 			</InspectorControls>
