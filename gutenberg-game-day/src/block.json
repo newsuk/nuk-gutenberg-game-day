@@ -3,10 +3,10 @@
 	"apiVersion": 3,
 	"name": "create-block/gutenberg-game-day",
 	"version": "0.1.0",
-	"title": "Gutenberg Game Day",
+	"title": "Slice Tile",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "Allows placement of articles in a slice.",
 	"example": {},
 	"supports": {
 		"html": false
