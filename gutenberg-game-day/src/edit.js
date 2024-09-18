@@ -70,32 +70,27 @@ export default function Edit() {
 						// value={textField}
 						// onChange={onChangeTextField}
 					/>
-					<div>
-						<Panel>
-							<PanelBody>
-								{loading && <p>Loading...</p>}
-								{posts &&
-									posts.map((post) => (
-										<Draggable
-											key={post.id}
-											elementId={post.id}
-											transferData={{}}
-										>
-											{({ onDraggableStart, onDraggableEnd }) => (
-												<div
-													className="example-drag-handle"
-													draggable
-													onDragStart={onDraggableStart}
-													onDragEnd={onDraggableEnd}
-												>
-													<p key={post.id}>{post.title.rendered}</p>
-												</div>
-											)}
-										</Draggable>
-									))}
-							</PanelBody>
-						</Panel>
-					</div>
+				</PanelBody>
+				<PanelBody>
+					{loading ? (
+						<p>Loading Posts...</p>
+					) : (
+						posts &&
+						posts.map((post) => (
+							<Draggable key={post.id} elementId={post.id} transferData={{}}>
+								{({ onDraggableStart, onDraggableEnd }) => (
+									<div
+										className="example-drag-handle"
+										draggable
+										// onDragStart={onDraggableStart}
+										// onDragEnd={onDraggableEnd}
+									>
+										<p key={post.id}>{post.title.rendered}</p>
+									</div>
+								)}
+							</Draggable>
+						))
+					)}
 				</PanelBody>
 			</InspectorControls>
 		</>
