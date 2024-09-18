@@ -25,6 +25,9 @@
 		},
 		"chartType": {
 			"type": "string"
+		},
+		"chartOptions": {
+			"type": "object"
 		}
 	}
 }

@@ -22,7 +22,11 @@ import { useBlockProps } from "@wordpress/block-editor";
 import "./editor.scss";
 
 import { useState, useEffect } from "react";
-import { TextControl, SelectControl } from "@wordpress/components";
+import {
+	TextControl,
+	SelectControl,
+	TextareaControl,
+} from "@wordpress/components";
 import CanvasJSReact from "@canvasjs/react-charts";
 
 var CanvasJS = CanvasJSReact.CanvasJS;
@@ -67,10 +71,10 @@ export default function Edit({ attributes, setAttributes }) {
 	const [chartData, setChartData] = useState(attributes.chartData);
 	const [chartTitle, setChartTitle] = useState(attributes.chartTitle);
 	const [chartType, setChartType] = useState(attributes.chartType);
-	const [options, setOptions] = useState({});
+	const [chartOptions, setChartOptions] = useState(attributes.chartOptions);
 
 	useEffect(() => {
-		console.log(chartTitle, chartData, chartType);
+		console.log(chartTitle, chartData, chartType, chartOptions);
 
 		const options = {
 			title: {
@@ -79,52 +83,58 @@ export default function Edit({ attributes, setAttributes }) {
 			data: [
 				{
 					type: chartType,
-					dataPoints: chartData.split(",").map((item, index) => ({
-						label: `Line ${index + 1}`,
-						y: parseInt(item),
-					})),
+					dataPoints: chartData.split("\n").map((item, index) => {
+						const [label, value] = item.split(",");
+						return {
+							label,
+							y: parseInt(value),
+						};
+					}),
 				},
 			],
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+			},
 		};
 		setAttributes({
 			chartData,
 			chartTitle,
 			chartType,
+			chartOptions: options,
 		});
-		setOptions(options);
+		setChartOptions(options);
 	}, [chartData, chartTitle, chartType]);
 
 	return (
 		<div {...useBlockProps()}>
-			{__(
-				"Gutenberg Pie Chart – Enter comma-separated values",
-				"gutenberg-pie-chart",
-			)}
+			{__("Gutenberg Chart", "gutenberg-pie-chart")}
 			<SelectControl
-				__nextHasNoMarginBottom
 				label="Chart type"
 				value={chartType}
 				options={chartTypeOptions}
 				onChange={(value) => setChartType(value)}
 			/>
 			<TextControl
-				__nextHasNoMarginBottom
 				label="Chart title"
 				value={chartTitle}
 				onChange={(value) => setChartTitle(value)}
 			/>
-			<TextControl
-				__nextHasNoMarginBottom
+			<TextareaControl
 				label="Comma-separated chart data"
+				help="Enter one data item per line separated by a comma"
 				value={chartData}
 				onChange={(value) => setChartData(value)}
 			/>
-			{chartType && chartData && options.data && options.data[0]?.type && (
-				<CanvasJSChart
-					options={options}
-					/* onRef = {ref => this.chart = ref} */
-				/>
-			)}
+			{chartType &&
+				chartData &&
+				chartOptions?.data &&
+				chartOptions.data[0]?.type && (
+					<CanvasJSChart
+						options={chartOptions}
+						/* onRef = {ref => this.chart = ref} */
+					/>
+				)}
 		</div>
 	);
 }

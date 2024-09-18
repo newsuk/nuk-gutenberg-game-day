@@ -1184,48 +1184,54 @@ function Edit({
   const [chartData, setChartData] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartData);
   const [chartTitle, setChartTitle] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartTitle);
   const [chartType, setChartType] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartType);
-  const [options, setOptions] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({});
+  const [chartOptions, setChartOptions] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(attributes.chartOptions);
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    console.log(chartTitle, chartData, chartType);
+    console.log(chartTitle, chartData, chartType, chartOptions);
     const options = {
       title: {
         text: chartTitle
       },
       data: [{
         type: chartType,
-        dataPoints: chartData.split(",").map((item, index) => ({
-          label: `Line ${index + 1}`,
-          y: parseInt(item)
-        }))
-      }]
+        dataPoints: chartData.split("\n").map((item, index) => {
+          const [label, value] = item.split(",");
+          return {
+            label,
+            y: parseInt(value)
+          };
+        })
+      }],
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
     };
     setAttributes({
       chartData,
       chartTitle,
-      chartType
+      chartType,
+      chartOptions: options
     });
-    setOptions(options);
+    setChartOptions(options);
   }, [chartData, chartTitle, chartType]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Gutenberg Pie Chart – Enter comma-separated values", "gutenberg-pie-chart"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
-      __nextHasNoMarginBottom: true,
+    children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Gutenberg Chart", "gutenberg-pie-chart"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
       label: "Chart type",
       value: chartType,
       options: chartTypeOptions,
       onChange: value => setChartType(value)
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-      __nextHasNoMarginBottom: true,
       label: "Chart title",
       value: chartTitle,
       onChange: value => setChartTitle(value)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
-      __nextHasNoMarginBottom: true,
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextareaControl, {
       label: "Comma-separated chart data",
+      help: "Enter one data item per line separated by a comma",
       value: chartData,
       onChange: value => setChartData(value)
-    }), chartType && chartData && options.data && options.data[0]?.type && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(CanvasJSChart, {
-      options: options
+    }), chartType && chartData && chartOptions?.data && chartOptions.data[0]?.type && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(CanvasJSChart, {
+      options: chartOptions
       /* onRef = {ref => this.chart = ref} */
     })]
   });
@@ -1301,8 +1307,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _canvasjs_react_charts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @canvasjs/react-charts */ "./node_modules/@canvasjs/react-charts/canvasjs.react.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
@@ -1310,6 +1317,10 @@ __webpack_require__.r(__webpack_exports__);
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 
+
+
+var CanvasJS = _canvasjs_react_charts__WEBPACK_IMPORTED_MODULE_1__["default"].CanvasJS;
+var CanvasJSChart = _canvasjs_react_charts__WEBPACK_IMPORTED_MODULE_1__["default"].CanvasJSChart;
 
 /**
  * The save function defines the way in which the different attributes should
@@ -1320,11 +1331,18 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
-
-function save() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-    children: 'Gutenberg Game Day – hello from the saved content!'
+function save({
+  attributes
+}) {
+  console.log(attributes);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "chartContainer",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      id: "chartContainer"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("script", {
+      "data-options": JSON.stringify(attributes.chartOptions),
+      children: "const scriptTag = document.currentScript; const data = scriptTag.dataset; const options = JSON.parse(data.options); console.log(options); var chart = new CanvasJS.Chart(\"chartContainer\", options); chart.render();"
+    })]
   });
 }
 
@@ -1429,7 +1447,7 @@ module.exports = window["wp"]["i18n"];
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartTitle":{"type":"string"},"chartData":{"type":"string"},"chartType":{"type":"string"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-pie-chart","version":"0.1.0","title":"Gutenberg Pie Chart","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"gutenberg-pie-chart","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"chartTitle":{"type":"string"},"chartData":{"type":"string"},"chartType":{"type":"string"},"chartOptions":{"type":"object"}}}');
 
 /***/ })
 

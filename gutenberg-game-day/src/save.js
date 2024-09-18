@@ -4,7 +4,12 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps } from "@wordpress/block-editor";
+
+import CanvasJSReact from "@canvasjs/react-charts";
+
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,10 +20,17 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+	console.log(attributes);
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Gutenberg Game Day – hello from the saved content!' }
-		</p>
+		<div className="chartContainer">
+			<div id="chartContainer"></div>
+			<script data-options={JSON.stringify(attributes.chartOptions)}>
+				const scriptTag = document.currentScript; const data =
+				scriptTag.dataset; const options = JSON.parse(data.options);
+				console.log(options); var chart = new CanvasJS.Chart("chartContainer",
+				options); chart.render();
+			</script>
+		</div>
 	);
 }

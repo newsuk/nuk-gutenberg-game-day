@@ -28,3 +28,7 @@ function create_block_gutenberg_game_day_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'create_block_gutenberg_game_day_block_init' );
+function gutenberg_chart_scripts() {
+	wp_enqueue_script( 'gutenberg-chart', "https://cdn.canvasjs.com/ga/canvasjs.min.js" );
+}
+add_action( 'wp_enqueue_scripts', 'gutenberg_chart_scripts' );

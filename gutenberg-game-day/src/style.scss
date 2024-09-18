@@ -6,7 +6,11 @@
  */
 
 .wp-block-create-block-gutenberg-pie-chart {
-	background-color: #21759b;
-	color: #fff;
+	background-color: #fff;
+	color: #21759b;
 	padding: 2px;
+}
+
+.chartContainer {
+	min-height: 400px;
 }
