@@ -13,6 +13,12 @@
   padding: 2px;
 }
 
+body,
+h1 {
+  font-family: "The Sun" !important;
+  font-weight: bold !important;
+}
+
 .chartContainer {
   min-height: 400px;
 }
