@@ -43,7 +43,7 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Daily news, Society & Culture, Investigative series, Investigative journalism, In-depth analysis of today’s biggest stories, Award-winning journalism, High-profile guests, Interview series",
-		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		audio:{url:'https://sphinx.acast.com/p/acast/s/storiesofourtimes/e/681a1a66f30c20bff7932cbf/media.mp3'}
 		},
 	{
 		newsKitId: "thetimesbriefing",
@@ -111,7 +111,7 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Political strategy, Political experts, UK politics, Westminster news, Election analysis, History, International electoral updates, Systems of government, Political commentary, Weekly news",
-		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		audio:{url:'https://sphinx.acast.com/p/open/s/6528fe7e3308660012b7db47/e/68135b1a9704d99f84a86d21/media.mp3'}
 		},
 	{
 		newsKitId: "times-red-box",
@@ -386,6 +386,6 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Wine writer, Wine critic, Wine, Wine Pairings, Interview, Celebrity interview, Travel stories, Recommendations, Special guests, Comedy, Light-hearted, The Sunday Times, Wine club, Interesting, Lively, Critic, Relaxed",
-		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		audio:{url:'https://sphinx.acast.com/p/acast/s/wine-times/e/681246f8f7d552efdc464de5/media.mp3'}
 		},
 ];
