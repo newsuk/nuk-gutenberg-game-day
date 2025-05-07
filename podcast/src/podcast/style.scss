@@ -57,5 +57,8 @@
 		audio{
 			width: 100%;
 		}
+		audio::-webkit-media-controls-panel{
+			background-color: white;
+		}
 	}
 }
