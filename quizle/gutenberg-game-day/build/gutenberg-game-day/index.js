@@ -67,9 +67,23 @@ function Edit({
 }) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-      children: attributes.question
-    }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Gutenberg Game Day – hello from the editor!', 'gutenberg-game-day')]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+      tagName: "h3",
+      value: attributes.question,
+      allowedFormats: ['core/bold', 'core/italic'],
+      onChange: question => setAttributes({
+        question
+      }),
+      placeholder: "Question here..."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+      tagName: "p",
+      value: attributes.solution,
+      allowedFormats: ['core/bold', 'core/italic'],
+      onChange: solution => setAttributes({
+        solution
+      }),
+      placeholder: "Solution here..."
+    })]
   });
 }
 
