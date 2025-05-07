@@ -7,3 +7,13 @@
 .wp-block-create-block-podcast {
 
 }
+
+
+.podcast-summary {  
+
+  &:hover {
+    outline: 1px solid #ccc;
+    outline-offset: 4px;
+    border-radius: 0.25rem;
+  }
+}

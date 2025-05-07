@@ -16,7 +16,10 @@
 			"gradients": true
 		},
 		"shadow": true,
-		"align": ["full", "wide"]
+		"align": ["full", "wide"],
+		"border": {
+			"radius": true
+		}
 	},
 	"textdomain": "podcast",
 	"editorScript": "file:./index.js",

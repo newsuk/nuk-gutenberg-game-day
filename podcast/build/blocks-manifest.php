@@ -20,7 +20,14 @@ return array(
 				'text' => true,
 				'gradients' => true
 			),
-			'shadow' => true
+			'shadow' => true,
+			'align' => array(
+				'full',
+				'wide'
+			),
+			'border' => array(
+				'radius' => true
+			)
 		),
 		'textdomain' => 'podcast',
 		'editorScript' => 'file:./index.js',
