@@ -68,8 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 		podcastTitle,
 		podcastSummary,
 		podcastAudioUrl,
-		podcastImageUrl,
-		episodeId
+		podcastImageUrl
 	} = attributes;
 
 	const [data, setData] = useState();
@@ -144,16 +143,6 @@ export default function Edit({ attributes, setAttributes }) {
 								podcastAudioUrl: null,
 								podcastImageUrl: null,
 							});
-						}}
-					/>
-
-					<TextControl
-						__nextHasNoMarginBottom
-						label="Episode ID"
-						type="text"
-						value={episodeId}
-						onChange={(newEpisodeId) => {
-							setAttributes({ episodeId: newEpisodeId });
 						}}
 					/>
 				</PanelBody>
