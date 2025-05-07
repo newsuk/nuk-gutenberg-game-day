@@ -14,7 +14,13 @@ return array(
 			
 		),
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true,
+				'gradients' => true
+			),
+			'shadow' => true
 		),
 		'textdomain' => 'podcast',
 		'editorScript' => 'file:./index.js',

@@ -9,7 +9,13 @@
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "color": {
+      "background": true,
+      "text": true,
+      "gradients": true
+    },
+    "shadow": true
   },
   "textdomain": "podcast",
   "editorScript": "file:./index.js",

@@ -34,7 +34,7 @@
 .podcast-container .podcast-tags {
   display: inline-block;
   font-size: 0.75rem;
-  color: #696969;
+  opacity: 0.5;
   margin: 0;
 }
 .podcast-container .podcast-title {
@@ -49,8 +49,8 @@
 }
 .podcast-container .podcast-summary:hover {
   outline: 1px solid #ccc;
-  outline-offset: 1px;
-  border-radius: 0.5rem;
+  outline-offset: 4px;
+  border-radius: 0.25rem;
 }
 .podcast-container .podcast-player {
   grid-column: 1/span 2;
