@@ -69,7 +69,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<TextControl
 							label="Answer"
 							onChange={(solution) => setMetaAttributes({ solution: solution })}
-							value={attributes.solution}
+							value={meta.solution}
 						/>
 					</PanelRow>
 
@@ -81,11 +81,11 @@ export default function Edit({ attributes, setAttributes }) {
 									key={index}
 									label={`Hint ${index + 1}`}
 									onChange={(hint) => {
-										const hints = attributes.hints;
+										const hints = meta.hints;
 										hints[index] = hint;
 										setMetaAttributes({ hints });
 									}}
-									value={attributes.hints[index]}
+									value={meta.hints[index]}
 								/>
 							</PanelRow>
 						))}
@@ -95,7 +95,7 @@ export default function Edit({ attributes, setAttributes }) {
 				<RichText
 					className="question"
 					tagName="h3"
-					value={attributes.question}
+					value={meta.question}
 					allowedFormats={["core/bold", "core/italic"]}
 					onChange={(question) => setMetaAttributes({question})}
 					placeholder="Question here..."
@@ -126,7 +126,7 @@ export default function Edit({ attributes, setAttributes }) {
 								placeholder="Submit"
 								value="ANSWER"
 								id="submitButton"
-								data-answer={attributes.solution}
+								data-answer={meta.solution}
 								disabled="disabled"
 							/>
 						</div>
