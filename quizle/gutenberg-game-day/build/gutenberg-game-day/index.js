@@ -98,6 +98,7 @@ function Edit({
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        className: "question",
         tagName: "h3",
         value: attributes.question,
         allowedFormats: ["core/bold", "core/italic"],
@@ -106,20 +107,24 @@ function Edit({
         }),
         placeholder: "Question here..."
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        className: "answer-input",
         type: "text",
         placeholder: "Enter your answer",
         disabled: "disabled"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-        type: "button",
-        placeholder: "Submit",
-        value: "Submit",
-        "data-answer": attributes.solution,
-        disabled: "disabled"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        className: "hint",
         type: "button",
         placeholder: "Get Hint",
         id: "hintbutton",
         value: "Get Hint",
+        disabled: "disabled"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        className: "answer",
+        type: "button",
+        placeholder: "Submit",
+        value: "ANSWER",
+        id: "submitButton",
+        "data-answer": attributes.solution,
         disabled: "disabled"
       })]
     })]
@@ -236,23 +241,34 @@ function save({
       tagName: "h3",
       value: attributes.question
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        className: "answer-input",
-        type: "text",
-        placeholder: "Enter your answer"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        className: "answer",
-        type: "button",
-        placeholder: "Submit",
-        value: "ANSWER",
-        "data-answer": attributes.solution
+      className: "answer-form",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "answer-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          className: "answer-input",
+          type: "text",
+          placeholder: "Enter your answer"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "button-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-grid",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            className: "hint",
+            type: "button",
+            placeholder: "Get Hint",
+            id: "hintbutton",
+            value: "Get Hint"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            className: "answer",
+            type: "button",
+            placeholder: "Submit",
+            id: "submitButton",
+            value: "ANSWER",
+            "data-answer": attributes.solution
+          })]
+        })
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      className: "hint",
-      type: "button",
-      placeholder: "Get Hint",
-      id: "hintbutton",
-      value: "Get Hint"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       children: attributes.hints.map((hint, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "hint",

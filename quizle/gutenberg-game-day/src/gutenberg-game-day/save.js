@@ -28,22 +28,15 @@ export default function save({ attributes }) {
 						<input className="hint"
 							   type="button"
 							   placeholder="Get Hint"
-							   id="hintButton"
+							   id="hintbutton"
 							   value="Get Hint"
-							   disabled="disabled"
 						/>
 						<input className="answer" type="button" placeholder="Submit" id="submitButton" value="ANSWER"
 							   data-answer={attributes.solution}/>
 					</div>
 				</div>
 			</form>
-			<input
-				className="hint"
-				type="button"
-				placeholder="Get Hint"
-				id="hintbutton"
-				value="Get Hint"
-			/>
+
 			<div>
 				{attributes.hints.map((hint, index) => (
 					<div
