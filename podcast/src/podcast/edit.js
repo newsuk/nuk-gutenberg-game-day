@@ -37,13 +37,24 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 
+function LoadingView() {
+	return (
+		<div className="loading">
+			<div className="loading-img"></div>
+			<div className="loading-content">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	);
+}
+
 async function getPodcastByTitle(title) {
 	// Simulate an API call to fetch podcast data
 	await new Promise((resolve) => setTimeout(resolve, 1500));
 
-	const podcast = podcastList.find(
-		(podcast) => podcast.title === "Politics Unpacked",
-	);
+	const podcast = podcastList.find((podcast) => podcast.title === title);
 	if (podcast) {
 		return podcast;
 	} else {
@@ -52,22 +63,40 @@ async function getPodcastByTitle(title) {
 }
 
 export default function Edit({ attributes, setAttributes }) {
-	const { podcastSeries, titleOverride, summaryOverride, episodeId } =
-		attributes;
+	const {
+		podcastSeries,
+		podcastTitle,
+		podcastSummary,
+		podcastAudioUrl,
+		podcastImageUrl,
+		episodeId
+	} = attributes;
+
 	const [data, setData] = useState();
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
+	const [titleOverride, setTitleOverride] = useState('');
+	const [summaryOverride, setSummaryOverride] = useState('');
+
 	useEffect(() => {
 		async function fetchData() {
 			try {
+				setError(null);
+				setLoading(true);
 				const podcast = await getPodcastByTitle(podcastSeries);
 				if (podcast) {
-					setData(podcast);
+					setAttributes({
+						podcastTitle: podcast.title,
+						podcastSummary: podcast.description,
+						podcastAudioUrl: podcast.audio.url || '',
+						podcastImageUrl: podcast.img.url,
+					});
 				} else {
 					setError("Podcast not found");
 				}
 			} catch (err) {
+				console.err('> er', err);
 				setError("An error occurred while fetching the podcast data");
 			} finally {
 				setLoading(false);
@@ -75,7 +104,9 @@ export default function Edit({ attributes, setAttributes }) {
 		}
 
 		fetchData();
-	}, []);
+	}, [podcastSeries]);
+
+	console.log("podcastSeries", podcastSeries);
 
 	return (
 		<div {...useBlockProps()}>
@@ -108,8 +139,10 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={(newValue) => {
 							setAttributes({
 								podcastSeries: newValue,
-								titleOverride: null,
-								summaryOverride: null,
+								podcastTitle: null,
+								podcastSummary: null,
+								podcastAudioUrl: null,
+								podcastImageUrl: null,
 							});
 						}}
 					/>
@@ -128,24 +161,22 @@ export default function Edit({ attributes, setAttributes }) {
 
 			{/* Edit*/}
 			<div className="podcast-container">
-				{loading && <p>Loading...</p>}
+				{loading && <LoadingView />}
 				{error && <p>{error}</p>}
-				{data && (
+				{!loading && !error && (
 					<>
 						<div className="podcast-cover-img">
-							<img src={data.img.url} alt="Podcast Cover" />
+							<img src={podcastImageUrl} alt="Podcast Cover" />
 						</div>
 						<div className="podcast-info">
 							<span className="podcast-tags">LATEST EPISODE</span>
 							<RichText
 								className="podcast-title"
 								tagName="h2" // The tag here is the element output and editable in the admin
-								value={titleOverride || podcastSeries} // Any existing content, either from the database or an attribute default
+								value={podcastTitle} // Any existing content, either from the database or an attribute default
 								allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
-								onChange={(newTitleOverride) =>
-									setAttributes({ titleOverride: newTitleOverride })
-								} // Store updated content as a block attribute
-								placeholder={__(data?.title)} // Display this text before any content has been added by the user
+								onChange={(podcastTitle) => setAttributes({ podcastTitle })} // Store updated content as a block attribute
+								// placeholder={__(data?.title)} // Display this text before any content has been added by the user
 							/>
 							{/* <p className="podcast-summary">
 								{summaryOverride || data.description}
@@ -153,19 +184,17 @@ export default function Edit({ attributes, setAttributes }) {
 							<RichText
 								className="podcast-summary"
 								tagName="p" // The tag here is the element output and editable in the admin
-								value={summaryOverride || data?.description} // Any existing content, either from the database or an attribute default
+								value={podcastSummary} // Any existing content, either from the database or an attribute default
 								allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
-								onChange={(newSummaryOverride) =>
-									setAttributes({ summaryOverride: newSummaryOverride })
-								} // Store updated content as a block attribute
-								placeholder={__(data?.description)} // Display this text before any content has been added by the user
+								onChange={(podcastSummary) => setAttributes({ podcastSummary })} // Store updated content as a block attribute
+								// placeholder={__(data?.description)} // Display this text before any content has been added by the user
 							/>
 						</div>
 
 						<div className="podcast-player">
 							<audio controls>
 								<source
-									src={data?.audio?.url}
+									src={podcastAudioUrl}
 									type="audio/mpeg"
 								/>
 								Your browser does not support the audio element.

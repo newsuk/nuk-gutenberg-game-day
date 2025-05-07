@@ -15,10 +15,34 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save() {
+export default function save({ attributes }) {
+	const blockProps = useBlockProps.save();
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Podcast – hello from the saved content!' }
-		</p>
+		<div {...blockProps}>
+			<div className="podcast-container">
+				<div className="podcast-cover-img">
+					<img src={attributes.podcastImageUrl} alt="Podcast Cover" />
+				</div>
+
+				<div className="podcast-info">
+					<span className="podcast-tags">LATEST EPISODE</span>
+					<h2 className="podcast-title">{attributes.podcastTitle}</h2>
+					<p className="podcast-summary">
+						{attributes.podcastSummary}
+					</p>
+				</div>
+
+				<div className="podcast-player">
+					<audio controls>
+						<source
+							src={attributes.podcastAudioUrl}
+							type="audio/mpeg"
+						/>
+						Your browser does not support the audio element.
+					</audio>
+				</div>
+			</div>
+		</div>
 	);
 }

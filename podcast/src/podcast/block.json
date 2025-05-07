@@ -35,11 +35,19 @@
 			"type": "string",
 			"default": ""
 		},
-		"titleOverride": {
+		"podcastTitle": {
 			"type": "string",
 			"default": ""
 		},
-		"summaryOverride": {
+		"podcastSummary": {
+			"type": "string",
+			"default": ""
+		},
+		"podcastAudioUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"podcastImageUrl": {
 			"type": "string",
 			"default": ""
 		}
