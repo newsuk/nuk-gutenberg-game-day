@@ -51,7 +51,7 @@ async function getPodcastByTitle(title) {
 	}
 }
 
-export default function Edit({ attributes }) {
+export default function Edit({ attributes, setAttributes }) {
 	const { podcastSeries, titleOverride, summaryOverride, episodeId } =
 		attributes;
 	const [data, setData] = useState();
