@@ -20,20 +20,17 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-/* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-gutenberg-game-day block)' );
-/* eslint-enable no-console */
 const block = document.querySelector('.wp-block-create-block-gutenberg-game-day');
 const answer = block.querySelector('input[type="button"]');
 const form = block.querySelector('form');
-console.log(form);
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     console.log('elelell')
     const input = form.querySelector('input[type="text"]');
     const userAnswer = input.value;
     const correctAnswer = answer.dataset.answer;
-    if (userAnswer === correctAnswer) {
+    if (userAnswer == correctAnswer) {
         alert('Correct!');
     } else {
         alert('Incorrect. Try again.');
@@ -41,9 +38,8 @@ form.addEventListener('submit', (event) => {
 })
 
 const hintButton = block.querySelector('#hintbutton');
-console.log(hintButton);
+
 hintButton.addEventListener('click', () => {
-    console.log('hintbutton');
     const hints = block.querySelectorAll('.hint');
     let found = false;
     hints.forEach((hint) => {
