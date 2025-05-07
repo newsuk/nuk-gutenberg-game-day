@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,24 +15,47 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function save({attributes}) {
+export default function save({ attributes }) {
 	return (
-		<div { ...useBlockProps.save() }>
-			<RichText.Content className="question" tagName="h3" value={ attributes.question } />
+		<div {...useBlockProps.save()}>
+			<RichText.Content
+				className="question"
+				tagName="h3"
+				value={attributes.question}
+			/>
 			<form>
-				<input className="answer-input" type="text" placeholder="Enter your answer"/>
-
-				<input className="hint"
-					   type="button"
-					   placeholder="Get Hint"
-					   id="hintButton"
-					   value="Get Hint"
-					   disabled="disabled"
+				<input
+					className="answer-input"
+					type="text"
+					placeholder="Enter your answer"
 				/>
-				<input className="answer" type="button" placeholder="Submit" id="submitButton" value="ANSWER"
-					   data-answer={attributes.solution}/>
 
+				<input
+					className="answer"
+					type="button"
+					placeholder="Submit"
+					value="ANSWER"
+					data-answer={attributes.solution}
+				/>
 			</form>
+			<input
+				className="hint"
+				type="button"
+				placeholder="Get Hint"
+				id="hintbutton"
+				value="Get Hint"
+			/>
+			<div>
+				{attributes.hints.map((hint, index) => (
+					<div
+						className="hint"
+						key={index}
+						style={{ display: "none" }}
+					>
+						{hint}
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }

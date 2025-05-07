@@ -113,13 +113,12 @@ function Edit({
         type: "button",
         placeholder: "Submit",
         value: "Submit",
-        id: "submitButton",
         "data-answer": attributes.solution,
         disabled: "disabled"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
         type: "button",
         placeholder: "Get Hint",
-        id: "hintButton",
+        id: "hintbutton",
         value: "Get Hint",
         disabled: "disabled"
       })]
@@ -233,25 +232,35 @@ function save({
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
+      className: "question",
       tagName: "h3",
       value: attributes.question
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "answer-input",
         type: "text",
         placeholder: "Enter your answer"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "answer",
         type: "button",
         placeholder: "Submit",
-        id: "submitButton",
-        value: "Submit",
+        value: "ANSWER",
         "data-answer": attributes.solution
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        type: "button",
-        placeholder: "Get Hint",
-        id: "hintButton",
-        value: "Get Hint",
-        disabled: "disabled"
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      className: "hint",
+      type: "button",
+      placeholder: "Get Hint",
+      id: "hintbutton",
+      value: "Get Hint"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: attributes.hints.map((hint, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "hint",
+        style: {
+          display: "none"
+        },
+        children: hint
+      }, index))
     })]
   });
 }

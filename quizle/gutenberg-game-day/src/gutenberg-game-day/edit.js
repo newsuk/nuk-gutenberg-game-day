@@ -89,14 +89,13 @@ export default function Edit({ attributes, setAttributes }) {
 					type="button"
 					placeholder="Submit"
 					value="Submit"
-					id="submitButton"
 					data-answer={attributes.solution}
 					disabled="disabled"
 				/>
 				<input
 					type="button"
 					placeholder="Get Hint"
-					id="hintButton"
+					id="hintbutton"
 					value="Get Hint"
 					disabled="disabled"
 				/>
