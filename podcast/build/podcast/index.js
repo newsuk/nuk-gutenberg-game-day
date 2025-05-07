@@ -8,7 +8,7 @@
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"string","default":"The Story","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"podcastTitle":{"type":"string","default":""},"podcastSummary":{"type":"string","default":""},"podcastAudioUrl":{"type":"string","default":""},"podcastImageUrl":{"type":"string","default":""}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"color":{"background":true,"text":true,"gradients":true},"shadow":true},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"string","default":"The Story","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"podcastTitle":{"type":"string","default":""},"podcastSummary":{"type":"string","default":""},"podcastAudioUrl":{"type":"string","default":""},"podcastImageUrl":{"type":"string","default":""}}}');
 
 /***/ }),
 
@@ -190,9 +190,15 @@ function Edit({
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "podcast-info",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
             className: "podcast-tags",
-            children: "LATEST EPISODE"
+            tagName: "span" // The tag here is the element output and editable in the admin
+            ,
+            value: 'LATEST EPISODE' // Any existing content, either from the database or an attribute default
+            ,
+            allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
+            // onChange={(podcastSeries) => setAttributes({ podcastSeries })} // Store updated content as a block attribute
+            // placeholder={__(data?.title)} // Display this text before any content has been added by the user
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
             className: "podcast-title",
             tagName: "h2" // The tag here is the element output and editable in the admin
