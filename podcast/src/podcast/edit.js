@@ -37,13 +37,24 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 
+function LoadingView() {
+	return (
+		<div className="loading">
+			<div className="loading-img"></div>
+			<div className="loading-content">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	);
+}
+
 async function getPodcastByTitle(title) {
 	// Simulate an API call to fetch podcast data
 	await new Promise((resolve) => setTimeout(resolve, 1500));
 
-	const podcast = podcastList.find(
-		(podcast) => podcast.title === "Politics Unpacked",
-	);
+	const podcast = podcastList.find((podcast) => podcast.title === title);
 	if (podcast) {
 		return podcast;
 	} else {
@@ -51,7 +62,7 @@ async function getPodcastByTitle(title) {
 	}
 }
 
-export default function Edit({ attributes }) {
+export default function Edit({ attributes, setAttributes }) {
 	const { podcastSeries, titleOverride, summaryOverride, episodeId } =
 		attributes;
 	const [data, setData] = useState();
@@ -61,6 +72,8 @@ export default function Edit({ attributes }) {
 	useEffect(() => {
 		async function fetchData() {
 			try {
+				setError(null);
+				setLoading(true);
 				const podcast = await getPodcastByTitle(podcastSeries);
 				if (podcast) {
 					setData(podcast);
@@ -75,7 +88,9 @@ export default function Edit({ attributes }) {
 		}
 
 		fetchData();
-	}, []);
+	}, [podcastSeries]);
+
+	console.log("podcastSeries", podcastSeries);
 
 	return (
 		<div {...useBlockProps()}>
@@ -128,9 +143,9 @@ export default function Edit({ attributes }) {
 
 			{/* Edit*/}
 			<div className="podcast-container">
-				{loading && <p>Loading...</p>}
+				{loading && <LoadingView />}
 				{error && <p>{error}</p>}
-				{data && (
+				{!loading && data && (
 					<>
 						<div className="podcast-cover-img">
 							<img src={data.img.url} alt="Podcast Cover" />

@@ -7,11 +7,7 @@ export const podcastList = [
 		img: {
 			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/05/1714383804740-0b3e6df4b7d2d54fd2b266e07941d7e4.jpeg?w=240",
 		},
-		description: `A discerning look at royal life in the era of King Charles, presented by the royal editors of The Times and Sunday Times, Kate Mansey and Roya Nikkhah – two women with unmatched insight into the inner workings of the monarchy.
-            
-            It’s a time of challenges and change for the royal family, but also one of great hope and warmth, and a sense of the possibilities of this new Carolean age. There are personal challenges for the royals, but new links are being forged with “kind words”, as King Charles has said, between the public and the Palace.
-            
-            Join Roya and Kate every week for their reactions to the latest news on Charles and Camilla, William and Kate, Harry and Meghan and more.`,
+		description: `A discerning look at royal life in the era of King Charles, presented by the royal editors of The Times and Sunday Times, Kate Mansey and Roya Nikkhah – two women with unmatched insight into the inner workings of the monarchy. It’s a time of challenges and change for the royal family, but also one of great hope and warmth, and a sense of the possibilities of this new Carolean age. There are personal challenges for the royals, but new links are being forged with “kind words”, as King Charles has said, between the public and the Palace. Join Roya and Kate every week for their reactions to the latest news on Charles and Camilla, William and Kate, Harry and Meghan and more.`,
 		metaDescription:
 			"The Royals with Roya and Kate is a podcast from The Times that goes beyond the headlines, exploring the new relationship between the press, the people and the palace. Listen every Friday for their reactions and insights on all the latest news on Charles and Camilla; William and Kate; Harry and Meghan and more.",
 		externalLinks: {
@@ -30,16 +26,7 @@ export const podcastList = [
 		slug: "the-story",
 		urlSlug: "the-story",
 
-		description: `The flagship podcast from The Times and Sunday Times. One remarkable story, told in depth, each day.
-
-            Hosts Manveen Rana and Luke Jones take you to the heart of the story you need to know with exclusive reports and investigations.
-
-            Plus, each month, William Hague hosts an agenda-setting interview with a key newsmaker or thinker.
-            
-            Discover the story behind the story with world-class journalism from The Times and Sunday Times.
-            
-            The Story is available at the start of your day from Monday to Friday, with bonus ‘Inside the Newsroom’ episodes every Saturday for Times subscribers, available by connecting your subscription via Apple Podcasts.
-            `,
+		description: `The flagship podcast from The Times and Sunday Times. One remarkable story, told in depth, each day. Hosts Manveen Rana and Luke Jones take you to the heart of the story you need to know with exclusive reports and investigations. Plus, each month, William Hague hosts an agenda-setting interview with a key newsmaker or thinker. Discover the story behind the story with world-class journalism from The Times and Sunday Times. The Story is available at the start of your day from Monday to Friday, with bonus ‘Inside the Newsroom’ episodes every Saturday for Times subscribers, available by connecting your subscription via Apple Podcasts.`,
 		title: "The Story",
 		img: {
 			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/03/The-story-tile.jpg?w=240",
@@ -113,16 +100,7 @@ export const podcastList = [
 		img: {
 			url: "https://assets.pippa.io/shows/6528fe7e3308660012b7db47/1698062200666-366ea7f0cbf838f1ef6e6757990b74bb.jpeg?w=240",
 		},
-		description: `How To Win An Election is an insider’s guide to the twists and turns of political campaigning and strategy. It brings together some of the most experienced political advisors of the past four decades - Daniel Finkelstein, Sally Morgan, and Polly Mackenzie - with Times Radio presenter Hugo Rifkind.
-
-            Sally Morgan served as Blair's political secretary and then as director of political and government relations; she understands the challenge of leading the country when there are tensions with the Treasury, an unpredictable ally in the White House, and unrest on the backbenches.
-
-            Nobody knows the highs and lows of the Conservative party better than Daniel Finkelstein, who has worked alongside Tory leaders and prime ministers from John Major onwards as they fought to modernise the party.
-            
-            And Polly Mackenzie is one of the smartest thinkers in Westminster, a policy expert who helped negotiate the Liberal Democrat-Conservative coalition and spent five years working alongside deputy prime minister Nick Clegg in Downing Street.
-            
-            They sit down with Hugo Rifkind for an intelligent, adversarial and witty political conversation every week.
-            `,
+		description: `How To Win An Election is an insider’s guide to the twists and turns of political campaigning and strategy. It brings together some of the most experienced political advisors of the past four decades - Daniel Finkelstein, Sally Morgan, and Polly Mackenzie - with Times Radio presenter Hugo Rifkind. Sally Morgan served as Blair's political secretary and then as director of political and government relations; she understands the challenge of leading the country when there are tensions with the Treasury, an unpredictable ally in the White House, and unrest on the backbenches. Nobody knows the highs and lows of the Conservative party better than Daniel Finkelstein, who has worked alongside Tory leaders and prime ministers from John Major onwards as they fought to modernise the party. And Polly Mackenzie is one of the smartest thinkers in Westminster, a policy expert who helped negotiate the Liberal Democrat-Conservative coalition and spent five years working alongside deputy prime minister Nick Clegg in Downing Street. They sit down with Hugo Rifkind for an intelligent, adversarial and witty political conversation every week.`,
 		metaDescription:
 			"How To Win An Election, a new podcast from the Times, provides witty and engaging discussion about the upcoming UK general election, with experienced perspectives from former Conservative, Labour, and Liberal Democrat spin doctors. Matt Chorley, Peter Mandelson, Daniel Finkelstein and Polly Mackenzie deliver entertaining conversation, insightful analysis and lively debates.",
 		externalLinks: {
@@ -144,7 +122,7 @@ export const podcastList = [
 		img: {
 			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/09/politics-unpacked.jpg?w=240",
 		},
-		metaDescription: `Hugo Rifkind presents the Politics Unpacked podcast. Explore today's politics - and the issues that matter - with The Times and Sunday Times' brightest brains.`,
+		metaDescription: `<p>Hugo Rifkind presents the Politics Unpacked podcast. Explore today's politics - and the issues that matter - with The Times and Sunday Times' brightest brains.</p>`,
 		externalLinks: {
 			apple:
 				"https://podcasts.apple.com/gb/podcast/politics-unpacked/id660638948",
@@ -214,11 +192,7 @@ export const podcastList = [
 		img: {
 			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/04/planet-hope-times-radio.jpeg?w=240",
 		},
-		description: `Each day we watch as rising temperatures, extreme weather and extinctions are accepted as the new normal. The list of bleak headlines feels endless. It’s no wonder hope is wavering. But all is not lost.
-            
-            In this podcast series, Adam Vaughan, Environment Editor for The Times, asks why our planet is changing so rapidly and meets leading experts from around the world who are trying to change the tide.
-            
-            This is Planet Hope, a podcast from The Times in partnership with Rolex and its Perpetual Planet Initiative. Rolex supports individuals and organisations who go above and beyond to safeguard and preserve our planet for the next generation.`,
+		description: `Each day we watch as rising temperatures, extreme weather and extinctions are accepted as the new normal. The list of bleak headlines feels endless. It’s no wonder hope is wavering. But all is not lost. In this podcast series, Adam Vaughan, Environment Editor for The Times, asks why our planet is changing so rapidly and meets leading experts from around the world who are trying to change the tide. This is Planet Hope, a podcast from The Times in partnership with Rolex and its Perpetual Planet Initiative. Rolex supports individuals and organisations who go above and beyond to safeguard and preserve our planet for the next generation.`,
 		metaDescription:
 			"In this podcast series, Adam Vaughan, Environment Editor for The Times, asks why our planet is changing so rapidly and meets leading experts from around the world who are trying to change the tide on climate change, global warming, deforestation, famine and other environmental issues. Planet Hope is a podcast from The Times in partnership with Rolex and its Perpetual Planet Initiative.",
 		externalLinks: {
@@ -241,12 +215,7 @@ export const podcastList = [
 		img: {
 			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/11/Times_money.jpeg?w=240",
 		},
-		description: `A weekly podcast for those who want to understand money better. A podcast from The Times and Sunday Times about what is possible. 
-        <p/> 
-        The presenters, Holly Mead and Lucy Andrews, are experts in personal finance. Here, they talk about themselves, their friends, neighbourhoods, weddings, meals, and why it is often so very hard to save as much as you'd like!
-
-        Each week, Holly and Lucy take a single subject such as pensions or tax to test out with tried and tested experts; many from within the Times Money team. Their aim is simple - to give you the insights and information you can use to make your money work better for you.
-        `,
+		description: `A weekly podcast for those who want to understand money better. A podcast from The Times and Sunday Times about what is possible. The presenters, Holly Mead and Lucy Andrews, are experts in personal finance. Here, they talk about themselves, their friends, neighbourhoods, weddings, meals, and why it is often so very hard to save as much as you'd like!Each week, Holly and Lucy take a single subject such as pensions or tax to test out with tried and tested experts; many from within the Times Money team. Their aim is simple - to give you the insights and information you can use to make your money work better for you.`,
 		metaDescription:
 			"A money podcast to help understand personal finance better. From pensions to taxes and beyond, our experts' goal is simple: make your money work better for you.",
 		externalLinks: {
@@ -316,11 +285,7 @@ export const podcastList = [
 		img: {
 			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/10/1728038865168-4d111bb9-300e-4efb-b485-601b498a043e.jpeg?w=240",
 		},
-		description: `As The Sunday Times’ West Coast Correspondent, Danny Fortson has witnessed the technological whirlwind coming from Silicon Valley first hand. The Times' Technology Business Editor Katie Prescott has reported on how digital technology is transforming businesses and society around the world. 
-        <p/> 
-        Now, 'Danny in the Valley' meets 'Katie in the City', with a podcast presented from San Francisco and London.
-        <p/>
-        Each week sees a fresh interview with pioneers in tech, from the brightest start-ups to the tech giants, as Katie and Danny chronicle the AI revolution.`,
+		description: `As The Sunday Times’ West Coast Correspondent, Danny Fortson has witnessed the technological whirlwind coming from Silicon Valley first hand. The Times' Technology Business Editor Katie Prescott has reported on how digital technology is transforming businesses and society around the world. Now, 'Danny in the Valley' meets 'Katie in the City', with a podcast presented from San Francisco and London. Each week sees a fresh interview with pioneers in tech, from the brightest start-ups to the tech giants, as Katie and Danny chronicle the AI revolution.</p>`,
 		metaDescription:
 			"Danny Fortson and Katie Prescott host The Times Tech Podcast. Follow the latest tech news, the AI revolution and find weekly interviews with the names to know.",
 		externalLinks: {
@@ -391,13 +356,7 @@ export const podcastList = [
 		img: {
 			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/11/1699453633684-ef075e8e46f94710b8ea36c9fcfa956c.jpeg?w=240",
 		},
-		description: `
-        The life stories of the people who have shaped our own, told through the obituaries pages of The Times. 
-        As Nelson Mandela noted, “you can't really be proud of yourself if you don't know your history”. 
-        Anna Temkin, Deputy Obituaries Editor at The Times, introduces the endlessly fascinating stories that tell us about how we got to this point in history - the stories of a lifetime well lived.
-
-        The Times has published daily obituaries for over a century. 
-        Now, each week Anna builds on that legacy and explores that rich archive, joined by voices from across the paper to analyse the lives which have enriched and informed today's society.`,
+		description: `The life stories of the people who have shaped our own, told through the obituaries pages of The Times. As Nelson Mandela noted, “you can't really be proud of yourself if you don't know your history”. Anna Temkin, Deputy Obituaries Editor at The Times, introduces the endlessly fascinating stories that tell us about how we got to this point in history - the stories of a lifetime well lived. The Times has published daily obituaries for over a century. Now, each week Anna builds on that legacy and explores that rich archive, joined by voices from across the paper to analyse the lives which have enriched and informed today's society.</p>`,
 		metaDescription:
 			"Your History is a new podcast from The Times. Anna Temkin, Deputy Obituaries Editor,  tells life stories from this week's Times' obituaries, exposing the newspaper's rich archive.",
 		externalLinks: {
@@ -415,9 +374,7 @@ export const podcastList = [
 		title: "Wine Times",
 		slug: "wine-times",
 		urlSlug: "wine-times",
-		description: `Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. 
-        <p/> 
-        Wine Times is brought to you in association with the Sunday Times Wine Club.`,
+		description: `Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. Wine Times is brought to you in association with the Sunday Times Wine Club.`,
 		metaDescription:
 			"Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. Wine Times is brought to you in association with the Sunday Times Wine Club.",
 		externalLinks: {
