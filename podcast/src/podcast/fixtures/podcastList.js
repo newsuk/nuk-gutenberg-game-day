@@ -23,7 +23,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"British royal family, Royal family news, Royal updates, Buckingham Palace, King Charles III, Royal editors of The Times and Sunday Times, Society & Culture, British monarchy",
-	},
+	    audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "stories-of-our-times",
 		slug: "the-story",
@@ -55,7 +56,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Daily news, Society & Culture, Investigative series, Investigative journalism, In-depth analysis of today’s biggest stories, Award-winning journalism, High-profile guests, Interview series",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "thetimesbriefing",
 		title: "Times news briefing",
@@ -76,7 +78,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Daily news, News roundup, News bulletin, UK news, International news, UK politics, News briefing, News updates, Headlines, Short-form",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "daily-world-briefing",
 		title: "World in 10",
@@ -99,8 +102,9 @@ export const podcastList = [
 		},
 		section: "podcast",
 		topics:
-			"International news, Defense updates, War in Ukraine, Middle East news, 10 minute roundup, International affairs, International politics, Global news analysis, Political headlines",
-	},
+			"International news, Defense updates, War in Ukraine, Middle East news, 10 minute roundup, International affairs, International politics, Global news analysis, Political headlines",	    
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "how-to-win-an-election",
 		title: "How to win an election",
@@ -129,7 +133,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Political strategy, Political experts, UK politics, Westminster news, Election analysis, History, International electoral updates, Systems of government, Political commentary, Weekly news",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "times-red-box",
 		slug: "red-box",
@@ -149,7 +154,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Political strategy, Political experts, UK politics, Westminster update, History, International electoral updates, Systems of government, Political commentary, Daily news, Politics, Behind the scenes with politicians",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "off-air-with-jane-and-fi",
 		slug: "off-air-with-jane-and-fi",
@@ -172,7 +178,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Society & Culture, Interviews, High-profile guests, Celebrity updates, British media news, Informal chat, Relaxed conversation, Cultural analysis, Witty, British humour, Cultural headlines, Chit-chat, Influential interviews, Radio hosts, Times Radio",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "no-idea",
 		slug: "giles-coren-has-no-idea",
@@ -196,7 +203,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Society & Culture, Interviews, High-profile guests, Restaurant critic, British columnist, British media news, Informal chat, Relaxed conversation, Cultural analysis, Witty, British humour, Parenting",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "planet-hope",
 		title: "Planet Hope",
@@ -223,7 +231,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Climate change, Environmental policy, Interviews with climate activists, Interviews with climate ambassadors, Green policy, Hopeful, Earth Day, Wildlife photography, Climate journalism",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "feel-better-about-money",
 		title: "Feel Better About Money",
@@ -249,7 +258,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Financial advice, Finance headlines, Staying on top of your finances, Financial health, Debt, Investing advice, Investment portfolio, City reporters, Financial planning, Facilitating conversations about money, Optimism, Bank of England, Budgeting, Budget",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "times-the-game",
 		title: "The Game",
@@ -273,7 +283,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"UK football, Premier League, English Football League, International football, Football analysis, European Football, Champions’ League, Women’s Super League, WSL, Post-match analysis, Football pundit, Soccer, Football Commentary, Football stars, Football, Football player",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "the-ruck",
 		title: "The Ruck",
@@ -295,7 +306,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Rugby, The Super League, Rugby commentary, Rugby pundits, Rugby Union, Rugby analysis, International Rugby, Rugby World Cup, Six Nations, First XV, Sports commentary, British sport, Rugby player, Green, Ball",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "danny-in-the-valley",
 		slug: "danny-in-the-valley",
@@ -323,6 +335,7 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Silicon Valley updates, Big Tech, Artificial Intelligence, Tech innovation, Start up, Tech funding, Tech updates, Tech news, Stories from Silicon Valley, Venture capitalists, UK tech updates, International tech summits, Times Tech Summit, Tech experts",
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
 	},
 	{
 		newsKitId: "past-imperfect",
@@ -345,7 +358,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Interview, Celebrity interview, Society, Culture, Pop culture, Childhood stories, Sporting heroes, Sports, Business, New thinking, Politics, Political figures, British icon, Lifetime achievement, Current affairs, Legacy, Discussion, Informal, Relaxed conversation, Advice, Younger self, Guidance, Self-help",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "secrets-of-side-hustle",
 		slug: "secrets-of-the-side-hustle",
@@ -367,7 +381,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Female founders, Female empowerment, Women in Business, Women in Tech, International Women’s Day, Business tips, Entrepreneurship, Side hustle, Interview, Business interviews, Business from scratch, Advice, Investing, Money Management, Money Mentorship, Industry News, Tech, Fitness, CEO, Business",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "your-history",
 		slug: "your-history",
@@ -393,7 +408,8 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Newspaper obituaries, Times obituaries, Life stories, Biographical information, UK political heavyweights, Celebrity, Lifetime achievement, Influential historical figures, History, Historical analysis, Current affairs, Legacy, From the archives, Archival",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 	{
 		newsKitId: "wine-times",
 		title: "Wine Times",
@@ -413,5 +429,6 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"Wine writer, Wine critic, Wine, Wine Pairings, Interview, Celebrity interview, Travel stories, Recommendations, Special guests, Comedy, Light-hearted, The Sunday Times, Wine club, Interesting, Lively, Critic, Relaxed",
-	},
+		audio:{url:'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'}
+		},
 ];

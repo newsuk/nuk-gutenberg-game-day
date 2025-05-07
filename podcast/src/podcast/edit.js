@@ -165,7 +165,7 @@ export default function Edit({ attributes }) {
 						<div className="podcast-player">
 							<audio controls>
 								<source
-									src="https://www.example.com/audio.mp3"
+									src={data?.audio?.url}
 									type="audio/mpeg"
 								/>
 								Your browser does not support the audio element.

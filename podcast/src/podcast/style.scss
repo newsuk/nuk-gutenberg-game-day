@@ -51,4 +51,11 @@
 		font-size: 0.8rem;
 		margin: 0;
 	}
+
+	.podcast-player {
+		grid-column: 1 / span 2;
+		audio{
+			width: 100%;
+		}
+	}
 }
