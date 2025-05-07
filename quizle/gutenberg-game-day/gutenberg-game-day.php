@@ -97,7 +97,18 @@ function q_and_a_post_type() {
 		array(
 			'single'       => true,
 			'type'         => 'string',
-			'show_in_rest' => true
+			'show_in_rest' => array(
+				'single'       => true,
+				'type'         => 'array',
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'  => 'array',
+						'items' => array(
+							'type' => 'string',
+						),
+					),
+				),
+			),
 		)
 	);
 	register_post_meta(
