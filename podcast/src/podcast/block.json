@@ -15,7 +15,8 @@
 			"text": true,
 			"gradients": true
 		},
-		"shadow": true
+		"shadow": true,
+		"align": ["full", "wide"]
 	},
 	"textdomain": "podcast",
 	"editorScript": "file:./index.js",
