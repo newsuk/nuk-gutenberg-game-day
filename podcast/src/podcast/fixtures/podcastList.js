@@ -19,7 +19,7 @@ export const podcastList = [
 		section: "podcast",
 		topics:
 			"British royal family, Royal family news, Royal updates, Buckingham Palace, King Charles III, Royal editors of The Times and Sunday Times, Society & Culture, British monarchy",
-	    audio:{url:'ttps://sphinx.acast.com/p/open/s/662f8689e9f4880011c29f68/e/68139dddcea6682986b42fd4/media.mp3'}
+	    audio:{url:'https://sphinx.acast.com/p/open/s/662f8689e9f4880011c29f68/e/68139dddcea6682986b42fd4/media.mp3'}
 		},
 	{
 		newsKitId: "stories-of-our-times",
