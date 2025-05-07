@@ -74,30 +74,34 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<RichText
+					className="question"
 					tagName="h3"
 					value={attributes.question}
 					allowedFormats={["core/bold", "core/italic"]}
-					onChange={(question) => setAttributes({ question })}
+					onChange={(question) => setAttributes({question})}
 					placeholder="Question here..."
 				/>
 				<input
+					className="answer-input"
 					type="text"
 					placeholder="Enter your answer"
 					disabled="disabled"
 				/>
 				<input
-					type="button"
-					placeholder="Submit"
-					value="Submit"
-					id="submitButton"
-					data-answer={attributes.solution}
-					disabled="disabled"
-				/>
-				<input
+					className="hint"
 					type="button"
 					placeholder="Get Hint"
 					id="hintButton"
 					value="Get Hint"
+					disabled="disabled"
+				/>
+				<input
+					className="answer"
+					type="button"
+					placeholder="Submit"
+					value="ANSWER"
+					id="submitButton"
+					data-answer={attributes.solution}
 					disabled="disabled"
 				/>
 				{/* <RichText

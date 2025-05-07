@@ -22,6 +22,7 @@ export default function save({attributes}) {
 			<form>
 				<input className="answer-input" type="text" placeholder="Enter your answer"/>
 
+				<div>
 				<input className="hint"
 					   type="button"
 					   placeholder="Get Hint"
@@ -31,7 +32,7 @@ export default function save({attributes}) {
 				/>
 				<input className="answer" type="button" placeholder="Submit" id="submitButton" value="ANSWER"
 					   data-answer={attributes.solution}/>
-
+				</div>
 			</form>
 		</div>
 	);
