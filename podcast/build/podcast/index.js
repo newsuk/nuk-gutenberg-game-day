@@ -2,193 +2,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/podcast/assets/danny-valley-cover.jpg":
-/*!***************************************************!*\
-  !*** ./src/podcast/assets/danny-valley-cover.jpg ***!
-  \***************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/danny-valley-cover.415f115f.jpg";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/fbam-cover.png":
-/*!*******************************************!*\
-  !*** ./src/podcast/assets/fbam-cover.png ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/fbam-cover.c959fd69.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/giles-coren-cover.png":
-/*!**************************************************!*\
-  !*** ./src/podcast/assets/giles-coren-cover.png ***!
-  \**************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/giles-coren-cover.250b5dd8.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/how-win-an-election.png":
-/*!****************************************************!*\
-  !*** ./src/podcast/assets/how-win-an-election.png ***!
-  \****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/how-win-an-election.ea312e7f.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/news-briefing-cover.png":
-/*!****************************************************!*\
-  !*** ./src/podcast/assets/news-briefing-cover.png ***!
-  \****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/news-briefing-cover.b52cc5fc.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/off-air-with-jane-and-fi-cover.jpg":
-/*!***************************************************************!*\
-  !*** ./src/podcast/assets/off-air-with-jane-and-fi-cover.jpg ***!
-  \***************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/off-air-with-jane-and-fi-cover.1a9478d2.jpg";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/planet-hope-cover-image.jpg":
-/*!********************************************************!*\
-  !*** ./src/podcast/assets/planet-hope-cover-image.jpg ***!
-  \********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/planet-hope-cover-image.cdd77bfa.jpg";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/planet-hope-rolex-logo.png":
-/*!*******************************************************!*\
-  !*** ./src/podcast/assets/planet-hope-rolex-logo.png ***!
-  \*******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/planet-hope-rolex-logo.14294d9f.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/politics-unpacked-background-image.png":
-/*!*******************************************************************!*\
-  !*** ./src/podcast/assets/politics-unpacked-background-image.png ***!
-  \*******************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/politics-unpacked-background-image.0a01a1be.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/royals-with-roya-and-kate-cover.png":
-/*!****************************************************************!*\
-  !*** ./src/podcast/assets/royals-with-roya-and-kate-cover.png ***!
-  \****************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/royals-with-roya-and-kate-cover.8bb36817.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/secrets-of-the-side-hustle-cover.jpg":
-/*!*****************************************************************!*\
-  !*** ./src/podcast/assets/secrets-of-the-side-hustle-cover.jpg ***!
-  \*****************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/secrets-of-the-side-hustle-cover.0875c64e.jpg";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/stories-of-our-times-cover.jpg":
-/*!***********************************************************!*\
-  !*** ./src/podcast/assets/stories-of-our-times-cover.jpg ***!
-  \***********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/stories-of-our-times-cover.2a920046.jpg";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/the-game-cover.jpg":
-/*!***********************************************!*\
-  !*** ./src/podcast/assets/the-game-cover.jpg ***!
-  \***********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/the-game-cover.960683b3.jpg";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/the-ruck-cover.jpg":
-/*!***********************************************!*\
-  !*** ./src/podcast/assets/the-ruck-cover.jpg ***!
-  \***********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/the-ruck-cover.97634e36.jpg";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/the-story-cover.png":
-/*!************************************************!*\
-  !*** ./src/podcast/assets/the-story-cover.png ***!
-  \************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/the-story-cover.247ec958.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/what-i-wish-id-known-cover.png":
-/*!***********************************************************!*\
-  !*** ./src/podcast/assets/what-i-wish-id-known-cover.png ***!
-  \***********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/what-i-wish-id-known-cover.c9e32858.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/wine-times-cover-image.png":
-/*!*******************************************************!*\
-  !*** ./src/podcast/assets/wine-times-cover-image.png ***!
-  \*******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/wine-times-cover-image.59ad8d8e.png";
-
-/***/ }),
-
-/***/ "./src/podcast/assets/your-history-cover.png":
-/*!***************************************************!*\
-  !*** ./src/podcast/assets/your-history-cover.png ***!
-  \***************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "images/your-history-cover.67793629.png";
-
-/***/ }),
-
 /***/ "./src/podcast/block.json":
 /*!********************************!*\
   !*** ./src/podcast/block.json ***!
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"string","default":"The Story","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"episodeId":{"type":"string","default":""},"titleOverride":{"type":"string","default":""},"summaryOverride":{"type":"string","default":""}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"array","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"titleOverride":{"type":"string","default":""},"summaryOverride":{"type":"string","default":""}}}');
 
 /***/ }),
 
@@ -208,9 +28,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fixtures/podcastList */ "./src/podcast/fixtures/podcastList.js");
+/* harmony import */ var _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fixtures/podcastList */ "./src/podcast/fixtures/podcastList.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/podcast/editor.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
@@ -249,18 +69,47 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 
+async function getPodcastByTitle(title) {
+  // Simulate an API call to fetch podcast data
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  const podcast = _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_3__.podcastList.find(podcast => podcast.title === "Politics Unpacked");
+  if (podcast) {
+    return podcast;
+  } else {
+    return null;
+  }
+}
 function Edit({
-  attributes,
-  setAttributes,
-  id
+  attributes
 }) {
   const {
     podcastSeries,
-    episodeId,
     titleOverride,
-    summaryOverride
+    summaryOverride,
+    episodeId
   } = attributes;
-  let selectedPodcast = _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_4__.podcastList.find(podcast => podcast.title === podcastSeries);
+  const [data, setData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)();
+  const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
+  const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(null);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+    async function fetchData() {
+      try {
+        const podcast = await getPodcastByTitle(podcastSeries);
+        if (podcast) {
+          setData(podcast);
+        } else {
+          setError("Podcast not found");
+        }
+      } catch (err) {
+        setError("An error occurred while fetching the podcast data");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+  console.log("Podcast data:", data);
+  let selectedPodcast = _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_3__.podcastList.find(podcast => podcast.title === podcastSeries);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
@@ -276,11 +125,11 @@ function Edit({
         titleOverride: newTitleOverride
       }) // Store updated content as a block attribute
       ,
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(selectedPodcast.title) // Display this text before any content has been added by the user
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(selectedPodcast?.title) // Display this text before any content has been added by the user
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
       tagName: "p" // The tag here is the element output and editable in the admin
       ,
-      value: summaryOverride || selectedPodcast.metaDescription // Any existing content, either from the database or an attribute default
+      value: summaryOverride || selectedPodcast?.metaDescription // Any existing content, either from the database or an attribute default
       ,
       allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
       ,
@@ -288,10 +137,10 @@ function Edit({
         summaryOverride: newSummaryOverride
       }) // Store updated content as a block attribute
       ,
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(selectedPodcast.metaDescription) // Display this text before any content has been added by the user
+      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(selectedPodcast?.metaDescription) // Display this text before any content has been added by the user
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Podcast Settings', 'podcast'),
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Podcast Settings", "podcast"),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           __nextHasNoMarginBottom: true,
           label: "Podcast Series",
@@ -340,6 +189,42 @@ function Edit({
           }
         })]
       })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "podcast-container",
+      children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        children: "Loading..."
+      }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        children: error
+      }), data && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "podcast-cover-img",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+            src: data.img.url,
+            alt: "Podcast Cover"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "podcast-info",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+            className: "podcast-tags",
+            children: "LATEST EPISODE"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+            className: "podcast-title",
+            children: titleOverride || data.title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+            className: "podcast-summary",
+            children: summaryOverride || data.description
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "podcast-player",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("audio", {
+            controls: true,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("source", {
+              src: "https://www.example.com/audio.mp3",
+              type: "audio/mpeg"
+            }), "Your browser does not support the audio element."]
+          })
+        })]
+      })]
     })]
   });
 }
@@ -368,49 +253,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   podcastList: () => (/* binding */ podcastList)
 /* harmony export */ });
-/* harmony import */ var _assets_the_story_cover_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/the-story-cover.png */ "./src/podcast/assets/the-story-cover.png");
-/* harmony import */ var _assets_stories_of_our_times_cover_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/stories-of-our-times-cover.jpg */ "./src/podcast/assets/stories-of-our-times-cover.jpg");
-/* harmony import */ var _assets_politics_unpacked_background_image_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/politics-unpacked-background-image.png */ "./src/podcast/assets/politics-unpacked-background-image.png");
-/* harmony import */ var _assets_giles_coren_cover_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/giles-coren-cover.png */ "./src/podcast/assets/giles-coren-cover.png");
-/* harmony import */ var _assets_danny_valley_cover_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/danny-valley-cover.jpg */ "./src/podcast/assets/danny-valley-cover.jpg");
-/* harmony import */ var _assets_what_i_wish_id_known_cover_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/what-i-wish-id-known-cover.png */ "./src/podcast/assets/what-i-wish-id-known-cover.png");
-/* harmony import */ var _assets_secrets_of_the_side_hustle_cover_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/secrets-of-the-side-hustle-cover.jpg */ "./src/podcast/assets/secrets-of-the-side-hustle-cover.jpg");
-/* harmony import */ var _assets_the_game_cover_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../assets/the-game-cover.jpg */ "./src/podcast/assets/the-game-cover.jpg");
-/* harmony import */ var _assets_the_ruck_cover_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../assets/the-ruck-cover.jpg */ "./src/podcast/assets/the-ruck-cover.jpg");
-/* harmony import */ var _assets_news_briefing_cover_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../assets/news-briefing-cover.png */ "./src/podcast/assets/news-briefing-cover.png");
-/* harmony import */ var _assets_planet_hope_cover_image_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../assets/planet-hope-cover-image.jpg */ "./src/podcast/assets/planet-hope-cover-image.jpg");
-/* harmony import */ var _assets_planet_hope_rolex_logo_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../assets/planet-hope-rolex-logo.png */ "./src/podcast/assets/planet-hope-rolex-logo.png");
-/* harmony import */ var _assets_wine_times_cover_image_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../assets/wine-times-cover-image.png */ "./src/podcast/assets/wine-times-cover-image.png");
-/* harmony import */ var _assets_off_air_with_jane_and_fi_cover_jpg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../assets/off-air-with-jane-and-fi-cover.jpg */ "./src/podcast/assets/off-air-with-jane-and-fi-cover.jpg");
-/* harmony import */ var _assets_how_win_an_election_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../assets/how-win-an-election.png */ "./src/podcast/assets/how-win-an-election.png");
-/* harmony import */ var _assets_your_history_cover_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../assets/your-history-cover.png */ "./src/podcast/assets/your-history-cover.png");
-/* harmony import */ var _assets_royals_with_roya_and_kate_cover_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../assets/royals-with-roya-and-kate-cover.png */ "./src/podcast/assets/royals-with-roya-and-kate-cover.png");
-/* harmony import */ var _assets_fbam_cover_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../assets/fbam-cover.png */ "./src/podcast/assets/fbam-cover.png");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const podcastList = [{
   newsKitId: "the-royals-with-roya-and-kate",
   slug: "the-royals-with-roya-and-kate",
   urlSlug: "the-royals-with-roya-and-kate",
   title: "The Royals with Roya and Kate",
-  coverImage: {
-    url: _assets_royals_with_roya_and_kate_cover_png__WEBPACK_IMPORTED_MODULE_16__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/05/1714383804740-0b3e6df4b7d2d54fd2b266e07941d7e4.jpeg?w=240"
   },
   description: `A discerning look at royal life in the era of King Charles, presented by the royal editors of The Times and Sunday Times, Kate Mansey and Roya Nikkhah – two women with unmatched insight into the inner workings of the monarchy.
             
@@ -440,8 +289,8 @@ const podcastList = [{
             The Story is available at the start of your day from Monday to Friday, with bonus ‘Inside the Newsroom’ episodes every Saturday for Times subscribers, available by connecting your subscription via Apple Podcasts.
             `,
   title: "The Story",
-  coverImage: {
-    url: _assets_the_story_cover_png__WEBPACK_IMPORTED_MODULE_0__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/03/The-story-tile.jpg?w=240"
   },
   metaDescription: "The flagship podcast from The Times and Sunday Times, with Manveen Rana, Luke Jones and William Hague. One remarkable story, told in depth, each day.",
   externalLinks: {
@@ -457,8 +306,8 @@ const podcastList = [{
   title: "Times news briefing",
   slug: "times-news-briefing",
   urlSlug: "times-news-briefing",
-  coverImage: {
-    url: _assets_news_briefing_cover_png__WEBPACK_IMPORTED_MODULE_9__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2021/01/kesgieus-times_news_briefing_coral_2_.jpg?w=240"
   },
   metaDescription: "The latest news from The Times and Sunday Times, updated three times a day during the week and once a day at the weekend.",
   externalLinks: {
@@ -473,8 +322,8 @@ const podcastList = [{
   title: "World in 10",
   slug: "world-in-ten",
   urlSlug: "world-in-ten",
-  coverImage: {
-    url: _assets_stories_of_our_times_cover_jpg__WEBPACK_IMPORTED_MODULE_1__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/03/world-in-10-podcast.png?w=240"
   },
   description: "Your daily news briefing from The Times of London, delivered in 10 minutes - bringing you all the stories you need in world news, sports and entertainment.",
   metaDescription: "Your daily news briefing from The Times of London, delivered in 10 minutes - bringing you all the stories you need in world news, sports and entertainment.",
@@ -490,8 +339,8 @@ const podcastList = [{
   title: "How to win an election",
   slug: "how-to-win-an-election",
   urlSlug: "how-to-win-an-election",
-  coverImage: {
-    url: _assets_how_win_an_election_png__WEBPACK_IMPORTED_MODULE_14__
+  img: {
+    url: "https://assets.pippa.io/shows/6528fe7e3308660012b7db47/1698062200666-366ea7f0cbf838f1ef6e6757990b74bb.jpeg?w=240"
   },
   description: `How To Win An Election is an insider’s guide to the twists and turns of political campaigning and strategy. It brings together some of the most experienced political advisors of the past four decades - Daniel Finkelstein, Sally Morgan, and Polly Mackenzie - with Times Radio presenter Hugo Rifkind.
 
@@ -516,8 +365,8 @@ const podcastList = [{
   urlSlug: "red-box",
   description: `Hugo Rifkind unpacks the the politics of the day - and the stuff that's even more important - with the brightest brains from the Times and Sunday Times.You can listen to Hugo on DAB, smart speaker or app 10am-1pm Monday to Friday. If you like what you hear, then read more at http://www.thetimes.com/`,
   title: "Politics Unpacked",
-  coverImage: {
-    url: _assets_politics_unpacked_background_image_png__WEBPACK_IMPORTED_MODULE_2__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/09/politics-unpacked.jpg?w=240"
   },
   metaDescription: `Hugo Rifkind presents the Politics Unpacked podcast. Explore today's politics - and the issues that matter - with The Times and Sunday Times' brightest brains.`,
   externalLinks: {
@@ -533,8 +382,8 @@ const podcastList = [{
   urlSlug: "off-air-with-jane-and-fi",
   title: "Off Air with Jane & Fi",
   description: "Fresh from their new Times Radio show Jane Garvey and Fi Glover keep the mics on, grab a cuppa and say what they really think – unencumbered and off air. If you want to contact the show to ask a question and get involved in the conversation then please email janeandfi@times.radio",
-  coverImage: {
-    url: _assets_off_air_with_jane_and_fi_cover_jpg__WEBPACK_IMPORTED_MODULE_13__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2025/02/1731423671115-23bc0205-ab31-44ad-91df-6561018f0446.jpeg?w=240"
   },
   metaDescription: "Fresh from their new Times Radio show Jane Garvey and Fi Glover keep the mics on, grab a cuppa and say what they really think – unencumbered and off air. If you want to contact the show to ask a question and get involved in the conversation then please email janeandfi@times.radio",
   externalLinks: {
@@ -550,8 +399,8 @@ const podcastList = [{
   urlSlug: "giles-coren-has-no-idea",
   title: "Giles Coren has no idea",
   description: "Each week Giles Coren finds himself with no idea what to write about in his weekly column. Having read all the papers and found nothing of interest whatsoever, he takes a break and does the school run. That’s where his wife and fellow journalist Esther Walker comes in. Upon his return, Esther has half a dozen ideas she’s spotted ready to knock around with him over the kitchen table and a much needed pot of coffee.",
-  coverImage: {
-    url: _assets_giles_coren_cover_png__WEBPACK_IMPORTED_MODULE_3__
+  img: {
+    url: "https://thumborcdn.acast.com/JbA3UJJrEWgDgc5rjpIm0DzWlIE=/1500x1500/https://mediacdn.acast.com/assets/d5fbf33e-09a0-4a9a-9958-c7237344ed51/-ku89lio8-giles-coren_red_v2.jpg?w=240"
   },
   metaDescription: "Each week Giles Coren finds himself with no idea what to write about in his column. Luckily his wife Esther Walker is ready to knock around ideas with him",
   externalLinks: {
@@ -568,12 +417,8 @@ const podcastList = [{
   titleKicker: "In partnership with Rolex",
   slug: "planet-hope",
   urlSlug: "planet-hope",
-  coverImage: {
-    url: _assets_planet_hope_cover_image_jpg__WEBPACK_IMPORTED_MODULE_10__
-  },
-  logoImage: {
-    url: _assets_planet_hope_rolex_logo_png__WEBPACK_IMPORTED_MODULE_11__,
-    alt: "In partnership with Rolex"
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/04/planet-hope-times-radio.jpeg?w=240"
   },
   description: `Each day we watch as rising temperatures, extreme weather and extinctions are accepted as the new normal. The list of bleak headlines feels endless. It’s no wonder hope is wavering. But all is not lost.
             
@@ -593,8 +438,8 @@ const podcastList = [{
   title: "Feel Better About Money",
   slug: "feel-better-about-money",
   urlSlug: "feel-better-about-money",
-  coverImage: {
-    url: _assets_fbam_cover_png__WEBPACK_IMPORTED_MODULE_17__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/11/Times_money.jpeg?w=240"
   },
   description: `A weekly podcast for those who want to understand money better. A podcast from The Times and Sunday Times about what is possible. 
         <p/> 
@@ -615,8 +460,8 @@ const podcastList = [{
   description: "The Game is the premier football podcast from The Times, with the finest writers previewing and reviewing all the action throughout the 2023/24 season. Twice a week, Gregor Robertson and Tom Clarke speak to the leading football writers from The Times and The Sunday Times, offering unparalleled analysis of the latest results and commentary on emerging issues. On Mondays, Alyson Rudd, Tom Roddy and Tony Cascarino review the weekend's action and on Thursdays Martin Samuel tackles the biggest issues of the week alongside the likes of Jonathan Northcroft and Ian Hawkey.",
   slug: "the-game",
   urlSlug: "the-game",
-  coverImage: {
-    url: _assets_the_game_cover_jpg__WEBPACK_IMPORTED_MODULE_7__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2021/01/k9lgurmk-the-game-3000px.jpg?w=240"
   },
   metaDescription: "The Game is a football podcast from The Times, hosted by Gregor Robertson and Tom Clarke. Join them for insightful discussions, expert analysis, and the latest updates in the world of football. A must-listen for football enthusiasts and fans of quality sports journalism.",
   externalLinks: {
@@ -632,8 +477,8 @@ const podcastList = [{
   title: "The Ruck",
   slug: "the-ruck",
   urlSlug: "the-ruck",
-  coverImage: {
-    url: _assets_the_ruck_cover_jpg__WEBPACK_IMPORTED_MODULE_8__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2021/01/k9lgyq78-the-ruck-3000px.jpg?w=240"
   },
   metaDescription: "The Ruck rugby podcast provides forthright analysis, reports and big name interviews throughout the season. Join Lawrence Dallaglio and our rugby correspondents for the latest insights",
   externalLinks: {
@@ -649,8 +494,8 @@ const podcastList = [{
   slug: "danny-in-the-valley",
   urlSlug: "danny-in-the-valley",
   title: "The Times Tech Podcast",
-  coverImage: {
-    url: _assets_danny_valley_cover_jpg__WEBPACK_IMPORTED_MODULE_4__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/10/1728038865168-4d111bb9-300e-4efb-b485-601b498a043e.jpeg?w=240"
   },
   description: `As The Sunday Times’ West Coast Correspondent, Danny Fortson has witnessed the technological whirlwind coming from Silicon Valley first hand. The Times' Technology Business Editor Katie Prescott has reported on how digital technology is transforming businesses and society around the world. 
         <p/> 
@@ -671,8 +516,8 @@ const podcastList = [{
   slug: "what-i-wish-id-known",
   urlSlug: "what-i-wish-id-known",
   title: "What I Wish I'd Known",
-  coverImage: {
-    url: _assets_what_i_wish_id_known_cover_png__WEBPACK_IMPORTED_MODULE_5__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/06/What-I-wish_TILE.png?w=240"
   },
   metaDescription: "\"What I Wish I'd Known\" is a podcast from The Times hosted by Alice Thomson and Rachel Sylvester, where they interview celebrities, sporting icons and famous politicians about their more difficult starts in life and how it drove them to where they are today. This podcast was formerly called 'Past Imperfect'.",
   externalLinks: {
@@ -688,8 +533,8 @@ const podcastList = [{
   slug: "secrets-of-the-side-hustle",
   urlSlug: "secrets-of-the-side-hustle",
   title: "Secrets of the side hustle",
-  coverImage: {
-    url: _assets_secrets_of_the_side_hustle_cover_jpg__WEBPACK_IMPORTED_MODULE_6__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/05/1716219572670-cbc9b61cf6c6176d82ee07f00256d0bb.jpeg?w=240"
   },
   metaDescription: "The Secrets of the side hustle podcast leads a conversation with inspiring female founders about their career stories and how to start a business from scratch",
   externalLinks: {
@@ -705,8 +550,8 @@ const podcastList = [{
   slug: "your-history",
   urlSlug: "your-history",
   title: "Your History",
-  coverImage: {
-    url: _assets_your_history_cover_png__WEBPACK_IMPORTED_MODULE_15__
+  img: {
+    url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/11/1699453633684-ef075e8e46f94710b8ea36c9fcfa956c.jpeg?w=240"
   },
   description: `
         The life stories of the people who have shaped our own, told through the obituaries pages of The Times. 
@@ -728,9 +573,6 @@ const podcastList = [{
   title: "Wine Times",
   slug: "wine-times",
   urlSlug: "wine-times",
-  coverImage: {
-    url: _assets_wine_times_cover_image_png__WEBPACK_IMPORTED_MODULE_12__
-  },
   description: `Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. 
         <p/> 
         Wine Times is brought to you in association with the Sunday Times Wine Club.`,
@@ -999,18 +841,6 @@ module.exports = window["ReactJSXRuntime"];
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -1025,29 +855,6 @@ module.exports = window["ReactJSXRuntime"];
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) {
-/******/ 					var i = scripts.length - 1;
-/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */

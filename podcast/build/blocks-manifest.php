@@ -23,8 +23,7 @@ return array(
 		'viewScript' => 'file:./view.js',
 		'attributes' => array(
 			'podcastSeries' => array(
-				'type' => 'string',
-				'default' => 'The Story',
+				'type' => 'array',
 				'enum' => array(
 					'The Story',
 					'The Royals with Roya and Kate',
@@ -35,10 +34,6 @@ return array(
 					'Times news briefing',
 					'World in 10'
 				)
-			),
-			'episodeId' => array(
-				'type' => 'string',
-				'default' => ''
 			),
 			'titleOverride' => array(
 				'type' => 'string',

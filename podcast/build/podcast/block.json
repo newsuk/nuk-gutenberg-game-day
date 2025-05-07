@@ -18,8 +18,7 @@
   "viewScript": "file:./view.js",
   "attributes": {
     "podcastSeries": {
-      "type": "string",
-      "default": "The Story",
+      "type": "array",
       "enum": [
         "The Story",
         "The Royals with Roya and Kate",
@@ -30,10 +29,6 @@
         "Times news briefing",
         "World in 10"
       ]
-    },
-    "episodeId": {
-      "type": "string",
-      "default": ""
     },
     "titleOverride": {
       "type": "string",

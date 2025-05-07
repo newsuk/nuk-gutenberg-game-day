@@ -1,29 +1,12 @@
-import theStoryCoverImage from "../assets/the-story-cover.png";
-import storiesOfOurTimesCoverImage from "../assets/stories-of-our-times-cover.jpg";
-import politicsUnpackedBackgroundImage from "../assets/politics-unpacked-background-image.png";
-import gilesCorenCoverImage from "../assets/giles-coren-cover.png";
-import dannyInTheValleyCoverImage from "../assets/danny-valley-cover.jpg";
-import whatIWishIdKnownCover from "../assets/what-i-wish-id-known-cover.png";
-import secretsOfTheSideHustleCover from "../assets/secrets-of-the-side-hustle-cover.jpg";
-import theGameCover from "../assets/the-game-cover.jpg";
-import theRuckCover from "../assets/the-ruck-cover.jpg";
-import newsBriefingCover from "../assets/news-briefing-cover.png";
-import planetHopeCoverImage from "../assets/planet-hope-cover-image.jpg";
-import planetHopeLogo from "../assets/planet-hope-rolex-logo.png";
-import wineTimesCoverImage from "../assets/wine-times-cover-image.png";
-import offAirWithJaneAndFiCover from "../assets/off-air-with-jane-and-fi-cover.jpg";
-import howWinAnElection from "../assets/how-win-an-election.png";
-import yourHistoryCoverImage from "../assets/your-history-cover.png";
-import royalsWithRoyaAndKateCover from "../assets/royals-with-roya-and-kate-cover.png";
-import feelBetterAboutMoneyCoverImage from "../assets/fbam-cover.png";
-
 export const podcastList = [
 	{
 		newsKitId: "the-royals-with-roya-and-kate",
 		slug: "the-royals-with-roya-and-kate",
 		urlSlug: "the-royals-with-roya-and-kate",
 		title: "The Royals with Roya and Kate",
-		coverImage: { url: royalsWithRoyaAndKateCover },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/05/1714383804740-0b3e6df4b7d2d54fd2b266e07941d7e4.jpeg?w=240",
+		},
 		description: `A discerning look at royal life in the era of King Charles, presented by the royal editors of The Times and Sunday Times, Kate Mansey and Roya Nikkhah – two women with unmatched insight into the inner workings of the monarchy.
             
             It’s a time of challenges and change for the royal family, but also one of great hope and warmth, and a sense of the possibilities of this new Carolean age. There are personal challenges for the royals, but new links are being forged with “kind words”, as King Charles has said, between the public and the Palace.
@@ -57,7 +40,9 @@ export const podcastList = [
             The Story is available at the start of your day from Monday to Friday, with bonus ‘Inside the Newsroom’ episodes every Saturday for Times subscribers, available by connecting your subscription via Apple Podcasts.
             `,
 		title: "The Story",
-		coverImage: { url: theStoryCoverImage },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/03/The-story-tile.jpg?w=240",
+		},
 		metaDescription:
 			"The flagship podcast from The Times and Sunday Times, with Manveen Rana, Luke Jones and William Hague. One remarkable story, told in depth, each day.",
 		externalLinks: {
@@ -76,7 +61,9 @@ export const podcastList = [
 		title: "Times news briefing",
 		slug: "times-news-briefing",
 		urlSlug: "times-news-briefing",
-		coverImage: { url: newsBriefingCover },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2021/01/kesgieus-times_news_briefing_coral_2_.jpg?w=240",
+		},
 		metaDescription:
 			"The latest news from The Times and Sunday Times, updated three times a day during the week and once a day at the weekend.",
 		externalLinks: {
@@ -95,7 +82,9 @@ export const podcastList = [
 		title: "World in 10",
 		slug: "world-in-ten",
 		urlSlug: "world-in-ten",
-		coverImage: { url: storiesOfOurTimesCoverImage },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/03/world-in-10-podcast.png?w=240",
+		},
 		description:
 			"Your daily news briefing from The Times of London, delivered in 10 minutes - bringing you all the stories you need in world news, sports and entertainment.",
 		metaDescription:
@@ -117,7 +106,9 @@ export const podcastList = [
 		title: "How to win an election",
 		slug: "how-to-win-an-election",
 		urlSlug: "how-to-win-an-election",
-		coverImage: { url: howWinAnElection },
+		img: {
+			url: "https://assets.pippa.io/shows/6528fe7e3308660012b7db47/1698062200666-366ea7f0cbf838f1ef6e6757990b74bb.jpeg?w=240",
+		},
 		description: `How To Win An Election is an insider’s guide to the twists and turns of political campaigning and strategy. It brings together some of the most experienced political advisors of the past four decades - Daniel Finkelstein, Sally Morgan, and Polly Mackenzie - with Times Radio presenter Hugo Rifkind.
 
             Sally Morgan served as Blair's political secretary and then as director of political and government relations; she understands the challenge of leading the country when there are tensions with the Treasury, an unpredictable ally in the White House, and unrest on the backbenches.
@@ -145,7 +136,9 @@ export const podcastList = [
 		urlSlug: "red-box",
 		description: `Hugo Rifkind unpacks the the politics of the day - and the stuff that's even more important - with the brightest brains from the Times and Sunday Times.You can listen to Hugo on DAB, smart speaker or app 10am-1pm Monday to Friday. If you like what you hear, then read more at http://www.thetimes.com/`,
 		title: "Politics Unpacked",
-		coverImage: { url: politicsUnpackedBackgroundImage },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/09/politics-unpacked.jpg?w=240",
+		},
 		metaDescription: `Hugo Rifkind presents the Politics Unpacked podcast. Explore today's politics - and the issues that matter - with The Times and Sunday Times' brightest brains.`,
 		externalLinks: {
 			apple:
@@ -164,7 +157,9 @@ export const podcastList = [
 		title: "Off Air with Jane & Fi",
 		description:
 			"Fresh from their new Times Radio show Jane Garvey and Fi Glover keep the mics on, grab a cuppa and say what they really think – unencumbered and off air. If you want to contact the show to ask a question and get involved in the conversation then please email janeandfi@times.radio",
-		coverImage: { url: offAirWithJaneAndFiCover },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2025/02/1731423671115-23bc0205-ab31-44ad-91df-6561018f0446.jpeg?w=240",
+		},
 		metaDescription:
 			"Fresh from their new Times Radio show Jane Garvey and Fi Glover keep the mics on, grab a cuppa and say what they really think – unencumbered and off air. If you want to contact the show to ask a question and get involved in the conversation then please email janeandfi@times.radio",
 		externalLinks: {
@@ -185,7 +180,9 @@ export const podcastList = [
 		title: "Giles Coren has no idea",
 		description:
 			"Each week Giles Coren finds himself with no idea what to write about in his weekly column. Having read all the papers and found nothing of interest whatsoever, he takes a break and does the school run. That’s where his wife and fellow journalist Esther Walker comes in. Upon his return, Esther has half a dozen ideas she’s spotted ready to knock around with him over the kitchen table and a much needed pot of coffee.",
-		coverImage: { url: gilesCorenCoverImage },
+		img: {
+			url: "https://thumborcdn.acast.com/JbA3UJJrEWgDgc5rjpIm0DzWlIE=/1500x1500/https://mediacdn.acast.com/assets/d5fbf33e-09a0-4a9a-9958-c7237344ed51/-ku89lio8-giles-coren_red_v2.jpg?w=240",
+		},
 		metaDescription:
 			"Each week Giles Coren finds himself with no idea what to write about in his column. Luckily his wife Esther Walker is ready to knock around ideas with him",
 		externalLinks: {
@@ -206,8 +203,9 @@ export const podcastList = [
 		titleKicker: "In partnership with Rolex",
 		slug: "planet-hope",
 		urlSlug: "planet-hope",
-		coverImage: { url: planetHopeCoverImage },
-		logoImage: { url: planetHopeLogo, alt: "In partnership with Rolex" },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/04/planet-hope-times-radio.jpeg?w=240",
+		},
 		description: `Each day we watch as rising temperatures, extreme weather and extinctions are accepted as the new normal. The list of bleak headlines feels endless. It’s no wonder hope is wavering. But all is not lost.
             
             In this podcast series, Adam Vaughan, Environment Editor for The Times, asks why our planet is changing so rapidly and meets leading experts from around the world who are trying to change the tide.
@@ -231,7 +229,9 @@ export const podcastList = [
 		title: "Feel Better About Money",
 		slug: "feel-better-about-money",
 		urlSlug: "feel-better-about-money",
-		coverImage: { url: feelBetterAboutMoneyCoverImage },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/11/Times_money.jpeg?w=240",
+		},
 		description: `A weekly podcast for those who want to understand money better. A podcast from The Times and Sunday Times about what is possible. 
         <p/> 
         The presenters, Holly Mead and Lucy Andrews, are experts in personal finance. Here, they talk about themselves, their friends, neighbourhoods, weddings, meals, and why it is often so very hard to save as much as you'd like!
@@ -257,7 +257,9 @@ export const podcastList = [
 			"The Game is the premier football podcast from The Times, with the finest writers previewing and reviewing all the action throughout the 2023/24 season. Twice a week, Gregor Robertson and Tom Clarke speak to the leading football writers from The Times and The Sunday Times, offering unparalleled analysis of the latest results and commentary on emerging issues. On Mondays, Alyson Rudd, Tom Roddy and Tony Cascarino review the weekend's action and on Thursdays Martin Samuel tackles the biggest issues of the week alongside the likes of Jonathan Northcroft and Ian Hawkey.",
 		slug: "the-game",
 		urlSlug: "the-game",
-		coverImage: { url: theGameCover },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2021/01/k9lgurmk-the-game-3000px.jpg?w=240",
+		},
 		metaDescription:
 			"The Game is a football podcast from The Times, hosted by Gregor Robertson and Tom Clarke. Join them for insightful discussions, expert analysis, and the latest updates in the world of football. A must-listen for football enthusiasts and fans of quality sports journalism.",
 		externalLinks: {
@@ -277,7 +279,9 @@ export const podcastList = [
 		title: "The Ruck",
 		slug: "the-ruck",
 		urlSlug: "the-ruck",
-		coverImage: { url: theRuckCover },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2021/01/k9lgyq78-the-ruck-3000px.jpg?w=240",
+		},
 		metaDescription:
 			"The Ruck rugby podcast provides forthright analysis, reports and big name interviews throughout the season. Join Lawrence Dallaglio and our rugby correspondents for the latest insights",
 		externalLinks: {
@@ -297,7 +301,9 @@ export const podcastList = [
 		slug: "danny-in-the-valley",
 		urlSlug: "danny-in-the-valley",
 		title: "The Times Tech Podcast",
-		coverImage: { url: dannyInTheValleyCoverImage },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/10/1728038865168-4d111bb9-300e-4efb-b485-601b498a043e.jpeg?w=240",
+		},
 		description: `As The Sunday Times’ West Coast Correspondent, Danny Fortson has witnessed the technological whirlwind coming from Silicon Valley first hand. The Times' Technology Business Editor Katie Prescott has reported on how digital technology is transforming businesses and society around the world. 
         <p/> 
         Now, 'Danny in the Valley' meets 'Katie in the City', with a podcast presented from San Francisco and London.
@@ -323,7 +329,9 @@ export const podcastList = [
 		slug: "what-i-wish-id-known",
 		urlSlug: "what-i-wish-id-known",
 		title: "What I Wish I'd Known",
-		coverImage: { url: whatIWishIdKnownCover },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/06/What-I-wish_TILE.png?w=240",
+		},
 		metaDescription:
 			"\"What I Wish I'd Known\" is a podcast from The Times hosted by Alice Thomson and Rachel Sylvester, where they interview celebrities, sporting icons and famous politicians about their more difficult starts in life and how it drove them to where they are today. This podcast was formerly called 'Past Imperfect'.",
 		externalLinks: {
@@ -343,7 +351,9 @@ export const podcastList = [
 		slug: "secrets-of-the-side-hustle",
 		urlSlug: "secrets-of-the-side-hustle",
 		title: "Secrets of the side hustle",
-		coverImage: { url: secretsOfTheSideHustleCover },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/05/1716219572670-cbc9b61cf6c6176d82ee07f00256d0bb.jpeg?w=240",
+		},
 		metaDescription:
 			"The Secrets of the side hustle podcast leads a conversation with inspiring female founders about their career stories and how to start a business from scratch",
 		externalLinks: {
@@ -363,7 +373,9 @@ export const podcastList = [
 		slug: "your-history",
 		urlSlug: "your-history",
 		title: "Your History",
-		coverImage: { url: yourHistoryCoverImage },
+		img: {
+			url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/11/1699453633684-ef075e8e46f94710b8ea36c9fcfa956c.jpeg?w=240",
+		},
 		description: `
         The life stories of the people who have shaped our own, told through the obituaries pages of The Times. 
         As Nelson Mandela noted, “you can't really be proud of yourself if you don't know your history”. 
@@ -387,7 +399,6 @@ export const podcastList = [
 		title: "Wine Times",
 		slug: "wine-times",
 		urlSlug: "wine-times",
-		coverImage: { url: wineTimesCoverImage },
 		description: `Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. 
         <p/> 
         Wine Times is brought to you in association with the Sunday Times Wine Club.`,

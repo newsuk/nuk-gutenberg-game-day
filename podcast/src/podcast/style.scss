@@ -5,8 +5,50 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-podcast {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.wp-block-create-block-podcast {}
+
+.podcast-container {
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	gap: 1rem;
+
+	padding: 2rem;
+	box-shadow:  0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+
+	.podcast-cover-img {
+		border-radius: 0.5rem;
+		overflow: hidden;
+		aspect-ratio: 1;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.podcast-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.podcast-tags {
+		display: inline-block;
+		font-size: 0.75rem;
+		color: #696969;
+		margin: 0;
+	}
+
+	.podcast-title {
+		font-weight: bold;
+		font-size: 1.5rem;
+		margin: 0;
+	}
+
+	.podcast-summary {
+		font-size: 0.8rem;
+		margin: 0;
+	}
 }

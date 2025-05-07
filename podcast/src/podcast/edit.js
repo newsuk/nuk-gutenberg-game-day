@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,10 +11,14 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, TextControl } from '@wordpress/components'
-import { useEffect, useState } from '@wordpress/element';
-import { podcastList } from './fixtures/podcastList';
+import {
+	useBlockProps,
+	InspectorControls,
+	RichText,
+} from "@wordpress/block-editor";
+import { PanelBody, SelectControl, TextControl } from "@wordpress/components";
+import { podcastList } from "./fixtures/podcastList";
+import { useState, useEffect } from "@wordpress/element";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -22,7 +26,7 @@ import { podcastList } from './fixtures/podcastList';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import "./editor.scss";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,48 +36,103 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit({ attributes, setAttributes, id }) {
-	const { podcastSeries, episodeId, titleOverride, summaryOverride } = attributes;
 
-	let selectedPodcast = podcastList.find((podcast) => podcast.title === podcastSeries);
+async function getPodcastByTitle(title) {
+	// Simulate an API call to fetch podcast data
+	await new Promise((resolve) => setTimeout(resolve, 1500));
+
+	const podcast = podcastList.find(
+		(podcast) => podcast.title === "Politics Unpacked",
+	);
+	if (podcast) {
+		return podcast;
+	} else {
+		return null;
+	}
+}
+
+export default function Edit({ attributes }) {
+	const { podcastSeries, titleOverride, summaryOverride, episodeId } =
+		attributes;
+	const [data, setData] = useState();
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				const podcast = await getPodcastByTitle(podcastSeries);
+				if (podcast) {
+					setData(podcast);
+				} else {
+					setError("Podcast not found");
+				}
+			} catch (err) {
+				setError("An error occurred while fetching the podcast data");
+			} finally {
+				setLoading(false);
+			}
+		}
+
+		fetchData();
+	}, []);
+
+	console.log("Podcast data:", data);
+
+	let selectedPodcast = podcastList.find(
+		(podcast) => podcast.title === podcastSeries,
+	);
 
 	return (
 		<div {...useBlockProps()}>
 			{/* Edit view. */}
 			<h3>LATEST EPISODE</h3>
 			<RichText
-					tagName="h2" // The tag here is the element output and editable in the admin
-					value={titleOverride || podcastSeries} // Any existing content, either from the database or an attribute default
-					allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
-					onChange={( newTitleOverride ) => setAttributes( { titleOverride: newTitleOverride } ) } // Store updated content as a block attribute
-					placeholder={ __( selectedPodcast.title ) } // Display this text before any content has been added by the user
+				tagName="h2" // The tag here is the element output and editable in the admin
+				value={titleOverride || podcastSeries} // Any existing content, either from the database or an attribute default
+				allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
+				onChange={(newTitleOverride) =>
+					setAttributes({ titleOverride: newTitleOverride })
+				} // Store updated content as a block attribute
+				placeholder={__(selectedPodcast?.title)} // Display this text before any content has been added by the user
 			/>
 
 			<RichText
-					tagName="p" // The tag here is the element output and editable in the admin
-					value={summaryOverride || selectedPodcast.metaDescription} // Any existing content, either from the database or an attribute default
-					allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
-					onChange={( newSummaryOverride ) => setAttributes( { summaryOverride: newSummaryOverride } ) } // Store updated content as a block attribute
-					placeholder={ __( selectedPodcast.metaDescription ) } // Display this text before any content has been added by the user
+				tagName="p" // The tag here is the element output and editable in the admin
+				value={summaryOverride || selectedPodcast?.metaDescription} // Any existing content, either from the database or an attribute default
+				allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
+				onChange={(newSummaryOverride) =>
+					setAttributes({ summaryOverride: newSummaryOverride })
+				} // Store updated content as a block attribute
+				placeholder={__(selectedPodcast?.metaDescription)} // Display this text before any content has been added by the user
 			/>
 
 			{/* Sidebar. */}
 			<InspectorControls>
-				<PanelBody title={ __( 'Podcast Settings', 'podcast' ) }>
+				<PanelBody title={__("Podcast Settings", "podcast")}>
 					<SelectControl
 						__nextHasNoMarginBottom
 						label="Podcast Series"
-						value={ podcastSeries }
-						options={ [
+						value={podcastSeries}
+						options={[
 							{ value: "The Story", label: "The Story" },
-							{ value: "The Royals with Roya and Kate", label: "The Royals with Roya and Kate" },
-							{ value: "How to win an election", label: "How to win an election" },
+							{
+								value: "The Royals with Roya and Kate",
+								label: "The Royals with Roya and Kate",
+							},
+							{
+								value: "How to win an election",
+								label: "How to win an election",
+							},
 							{ value: "Politics Unpacked", label: "Politics Unpacked" },
 							{ value: "Your History", label: "Your History" },
-							{ value: "Off Air with Jane & Fi", label: "Off Air with Jane & Fi" },
+							{
+								value: "Off Air with Jane & Fi",
+								label: "Off Air with Jane & Fi",
+							},
 							{ value: "Times news briefing", label: "Times news briefing" },
 							{ value: "World in 10", label: "World in 10" },
-						] }
+						]}
 						onChange={(newValue) => {
 							setAttributes({
 								podcastSeries: newValue,
@@ -81,19 +140,49 @@ export default function Edit({ attributes, setAttributes, id }) {
 								summaryOverride: null,
 							});
 						}}
-						/>
+					/>
 
 					<TextControl
 						__nextHasNoMarginBottom
 						label="Episode ID"
 						type="text"
-						value={ episodeId }
+						value={episodeId}
 						onChange={(newEpisodeId) => {
 							setAttributes({ episodeId: newEpisodeId });
 						}}
 					/>
 				</PanelBody>
 			</InspectorControls>
+
+			{/* Display*/}
+			<div className="podcast-container">
+				{loading && <p>Loading...</p>}
+				{error && <p>{error}</p>}
+				{data && (
+					<>
+						<div className="podcast-cover-img">
+							<img src={data.img.url} alt="Podcast Cover" />
+						</div>
+						<div className="podcast-info">
+							<span className="podcast-tags">LATEST EPISODE</span>
+							<h3 className="podcast-title">{titleOverride || data.title}</h3>
+							<p className="podcast-summary">
+								{summaryOverride || data.description}
+							</p>
+						</div>
+
+						<div className="podcast-player">
+							<audio controls>
+								<source
+									src="https://www.example.com/audio.mp3"
+									type="audio/mpeg"
+								/>
+								Your browser does not support the audio element.
+							</audio>
+						</div>
+					</>
+				)}
+			</div>
 		</div>
 	);
 }
