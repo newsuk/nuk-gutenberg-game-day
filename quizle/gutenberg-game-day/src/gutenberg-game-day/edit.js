@@ -27,10 +27,12 @@ import "./editor.scss";
 
 import {
 	TextControl,
-	ToggleControl,
 	PanelBody,
 	PanelRow,
 } from "@wordpress/components";
+
+import { useSelect } from '@wordpress/data';
+import { useEntityProp } from '@wordpress/core-data';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -42,6 +44,23 @@ import {
  */
 
 export default function Edit({ attributes, setAttributes }) {
+
+	const postType = useSelect(
+		( select ) => select( 'core/editor' ).getCurrentPostType(),
+		[]
+	);
+
+	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
+
+	const updateMetaValues = ( metaAttributes ) => {
+		setMeta( { ...meta, ...metaAttributes } );
+	};
+
+	const setMetaAttributes = (attributes) => {
+		updateMetaValues( attributes );
+		setAttributes( attributes );
+	}
+
 	return (
 		<>
 			<InspectorControls>
@@ -49,7 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<TextControl
 							label="Answer"
-							onChange={(solution) => setAttributes({ solution: solution })}
+							onChange={(solution) => setMetaAttributes({ solution: solution })}
 							value={attributes.solution}
 						/>
 					</PanelRow>
@@ -64,7 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
 									onChange={(hint) => {
 										const hints = attributes.hints;
 										hints[index] = hint;
-										setAttributes({ hints });
+										setMetaAttributes({ hints });
 									}}
 									value={attributes.hints[index]}
 								/>
@@ -78,7 +97,7 @@ export default function Edit({ attributes, setAttributes }) {
 					tagName="h3"
 					value={attributes.question}
 					allowedFormats={["core/bold", "core/italic"]}
-					onChange={(question) => setAttributes({question})}
+					onChange={(question) => setMetaAttributes({question})}
 					placeholder="Question here..."
 				/>
 				<div className="answer-form">
