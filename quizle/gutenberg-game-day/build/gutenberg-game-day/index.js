@@ -113,7 +113,14 @@ function Edit({
         type: "button",
         placeholder: "Submit",
         value: "Submit",
+        id: "submitButton",
         "data-answer": attributes.solution,
+        disabled: "disabled"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "button",
+        placeholder: "Get Hint",
+        id: "hintButton",
+        value: "Get Hint",
         disabled: "disabled"
       })]
     })]
@@ -235,8 +242,15 @@ function save({
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
         type: "button",
         placeholder: "Submit",
+        id: "submitButton",
         value: "Submit",
         "data-answer": attributes.solution
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "button",
+        placeholder: "Get Hint",
+        id: "hintButton",
+        value: "Get Hint",
+        disabled: "disabled"
       })]
     })]
   });

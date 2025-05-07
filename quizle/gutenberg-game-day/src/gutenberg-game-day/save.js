@@ -21,7 +21,15 @@ export default function save({attributes}) {
 			<RichText.Content tagName="h3" value={ attributes.question } />
 			<form>
 				<input type="text" placeholder="Enter your answer" />
-				<input type="button" placeholder="Submit" value="Submit" data-answer={attributes.solution} />
+				<input type="button" placeholder="Submit" id="submitButton" value="Submit" data-answer={attributes.solution} />
+
+				<input
+					type="button"
+					placeholder="Get Hint"
+					id="hintButton"
+					value="Get Hint"
+					disabled="disabled"
+				/>
 			</form>
 		</div>
 	);

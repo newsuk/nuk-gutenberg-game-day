@@ -24,7 +24,7 @@
 console.log( 'Hello World! (from create-block-gutenberg-game-day block)' );
 /* eslint-enable no-console */
 const block = document.querySelector('.wp-block-create-block-gutenberg-game-day');
-const answer = block.querySelector('input[type="button"]');
+const answer = block.querySelector('input[type="button"]#submitButton');
 const form = block.querySelector('form');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
