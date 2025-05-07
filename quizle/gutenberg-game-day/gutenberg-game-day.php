@@ -57,3 +57,20 @@ function create_block_gutenberg_game_day_block_init() {
 	}
 }
 add_action( 'init', 'create_block_gutenberg_game_day_block_init' );
+
+
+function q_and_a_post_type() {
+	$args = array(
+		'labels' => array(
+			'name' => __('Quizle Questions'),
+			'singular_name' => __('Quizle Question'),
+		),
+		'template' => array( array( 'create-block/gutenberg-game-day' ) ),
+		'public' => true,
+		'has_archive' => true,
+		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
+		'show_in_rest' => true, // Enable Gutenberg support
+	);
+	register_post_type('q-and-a-post-type', $args);
+}
+add_action('init', 'q_and_a_post_type');
