@@ -68,15 +68,15 @@ export default function Edit({ attributes, setAttributes }) {
 		podcastTitle,
 		podcastSummary,
 		podcastAudioUrl,
-		podcastImageUrl
+		podcastImageUrl,
 	} = attributes;
 
 	const [data, setData] = useState();
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	const [titleOverride, setTitleOverride] = useState('');
-	const [summaryOverride, setSummaryOverride] = useState('');
+	const [titleOverride, setTitleOverride] = useState("");
+	const [summaryOverride, setSummaryOverride] = useState("");
 
 	useEffect(() => {
 		async function fetchData() {
@@ -88,14 +88,14 @@ export default function Edit({ attributes, setAttributes }) {
 					setAttributes({
 						podcastTitle: podcast.title,
 						podcastSummary: podcast.description,
-						podcastAudioUrl: podcast.audio.url || '',
+						podcastAudioUrl: podcast.audio.url || "",
 						podcastImageUrl: podcast.img.url,
 					});
 				} else {
 					setError("Podcast not found");
 				}
 			} catch (err) {
-				console.err('> er', err);
+				console.err("> er", err);
 				setError("An error occurred while fetching the podcast data");
 			} finally {
 				setLoading(false);
@@ -190,10 +190,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 						<div className="podcast-player">
 							<audio controls>
-								<source
-									src={podcastAudioUrl}
-									type="audio/mpeg"
-								/>
+								<source src={podcastAudioUrl} type="audio/mpeg" />
 								Your browser does not support the audio element.
 							</audio>
 						</div>

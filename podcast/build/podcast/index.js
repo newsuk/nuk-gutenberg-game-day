@@ -8,7 +8,7 @@
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"string","default":"The Story","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"episodeId":{"type":"string","default":""},"podcastTitle":{"type":"string","default":""},"podcastSummary":{"type":"string","default":""},"podcastAudioUrl":{"type":"string","default":""},"podcastImageUrl":{"type":"string","default":""}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"string","default":"The Story","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"podcastTitle":{"type":"string","default":""},"podcastSummary":{"type":"string","default":""},"podcastAudioUrl":{"type":"string","default":""},"podcastImageUrl":{"type":"string","default":""}}}');
 
 /***/ }),
 
@@ -99,14 +99,13 @@ function Edit({
     podcastTitle,
     podcastSummary,
     podcastAudioUrl,
-    podcastImageUrl,
-    episodeId
+    podcastImageUrl
   } = attributes;
   const [data, setData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)();
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
   const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(null);
-  const [titleOverride, setTitleOverride] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)('');
-  const [summaryOverride, setSummaryOverride] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)('');
+  const [titleOverride, setTitleOverride] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)("");
+  const [summaryOverride, setSummaryOverride] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)("");
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     async function fetchData() {
       try {
@@ -117,14 +116,14 @@ function Edit({
           setAttributes({
             podcastTitle: podcast.title,
             podcastSummary: podcast.description,
-            podcastAudioUrl: podcast.audio.url || '',
+            podcastAudioUrl: podcast.audio.url || "",
             podcastImageUrl: podcast.img.url
           });
         } else {
           setError("Podcast not found");
         }
       } catch (err) {
-        console.err('> er', err);
+        console.err("> er", err);
         setError("An error occurred while fetching the podcast data");
       } finally {
         setLoading(false);
@@ -136,9 +135,9 @@ function Edit({
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Podcast Settings", "podcast"),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           __nextHasNoMarginBottom: true,
           label: "Podcast Series",
           value: podcastSeries,
@@ -176,17 +175,7 @@ function Edit({
               podcastImageUrl: null
             });
           }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-          __nextHasNoMarginBottom: true,
-          label: "Episode ID",
-          type: "text",
-          value: episodeId,
-          onChange: newEpisodeId => {
-            setAttributes({
-              episodeId: newEpisodeId
-            });
-          }
-        })]
+        })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "podcast-container",
