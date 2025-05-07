@@ -8,7 +8,7 @@
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"Quizle","category":"widgets","icon":"smiley","description":"Quizle description","example":{},"supports":{"html":false},"textdomain":"quizle","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"quizle":{"type":"object","default":{"questions":[{"question":"What is the capital of France?","options":["Paris","London","Berlin","Madrid"],"answer":0}]}},"quizleId":{"type":"string"},"question":{"type":"string","default":"Which landlocked Balkan state uses the Euro despite not being an EU member? "},"solution":{"type":"string","default":"Kosovo"},"alternateSolutions":{"type":"string","default":"Kosova|Republic of Kosovo|Kossovo|Cosovo"},"hints":{"type":"string","default":"Its name derives from a term for \\"Blackbird Field\\", the site of a 1389 battle between Serbia and the Ottoman Empire|Its population is mainly ethnic Albanian and overwhelmingly Muslim|Its independence, declared in 2008, is recognised by around half of the UN\'s member states |Singers Rita Ora and Dua Lipa and footballer Xherdan Shaqiri are members of its diaspora"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/gutenberg-game-day","version":"0.1.0","title":"Quizle","category":"widgets","icon":"smiley","description":"Quizle description","example":{},"supports":{"html":false},"textdomain":"quizle","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"quizle":{"type":"object","default":{"questions":[{"question":"What is the capital of France?","options":["Paris","London","Berlin","Madrid"],"answer":0}]}},"quizleId":{"type":"string"},"question":{"type":"string","default":"Which landlocked Balkan state uses the Euro despite not being an EU member? "},"solution":{"type":"string","default":"Kosovo"},"alternateSolutions":{"type":"string","default":"Kosova|Republic of Kosovo|Kossovo|Cosovo"},"hints":{"type":"array","default":["Its name derives from a term for \\"Blackbird Field\\", the site of a 1389 battle between Serbia and the Ottoman Empire","Its population is mainly ethnic Albanian and overwhelmingly Muslim","Its independence, declared in 2008, is recognised by around half of the UN\'s member states","Singers Rita Ora and Dua Lipa and footballer Xherdan Shaqiri are members of its diaspora"]}}}');
 
 /***/ }),
 
@@ -27,8 +27,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/gutenberg-game-day/editor.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
 /**
  * Retrieves the translation of text.
  *
@@ -52,6 +54,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -65,24 +68,54 @@ function Edit({
   attributes,
   setAttributes
 }) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-      tagName: "h3",
-      value: attributes.question,
-      allowedFormats: ['core/bold', 'core/italic'],
-      onChange: question => setAttributes({
-        question
-      }),
-      placeholder: "Question here..."
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-      tagName: "p",
-      value: attributes.solution,
-      allowedFormats: ['core/bold', 'core/italic'],
-      onChange: solution => setAttributes({
-        solution
-      }),
-      placeholder: "Solution here..."
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        title: "Form Settings",
+        initialOpen: false,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            label: "Answer",
+            onChange: solution => setAttributes({
+              solution: solution
+            }),
+            value: attributes.solution
+          })
+        }), Array(4).fill().map((hint, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            label: `Hint ${index + 1}`,
+            onChange: hint => {
+              const hints = attributes.hints;
+              hints[index] = hint;
+              setAttributes({
+                hints
+              });
+            },
+            value: attributes.hints[index]
+          }, index)
+        }))]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+        tagName: "h3",
+        value: attributes.question,
+        allowedFormats: ["core/bold", "core/italic"],
+        onChange: question => setAttributes({
+          question
+        }),
+        placeholder: "Question here..."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "text",
+        placeholder: "Enter your answer",
+        disabled: "disabled"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "button",
+        placeholder: "Submit",
+        value: "Submit",
+        "data-answer": attributes.solution,
+        disabled: "disabled"
+      })]
     })]
   });
 }
@@ -240,6 +273,16 @@ module.exports = window["wp"]["blockEditor"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
 
 /***/ }),
 

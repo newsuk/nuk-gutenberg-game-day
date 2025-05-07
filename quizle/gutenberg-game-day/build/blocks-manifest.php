@@ -55,8 +55,13 @@ return array(
 				'default' => 'Kosova|Republic of Kosovo|Kossovo|Cosovo'
 			),
 			'hints' => array(
-				'type' => 'string',
-				'default' => 'Its name derives from a term for "Blackbird Field", the site of a 1389 battle between Serbia and the Ottoman Empire|Its population is mainly ethnic Albanian and overwhelmingly Muslim|Its independence, declared in 2008, is recognised by around half of the UN\'s member states |Singers Rita Ora and Dua Lipa and footballer Xherdan Shaqiri are members of its diaspora'
+				'type' => 'array',
+				'default' => array(
+					'Its name derives from a term for "Blackbird Field", the site of a 1389 battle between Serbia and the Ottoman Empire',
+					'Its population is mainly ethnic Albanian and overwhelmingly Muslim',
+					'Its independence, declared in 2008, is recognised by around half of the UN\'s member states',
+					'Singers Rita Ora and Dua Lipa and footballer Xherdan Shaqiri are members of its diaspora'
+				)
 			)
 		)
 	)
