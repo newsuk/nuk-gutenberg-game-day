@@ -16,7 +16,12 @@ import {
 	InspectorControls,
 	RichText,
 } from "@wordpress/block-editor";
-import { PanelBody, SelectControl, TextControl } from "@wordpress/components";
+import {
+	PanelBody,
+	SelectControl,
+	TextControl,
+	DropZone,
+} from "@wordpress/components";
 import { podcastList } from "./fixtures/podcastList";
 import { useState, useEffect } from "@wordpress/element";
 
@@ -161,11 +166,11 @@ export default function Edit({ attributes, setAttributes }) {
 							<RichText
 								className="podcast-tags"
 								tagName="span" // The tag here is the element output and editable in the admin
-								value={'LATEST EPISODE'} // Any existing content, either from the database or an attribute default
+								value={"LATEST EPISODE"} // Any existing content, either from the database or an attribute default
 								allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
 								// onChange={(podcastSeries) => setAttributes({ podcastSeries })} // Store updated content as a block attribute
 								// placeholder={__(data?.title)} // Display this text before any content has been added by the user
-								/>
+							/>
 							{/* <span className="podcast-tags">LATEST EPISODE</span> */}
 							<RichText
 								className="podcast-title"
@@ -186,6 +191,11 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={(podcastSummary) => setAttributes({ podcastSummary })} // Store updated content as a block attribute
 								// placeholder={__(data?.description)} // Display this text before any content has been added by the user
 							/>
+							<DropZone
+								onFilesDrop={() => setHasDropped(true)}
+								onHTMLDrop={() => setHasDropped(true)}
+								onDrop={() => setHasDropped(true)}
+							></DropZone>
 						</div>
 
 						<div className="podcast-player">
