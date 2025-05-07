@@ -64,6 +64,7 @@ function q_and_a_post_type() {
 		'labels' => array(
 			'name' => __('Quizle Questions'),
 			'singular_name' => __('Quizle Question'),
+			'add_new_item' => __('Add Quizle Question') 
 		),
 		'template' => array( array( 'create-block/gutenberg-game-day' ) ),
 		'public' => true,
