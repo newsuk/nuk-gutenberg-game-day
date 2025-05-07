@@ -24,19 +24,19 @@ export default function save({ attributes }) {
 				value={attributes.question}
 			/>
 			<form>
-				<input
-					className="answer-input"
-					type="text"
-					placeholder="Enter your answer"
-				/>
+				<input className="answer-input" type="text" placeholder="Enter your answer"/>
 
-				<input
-					className="answer"
-					type="button"
-					placeholder="Submit"
-					value="ANSWER"
-					data-answer={attributes.solution}
+				<div>
+				<input className="hint"
+					   type="button"
+					   placeholder="Get Hint"
+					   id="hintButton"
+					   value="Get Hint"
+					   disabled="disabled"
 				/>
+				<input className="answer" type="button" placeholder="Submit" id="submitButton" value="ANSWER"
+					   data-answer={attributes.solution}/>
+				</div>
 			</form>
 			<input
 				className="hint"
