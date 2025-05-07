@@ -17,25 +17,24 @@ import { RichText, useBlockProps } from "@wordpress/block-editor";
  */
 export default function save({ attributes }) {
 	return (
-		<div {...useBlockProps.save()}>
-			<RichText.Content
-				className="question"
-				tagName="h3"
-				value={attributes.question}
-			/>
-			<form>
-				<input className="answer-input" type="text" placeholder="Enter your answer"/>
-
-				<div>
-				<input className="hint"
-					   type="button"
-					   placeholder="Get Hint"
-					   id="hintButton"
-					   value="Get Hint"
-					   disabled="disabled"
-				/>
-				<input className="answer" type="button" placeholder="Submit" id="submitButton" value="ANSWER"
-					   data-answer={attributes.solution}/>
+		<div { ...useBlockProps.save() }>
+			<RichText.Content className="question" tagName="h3" value={ attributes.question } />
+			<form className="answer-form">
+				<div className="answer-container">
+					<input className="answer-input" type="text" placeholder="Enter your answer"/>
+				</div>
+				<div className="button-container">
+					<div className="button-grid">
+						<input className="hint"
+							   type="button"
+							   placeholder="Get Hint"
+							   id="hintButton"
+							   value="Get Hint"
+							   disabled="disabled"
+						/>
+						<input className="answer" type="button" placeholder="Submit" id="submitButton" value="ANSWER"
+							   data-answer={attributes.solution}/>
+					</div>
 				</div>
 			</form>
 			<input
