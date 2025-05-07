@@ -37,10 +37,6 @@
     "quizleId": {
       "type": "string"
     },
-    "publishDate": {
-      "type": "string",
-      "default": "2024-11-17T00:00:00.000Z"
-    },
     "question": {
       "type": "string",
       "default": "Which landlocked Balkan state uses the Euro despite not being an EU member? "

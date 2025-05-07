@@ -42,10 +42,6 @@ return array(
 			'quizleId' => array(
 				'type' => 'string'
 			),
-			'publishDate' => array(
-				'type' => 'string',
-				'default' => '2024-11-17T00:00:00.000Z'
-			),
 			'question' => array(
 				'type' => 'string',
 				'default' => 'Which landlocked Balkan state uses the Euro despite not being an EU member? '

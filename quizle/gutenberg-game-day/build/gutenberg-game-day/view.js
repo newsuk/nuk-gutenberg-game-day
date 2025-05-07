@@ -27,6 +27,20 @@
 /* eslint-disable no-console */
 console.log('Hello World! (from create-block-gutenberg-game-day block)');
 /* eslint-enable no-console */
+const block = document.querySelector('.wp-block-create-block-gutenberg-game-day');
+const answer = block.querySelector('input[type="button"]');
+const form = block.querySelector('form');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const input = form.querySelector('input[type="text"]');
+  const userAnswer = input.value;
+  const correctAnswer = answer.dataset.answer;
+  if (userAnswer === correctAnswer) {
+    alert('Correct!');
+  } else {
+    alert('Incorrect. Try again.');
+  }
+});
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map
