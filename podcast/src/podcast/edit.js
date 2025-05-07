@@ -11,7 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, SelectControl, TextControl } from '@wordpress/components'
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +30,45 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes, id }) {
+	const { podcastSeries, episodeId, titleOverride, summaryOverride } = attributes;
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Podcast – hello from the editor!', 'podcast' ) }
-		</p>
+		<div {...useBlockProps()}>
+			<pre>{JSON.stringify(attributes, null, 2)}</pre>
+
+			<InspectorControls>
+				<PanelBody title={ __( 'Podcast Settings', 'podcast' ) }>
+					<SelectControl
+						__nextHasNoMarginBottom
+						label="Podcast Series"
+						value={ podcastSeries }
+						options={ [
+							{ value: "The Story", label: "The Story" },
+							{ value: "The Royals with Roya and Kate", label: "The Royals with Roya and Kate" },
+							{ value: "How to win an election", label: "How to win an election" },
+							{ value: "Politics Unpacked", label: "Politics Unpacked" },
+							{ value: "Your History", label: "Your History" },
+							{ value: "Off Air with Jane & Fi", label: "Off Air with Jane & Fi" },
+							{ value: "Times news briefing", label: "Times news briefing" },
+							{ value: "World in 10", label: "World in 10" },
+						] }
+						onChange={(newValue) => {
+							setAttributes({ podcastSeries: newValue });
+						}}
+						/>
+
+					<TextControl
+						__nextHasNoMarginBottom
+						label="Episode ID"
+						type="text"
+						value={ episodeId }
+						onChange={(newEpisodeId) => {
+							setAttributes({ episodeId: newEpisodeId });
+						}}
+					/>
+				</PanelBody>
+			</InspectorControls>
+		</div>
 	);
 }
