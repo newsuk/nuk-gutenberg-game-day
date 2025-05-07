@@ -8,7 +8,7 @@
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"array","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"titleOverride":{"type":"string","default":""},"summaryOverride":{"type":"string","default":""}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/podcast","version":"0.1.0","title":"Podcast","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"podcast","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"podcastSeries":{"type":"string","default":"The Story","enum":["The Story","The Royals with Roya and Kate","How to win an election","Politics Unpacked","Your History","Off Air with Jane & Fi","Times news briefing","World in 10"]},"episodeId":{"type":"string","default":""},"podcastTitle":{"type":"string","default":""},"podcastSummary":{"type":"string","default":""},"podcastAudioUrl":{"type":"string","default":""},"podcastImageUrl":{"type":"string","default":""}}}');
 
 /***/ }),
 
@@ -69,10 +69,21 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 
+function LoadingView() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    className: "loading",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      className: "loading-img"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "loading-content",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {})]
+    })]
+  });
+}
 async function getPodcastByTitle(title) {
   // Simulate an API call to fetch podcast data
   await new Promise(resolve => setTimeout(resolve, 1500));
-  const podcast = _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_3__.podcastList.find(podcast => podcast.title === "Politics Unpacked");
+  const podcast = _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_3__.podcastList.find(podcast => podcast.title === title);
   if (podcast) {
     return podcast;
   } else {
@@ -80,34 +91,48 @@ async function getPodcastByTitle(title) {
   }
 }
 function Edit({
-  attributes
+  attributes,
+  setAttributes
 }) {
   const {
     podcastSeries,
-    titleOverride,
-    summaryOverride,
+    podcastTitle,
+    podcastSummary,
+    podcastAudioUrl,
+    podcastImageUrl,
     episodeId
   } = attributes;
   const [data, setData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)();
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
   const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(null);
+  const [titleOverride, setTitleOverride] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)('');
+  const [summaryOverride, setSummaryOverride] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)('');
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
     async function fetchData() {
       try {
+        setError(null);
+        setLoading(true);
         const podcast = await getPodcastByTitle(podcastSeries);
         if (podcast) {
-          setData(podcast);
+          setAttributes({
+            podcastTitle: podcast.title,
+            podcastSummary: podcast.description,
+            podcastAudioUrl: podcast.audio.url || '',
+            podcastImageUrl: podcast.img.url
+          });
         } else {
           setError("Podcast not found");
         }
       } catch (err) {
+        console.err('> er', err);
         setError("An error occurred while fetching the podcast data");
       } finally {
         setLoading(false);
       }
     }
     fetchData();
-  }, []);
+  }, [podcastSeries]);
+  console.log("podcastSeries", podcastSeries);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
@@ -145,8 +170,10 @@ function Edit({
           onChange: newValue => {
             setAttributes({
               podcastSeries: newValue,
-              titleOverride: null,
-              summaryOverride: null
+              podcastTitle: null,
+              podcastSummary: null,
+              podcastAudioUrl: null,
+              podcastImageUrl: null
             });
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
@@ -163,15 +190,13 @@ function Edit({
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "podcast-container",
-      children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-        children: "Loading..."
-      }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+      children: [loading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(LoadingView, {}), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         children: error
-      }), data && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+      }), !loading && !error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "podcast-cover-img",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-            src: data.img.url,
+            src: podcastImageUrl,
             alt: "Podcast Cover"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -183,35 +208,33 @@ function Edit({
             className: "podcast-title",
             tagName: "h2" // The tag here is the element output and editable in the admin
             ,
-            value: titleOverride || podcastSeries // Any existing content, either from the database or an attribute default
+            value: podcastTitle // Any existing content, either from the database or an attribute default
             ,
             allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
             ,
-            onChange: newTitleOverride => setAttributes({
-              titleOverride: newTitleOverride
+            onChange: podcastTitle => setAttributes({
+              podcastTitle
             }) // Store updated content as a block attribute
-            ,
-            placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(data?.title) // Display this text before any content has been added by the user
+            // placeholder={__(data?.title)} // Display this text before any content has been added by the user
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
             className: "podcast-summary",
             tagName: "p" // The tag here is the element output and editable in the admin
             ,
-            value: summaryOverride || data?.description // Any existing content, either from the database or an attribute default
+            value: podcastSummary // Any existing content, either from the database or an attribute default
             ,
             allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
             ,
-            onChange: newSummaryOverride => setAttributes({
-              summaryOverride: newSummaryOverride
+            onChange: podcastSummary => setAttributes({
+              podcastSummary
             }) // Store updated content as a block attribute
-            ,
-            placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(data?.description) // Display this text before any content has been added by the user
+            // placeholder={__(data?.description)} // Display this text before any content has been added by the user
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "podcast-player",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("audio", {
             controls: true,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("source", {
-              src: "https://www.example.com/audio.mp3",
+              src: podcastAudioUrl,
               type: "audio/mpeg"
             }), "Your browser does not support the audio element."]
           })
@@ -253,11 +276,7 @@ const podcastList = [{
   img: {
     url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/05/1714383804740-0b3e6df4b7d2d54fd2b266e07941d7e4.jpeg?w=240"
   },
-  description: `A discerning look at royal life in the era of King Charles, presented by the royal editors of The Times and Sunday Times, Kate Mansey and Roya Nikkhah – two women with unmatched insight into the inner workings of the monarchy.
-            
-            It’s a time of challenges and change for the royal family, but also one of great hope and warmth, and a sense of the possibilities of this new Carolean age. There are personal challenges for the royals, but new links are being forged with “kind words”, as King Charles has said, between the public and the Palace.
-            
-            Join Roya and Kate every week for their reactions to the latest news on Charles and Camilla, William and Kate, Harry and Meghan and more.`,
+  description: `A discerning look at royal life in the era of King Charles, presented by the royal editors of The Times and Sunday Times, Kate Mansey and Roya Nikkhah – two women with unmatched insight into the inner workings of the monarchy. It’s a time of challenges and change for the royal family, but also one of great hope and warmth, and a sense of the possibilities of this new Carolean age. There are personal challenges for the royals, but new links are being forged with “kind words”, as King Charles has said, between the public and the Palace. Join Roya and Kate every week for their reactions to the latest news on Charles and Camilla, William and Kate, Harry and Meghan and more.`,
   metaDescription: "The Royals with Roya and Kate is a podcast from The Times that goes beyond the headlines, exploring the new relationship between the press, the people and the palace. Listen every Friday for their reactions and insights on all the latest news on Charles and Camilla; William and Kate; Harry and Meghan and more.",
   externalLinks: {
     apple: "https://podcasts.apple.com/us/podcast/the-royals-with-roya-and-kate/id1745117658",
@@ -265,21 +284,15 @@ const podcastList = [{
   },
   suggestedPodcasts: ["danny-in-the-valley", "past-imperfect"],
   section: "podcast",
-  topics: "British royal family, Royal family news, Royal updates, Buckingham Palace, King Charles III, Royal editors of The Times and Sunday Times, Society & Culture, British monarchy"
+  topics: "British royal family, Royal family news, Royal updates, Buckingham Palace, King Charles III, Royal editors of The Times and Sunday Times, Society & Culture, British monarchy",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "stories-of-our-times",
   slug: "the-story",
   urlSlug: "the-story",
-  description: `The flagship podcast from The Times and Sunday Times. One remarkable story, told in depth, each day.
-
-            Hosts Manveen Rana and Luke Jones take you to the heart of the story you need to know with exclusive reports and investigations.
-
-            Plus, each month, William Hague hosts an agenda-setting interview with a key newsmaker or thinker.
-            
-            Discover the story behind the story with world-class journalism from The Times and Sunday Times.
-            
-            The Story is available at the start of your day from Monday to Friday, with bonus ‘Inside the Newsroom’ episodes every Saturday for Times subscribers, available by connecting your subscription via Apple Podcasts.
-            `,
+  description: `The flagship podcast from The Times and Sunday Times. One remarkable story, told in depth, each day. Hosts Manveen Rana and Luke Jones take you to the heart of the story you need to know with exclusive reports and investigations. Plus, each month, William Hague hosts an agenda-setting interview with a key newsmaker or thinker. Discover the story behind the story with world-class journalism from The Times and Sunday Times. The Story is available at the start of your day from Monday to Friday, with bonus ‘Inside the Newsroom’ episodes every Saturday for Times subscribers, available by connecting your subscription via Apple Podcasts.`,
   title: "The Story",
   img: {
     url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/03/The-story-tile.jpg?w=240"
@@ -292,7 +305,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["times-red-box"],
   section: "podcast",
-  topics: "Daily news, Society & Culture, Investigative series, Investigative journalism, In-depth analysis of today’s biggest stories, Award-winning journalism, High-profile guests, Interview series"
+  topics: "Daily news, Society & Culture, Investigative series, Investigative journalism, In-depth analysis of today’s biggest stories, Award-winning journalism, High-profile guests, Interview series",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "thetimesbriefing",
   title: "Times news briefing",
@@ -308,7 +324,10 @@ const podcastList = [{
     google: "https://podcasts.google.com/feed/aHR0cHM6Ly9yc3MuYWNhc3QuY29tL3RoZXRpbWVzYnJpZWZpbmc"
   },
   section: "podcast",
-  topics: "Daily news, News roundup, News bulletin, UK news, International news, UK politics, News briefing, News updates, Headlines, Short-form"
+  topics: "Daily news, News roundup, News bulletin, UK news, International news, UK politics, News briefing, News updates, Headlines, Short-form",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "daily-world-briefing",
   title: "World in 10",
@@ -325,7 +344,10 @@ const podcastList = [{
     google: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5hY2FzdC5jb20vcHVibGljL3Nob3dzLzNiNDk3YmFmLTcxY2ItNGMyNy1hZTVhLWYxZTgwMTgyMjIyMQ/episode/NjIzYzVhY2MzNDQ0NzkwMDEyYzhhOGJh?sa=X&ved=0CAgQuIEEahcKEwiItrz4mN_2AhUAAAAAHQAAAAAQMQ"
   },
   section: "podcast",
-  topics: "International news, Defense updates, War in Ukraine, Middle East news, 10 minute roundup, International affairs, International politics, Global news analysis, Political headlines"
+  topics: "International news, Defense updates, War in Ukraine, Middle East news, 10 minute roundup, International affairs, International politics, Global news analysis, Political headlines",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "how-to-win-an-election",
   title: "How to win an election",
@@ -334,23 +356,17 @@ const podcastList = [{
   img: {
     url: "https://assets.pippa.io/shows/6528fe7e3308660012b7db47/1698062200666-366ea7f0cbf838f1ef6e6757990b74bb.jpeg?w=240"
   },
-  description: `How To Win An Election is an insider’s guide to the twists and turns of political campaigning and strategy. It brings together some of the most experienced political advisors of the past four decades - Daniel Finkelstein, Sally Morgan, and Polly Mackenzie - with Times Radio presenter Hugo Rifkind.
-
-            Sally Morgan served as Blair's political secretary and then as director of political and government relations; she understands the challenge of leading the country when there are tensions with the Treasury, an unpredictable ally in the White House, and unrest on the backbenches.
-
-            Nobody knows the highs and lows of the Conservative party better than Daniel Finkelstein, who has worked alongside Tory leaders and prime ministers from John Major onwards as they fought to modernise the party.
-            
-            And Polly Mackenzie is one of the smartest thinkers in Westminster, a policy expert who helped negotiate the Liberal Democrat-Conservative coalition and spent five years working alongside deputy prime minister Nick Clegg in Downing Street.
-            
-            They sit down with Hugo Rifkind for an intelligent, adversarial and witty political conversation every week.
-            `,
+  description: `How To Win An Election is an insider’s guide to the twists and turns of political campaigning and strategy. It brings together some of the most experienced political advisors of the past four decades - Daniel Finkelstein, Sally Morgan, and Polly Mackenzie - with Times Radio presenter Hugo Rifkind. Sally Morgan served as Blair's political secretary and then as director of political and government relations; she understands the challenge of leading the country when there are tensions with the Treasury, an unpredictable ally in the White House, and unrest on the backbenches. Nobody knows the highs and lows of the Conservative party better than Daniel Finkelstein, who has worked alongside Tory leaders and prime ministers from John Major onwards as they fought to modernise the party. And Polly Mackenzie is one of the smartest thinkers in Westminster, a policy expert who helped negotiate the Liberal Democrat-Conservative coalition and spent five years working alongside deputy prime minister Nick Clegg in Downing Street. They sit down with Hugo Rifkind for an intelligent, adversarial and witty political conversation every week.`,
   metaDescription: "How To Win An Election, a new podcast from the Times, provides witty and engaging discussion about the upcoming UK general election, with experienced perspectives from former Conservative, Labour, and Liberal Democrat spin doctors. Matt Chorley, Peter Mandelson, Daniel Finkelstein and Polly Mackenzie deliver entertaining conversation, insightful analysis and lively debates.",
   externalLinks: {
     apple: "https://podcasts.apple.com/us/podcast/how-to-win-an-election/id1712827143",
     spotify: "https://open.spotify.com/show/5MvOePrBn1ZcoE9z41a9vX"
   },
   section: "podcast",
-  topics: "Political strategy, Political experts, UK politics, Westminster news, Election analysis, History, International electoral updates, Systems of government, Political commentary, Weekly news"
+  topics: "Political strategy, Political experts, UK politics, Westminster news, Election analysis, History, International electoral updates, Systems of government, Political commentary, Weekly news",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "times-red-box",
   slug: "red-box",
@@ -360,14 +376,17 @@ const podcastList = [{
   img: {
     url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/09/politics-unpacked.jpg?w=240"
   },
-  metaDescription: `Hugo Rifkind presents the Politics Unpacked podcast. Explore today's politics - and the issues that matter - with The Times and Sunday Times' brightest brains.`,
+  metaDescription: `<p>Hugo Rifkind presents the Politics Unpacked podcast. Explore today's politics - and the issues that matter - with The Times and Sunday Times' brightest brains.</p>`,
   externalLinks: {
     apple: "https://podcasts.apple.com/gb/podcast/politics-unpacked/id660638948",
     spotify: "https://open.spotify.com/show/2jD3tGHMz3Uc6hlfe55pKb"
   },
   suggestedPodcasts: ["stories-of-our-times"],
   section: "podcast",
-  topics: "Political strategy, Political experts, UK politics, Westminster update, History, International electoral updates, Systems of government, Political commentary, Daily news, Politics, Behind the scenes with politicians"
+  topics: "Political strategy, Political experts, UK politics, Westminster update, History, International electoral updates, Systems of government, Political commentary, Daily news, Politics, Behind the scenes with politicians",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "off-air-with-jane-and-fi",
   slug: "off-air-with-jane-and-fi",
@@ -384,7 +403,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["no-idea", "stories-of-our-times"],
   section: "podcast",
-  topics: "Society & Culture, Interviews, High-profile guests, Celebrity updates, British media news, Informal chat, Relaxed conversation, Cultural analysis, Witty, British humour, Cultural headlines, Chit-chat, Influential interviews, Radio hosts, Times Radio"
+  topics: "Society & Culture, Interviews, High-profile guests, Celebrity updates, British media news, Informal chat, Relaxed conversation, Cultural analysis, Witty, British humour, Cultural headlines, Chit-chat, Influential interviews, Radio hosts, Times Radio",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "no-idea",
   slug: "giles-coren-has-no-idea",
@@ -402,7 +424,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["times-red-box"],
   section: "podcast",
-  topics: "Society & Culture, Interviews, High-profile guests, Restaurant critic, British columnist, British media news, Informal chat, Relaxed conversation, Cultural analysis, Witty, British humour, Parenting"
+  topics: "Society & Culture, Interviews, High-profile guests, Restaurant critic, British columnist, British media news, Informal chat, Relaxed conversation, Cultural analysis, Witty, British humour, Parenting",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "planet-hope",
   title: "Planet Hope",
@@ -412,11 +437,7 @@ const podcastList = [{
   img: {
     url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/04/planet-hope-times-radio.jpeg?w=240"
   },
-  description: `Each day we watch as rising temperatures, extreme weather and extinctions are accepted as the new normal. The list of bleak headlines feels endless. It’s no wonder hope is wavering. But all is not lost.
-            
-            In this podcast series, Adam Vaughan, Environment Editor for The Times, asks why our planet is changing so rapidly and meets leading experts from around the world who are trying to change the tide.
-            
-            This is Planet Hope, a podcast from The Times in partnership with Rolex and its Perpetual Planet Initiative. Rolex supports individuals and organisations who go above and beyond to safeguard and preserve our planet for the next generation.`,
+  description: `Each day we watch as rising temperatures, extreme weather and extinctions are accepted as the new normal. The list of bleak headlines feels endless. It’s no wonder hope is wavering. But all is not lost. In this podcast series, Adam Vaughan, Environment Editor for The Times, asks why our planet is changing so rapidly and meets leading experts from around the world who are trying to change the tide. This is Planet Hope, a podcast from The Times in partnership with Rolex and its Perpetual Planet Initiative. Rolex supports individuals and organisations who go above and beyond to safeguard and preserve our planet for the next generation.`,
   metaDescription: "In this podcast series, Adam Vaughan, Environment Editor for The Times, asks why our planet is changing so rapidly and meets leading experts from around the world who are trying to change the tide on climate change, global warming, deforestation, famine and other environmental issues. Planet Hope is a podcast from The Times in partnership with Rolex and its Perpetual Planet Initiative.",
   externalLinks: {
     apple: "https://podcasts.apple.com/gb/podcast/planet-hope/id1682204055",
@@ -424,7 +445,10 @@ const podcastList = [{
     google: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5hY2FzdC5jb20vcHVibGljL3Nob3dzL3BsYW5ldC1ob3Bl"
   },
   section: "podcast",
-  topics: "Climate change, Environmental policy, Interviews with climate activists, Interviews with climate ambassadors, Green policy, Hopeful, Earth Day, Wildlife photography, Climate journalism"
+  topics: "Climate change, Environmental policy, Interviews with climate activists, Interviews with climate ambassadors, Green policy, Hopeful, Earth Day, Wildlife photography, Climate journalism",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "feel-better-about-money",
   title: "Feel Better About Money",
@@ -433,19 +457,17 @@ const podcastList = [{
   img: {
     url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/11/Times_money.jpeg?w=240"
   },
-  description: `A weekly podcast for those who want to understand money better. A podcast from The Times and Sunday Times about what is possible. 
-        <p/> 
-        The presenters, Holly Mead and Lucy Andrews, are experts in personal finance. Here, they talk about themselves, their friends, neighbourhoods, weddings, meals, and why it is often so very hard to save as much as you'd like!
-
-        Each week, Holly and Lucy take a single subject such as pensions or tax to test out with tried and tested experts; many from within the Times Money team. Their aim is simple - to give you the insights and information you can use to make your money work better for you.
-        `,
+  description: `A weekly podcast for those who want to understand money better. A podcast from The Times and Sunday Times about what is possible. The presenters, Holly Mead and Lucy Andrews, are experts in personal finance. Here, they talk about themselves, their friends, neighbourhoods, weddings, meals, and why it is often so very hard to save as much as you'd like!Each week, Holly and Lucy take a single subject such as pensions or tax to test out with tried and tested experts; many from within the Times Money team. Their aim is simple - to give you the insights and information you can use to make your money work better for you.`,
   metaDescription: "A money podcast to help understand personal finance better. From pensions to taxes and beyond, our experts' goal is simple: make your money work better for you.",
   externalLinks: {
     apple: "https://podcasts.apple.com/gb/podcast/feel-better-about-money/id1774276041",
     spotify: "https://open.spotify.com/show/0CFcYLuexJAfDBkDKHUbsN?si=8dff2b5b02804f77"
   },
   section: "podcast",
-  topics: "Financial advice, Finance headlines, Staying on top of your finances, Financial health, Debt, Investing advice, Investment portfolio, City reporters, Financial planning, Facilitating conversations about money, Optimism, Bank of England, Budgeting, Budget"
+  topics: "Financial advice, Finance headlines, Staying on top of your finances, Financial health, Debt, Investing advice, Investment portfolio, City reporters, Financial planning, Facilitating conversations about money, Optimism, Bank of England, Budgeting, Budget",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "times-the-game",
   title: "The Game",
@@ -463,7 +485,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["the-ruck", "stories-of-our-times"],
   section: "podcast",
-  topics: "UK football, Premier League, English Football League, International football, Football analysis, European Football, Champions’ League, Women’s Super League, WSL, Post-match analysis, Football pundit, Soccer, Football Commentary, Football stars, Football, Football player"
+  topics: "UK football, Premier League, English Football League, International football, Football analysis, European Football, Champions’ League, Women’s Super League, WSL, Post-match analysis, Football pundit, Soccer, Football Commentary, Football stars, Football, Football player",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "the-ruck",
   title: "The Ruck",
@@ -480,7 +505,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["times-the-game", "stories-of-our-times"],
   section: "podcast",
-  topics: "Rugby, The Super League, Rugby commentary, Rugby pundits, Rugby Union, Rugby analysis, International Rugby, Rugby World Cup, Six Nations, First XV, Sports commentary, British sport, Rugby player, Green, Ball"
+  topics: "Rugby, The Super League, Rugby commentary, Rugby pundits, Rugby Union, Rugby analysis, International Rugby, Rugby World Cup, Six Nations, First XV, Sports commentary, British sport, Rugby player, Green, Ball",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "danny-in-the-valley",
   slug: "danny-in-the-valley",
@@ -489,11 +517,7 @@ const podcastList = [{
   img: {
     url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2024/10/1728038865168-4d111bb9-300e-4efb-b485-601b498a043e.jpeg?w=240"
   },
-  description: `As The Sunday Times’ West Coast Correspondent, Danny Fortson has witnessed the technological whirlwind coming from Silicon Valley first hand. The Times' Technology Business Editor Katie Prescott has reported on how digital technology is transforming businesses and society around the world. 
-        <p/> 
-        Now, 'Danny in the Valley' meets 'Katie in the City', with a podcast presented from San Francisco and London.
-        <p/>
-        Each week sees a fresh interview with pioneers in tech, from the brightest start-ups to the tech giants, as Katie and Danny chronicle the AI revolution.`,
+  description: `As The Sunday Times’ West Coast Correspondent, Danny Fortson has witnessed the technological whirlwind coming from Silicon Valley first hand. The Times' Technology Business Editor Katie Prescott has reported on how digital technology is transforming businesses and society around the world. Now, 'Danny in the Valley' meets 'Katie in the City', with a podcast presented from San Francisco and London. Each week sees a fresh interview with pioneers in tech, from the brightest start-ups to the tech giants, as Katie and Danny chronicle the AI revolution.</p>`,
   metaDescription: "Danny Fortson and Katie Prescott host The Times Tech Podcast. Follow the latest tech news, the AI revolution and find weekly interviews with the names to know.",
   externalLinks: {
     apple: "https://podcasts.apple.com/gb/podcast/the-times-tech-podcast/id1233991021",
@@ -502,7 +526,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["stories-of-our-times"],
   section: "podcast",
-  topics: "Silicon Valley updates, Big Tech, Artificial Intelligence, Tech innovation, Start up, Tech funding, Tech updates, Tech news, Stories from Silicon Valley, Venture capitalists, UK tech updates, International tech summits, Times Tech Summit, Tech experts"
+  topics: "Silicon Valley updates, Big Tech, Artificial Intelligence, Tech innovation, Start up, Tech funding, Tech updates, Tech news, Stories from Silicon Valley, Venture capitalists, UK tech updates, International tech summits, Times Tech Summit, Tech experts",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "past-imperfect",
   slug: "what-i-wish-id-known",
@@ -519,7 +546,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["times-red-box", "stories-of-our-times"],
   section: "podcast",
-  topics: "Interview, Celebrity interview, Society, Culture, Pop culture, Childhood stories, Sporting heroes, Sports, Business, New thinking, Politics, Political figures, British icon, Lifetime achievement, Current affairs, Legacy, Discussion, Informal, Relaxed conversation, Advice, Younger self, Guidance, Self-help"
+  topics: "Interview, Celebrity interview, Society, Culture, Pop culture, Childhood stories, Sporting heroes, Sports, Business, New thinking, Politics, Political figures, British icon, Lifetime achievement, Current affairs, Legacy, Discussion, Informal, Relaxed conversation, Advice, Younger self, Guidance, Self-help",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "secrets-of-side-hustle",
   slug: "secrets-of-the-side-hustle",
@@ -536,7 +566,10 @@ const podcastList = [{
   },
   suggestedPodcasts: ["danny-in-the-valley", "past-imperfect"],
   section: "podcast",
-  topics: "Female founders, Female empowerment, Women in Business, Women in Tech, International Women’s Day, Business tips, Entrepreneurship, Side hustle, Interview, Business interviews, Business from scratch, Advice, Investing, Money Management, Money Mentorship, Industry News, Tech, Fitness, CEO, Business"
+  topics: "Female founders, Female empowerment, Women in Business, Women in Tech, International Women’s Day, Business tips, Entrepreneurship, Side hustle, Interview, Business interviews, Business from scratch, Advice, Investing, Money Management, Money Mentorship, Industry News, Tech, Fitness, CEO, Business",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "your-history",
   slug: "your-history",
@@ -545,13 +578,7 @@ const podcastList = [{
   img: {
     url: "https://www.thetimes.com/radio/wp-content/uploads/sites/2/2023/11/1699453633684-ef075e8e46f94710b8ea36c9fcfa956c.jpeg?w=240"
   },
-  description: `
-        The life stories of the people who have shaped our own, told through the obituaries pages of The Times. 
-        As Nelson Mandela noted, “you can't really be proud of yourself if you don't know your history”. 
-        Anna Temkin, Deputy Obituaries Editor at The Times, introduces the endlessly fascinating stories that tell us about how we got to this point in history - the stories of a lifetime well lived.
-
-        The Times has published daily obituaries for over a century. 
-        Now, each week Anna builds on that legacy and explores that rich archive, joined by voices from across the paper to analyse the lives which have enriched and informed today's society.`,
+  description: `The life stories of the people who have shaped our own, told through the obituaries pages of The Times. As Nelson Mandela noted, “you can't really be proud of yourself if you don't know your history”. Anna Temkin, Deputy Obituaries Editor at The Times, introduces the endlessly fascinating stories that tell us about how we got to this point in history - the stories of a lifetime well lived. The Times has published daily obituaries for over a century. Now, each week Anna builds on that legacy and explores that rich archive, joined by voices from across the paper to analyse the lives which have enriched and informed today's society.</p>`,
   metaDescription: "Your History is a new podcast from The Times. Anna Temkin, Deputy Obituaries Editor,  tells life stories from this week's Times' obituaries, exposing the newspaper's rich archive.",
   externalLinks: {
     apple: "https://podcasts.apple.com/gb/podcast/your-history/id1747936428",
@@ -559,15 +586,16 @@ const podcastList = [{
   },
   suggestedPodcasts: ["times-red-box", "stories-of-our-times"],
   section: "podcast",
-  topics: "Newspaper obituaries, Times obituaries, Life stories, Biographical information, UK political heavyweights, Celebrity, Lifetime achievement, Influential historical figures, History, Historical analysis, Current affairs, Legacy, From the archives, Archival"
+  topics: "Newspaper obituaries, Times obituaries, Life stories, Biographical information, UK political heavyweights, Celebrity, Lifetime achievement, Influential historical figures, History, Historical analysis, Current affairs, Legacy, From the archives, Archival",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }, {
   newsKitId: "wine-times",
   title: "Wine Times",
   slug: "wine-times",
   urlSlug: "wine-times",
-  description: `Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. 
-        <p/> 
-        Wine Times is brought to you in association with the Sunday Times Wine Club.`,
+  description: `Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. Wine Times is brought to you in association with the Sunday Times Wine Club.`,
   metaDescription: "Broadcasting legend Anneka Rice joins Sunday Times wine columnist Will Lyons to share their love of wine and travel with a host of special guests. They’ll be pulling the cork and twisting the screw cap on some of their favourite bottles as they embark on a free-flowing series through the many minds, lives and worlds inspired by the wine route. So pull up a chair, pour yourself a glass and sit back for a grape-inspired podcast full of laughter, lively conversation and interesting wine. Wine Times is brought to you in association with the Sunday Times Wine Club.",
   externalLinks: {
     apple: "https://podcasts.apple.com/gb/podcast/wine-times/id1590177608",
@@ -575,7 +603,10 @@ const podcastList = [{
     google: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5hY2FzdC5jb20vcHVibGljL3Nob3dzLzMxNzg5ZTAyLWVmNmMtNGIxNS1hNzM3LTU0NjJlNjZjMjcwNw?sa=X&ved=0CAMQ9sEGahcKEwjg05m-md_2AhUAAAAAHQAAAAAQQw"
   },
   section: "podcast",
-  topics: "Wine writer, Wine critic, Wine, Wine Pairings, Interview, Celebrity interview, Travel stories, Recommendations, Special guests, Comedy, Light-hearted, The Sunday Times, Wine club, Interesting, Lively, Critic, Relaxed"
+  topics: "Wine writer, Wine critic, Wine, Wine Pairings, Interview, Celebrity interview, Travel stories, Recommendations, Special guests, Comedy, Light-hearted, The Sunday Times, Wine club, Interesting, Lively, Critic, Relaxed",
+  audio: {
+    url: 'https://stitcher2.acast.com/livestitches/5d51a5026104d966c225c9b454462664.mp3?aid=68139dddcea6682986b42fd4&chid=662f8689e9f4880011c29f68&ci=5vmhbJPUjGNKIxLXwPOCS4NKjdPXvJ-ZxxeTDa6Ubt-YBAZJKMS6Pw%3D%3D&pf=rss&range=bytes%3D0-&sv=sphinx%401.237.1&uid=992ca32f635666be17022408846323fc&Expires=1746634580004&Key-Pair-Id=K38CTQXUSD0VVB&Signature=gGntmiwJiLZo7KUrXQWeMfm8jADFiIV0zHO7wH3DTMfN2bkK9dqA1nEcUoivFKj5vLsa5wldT0Kq4~hVV6mxTQcqU0mdfBUAUBj26fvDHTDrQiSwk-FWfPhOxxkUSvcvl4UzqAgdL5qmuV-2tlaTss9~Sv6LrBVUOgML3s4mliyiEyRuU9fqUNHYDr4ZHwK3SveL9~Xk-NKbEIMl1siAKsTeRJ67axyGoGNyUaLvIPJO-dyUeNRUKuDN03F6e9-8JPqJYb10kZzMcjqXr9r8861-S~eACVyrwAAcaEnZvJaAomphjHexUab31pV4W-rZuv590jnVlaTvUUR2bvXSqw__'
+  }
 }];
 
 /***/ }),
@@ -666,10 +697,43 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 
-function save() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-    children: 'Podcast – hello from the saved content!'
+function save({
+  attributes
+}) {
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    ...blockProps,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "podcast-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "podcast-cover-img",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          src: attributes.podcastImageUrl,
+          alt: "Podcast Cover"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "podcast-info",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          className: "podcast-tags",
+          children: "LATEST EPISODE"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+          className: "podcast-title",
+          children: attributes.podcastTitle
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "podcast-summary",
+          children: attributes.podcastSummary
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "podcast-player",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("audio", {
+          controls: true,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("source", {
+            src: attributes.podcastAudioUrl,
+            type: "audio/mpeg"
+          }), "Your browser does not support the audio element."]
+        })
+      })]
+    })
   });
 }
 

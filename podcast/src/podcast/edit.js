@@ -37,13 +37,24 @@ import "./editor.scss";
  * @return {Element} Element to render.
  */
 
+function LoadingView() {
+	return (
+		<div className="loading">
+			<div className="loading-img"></div>
+			<div className="loading-content">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	);
+}
+
 async function getPodcastByTitle(title) {
 	// Simulate an API call to fetch podcast data
 	await new Promise((resolve) => setTimeout(resolve, 1500));
 
-	const podcast = podcastList.find(
-		(podcast) => podcast.title === "Politics Unpacked",
-	);
+	const podcast = podcastList.find((podcast) => podcast.title === title);
 	if (podcast) {
 		return podcast;
 	} else {
@@ -71,6 +82,8 @@ export default function Edit({ attributes, setAttributes }) {
 	useEffect(() => {
 		async function fetchData() {
 			try {
+				setError(null);
+				setLoading(true);
 				const podcast = await getPodcastByTitle(podcastSeries);
 				if (podcast) {
 					setAttributes({
@@ -91,7 +104,9 @@ export default function Edit({ attributes, setAttributes }) {
 		}
 
 		fetchData();
-	}, []);
+	}, [podcastSeries]);
+
+	console.log("podcastSeries", podcastSeries);
 
 	return (
 		<div {...useBlockProps()}>
@@ -146,7 +161,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 			{/* Edit*/}
 			<div className="podcast-container">
-				{loading && <p>Loading...</p>}
+				{loading && <LoadingView />}
 				{error && <p>{error}</p>}
 				{!loading && !error && (
 					<>
@@ -179,7 +194,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<div className="podcast-player">
 							<audio controls>
 								<source
-									src="https://www.example.com/audio.mp3"
+									src={podcastAudioUrl}
 									type="audio/mpeg"
 								/>
 								Your browser does not support the audio element.

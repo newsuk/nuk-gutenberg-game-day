@@ -18,7 +18,8 @@
   "viewScript": "file:./view.js",
   "attributes": {
     "podcastSeries": {
-      "type": "array",
+      "type": "string",
+      "default": "The Story",
       "enum": [
         "The Story",
         "The Royals with Roya and Kate",
@@ -30,11 +31,23 @@
         "World in 10"
       ]
     },
-    "titleOverride": {
+    "episodeId": {
       "type": "string",
       "default": ""
     },
-    "summaryOverride": {
+    "podcastTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "podcastSummary": {
+      "type": "string",
+      "default": ""
+    },
+    "podcastAudioUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "podcastImageUrl": {
       "type": "string",
       "default": ""
     }
