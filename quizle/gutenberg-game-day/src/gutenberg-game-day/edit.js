@@ -75,6 +75,22 @@ export default function Edit({ attributes, setAttributes }) {
 
 					{Array(4)
 						.fill()
+						.map((eachAlternative, index) => (
+							<PanelRow>
+								<TextControl
+									key={index}
+									label={`Alt ${index + 1}`}
+									onChange={(eachAlternative) => {
+										const alternateSolutions = meta.alternateSolutions;
+										alternateSolutions[index] = eachAlternative;
+										setMetaAttributes({ alternateSolutions });
+									}}
+									value={meta.alternateSolutions[index]}
+								/>
+							</PanelRow>
+						))}
+					{Array(4)
+						.fill()
 						.map((hint, index) => (
 							<PanelRow>
 								<TextControl

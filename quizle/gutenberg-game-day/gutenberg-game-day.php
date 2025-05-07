@@ -96,16 +96,12 @@ function q_and_a_post_type() {
 		'alternateSolutions',
 		array(
 			'single'       => true,
-			'type'         => 'string',
+			'type'         => 'array',
 			'show_in_rest' => array(
-				'single'       => true,
-				'type'         => 'array',
-				'show_in_rest' => array(
-					'schema' => array(
-						'type'  => 'array',
-						'items' => array(
-							'type' => 'string',
-						),
+				'schema' => array(
+					'type'  => 'array',
+					'items' => array(
+					'type' => 'string',
 					),
 				),
 			),

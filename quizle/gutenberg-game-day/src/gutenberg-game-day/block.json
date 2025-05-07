@@ -41,8 +41,8 @@
 			"default": "Kosovo"
 		},
 		"alternateSolutions": {
-			"type": "string",
-			"default": "Kosova|Republic of Kosovo|Kossovo|Cosovo"
+			"type": "array",
+			"default": ["Kosova", "Republic of Kosovo", "Kossovo", "Cosovo"]
 		},
 		"hints": {
 			"type": "array",
