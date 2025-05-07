@@ -17,7 +17,7 @@ import yourHistoryCoverImage from "../assets/your-history-cover.png";
 import royalsWithRoyaAndKateCover from "../assets/royals-with-roya-and-kate-cover.png";
 import feelBetterAboutMoneyCoverImage from "../assets/fbam-cover.png";
 
-export const podcasts = [
+export const podcastList = [
 	{
 		newsKitId: "the-royals-with-roya-and-kate",
 		slug: "the-royals-with-roya-and-kate",
