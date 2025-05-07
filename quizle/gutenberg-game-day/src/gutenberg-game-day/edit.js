@@ -81,29 +81,38 @@ export default function Edit({ attributes, setAttributes }) {
 					onChange={(question) => setAttributes({question})}
 					placeholder="Question here..."
 				/>
-				<input
-					className="answer-input"
-					type="text"
-					placeholder="Enter your answer"
-					disabled="disabled"
-				/>
-				<input
-					className="hint"
-					type="button"
-					placeholder="Get Hint"
-					id="hintbutton"
-					value="Get Hint"
-					disabled="disabled"
-				/>
-				<input
-					className="answer"
-					type="button"
-					placeholder="Submit"
-					value="ANSWER"
-					id="submitButton"
-					data-answer={attributes.solution}
-					disabled="disabled"
-				/>
+				<div className="answer-form">
+
+					<div className="answer-container">
+					<input
+						className="answer-input"
+						type="text"
+						placeholder="Enter your answer"
+						disabled="disabled"
+					/>
+					</div>
+					<div className="button-container">
+						<div className="button-grid">
+							<input
+								className="hint"
+								type="button"
+								placeholder="Get Hint"
+								id="hintbutton"
+								value="Get Hint"
+								disabled="disabled"
+							/>
+							<input
+								className="answer"
+								type="button"
+								placeholder="Submit"
+								value="ANSWER"
+								id="submitButton"
+								data-answer={attributes.solution}
+								disabled="disabled"
+							/>
+						</div>
+					</div>
+				</div>
 				{/* <RichText
 					tagName="p"
 					value={ attributes.solution }
