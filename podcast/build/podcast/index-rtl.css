@@ -6,3 +6,8 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.podcast-summary:hover {
+  outline: 1px solid #ccc;
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+}
