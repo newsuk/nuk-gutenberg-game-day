@@ -77,36 +77,8 @@ export default function Edit({ attributes }) {
 		fetchData();
 	}, []);
 
-	console.log("Podcast data:", data);
-
-	let selectedPodcast = podcastList.find(
-		(podcast) => podcast.title === podcastSeries,
-	);
-
 	return (
 		<div {...useBlockProps()}>
-			{/* Edit view. */}
-			<h3>LATEST EPISODE</h3>
-			<RichText
-				tagName="h2" // The tag here is the element output and editable in the admin
-				value={titleOverride || podcastSeries} // Any existing content, either from the database or an attribute default
-				allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
-				onChange={(newTitleOverride) =>
-					setAttributes({ titleOverride: newTitleOverride })
-				} // Store updated content as a block attribute
-				placeholder={__(selectedPodcast?.title)} // Display this text before any content has been added by the user
-			/>
-
-			<RichText
-				tagName="p" // The tag here is the element output and editable in the admin
-				value={summaryOverride || selectedPodcast?.metaDescription} // Any existing content, either from the database or an attribute default
-				allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
-				onChange={(newSummaryOverride) =>
-					setAttributes({ summaryOverride: newSummaryOverride })
-				} // Store updated content as a block attribute
-				placeholder={__(selectedPodcast?.metaDescription)} // Display this text before any content has been added by the user
-			/>
-
 			{/* Sidebar. */}
 			<InspectorControls>
 				<PanelBody title={__("Podcast Settings", "podcast")}>
@@ -154,7 +126,7 @@ export default function Edit({ attributes }) {
 				</PanelBody>
 			</InspectorControls>
 
-			{/* Display*/}
+			{/* Edit*/}
 			<div className="podcast-container">
 				{loading && <p>Loading...</p>}
 				{error && <p>{error}</p>}
@@ -165,10 +137,29 @@ export default function Edit({ attributes }) {
 						</div>
 						<div className="podcast-info">
 							<span className="podcast-tags">LATEST EPISODE</span>
-							<h3 className="podcast-title">{titleOverride || data.title}</h3>
-							<p className="podcast-summary">
+							<RichText
+								className="podcast-title"
+								tagName="h2" // The tag here is the element output and editable in the admin
+								value={titleOverride || podcastSeries} // Any existing content, either from the database or an attribute default
+								allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
+								onChange={(newTitleOverride) =>
+									setAttributes({ titleOverride: newTitleOverride })
+								} // Store updated content as a block attribute
+								placeholder={__(data?.title)} // Display this text before any content has been added by the user
+							/>
+							{/* <p className="podcast-summary">
 								{summaryOverride || data.description}
-							</p>
+							</p> */}
+							<RichText
+								className="podcast-summary"
+								tagName="p" // The tag here is the element output and editable in the admin
+								value={summaryOverride || data?.description} // Any existing content, either from the database or an attribute default
+								allowedFormats={[]} // Allow the content to be made bold or italic, but do not allow other formatting options
+								onChange={(newSummaryOverride) =>
+									setAttributes({ summaryOverride: newSummaryOverride })
+								} // Store updated content as a block attribute
+								placeholder={__(data?.description)} // Display this text before any content has been added by the user
+							/>
 						</div>
 
 						<div className="podcast-player">

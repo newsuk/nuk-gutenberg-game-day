@@ -108,37 +108,9 @@ function Edit({
     }
     fetchData();
   }, []);
-  console.log("Podcast data:", data);
-  let selectedPodcast = _fixtures_podcastList__WEBPACK_IMPORTED_MODULE_3__.podcastList.find(podcast => podcast.title === podcastSeries);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
-      children: "LATEST EPISODE"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-      tagName: "h2" // The tag here is the element output and editable in the admin
-      ,
-      value: titleOverride || podcastSeries // Any existing content, either from the database or an attribute default
-      ,
-      allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
-      ,
-      onChange: newTitleOverride => setAttributes({
-        titleOverride: newTitleOverride
-      }) // Store updated content as a block attribute
-      ,
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(selectedPodcast?.title) // Display this text before any content has been added by the user
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-      tagName: "p" // The tag here is the element output and editable in the admin
-      ,
-      value: summaryOverride || selectedPodcast?.metaDescription // Any existing content, either from the database or an attribute default
-      ,
-      allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
-      ,
-      onChange: newSummaryOverride => setAttributes({
-        summaryOverride: newSummaryOverride
-      }) // Store updated content as a block attribute
-      ,
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(selectedPodcast?.metaDescription) // Display this text before any content has been added by the user
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Podcast Settings", "podcast"),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
@@ -207,12 +179,32 @@ function Edit({
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
             className: "podcast-tags",
             children: "LATEST EPISODE"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
             className: "podcast-title",
-            children: titleOverride || data.title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+            tagName: "h2" // The tag here is the element output and editable in the admin
+            ,
+            value: titleOverride || podcastSeries // Any existing content, either from the database or an attribute default
+            ,
+            allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
+            ,
+            onChange: newTitleOverride => setAttributes({
+              titleOverride: newTitleOverride
+            }) // Store updated content as a block attribute
+            ,
+            placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(data?.title) // Display this text before any content has been added by the user
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
             className: "podcast-summary",
-            children: summaryOverride || data.description
+            tagName: "p" // The tag here is the element output and editable in the admin
+            ,
+            value: summaryOverride || data?.description // Any existing content, either from the database or an attribute default
+            ,
+            allowedFormats: [] // Allow the content to be made bold or italic, but do not allow other formatting options
+            ,
+            onChange: newSummaryOverride => setAttributes({
+              summaryOverride: newSummaryOverride
+            }) // Store updated content as a block attribute
+            ,
+            placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(data?.description) // Display this text before any content has been added by the user
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "podcast-player",
