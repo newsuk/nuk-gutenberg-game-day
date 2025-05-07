@@ -20,6 +20,29 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'viewScript' => 'file:./view.js',
+		'attributes' => array(
+			'podcastSeries' => array(
+				'type' => 'array',
+				'enum' => array(
+					'The Story',
+					'The Royals with Roya and Kate',
+					'How to win an election',
+					'Politics Unpacked',
+					'Your History',
+					'Off Air with Jane & Fi',
+					'Times news briefing',
+					'World in 10'
+				)
+			),
+			'titleOverride' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'summaryOverride' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		)
 	)
 );
