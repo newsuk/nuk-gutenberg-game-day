@@ -14,7 +14,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, TextControl } from '@wordpress/components'
 import { useEffect, useState } from '@wordpress/element';
-import { podcasts } from './fixtures/podcastList';
+import { podcastList } from './fixtures/podcastList';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -35,7 +35,7 @@ import './editor.scss';
 export default function Edit({ attributes, setAttributes, id }) {
 	const { podcastSeries, episodeId, titleOverride, summaryOverride } = attributes;
 
-	let selectedPodcast = podcasts.find((podcast) => podcast.title === podcastSeries);
+	let selectedPodcast = podcastList.find((podcast) => podcast.title === podcastSeries);
 
 	return (
 		<div {...useBlockProps()}>
