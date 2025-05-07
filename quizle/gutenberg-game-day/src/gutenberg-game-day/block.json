@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/gutenberg-game-day",
+	"version": "0.1.0",
+	"title": "Quizle",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Quizle description",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "quizle",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"quizle": {
+			"type": "object",
+			"default": {
+				"questions": [
+					{
+						"question": "What is the capital of France?",
+						"options": ["Paris", "London", "Berlin", "Madrid"],
+						"answer": 0
+					}
+				]
+			}
+		},
+		"quizleId": {
+			"type": "string"
+		},
+		"publishDate": {
+			"type": "string",
+			"default": "2024-11-17T00:00:00.000Z"
+		},
+		"question": {
+			"type": "string",
+			"default": "Which landlocked Balkan state uses the Euro despite not being an EU member? "
+		},
+		"solution": {
+			"type": "string",
+			"default": "Kosovo"
+		},
+		"alternateSolutions": {
+			"type": "string",
+			"default": "Kosova|Republic of Kosovo|Kossovo|Cosovo"
+		},
+		"hints": {
+			"type": "string",
+			"default": "Its name derives from a term for \"Blackbird Field\", the site of a 1389 battle between Serbia and the Ottoman Empire|Its population is mainly ethnic Albanian and overwhelmingly Muslim|Its independence, declared in 2008, is recognised by around half of the UN's member states |Singers Rita Ora and Dua Lipa and footballer Xherdan Shaqiri are members of its diaspora"
+		}
+	}
+}
