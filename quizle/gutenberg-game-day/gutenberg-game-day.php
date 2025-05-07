@@ -72,5 +72,50 @@ function q_and_a_post_type() {
 		'show_in_rest' => true, // Enable Gutenberg support
 	);
 	register_post_type('q-and-a-post-type', $args);
+
+	register_post_meta(
+		'q-and-a-post-type',
+		'question',
+		array(
+			'single'       => true,
+			'type'         => 'string',
+			'show_in_rest' => true
+		)
+	);
+	register_post_meta(
+		'q-and-a-post-type',
+		'solution',
+		array(
+			'single'       => true,
+			'type'         => 'string',
+			'show_in_rest' => true
+		)
+	);
+	register_post_meta(
+		'q-and-a-post-type',
+		'alternateSolutions',
+		array(
+			'single'       => true,
+			'type'         => 'string',
+			'show_in_rest' => true
+		)
+	);
+	register_post_meta(
+		'q-and-a-post-type',
+		'hints',
+		array(
+			'single'       => true,
+			'type'         => 'array',
+			'show_in_rest' => array(
+				'schema' => array(
+					'type'  => 'array',
+					'items' => array(
+						'type' => 'string',
+					),
+				),
+			),
+		)
+);
+
 }
 add_action('init', 'q_and_a_post_type');
