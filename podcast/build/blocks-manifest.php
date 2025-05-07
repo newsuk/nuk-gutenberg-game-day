@@ -36,10 +36,6 @@ return array(
 					'World in 10'
 				)
 			),
-			'episodeId' => array(
-				'type' => 'string',
-				'default' => ''
-			),
 			'podcastTitle' => array(
 				'type' => 'string',
 				'default' => ''
