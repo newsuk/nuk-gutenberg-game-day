@@ -16,20 +16,16 @@ If you have worked with Gutenberg before, you will get to work on an idea of you
 
 ## What are the teams?
 
-For the Game Day on September 18th 2024, the teams are:
+For the Game Day on May 7th 2025, the teams are:
 
-| Team | Location  | Members                              | Task                      |
-|:----:| --------- | ------------------------------------ | ------------------------- |
-| 1    | London    | Onur, Ben, Yavor, Emo                | Data Visulalization       |
-| 2    | London    | Edwil, Peace, Teo                    | TBC                       |
-| 3    | London    | Malick, Mujeeb, Cengiz, Damien, Andy | RSS Data Block            |
-| 4    | London    | Gareth, Paul E, Veli, Stef           | Quiz Block                |
-| 5    | London    | Jonny, Paul K, Moomba, Chris         | TBC                       |
-| 6    | London    | Mario, Mohan, Jordan, Callum         | Times Article POC         |
-| 7    | Bangalore | Prem, Ashna, Diksha, Arun S          | TS Weather Forecast POC   |
-| 8    | Remote    | Marko M, Ruslan, Mihai, Ajdin        | Beginner                  |
-| 9    | Remote    | Marko N, Ion, Kristian, Emil         | Countries Block           |
-| 10   | Remote    | Shadi, Snow, Vlad, Marti             | Times Slices in WP        |
+| Team            | Members                              | Task                      |
+|:---------------:| ------------------------------------ | ------------------------- |
+| Pikachu (1)     | Dero, Tom R, Jordan, Milan, Yuki     | Podcast                   |
+| Author Team (2) | Edwil, Michael, Sameke, Tom H        | Author Pages              |
+| AppPress (3)    | Mohan, Dan, Jakub, Robel, Ehsan      | WP API + Apps             |
+| Play Squad (4)  | Adam, Mateusz, Snow, Jem             | Puzzles CMS               |
+| Ratatouille (5) | Bibi, Mario, Peace, Alex             | Recipes                   |
+| NewsQuiz (6)    | Callum, Jonny, Michael, Alister      | Knowledge Check Quiz      |
 
 ---
 
