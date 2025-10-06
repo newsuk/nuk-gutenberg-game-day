@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nuk-gutenberg-game-day
+  description:
+  annotations:
+    circleci.com/project-slug: github/newsuk/nuk-gutenberg-game-day
+    backstage.io/source-location: url:https://github.com/newsuk/nuk-gutenberg-game-day/
+    github.com/team-slug: newsuk/nuk-gutenberg-game-day
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/productivity-hub-metrics-enabled: 'true'
+  tags:
+    - bu:newsuk
+spec:
+  type: service
+  lifecycle: production
+  
